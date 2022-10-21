@@ -1,0 +1,316 @@
+<div class="container">
+    <div>
+        <h2 style="font-weight: bold; text-align: center;">HISTORIAL CLÍNICO</h2>
+    <div>
+
+    <div *ngFor="let patient of patients">
+        <mat-tab-group mat-align-tabs="center" style="margin: 15px;" >
+
+            <mat-tab label="Ficha de Identificación">
+                <div style="margin-top: 15px;">
+                    <div style="display: flex;">
+                        <h4 class="title"> Nombre: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%; font-weight: 600;">
+                            <span>{{patient.nombre}}</span>
+                        </mat-card>
+                        <h4 class="title"> NSS: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%; font-weight: 600;">
+                            <span>{{patient.nss}}</span>
+                        </mat-card>
+                    </div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Sexo: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                            <span>{{patient.sexo}}</span>
+                        </mat-card>
+                        <h4 class="title"> Edad: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                            <span>{{patient.edad}}</span>
+                        </mat-card>
+                        <h4 class="title"> Consultorio: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                            <span>{{patient.consultorio}}</span>
+                        </mat-card>
+                        <h4 class="title"> Turno: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                            <span>{{patient.turno}}</span>
+                        </mat-card>
+                    </div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Correo: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                            <span>{{patient.correo}}</span>
+                        </mat-card>
+                        <h4 class="title"> Teléfono: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                            <span>{{patient.telefono}}</span>
+                        </mat-card>
+                    </div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Ocupación: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 85%;">
+                            <span>{{patient.ocupacion}}</span>
+                        </mat-card>
+                    </div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Motivo de Consulta: </h4>
+                        <mat-card class="card1 mat-elevation-z3">
+                            <span>{{patient.motivo}}</span>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Antecedentes">
+                <h4 class="subtitle"> Antecedentes Personales Patológicos: </h4>
+                <div style="display: flex;">
+                    <div style="float: left; width: 50%;">
+                        <mat-checkbox class="checkbox">
+                            Cardiovasculares
+                        </mat-checkbox>
+                        <mat-checkbox class="checkbox">
+                            Pulmonares
+                        </mat-checkbox>
+                        <mat-checkbox class="checkbox">
+                            Digestivos
+                        </mat-checkbox>
+                        <mat-checkbox class="checkbox">
+                            Diabetes
+                        </mat-checkbox>
+                    </div>
+                    <div style="float: right; width: 50%;">
+                        <mat-checkbox class="checkbox">
+                            Renales
+                        </mat-checkbox>
+                        <mat-checkbox class="checkbox">
+                            Quirúrgicos
+                        </mat-checkbox>
+                        <mat-checkbox class="checkbox">
+                            Alérgicos
+                        </mat-checkbox>
+                        <mat-checkbox class="checkbox">
+                            Transfusiones
+                        </mat-checkbox>
+                    </div>
+                </div>
+                <div style="display: block;">
+                    <div style="display: flex;">
+                        <h4 class="title"> Medicamentos: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%; font-weight: 600;">
+                            <span>{{patient.medicam}}</span>
+                        </mat-card>
+                        <h4 class="title"> Especifique: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%; font-weight: 600;">
+                            <span>{{patient.especif}}</span>
+                        </mat-card>
+                    </div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Otros: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 85%;">
+                            <span>{{patient.otros}}</span>
+                        </mat-card>
+                    </div>
+                </div>
+                <h4 class="subtitle"> Antecedentes Personales No Patológicos: </h4>
+                <div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Alcohol: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%;">
+                            <span>{{patient.alcohol}}</span>
+                        </mat-card>
+                        <h4 class="title"> Tabaquismo: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%;">
+                            <span>{{patient.tabaquismo}}</span>
+                        </mat-card>
+                    </div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Drogas: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%;">
+                            <span>{{patient.drogas}}</span>
+                        </mat-card>
+                        <h4 class="title"> Inmunizaciones: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 40%;">
+                            <span>{{patient.inmun}}</span>
+                        </mat-card>
+                    </div>
+                    <div style="display: flex;">
+                        <h4 class="title"> Otros: </h4>
+                        <mat-card class="card mat-elevation-z3" style="width: 85%;">
+                            <span>{{patient.otros2}}</span>
+                        </mat-card>
+                    </div>
+                </div>
+                <h4 class="subtitle"> Antecedentes Familiares: </h4>
+                <div style="display: flex;">
+                    <h4 class="title"> Especifique: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 85%;">
+                        <span>{{patient.especif2}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Antecedentes Gineco-obstétricos: </h4>
+                <div style="display: flex;">
+                    <h4 class="title"> Menarquía: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.menarq}}</span>
+                    </mat-card>
+                    <h4 class="title"> Ritmo: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.ritmo}}</span>
+                    </mat-card>
+                    <h4 class="title"> F.U.M.: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.fum}}</span>
+                    </mat-card>
+                    <h4 class="title"> G: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.g}}</span>
+                    </mat-card>
+                </div>
+                <div style="display: flex;">
+                    <h4 class="title"> P: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.p}}</span>
+                    </mat-card>
+                    <h4 class="title"> A: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.a}}</span>
+                    </mat-card>
+                    <h4 class="title"> C: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.c}}</span>
+                    </mat-card>
+                    <h4 class="title"> I.V.S.A: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.ivsa}}</span>
+                    </mat-card>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="PEEA/IPAS">
+                <h4 class="subtitle"> Principio Evolutivo y Estado Actual (PEEA): </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.peea}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Interrogatorio por Aparatos y Sistemas (IPAS): </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.ipas}}</span>
+                    </mat-card>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Exploración Física">
+                <h4 class="subtitle"> Signos Vitales </h4>
+                <div style="display: flex;">
+                    <h4 class="title"> T.A: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.ta}}</span>
+                    </mat-card>
+                    <h4 class="title"> F.C: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.fc}}</span>
+                    </mat-card>
+                    <h4 class="title"> F.R: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.fr}}</span>
+                    </mat-card>
+                    <h4 class="title"> Temp: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 23%;">
+                        <span>{{patient.temp}}</span>
+                    </mat-card>
+                </div>
+                <div style="display: flex;">
+                    <h4 class="title"> Peso: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 30%;">
+                        <span>{{patient.peso}}</span>
+                    </mat-card>
+                    <h4 class="title"> IMC: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 30%;">
+                        <span>{{patient.imc}}</span>
+                    </mat-card>
+                    <h4 class="title"> Talla: </h4>
+                    <mat-card class="card mat-elevation-z3" style="width: 30%;">
+                        <span>{{patient.talla}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Aspecto General: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.aspecto}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Cabeza y Cuello: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.cabeza}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Tórax: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.torax}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Abdomen: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.abdomen}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Extremidades: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.extrem}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Neurológico y Estado Mental: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.neuro}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Laboratorio: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.lab}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Estudios de Imagen: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.imagen}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Otros: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.otros3}}</span>
+                    </mat-card>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Diagnóstico y Tratamiento">
+                <h4 class="subtitle"> Diagnósticos Presuntivos: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.diagnostico}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Tratamiento empleado con enfóque integral: </h4>
+                <div style="display: flex;">
+                    <mat-card class="card mat-elevation-z3" style="width: 95%;">
+                        <span>{{patient.tratamiento}}</span>
+                    </mat-card>
+                </div>
+                <h4 class="subtitle"> Genograma del paciente: </h4>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+    <div style="text-align: center;">
+        <button mat-stroked-button color="accent" style="font-weight: bold; margin-right: 10px;"> Imprimir </button>
+        <button mat-stroked-button color="accent" (click)="onClose()" tabIndex="-1" style="font-weight: bold;"> Cerrar </button>
+    </div>
+</div>

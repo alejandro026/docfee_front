@@ -1,0 +1,17 @@
+.stepper {
+    width: 100%;
+}
+
+.mat-form-field {
+    margin-top: 20px;
+}
+
+.buttons {
+    width: 40px;
+    margin-top: 15px;
+}
+
+.checkbox {
+    display: block;
+    margin: 0 12px;
+}

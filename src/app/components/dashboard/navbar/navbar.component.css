@@ -1,0 +1,46 @@
+mat-toolbar {
+  background: #002b5c;
+  color: white;
+  font-size: x-large;
+  font-weight: 550 ;
+  height: 7%;
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  position: relative;
+  height: 93%;
+  overflow: hidden;
+  background-color: #2c2e43;
+  border: 0px;
+}
+
+.sidenav {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-right: none;
+  margin: 15px;
+  width: 180px;
+  height: auto;
+  border: 0px;
+  border-radius: 10px;
+  background: #002b5c;
+  overflow: hidden;
+}
+
+.material-icons-rounded {
+  margin-left: 10px;
+  margin-right: 10px;
+  color: whitesmoke ;
+  overflow: hidden;
+}
+
+.text {
+  color: whitesmoke;
+  overflow: hidden;
+}

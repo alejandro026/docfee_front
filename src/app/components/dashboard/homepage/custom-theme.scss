@@ -1,0 +1,74 @@
+@import '~igniteui-angular/lib/core/styles/themes/index';
+@include igx-core();
+
+$legacy-support: true;
+$palette: $light-material-palette;
+$schema: $light-material-schema;
+
+$default-palette: $palette;
+$igx-legacy-support: $legacy-support;
+
+$green-palette: igx-palette(
+    $primary: #09f,
+    $secondary: #72da67,
+    $grays: #fff,
+    $surface: #333
+);
+
+$grays-btn-color: igx-color($green-palette, 'grays', 800);
+
+
+$custom-palette: igx-palette(
+    $primary: #2b579a,
+    $secondary: #2b579a,
+    $surface: #fff,
+    $error: #a80000,
+    $success: #107c10,
+    $warn: #797673,
+    $info: #1377d5,
+    $grays: #000
+);
+@include igx-theme($palette: $custom-palette, $schema: $light-fluent-schema, $roundness: 0.5, $elevation: null);
+@include igx-typography($font-family: "Titillium Web", $type-scale: $fluent-type-scale);
+
+$border-color: igx-color($color: grays, $variant: 300);
+
+.calendar-wrapper {
+    max-width: 250px;
+    min-width: 220px;
+    border: 1px solid $border-color;
+    border-radius: 10px;
+    margin-left: 15px;
+    margin-top: 0px;
+}
+
+.igx-calendar {
+    font-size: x-small;
+    display: block;
+    margin-left: 0px;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: igx-elevation($elevation: 4);
+}
+
+$custom-calendar-theme: igx-calendar-theme(
+    $header-background: #002b5c,
+    $content-background: #fdfdfd,
+    $header-text-color: #ffffff,
+    $date-current-text-color: #2dabe8,
+    $picker-arrow-color: #2dabe8,
+    $date-selected-text-color: #fdfdfd,
+    $date-current-bg-color: #fdfdfd,
+    $picker-arrow-hover-color:  #345779,
+    $year-current-text-color: #2dabe8,
+    $year-hover-text-color: #2dabe8,
+    $month-current-text-color: #2dabe8,
+    $month-hover-text-color: #2dabe8,
+    $picker-text-color: #2dabe8,
+    $picker-text-hover-color:  #345779
+);
+
+:host ::ng-deep {
+    @include igx-calendar($custom-calendar-theme);
+}

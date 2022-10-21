@@ -1,0 +1,123 @@
+.container {
+    overflow: hidden;
+    height: auto;
+    border-radius: 10px;
+    margin: 15px;
+    margin-left: 20px;
+    margin-right: 0px;
+    margin-top: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.left {
+    margin-left: 15px;
+    margin-right: 15px;
+    float: left;
+    position: relative;
+    width: 70%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.right {
+    margin-right: 15px;
+    position: relative;
+    float: right;
+    width: 30%;
+    height: 475px;
+    overflow: hidden;
+}
+
+.right-side {
+    display: block;
+    position: relative;
+    margin-left: 15px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 77%;
+    overflow: hidden;
+    background-color: white;
+}
+
+.homepage-card {
+    display: flex;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    background-color: white;
+    overflow: hidden;
+}
+
+.card-data {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.first {
+    padding: 5px;
+    margin: 10px;
+    margin-bottom: 0px;
+    width: 97%;
+    background: transparent;
+    box-shadow: none;
+}
+
+mat-card {
+    padding: 5px;
+    margin: 15px;
+    width: 95%;
+    background-color: transparent;
+    box-shadow: none !important;
+    
+}
+
+.title {
+    font-size: xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.subtitle {
+    margin-bottom: 0%;
+    margin-left: 20px;
+    text-align: left;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.doctor {
+    width: 30%;
+    float: right;
+    margin: 0px;
+    margin-top: 0%;
+}
+
+.buttons {
+    width: 30%;
+    height: 135px;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    background-color: #F0F0F0;
+}
+
+.options {
+    font-weight: normal;
+    font-size: large;
+}
+
+.icon {
+    width: 35%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}

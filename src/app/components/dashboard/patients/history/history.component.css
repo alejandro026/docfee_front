@@ -1,0 +1,57 @@
+.container {
+    margin: 15px;
+    margin-right: 15px;
+    margin-left: 35px;
+    padding: 15px;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: white ;
+}
+
+.title {
+    margin: 23px;
+    color: gray;
+}
+
+.subtitle {
+    margin: 15px;
+    margin-bottom: 10px;
+    color: rgb(26, 26, 26);
+}
+
+span { 
+    margin-left: 15px;
+}
+
+.text-inside-grid {
+    position: absolute;
+    left: 5px;
+}
+
+.card {
+    height: 20px;
+    padding: 9px;
+    margin: 15px;
+    background-color: #FAFAFA;
+    box-shadow: none;
+    font-weight: 550;
+}
+
+.card1 {
+    width: 76%;
+    height: 20px;
+    padding: 9px;
+    margin: 9px;
+    margin-top: 15px;
+    background-color: #FAFAFA;
+    box-shadow: none;
+    font-weight: 550;
+}
+
+.checkbox {
+    display: block;
+    margin: 0 12px;
+}

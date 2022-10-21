@@ -1,0 +1,387 @@
+<div>
+    <mat-toolbar>
+        <span> {{titulo}} </span>
+        <span style="flex: 1 1 auto"></span>
+        <button mat-mini-fab (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+    </mat-toolbar>
+</div>
+
+<div style="padding: 3em" width="100%">
+    <mat-stepper linear #stepper class="stepper">
+
+        <mat-step>
+            <form [formGroup]="service.formOne">
+                <div>
+                    <ng-template matStepLabel> Ficha de Identificación </ng-template>
+                    <input type="hidden" >
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Nombre </mat-label>
+                        <input matInput required formControlName="nombre" maxlength="60" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> NSS </mat-label>
+                        <input matInput required formControlName="nss" maxlength="11" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 22%; margin-right: 36px;">
+                        <mat-label> Sexo </mat-label>
+                        <input matInput formControlName="sexo" placeholder="M / F" maxlength="1" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 22%; margin-right: 34px;">
+                        <mat-label> Edad </mat-label>
+                        <input matInput required formControlName="edad" placeholder="Ex. 18A, 6M, RN" maxlength="3" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 22%; margin-right: 36px;">
+                        <mat-label> Consultorio </mat-label>
+                        <input matInput formControlName="consultorio" maxlength="4" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 22%;">
+                        <mat-label> Turno </mat-label>
+                        <input matInput formControlName="turno" placeholder="Mat / Ves" maxlength="3" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 48%; margin-right: 34px;">
+                        <mat-label> Correo </mat-label>
+                        <input matInput required formControlName="correo" placeholder="'Ninguno' en caso de no existir" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 48%;">
+                        <mat-label> Teléfono </mat-label>
+                        <input matInput required formControlName="telefono" maxlength="10" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Ocupación </mat-label>
+                        <textarea matInput formControlName="ocupacion" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>                    
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Motivo de Consulta </mat-label>
+                        <textarea matInput formControlName="motivo" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div style="text-align: right;">
+                    <button mat-icon-button matStepperNext aria-label="next" class="buttons">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step>
+            <form [formGroup]="service.formTwo">
+                <div>
+                    <ng-template matStepLabel> Antecedentes </ng-template>
+                    <h3 style="margin-top: 20px; margin-bottom: 15px; font-weight: bold;"> Antecedentes Personales Patológicos </h3>
+                </div>
+                <div style="float: left; width: 50%;">
+                    <mat-checkbox class="checkbox">
+                        Cardiovasculares
+                    </mat-checkbox>
+                    <mat-checkbox class="checkbox">
+                        Pulmonares
+                    </mat-checkbox>
+                    <mat-checkbox class="checkbox">
+                        Digestivos
+                    </mat-checkbox>
+                    <mat-checkbox class="checkbox">
+                        Diabetes
+                    </mat-checkbox>
+                </div>
+                <div style="float: right; width: 50%;">
+                    <mat-checkbox class="checkbox">
+                        Renales
+                    </mat-checkbox>
+                    <mat-checkbox class="checkbox">
+                        Quirúrgicos
+                    </mat-checkbox>
+                    <mat-checkbox class="checkbox">
+                        Alérgicos
+                    </mat-checkbox>
+                    <mat-checkbox class="checkbox">
+                        Transfusiones
+                    </mat-checkbox>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Medicamentos </mat-label>
+                        <input matInput formControlName="medicam" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>                    
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Especifique </mat-label>
+                        <textarea matInput formControlName="especif" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Otros </mat-label>
+                        <input matInput formControlName="otros" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h3 style="margin-top: 40px; margin-bottom: auto; font-weight: bold;"> Antecedentes Personales No Patológicos </h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 48%; margin-right: 34px;">
+                        <mat-label> Alcohol </mat-label>
+                        <input matInput formControlName="alcohol" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 48%;">
+                        <mat-label> Tabaquismo </mat-label>
+                        <input matInput formControlName="tabaquismo" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 48%; margin-right: 34px;">
+                        <mat-label> Drogas </mat-label>
+                        <input matInput formControlName="drogas" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 48%;">
+                        <mat-label> Inmunizaciones </mat-label>
+                        <input matInput formControlName="inmun" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Otros </mat-label>
+                        <textarea matInput formControlName="otros2" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h3 style="margin-top: 40px; margin-bottom: auto; font-weight: bold;"> Antecedentes Familiares </h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Especifique </mat-label>
+                        <textarea matInput formControlName="especif2" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h3 style="margin-top: 40px; margin-bottom: auto; font-weight: bold;"> Antecedentes Gineco-obstétricos </h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 31%; margin-right: 31px;">
+                        <mat-label> Menarquia </mat-label>
+                        <input matInput formControlName="menarq" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 31%; margin-right: 31px;">
+                        <mat-label> Ritmo </mat-label>
+                        <input matInput formControlName="ritmo" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 31%;">
+                        <mat-label> F.U.M. </mat-label>
+                        <input matInput formControlName="fum" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 15%; margin-right: 20px;">
+                        <mat-label> G </mat-label>
+                        <input matInput formControlName="g" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 15%; margin-right: 20px;">
+                        <mat-label> P </mat-label>
+                        <input matInput formControlName="p" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 15%; margin-right: 20px;">
+                        <mat-label> A </mat-label>
+                        <input matInput formControlName="a" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 15%; margin-right: 20px;">
+                        <mat-label> C </mat-label>
+                        <input matInput formControlName="c" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 31%;">
+                        <mat-label> I.V.S.A </mat-label>
+                        <input matInput formControlName="ivsa" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <div style="display: flex;">
+                        <p style="margin-top: 30px;"> Uso de Métodos Anticonceptivos </p>
+                        <mat-checkbox style="margin: 27px 12px;"> Sí </mat-checkbox>
+                        <mat-checkbox style="margin: 27px 12px;"> No </mat-checkbox>
+                        <mat-form-field appearance="fill" style="width: 60%; margin-right: 0px; margin-left: 27px; margin-top: 20px;">
+                            <mat-label> ¿Cuáles? </mat-label>
+                            <textarea matInput formControlName="cuales" autocomplete="off"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div>
+                    <button mat-icon-button matStepperPrevious aria-label="back" class="buttons" style="float: left;">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <button mat-icon-button matStepperNext aria-label="next" class="buttons" style="float: right;">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                </div>
+            </form>    
+        </mat-step>
+
+        <mat-step>
+            <form [formGroup]="service.formThree">
+                <div>
+                    <ng-template matStepLabel> PEEA/IPAS </ng-template>
+                    <h3 style="margin-top: 20px; margin-bottom: auto; font-weight: bold;"> Principio Evolución y Estado Actual (PEEA) </h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> PEEA </mat-label>
+                        <textarea matInput formControlName="peea" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h3 style="margin-top: 40px; margin-bottom: auto; font-weight: bold;"> Interrogatorio por Aparatos y Sistemas (IPAS) </h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> IPAS </mat-label>
+                        <textarea matInput formControlName="ipas" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-icon-button matStepperPrevious aria-label="back" class="buttons" style="float: left;">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <button mat-icon-button matStepperNext aria-label="next" class="buttons" style="float: right;">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                </div>
+            </form>    
+        </mat-step>
+
+        <mat-step>
+            <form [formGroup]="service.formFour">
+                <div>
+                    <ng-template matStepLabel> Exploración Física </ng-template>
+                    <h4 style="margin-top: 20px; margin-bottom: auto;"> Signos Vitales </h4>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 22%; margin-right: 36px;">
+                        <mat-label> T.A </mat-label>
+                        <input matInput formControlName="ta" maxlength="5" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 22%; margin-right: 34px;">
+                        <mat-label> F.C. </mat-label>
+                        <input matInput formControlName="fc" maxlength="5" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 22%; margin-right: 36px;">
+                        <mat-label> F.R. </mat-label>
+                        <input matInput formControlName="fr" maxlength="5" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 22%;">
+                        <mat-label> Temp. </mat-label>
+                        <input matInput formControlName="temp" maxlength="5" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 31%; margin-right: 31px;">
+                        <mat-label> Peso </mat-label>
+                        <input matInput formControlName="peso" maxlength="5" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 31%; margin-right: 31px;">
+                        <mat-label> Talla </mat-label>
+                        <input matInput formControlName="talla" maxlength="5" autocomplete="off">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 31%;">
+                        <mat-label> IMC </mat-label>
+                        <input matInput formControlName="imc" maxlength="5" autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Aspecto General </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="aspecto" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Cabeza y Cuello </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="cabeza" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Tórax </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="torax" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Abdomen </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="abdomen" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Extremidades </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="extrem" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Neurológico y Estado Mental </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="neuro" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Laboratorio </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="lab" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Estudios de Imagen </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="imagen" autocomplete="off"></textarea>
+                    </mat-form-field>
+                    <h4 style="margin-top: 30px; margin-bottom: auto;"> Otros </h4>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="otros" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button mat-icon-button matStepperPrevious aria-label="back" class="buttons" style="float: left;">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <button mat-icon-button matStepperNext aria-label="next" class="buttons" style="float: right;">
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step>
+            <form [formGroup]="service.formFive">
+                <div>
+                    <ng-template matStepLabel> Diagnóstico y Tratamiento </ng-template>
+                    <h3 style="margin-top: 20px; margin-bottom: auto; font-weight: bold;"> Diagnósticos presuntivos  </h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="diagnostico" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h3 style="margin-top: 40px; margin-bottom: auto; font-weight: bold;"> Tratamiento empleado con enfoque integral </h3>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill" style="width: 100%;">
+                        <mat-label> Descripción </mat-label>
+                        <textarea matInput formControlName="tratamiento" autocomplete="off"></textarea>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <h3 style="margin-top: 40px; margin-bottom: auto; font-weight: bold;"> Genograma del paciente </h3>
+                </div>
+                <div>
+                    <button mat-icon-button matStepperPrevious aria-label="back" class="buttons" style="float: left;">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                    </button>
+                    <button mat-raised-button type="button" [disabled]="service.formOne.invalid" (click)="onSubmit()" color="accent" style="float: right; margin-top: 20px;"> Guardar </button>
+                </div>
+            </form>
+        </mat-step>
+
+    </mat-stepper>
+</div>
