@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { LoginComponent } from './components/login/login.component';
 import { environment } from 'src/environments/environment';
 import { PatientComponent } from './components/dashboard/patients/patient/patient.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { PatientComponent } from './components/dashboard/patients/patient/patien
     LayoutModule,
     HammerModule,
     IgxCalendarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

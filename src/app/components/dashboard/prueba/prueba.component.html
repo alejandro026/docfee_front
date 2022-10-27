@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="search-div">
+      <button mat-raised-button class="creat-button"><mat-icon>add</mat-icon> Crear </button>
+      <mat-form-field class="search-form-field" floatLabel="never">
+          <input matInput type="text" placeholder="Buscar" autocomplete="off" [(ngModel)]="searchKey" name="filtro">
+          <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" ><mat-icon>clear</mat-icon></button>
+      </mat-form-field>
+  </div>
+  <div class="table-wrapp mat-elevation-z8">
+      <table mat-table matSort [dataSource]="dataSource">
+
+          <ng-container matColumnDef="nombre" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="large"> Nombre </th>
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="apPaterno" >
+            <th mat-header-cell *matHeaderCellDef class="short"> Apellido paterno </th>
+            <td mat-cell *matCellDef="let element"> {{element.apPaterno}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="apMaterno" >
+            <th mat-header-cell *matHeaderCellDef class="large"> Apellido materno </th>
+            <td mat-cell *matCellDef="let element"> {{element.apMaterno}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nss" >
+            <th mat-header-cell *matHeaderCellDef class="short"> Numero de seguro </th>
+            <td mat-cell *matCellDef="let element"> {{element.nss}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="telefono" >
+            <th mat-header-cell *matHeaderCellDef class="short"> Teléfono </th>
+            <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="actions" >
+            <th mat-header-cell *matHeaderCellDef class="short">  </th>
+            <td mat-cell *matCellDef="let element" style="text-align: right;">
+              <button mat-icon-button type="text"  matTooltip="Ver Paciente"><mat-icon>open_in_new</mat-icon></button>
+              <button mat-icon-button  matTooltip="Editar Paciente"><mat-icon>edit</mat-icon></button>
+              <button mat-icon-button  color="warn" matTooltip="Borrar Paciente"><mat-icon>delete_outline</mat-icon></button>
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="loading">
+            <mat-footer-cell *matFooterCellDef style="justify-content: center; font-style: italic;">
+              Cargando datos...
+            </mat-footer-cell>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource._filterData}" style="justify-content: center; font-style: italic;"></tr>
+      </table>
+      <mat-paginator #paginator [pageSizeOptions]="[5, 7, 10]" [pageSize]="7"></mat-paginator>
+  </div>
+  <div style="text-align: right;">
+    <button mat-raised-button color="accent" style="margin-right: 90px; margin-top: 10px;" class="creat-button" routerLink="/dashboard/homepage"> Volver a Inicio </button>
+  </div>
+</div>

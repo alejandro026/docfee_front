@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -24,6 +25,7 @@ export class PacienteService {
   constructor(
     public fb: FormBuilder,
     public firebase: AngularFirestore,
+    // private http: HttpClient
   ) {
 
     this.formOne = this.fb.group({
@@ -161,7 +163,7 @@ export class PacienteService {
 
   addPaciente(paciente: Paciente): Promise<any> {
     return this.firebase.collection('pacientes').add(paciente)
-    
+
   }
 
   createPaciente() {
