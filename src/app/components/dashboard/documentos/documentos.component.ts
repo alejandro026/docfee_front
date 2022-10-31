@@ -1,4 +1,3 @@
-
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from './../../../_models/usuario';
 import { NotificationService } from './../../../services/notification.service';
@@ -7,13 +6,14 @@ import { UsuarioService } from './../../../services/usuario.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angular/fire/storage';
-
 @Component({
-  selector: 'app-prueba',
-  templateUrl: './prueba.component.html',
-  styleUrls: ['./prueba.component.css']
+  selector: 'app-documentos',
+  templateUrl: './documentos.component.html',
+  styleUrls: ['./documentos.component.css']
 })
-export class PruebaComponent implements OnInit {
+export class DocumentosComponent implements OnInit {
+
+  archivos:String[]=[];
 
   constructor(
     public usuarioService: UsuarioService,
@@ -44,7 +44,11 @@ export class PruebaComponent implements OnInit {
 
   //Metodo para subir archivos a firebase
   subirArchivo($event: any){
-    const file = $event.target.files[0];
+
+    console.log("subirArchivo ~ $event", $event)
+
+    // const file = $event.target.files[0];
+    const file = $event.addedFiles[0];
 
     console.log("subirArchivo ~ file", file)
 
@@ -52,6 +56,7 @@ export class PruebaComponent implements OnInit {
 
     uploadBytes(fileRef, file).then(resposne=>{
       console.log(resposne);
+      this.getArchivos()
 
     }).catch(error=>{
       console.log(error);
@@ -74,9 +79,13 @@ export class PruebaComponent implements OnInit {
 
     //Para obtener la refencia el link con el que se puede acceder hay que utilizar el metodo.
       //
-      getDownloadURL(result!).then(url=>{
-        console.log("getDownloadURL ~ url", url);
-      });
+      response.items.forEach(data=>{
+        getDownloadURL(data!).then(url=>{
+          this.archivos.push(url);
+          console.log("getDownloadURL ~ url", url);
+        });
+      })
+
 
     }).catch(error=>{
       console.log(error)

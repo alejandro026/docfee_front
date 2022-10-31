@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="search-div">
+      <mat-form-field class="search-form-field" floatLabel="never">
+          <input matInput type="text" placeholder="Buscar" autocomplete="off" [(ngModel)]="searchKey" name="filtro">
+          <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" ><mat-icon>clear</mat-icon></button>
+      </mat-form-field>
+  </div>
+  <div class="table-wrapp mat-elevation-z8">
+
+    <mat-card-content>
+      <div class="col-md-12">
+          <div class="card">
+              <div class="card-header">
+                  <h2 class="card-title">Carga de Archivos</h2>
+                  <hr>
+              </div>
+              <div class="card-content">
+                  <div class="card-body">
+                      <div class="row sinPadTop" >
+                          <div class="col-md-12">
+                              <ngx-dropzone class="_dropzone" (change)="subirArchivo($event)">
+                                  <ngx-dropzone-label>
+                                      <div class="dz-default dz-message">
+                                          <span class="dz-default">Arrastre aquí el archivo a subir</span>
+                                      </div>
+                                  </ngx-dropzone-label>
+                                  <!-- <ngx-dropzone-preview class="dropzone" *ngFor="let f of file" [removable]="true" (removed)="SinglefileonRemove(f)">
+                                      <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+                                  </ngx-dropzone-preview> -->
+                              </ngx-dropzone>
+                          </div>
+                      </div>
+                      <br>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+  </mat-card-content>
+
+  </div>
+  <div style="text-align: right;">
+    <button mat-raised-button color="accent" style="margin-right: 90px; margin-top: 10px;" class="creat-button" routerLink="/dashboard/homepage"> Volver a Inicio </button>
+  </div>
+
+  <div class="row">
+    <h5>Archivos subidos</h5>
+
+    <div class="row" *ngFor="let item of archivos">
+      <img src="" alt="" [src]="item">
+      <br>
+      <br>
+      <a href="{{item}}" target="_blank">Ver el archivo</a>
+    </div>
+  </div>
+</div>
+
+

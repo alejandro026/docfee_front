@@ -22,4 +22,12 @@ export class UsuarioService {
     return this.http.get<Usuario[]>(this.url,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
+
+
+  mensajeWhatsapp(user:Usuario):Observable<Usuario>{
+    let url="http://localhost:8083/mensaje/whatsapp";
+    return this.http.post<Usuario>(url,user,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
 }

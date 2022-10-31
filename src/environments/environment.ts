@@ -5,12 +5,12 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDJ8YP6YvdHZp7xyyMc0fr1t9f8W8bvWU8",
-    authDomain: "medicord-8dd57.firebaseapp.com",
-    projectId: "medicord-8dd57",
-    storageBucket: "medicord-8dd57.appspot.com",
-    messagingSenderId: "310097453710",
-    appId: "1:310097453710:web:29d89f1cbd8381ee6c1fdf"
+    apiKey: "AIzaSyD1vEPqBhf2rgRBXbV4Gx2PQjTVqxPGv9o",
+    authDomain: "docfee-c3a33.firebaseapp.com",
+    projectId: "docfee-c3a33",
+    storageBucket: "docfee-c3a33.appspot.com",
+    messagingSenderId: "549384346912",
+    appId: "1:549384346912:web:4b33ca9ac03c3b24138b45"
   }
 };
 

@@ -1,3 +1,4 @@
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PruebaComponent } from './prueba/prueba.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,6 +12,7 @@ import { PatientsComponent } from './patients/patients.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientComponent } from './patients/patient/patient.component';
 import { HistoryComponent } from './patients/history/history.component';
+import { DocumentosComponent } from './documentos/documentos.component';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import { HistoryComponent } from './patients/history/history.component';
     PatientComponent,
     HistoryComponent,
     PruebaComponent,
+    DocumentosComponent,
   ],
   imports: [
     CommonModule,
@@ -30,6 +33,7 @@ import { HistoryComponent } from './patients/history/history.component';
     IgxCalendarModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxDropzoneModule
   ]
 })
 export class DashboardModule { }
