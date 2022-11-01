@@ -78,7 +78,7 @@ export class DocumentosComponent implements OnInit {
       let result = response.items.find(({ fullPath }) => fullPath == "archivos/UML_JTY.pdf");
 
     //Para obtener la refencia el link con el que se puede acceder hay que utilizar el metodo.
-      //
+      // //
       response.items.forEach(data=>{
         getDownloadURL(data!).then(url=>{
           this.archivos.push(url);

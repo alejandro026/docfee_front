@@ -1,3 +1,5 @@
+import { ExpedienteComponent } from './expediente/expediente.component';
+import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { DocumentosComponent } from './documentos/documentos.component';
 import { PruebaComponent } from './prueba/prueba.component';
 import { NgModule } from '@angular/core';
@@ -17,7 +19,9 @@ const routes: Routes = [
       { path: 'homepage', component: HomepageComponent },
       { path: 'prueba', component: PruebaComponent},
       { path: 'patients', component: PatientsComponent},
-      { path: 'documentos', component: DocumentosComponent}
+      { path: 'documentos', component: DocumentosComponent},
+      { path: 'tratamiento', component: TratamientoComponent},
+      { path: 'expediente', component: ExpedienteComponent}
 
 
 

@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientComponent } from './patients/patient/patient.component';
 import { HistoryComponent } from './patients/history/history.component';
 import { DocumentosComponent } from './documentos/documentos.component';
+import { TratamientoComponent } from './tratamiento/tratamiento.component';
+import { ExpedienteComponent } from './expediente/expediente.component';
 
 
 @NgModule({
@@ -25,6 +27,8 @@ import { DocumentosComponent } from './documentos/documentos.component';
     HistoryComponent,
     PruebaComponent,
     DocumentosComponent,
+    TratamientoComponent,
+    ExpedienteComponent,
   ],
   imports: [
     CommonModule,
