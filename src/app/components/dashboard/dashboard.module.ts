@@ -11,6 +11,7 @@ import { PatientsComponent } from './patients/patients.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientComponent } from './patients/patient/patient.component';
 import { HistoryComponent } from './patients/history/history.component';
+import { CitasComponent } from './citas/citas.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { HistoryComponent } from './patients/history/history.component';
     PatientComponent,
     HistoryComponent,
     PruebaComponent,
+    CitasComponent,
   ],
   imports: [
     CommonModule,
