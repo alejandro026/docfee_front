@@ -1,3 +1,4 @@
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -20,13 +21,15 @@ export class CitasComponent implements OnInit {
 
 
   constructor(
-    private CitasService: CitasService
+    private CitasService: CitasService,
+    private route:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Citas>();
-    this.consultarTodos();
-
+    this.route.queryParams.subscribe( params => {
+      this.buscarPorIdTratamiento(params.idTratmiento);
+    });
   }
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -34,14 +37,23 @@ export class CitasComponent implements OnInit {
 
   }
 
-  consultarTodos(){
-    this.CitasService.consultarTodos().subscribe(data=>{
+  // consultarTodos(){
+  //   this.CitasService.consultarTodos().subscribe(data=>{
+  //     this.dataSource= new MatTableDataSource(data);
+  //     this.dataSource.paginator = this.paginator;
+  //     this.dataSource.sort = this.sort;
+
+  //     console.log("this.CitasService.consultarTodos ~ this.dataSource=", this.dataSource)
+
+  //   })
+  // }
+
+  buscarPorIdTratamiento(id:number){
+    this.CitasService.buscarPorId(id).subscribe(data=>{
       this.dataSource= new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-
-      console.log("this.CitasService.consultarTodos ~ this.dataSource=", this.dataSource)
-
     })
   }
+
 }

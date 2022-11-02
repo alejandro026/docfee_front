@@ -22,6 +22,7 @@ import { environment } from 'src/environments/environment';
 import { PatientComponent } from './components/dashboard/patients/patient/patient.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     HammerModule,
     IgxCalendarModule,
     HttpClientModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    PdfViewerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -15,6 +15,8 @@ export class DocumentosComponent implements OnInit {
 
   archivos:String[]=[];
 
+  doc = "https://firebasestorage.googleapis.com/v0/b/docfee-c3a33.appspot.com/o/archivos%2FUML_JTY.pdf?alt=media&token=9cd4ac1c-a5b0-4dea-88cf-42b5bdf2c029";
+
   constructor(
     public usuarioService: UsuarioService,
     public dialog: MatDialog,

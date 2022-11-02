@@ -1,3 +1,4 @@
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PruebaComponent } from './prueba/prueba.component';
 import { NgModule } from '@angular/core';
@@ -41,7 +42,8 @@ import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expedie
     IgxCalendarModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    PdfViewerModule
   ]
 })
 export class DashboardModule { }
