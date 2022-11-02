@@ -19,7 +19,7 @@ export class ExpedienteComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: MatTableDataSource<VistaTratamiento>;
-  displayedColumns: string[] = ['id_tratamiento', 'id_usuario', 'nombre_paciente', 'descipcion', 'aspectos_generales', 'diagnostico_presuntivo', 'acciones'];
+  displayedColumns: string[] = ['id_tratamiento', 'id_usuario', 'nombre_paciente', 'descipcion', 'aspectos_generales', 'diagnostico_presuntivo', 'acciones','nueva_cita'];
 
   columnsToDisplayWithExpand = [this.displayedColumns, 'expand'];
   expandedElement: Tratamiento | null;
@@ -58,4 +58,7 @@ export class ExpedienteComponent implements OnInit {
     this.router.navigate(['/dashboard/detalleExpedinete'], { queryParams: { idTratmiento: id} });
   }
 
+  verCitas(id:number){
+    this.router.navigate(['/dashboard/citas'], { queryParams: { idTratmiento: id} });
+  }
 }

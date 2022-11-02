@@ -21,4 +21,9 @@ export class CitasService {
     return this.http.get<Citas[]>(this.url+"consultarTodos",
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
+
+  buscarPorId(id:number): Observable<Citas>{
+    return this.http.get<Citas>(this.url+"buscarPorId/"+id,
+    {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
 }
