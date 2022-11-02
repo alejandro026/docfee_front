@@ -1,3 +1,4 @@
+//import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PruebaComponent } from './prueba/prueba.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -12,6 +13,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PatientComponent } from './patients/patient/patient.component';
 import { HistoryComponent } from './patients/history/history.component';
 import { CitasComponent } from './citas/citas.component';
+import { DocumentosComponent } from './documentos/documentos.component';
+import { TratamientoComponent } from './tratamiento/tratamiento.component';
+import { ExpedienteComponent } from './expediente/expediente.component';
 
 
 @NgModule({
@@ -24,6 +28,9 @@ import { CitasComponent } from './citas/citas.component';
     HistoryComponent,
     PruebaComponent,
     CitasComponent,
+    DocumentosComponent,
+    TratamientoComponent,
+    ExpedienteComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +39,7 @@ import { CitasComponent } from './citas/citas.component';
     IgxCalendarModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxDropzoneModule
   ]
 })
 export class DashboardModule { }

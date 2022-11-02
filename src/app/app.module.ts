@@ -14,10 +14,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+
 import { LoginComponent } from './components/login/login.component';
 import { environment } from 'src/environments/environment';
 import { PatientComponent } from './components/dashboard/patients/patient/patient.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 
 @NgModule({
@@ -35,10 +39,13 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage()),
     LayoutModule,
     HammerModule,
     IgxCalendarModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,5 @@
+import { VistaTratamiento } from './../_models/vistaTratatamiento';
+import { Tratamiento } from './../_models/tratamiento';
 import { Usuario } from './../_models/usuario';
 import { Injectable } from '@angular/core';
 
@@ -9,25 +11,23 @@ import { Observable} from 'rxjs';
   providedIn: 'root'
 })
 
-export class UsuarioService {
+export class TratamientoService {
 
-   url="http://localhost:8083/usuarios/consultarTodos";
+   url="http://localhost:8083/tratamiento/";
 
   constructor(
     private http: HttpClient
   ) { }
 
-  consultarTodos():Observable<Usuario[]>{
+  consultarTodos():Observable<Tratamiento[]>{
 
-    return this.http.get<Usuario[]>(this.url,
+    return this.http.get<Tratamiento[]>(this.url+"consultarTodos",
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 
+  consultarTodosVista():Observable<VistaTratamiento[]>{
 
-  mensajeWhatsapp(user:Usuario):Observable<Usuario>{
-    let url="http://localhost:8083/mensaje/whatsapp";
-    return this.http.post<Usuario>(url,user,
+    return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVista",
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
-
 }
