@@ -7,28 +7,28 @@ export class Tratamiento{
 
     descripcion:string;
 
-    iPAS_SisTegumentario:string;
+    ipas_SisTegumentario:string;
 
-    iPAS_SisMuscular:string;
-
-
-    iPAS_SisOseo:string;
-
-    iPAS_SisNervioso:string;
-    iPAS_SisEndocrino:string;
-
-    iPAS_SisInmunologico:string;
-
-    iPAS_SirCirculatorio:string;
-
-    iPAS_ApaUrinario:string;
-
-    iPAS_ApaRespiratorio:string;
+    ipas_SisMuscular:string;
 
 
-    iPAS_ApaDigestivo:string;
+    ipas_SisOseo:string;
 
-    iPAS_ApaReproductor:string;
+    ipas_SisNervioso:string;
+    ipas_SisEndocrino:string;
+
+    ipas_SisInmunologico:string;
+
+    ipas_SirCirculatorio:string;
+
+    ipas_ApaUrinario:string;
+
+    ipas_ApaRespiratorio:string;
+
+
+    ipas_ApaDigestivo:string;
+
+    ipas_ApaReproductor:string;
 
     presionArterial:number;
 

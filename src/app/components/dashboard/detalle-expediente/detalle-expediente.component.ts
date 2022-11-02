@@ -12,6 +12,7 @@ export class DetalleExpedienteComponent implements OnInit {
 
   tratamiento:Tratamiento;
   edad:number;
+  fecha:Date;
 
   constructor(private router:Router,
     private route:ActivatedRoute,
@@ -20,6 +21,7 @@ export class DetalleExpedienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.cargarDatos();
+    this.fecha= new Date();
   }
 
   cargarDatos(){

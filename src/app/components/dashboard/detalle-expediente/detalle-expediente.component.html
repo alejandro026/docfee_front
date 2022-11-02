@@ -1,49 +1,250 @@
-
 <div class="container">
-  <div class="left">
-      <mat-card class="homepage-card mat-elevation-z8">
-          <div class="row">
-              <div class="col-5 card-data">
-                  <mat-card class="first">
-                      <h1 class="title">Historial clínico</h1>
-                      <mat-card-content>
-                          <p>
-                              Datos genelares del paciente
-                          </p>
-                      </mat-card-content>
-                  </mat-card>
 
-                  <mat-card class="first">
-                    <div class="row">
-                      Nombre: {{tratamiento.id_usuario.nombre}} {{tratamiento.id_usuario.apPaterno}} {{tratamiento.id_usuario.apMaterno}}
-                    </div>
-                    <div class="row">
-                      Altura: {{tratamiento.altura}}
-                    </div>
-                    <div class="row">
-                      Aspectos_Generales: {{edad}}
-                    </div>
-                    <div class="row">
-                      diagnosticoPresuntivo: {{edad}}
-                    </div>
-                    <div class="row">
-                      Edad: {{edad}}
-                    </div>
-                    <div class="row">
-                      Edad: {{edad}}
-                    </div>
-                    <div class="row">
-                      Edad: {{edad}}
-                    </div>
-
-
-                    </mat-card>
-
-                  <mat-card style="text-align: left;">
-                      No hay documentos
-                  </mat-card>
-              </div>
-          </div>
-      </mat-card>
+  <div class="header">
+    <h2><strong>Expediente</strong></h2>
   </div>
+
+<!-- <section class="content"> -->
+  <div class="content-block">
+    <!-- Your content goes here  -->
+    <div class="row clearfix">
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">face</mat-icon>
+                Datos generales
+              </ng-template>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="project_widget">
+                  <div class="header">
+                    <h2><strong>Paciente</strong></h2>
+                  </div>
+                  <div class="body">
+                    <div class="row">
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Nombre</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.id_usuario.nombre}} {{tratamiento.id_usuario.apPaterno}} {{tratamiento.id_usuario.apMaterno}}</p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Telefono</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.id_usuario.telefono}}</p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Correo</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.id_usuario.correo}}</p>
+                      </div>
+                      <div class="col-md-3 col-6">
+                        <strong>Fecha de nacimiento</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.id_usuario.fechaNacimiento | date}}</p>
+                      </div>
+
+                      <div class="col-md-3 col-6">
+                        <strong>Edad</strong>
+                        <br>
+                        <p class="text-muted">{{edad}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="project_widget">
+                  <div class="header">
+                    <h2><strong>Usuario de confianza</strong></h2>
+                  </div>
+                  <div class="body">
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Nombre</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.id_usuario.id_UsuarioConfianza.nombre}} {{tratamiento.id_usuario.id_UsuarioConfianza.apPaterno}} {{tratamiento.id_usuario.id_UsuarioConfianza.apMaterno}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Telefono</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.id_usuario.id_UsuarioConfianza.telefono}}</p>
+                    </div>
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Correo</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.id_usuario.id_UsuarioConfianza.correo}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">settings</mat-icon>
+                Detalles
+              </ng-template>
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="project_widget">
+                  <div class="header">
+                    <h2><strong>Expediente</strong></h2>
+                  </div>
+                  <div class="body">
+                    <div class="row">
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Fecha</strong>
+                        <br>
+                        <p class="text-muted">{{fecha | date}}</p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Temperatura</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.temperaatura}}</p>
+                      </div>
+                      <div class="col-md-3 col-6 b-r">
+                        <strong>Presion arterial</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.presionArterial}}</p>
+                      </div>
+                      <div class="col-md-3 col-6">
+                        <strong>Altura</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.altura}}</p>
+                      </div>
+
+                      <div class="col-md-3 col-6">
+                        <strong>Frecuancia cardiaca</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.frec_Cardiaca}}</p>
+                      </div>
+
+                      <div class="col-md-3 col-6">
+                        <strong>Frecuencia respiratoria</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.frec_Respiratoria}}</p>
+                      </div>
+
+                      <div class="col-md-3 col-6">
+                        <strong>Inidce de masa corporal</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.imc}}</p>
+                      </div>
+
+                      <div class="col-md-3 col-6">
+                        <strong>Aspectos generales</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.aspectos_Generales}}</p>
+                      </div>
+
+                      <div class="col-md-3 col-6">
+                        <strong>Descripción</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.descripcion}}</p>
+                      </div>
+
+                      <div class="col-md-3 col-6">
+                        <strong>Diagnostico Presuntivo</strong>
+                        <br>
+                        <p class="text-muted">{{tratamiento.diagnosticoPresuntivo}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="project_widget">
+                  <div class="header">
+                    <h2><strong>Diagnostico</strong></h2>
+                  </div>
+                  <div class="body">
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Aparato digestivo</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_ApaDigestivo}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Aparato reproductor</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_ApaReproductor}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Aparato respiratorio</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_ApaRespiratorio}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Aparato urinario</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_ApaUrinario}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema circulatorio</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SirCirculatorio}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema endocrino</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SisEndocrino}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema inmunologico</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SisInmunologico}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema muscular</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SisMuscular}}</p>
+                    </div>
+
+
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema nervioso</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SisNervioso}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema muscular</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SisMuscular}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema oseo</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SisOseo}}</p>
+                    </div>
+
+                    <div class="col-md-3 col-6 b-r">
+                      <strong>Sistema tagumentario</strong>
+                      <br>
+                      <p class="text-muted">{{tratamiento.ipas_SisTegumentario}}</p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+
+
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- </section> -->
 </div>
