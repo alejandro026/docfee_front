@@ -1,8 +1,9 @@
+import { Usuario } from './usuario';
 export class Tratamiento{
   id_tratamiento:string;
-    id_usuario?:number;
+    id_usuario:Usuario;
 
-    id_medico?:number;
+    id_medico:number;
 
     descripcion:string;
 
@@ -48,3 +49,6 @@ export class Tratamiento{
 
     tratamientoEmpleadoIntegral:string;
 }
+
+    console.log("", )
+

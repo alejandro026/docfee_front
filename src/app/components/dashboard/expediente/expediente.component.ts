@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { Tratamiento } from './../../../_models/tratamiento';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { VistaTratamiento } from './../../../_models/vistaTratatamiento';
@@ -17,11 +19,14 @@ export class ExpedienteComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: MatTableDataSource<VistaTratamiento>;
-  displayedColumns: string[] = ['id_tratamiento', 'id_usuario', 'nombre_paciente', 'descipcion', 'aspectos_generales', 'diagnostico_presuntivo'];
+  displayedColumns: string[] = ['id_tratamiento', 'id_usuario', 'nombre_paciente', 'descipcion', 'aspectos_generales', 'diagnostico_presuntivo', 'acciones'];
 
+  columnsToDisplayWithExpand = [this.displayedColumns, 'expand'];
+  expandedElement: Tratamiento | null;
 
   constructor(
-    private tratamientoService: TratamientoService
+    private tratamientoService: TratamientoService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -47,6 +52,10 @@ export class ExpedienteComponent implements OnInit {
       console.log("this.tratamientoService.consultarTodos ~ data", data)
 
     })
+  }
+
+  verDetalles(id:number){
+    this.router.navigate(['/dashboard/detalleExpedinete'], { queryParams: { idTratmiento: id} });
   }
 
 }
