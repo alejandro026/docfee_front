@@ -14,29 +14,29 @@
       <!-- Name Column -->
       <ng-container matColumnDef="Medico">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Médico </th>
-        <td mat-cell *matCellDef="let element"> {{element.Medico}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.id_medico.nombre}} {{element.id_medico.apPaterno}}</td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="Fecha">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-        <td mat-cell *matCellDef="let element"> {{element.Fecha}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.fecha | date}} </td>
       </ng-container>
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="Lugar">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Lugar </th>
-        <td mat-cell *matCellDef="let element"> {{element.Lugar}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.lugar}} </td>
       </ng-container>
       <!-- Symbol Column -->
       <ng-container matColumnDef="Especialidad">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidad </th>
-        <td mat-cell *matCellDef="let element"> {{element.Especialidad}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.especialidad}} </td>
       </ng-container>
       <!-- Symbol Column -->
       <ng-container matColumnDef="Notas">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Notas </th>
-        <td mat-cell *matCellDef="let element"> {{element. Notas}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.notas}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
