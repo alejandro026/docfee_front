@@ -1,4 +1,4 @@
-//import { NgxDropzoneModule } from 'ngx-dropzone';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PruebaComponent } from './prueba/prueba.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
