@@ -15,6 +15,7 @@ import { HistoryComponent } from './patients/history/history.component';
 import { DocumentosComponent } from './documentos/documentos.component';
 import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { ExpedienteComponent } from './expediente/expediente.component';
+import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ExpedienteComponent } from './expediente/expediente.component';
     DocumentosComponent,
     TratamientoComponent,
     ExpedienteComponent,
+    DetalleExpedienteComponent,
   ],
   imports: [
     CommonModule,

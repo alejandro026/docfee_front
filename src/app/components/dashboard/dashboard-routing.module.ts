@@ -1,3 +1,4 @@
+import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 import { ExpedienteComponent } from './expediente/expediente.component';
 import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { DocumentosComponent } from './documentos/documentos.component';
@@ -21,7 +22,8 @@ const routes: Routes = [
       { path: 'patients', component: PatientsComponent},
       { path: 'documentos', component: DocumentosComponent},
       { path: 'tratamiento', component: TratamientoComponent},
-      { path: 'expediente', component: ExpedienteComponent}
+      { path: 'expediente', component: ExpedienteComponent},
+      { path: 'detalleExpedinete', component: DetalleExpedienteComponent}
 
 
 
