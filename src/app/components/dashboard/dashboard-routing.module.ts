@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HistoryComponent } from './patients/history/history.component';
 import { PatientsComponent } from './patients/patients.component';
+import { CitasComponent } from './citas/citas.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: 'homepage', component: HomepageComponent },
       { path: 'prueba', component: PruebaComponent},
       { path: 'patients', component: PatientsComponent},
+      { path: 'citas', component: CitasComponent},
       { path: 'documentos', component: DocumentosComponent},
       { path: 'tratamiento', component: TratamientoComponent},
       { path: 'expediente', component: ExpedienteComponent},

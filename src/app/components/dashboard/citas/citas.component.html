@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="search-div">
+      <h2>Citas</h2>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <!-- Position Column -->
+      <ng-container matColumnDef="Cita">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Cita </th>
+        <td mat-cell *matCellDef="let element"> {{element.Cita}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Medico">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Médico </th>
+        <td mat-cell *matCellDef="let element"> {{element.Medico}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="Fecha">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
+        <td mat-cell *matCellDef="let element"> {{element.Fecha}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Lugar">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Lugar </th>
+        <td mat-cell *matCellDef="let element"> {{element.Lugar}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Especialidad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Especialidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.Especialidad}} </td>
+      </ng-container>
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="Notas">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Notas </th>
+        <td mat-cell *matCellDef="let element"> {{element. Notas}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+  <div style="text-align: right;">
+    <button mat-raised-button color="accent" style="margin-right: 90px; margin-top: 10px;" class="creat-button" routerLink="/dashboard/homepage"> Volver a Inicio </button>
+  </div>
+
+</div>
+
