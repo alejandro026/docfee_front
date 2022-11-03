@@ -26,4 +26,14 @@ export class CitasService {
     return this.http.get<Citas[]>(this.url+"buscarPorId/"+id,
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
+
+  actualizarCita(cita:Citas):Observable<Citas>{
+    return this.http.put<Citas>(this.url+"/actualizar",cita,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
+  guardarUsuario(cita:Citas):Observable<Citas>{
+    return this.http.post<Citas>(this.url+"/guardar",cita,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
 }

@@ -1,0 +1,65 @@
+<div>
+  <mat-toolbar>
+    <span> Agregar cita </span>
+    <span style="flex: 1 1 auto"></span>
+  </mat-toolbar>
+</div>
+
+<div style="padding: 3em" width="100%">
+
+  <form autocomplete="off" [formGroup]="formularioCitas">
+
+    <div>
+      <mat-form-field style="width: 50%;" appearance="outline">
+        <mat-label>Tratamiento</mat-label>
+        <input [maxLength]="30" matInput placeholder="Tratamiento" formControlName="Tratamiento">
+      </mat-form-field>
+
+      <mat-form-field style="width: 50%;" appearance="outline">
+        <mat-label>Lugar</mat-label>
+        <input matInput placeholder="Lugar" formControlName="Lugar">
+      </mat-form-field>
+    </div>
+
+
+    <div>
+      <mat-form-field style="width: 50%;" appearance="outline">
+        <mat-label>Especialidad</mat-label>
+        <input matInput placeholder="Especialidad" formControlName="Especialidad">
+      </mat-form-field>
+
+
+      <mat-form-field style="width: 50%;" appearance="outline">
+        <mat-label>Notas</mat-label>
+        <textarea matInput placeholder="Notas" formControlName="Notas">
+        </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Médico</mat-label>
+          <input matInput placeholder="id_medico" formControlName="id_medico">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Fecha</mat-label>
+          <input required matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker color="primary"></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+
+    <div>
+        <button mat-raised-button color="primary" (click)="aceptar()">
+          Aceptar
+        </button>
+
+        <button mat-raised-button color="warn" (click)="cerrar()">
+          Cancelar
+        </button>
+    </div>
+  </form>
+</div>

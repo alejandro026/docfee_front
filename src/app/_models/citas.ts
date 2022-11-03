@@ -5,5 +5,6 @@ export class Citas{
     Lugar?:string;
     Especialidad?:String;
     Notas?:String;
+    id_tramiento?:number;
   }
   

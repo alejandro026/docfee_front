@@ -61,4 +61,7 @@ export class ExpedienteComponent implements OnInit {
   verCitas(id:number){
     this.router.navigate(['/dashboard/citas'], { queryParams: { idTratmiento: id} });
   }
+  nuevaCita(id:number){
+    this.router.navigate(['/dashboard/nuevaCita'], { queryParams: { idTratmiento: id} });
+  }
 }
