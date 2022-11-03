@@ -41,7 +41,7 @@ export class NuevaCitaComponent implements OnInit {
     Lugar: this.data.Lugar,
     Especialidad: this.data.Especialidad,
     Notas: this.data.Notas,
-    id_Tratamiento :this.data.tratamiento
+    id_Tratamiento :this.data.id_tramiento
     })
   }
 

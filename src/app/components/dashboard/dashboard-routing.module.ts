@@ -11,15 +11,12 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HistoryComponent } from './patients/history/history.component';
 import { PatientsComponent } from './patients/patients.component';
 import { CitasComponent } from './citas/citas.component';
-<<<<<<< Updated upstream
+
+
 import { RecetaComponent } from './receta/receta.component';
-=======
-<<<<<<< HEAD
-import { RecetaComponent } from './receta/receta.component';
-=======
->>>>>>> Stashed changes
+
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
->>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
+
 
 const routes: Routes = [
   {
@@ -35,16 +32,13 @@ const routes: Routes = [
       { path: 'tratamiento', component: TratamientoComponent},
       { path: 'expediente', component: ExpedienteComponent},
       { path: 'detalleExpedinete', component: DetalleExpedienteComponent},
-<<<<<<< Updated upstream
-      { path: 'receta', component: RecetaComponent},
-=======
-<<<<<<< HEAD
-      { path: 'receta', component: RecetaComponent}
 
-=======
->>>>>>> Stashed changes
+      { path: 'receta', component: RecetaComponent},
+
+
+
       { path: 'nuevaCita', component: NuevaCitaComponent}
->>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
+
 
 
 

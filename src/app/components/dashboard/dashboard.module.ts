@@ -21,19 +21,10 @@ import { ExpedienteComponent } from './expediente/expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 import { AgregarComponent } from './prueba/agregar/agregar.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-<<<<<<< Updated upstream
+
 import { RecetaComponent } from './receta/receta.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 
-=======
-<<<<<<< HEAD
-import { RecetaComponent } from './receta/receta.component';
-=======
-import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
-
->>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
-
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -49,20 +40,11 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
     ExpedienteComponent,
     DetalleExpedienteComponent,
     AgregarComponent,
-<<<<<<< Updated upstream
+
     RecetaComponent,
     NuevaCitaComponent
-=======
-<<<<<<< HEAD
-    NuevaCitaComponent
-=======
-<<<<<<< HEAD
-    RecetaComponent,
-=======
-    NuevaCitaComponent,
->>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
->>>>>>> 23d30b3613f1a96e62ee640230c58b6f63b48bf7
->>>>>>> Stashed changes
+
+
   ],
   imports: [
     CommonModule,
