@@ -1,4 +1,4 @@
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -17,12 +17,13 @@ export class CitasComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: MatTableDataSource<Citas>;
-  displayedColumns: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas'];
+  displayedColumns: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta'];
 
 
   constructor(
     private CitasService: CitasService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -54,6 +55,11 @@ export class CitasComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
+  }
+
+
+  verReceta(id:number){
+    this.router.navigate(['/dashboard/receta'], { queryParams: { idReceta: id} });
   }
 
 }
