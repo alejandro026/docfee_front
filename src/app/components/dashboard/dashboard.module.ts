@@ -21,12 +21,8 @@ import { ExpedienteComponent } from './expediente/expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 import { AgregarComponent } from './prueba/agregar/agregar.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-<<<<<<< HEAD
 import { RecetaComponent } from './receta/receta.component';
-=======
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
-
->>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
 
 @NgModule({
   declarations: [
@@ -43,15 +39,12 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
     ExpedienteComponent,
     DetalleExpedienteComponent,
     AgregarComponent,
-<<<<<<< HEAD
     RecetaComponent,
-=======
-    NuevaCitaComponent,
->>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
+    NuevaCitaComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule,           
+    MaterialModule,
     DashboardRoutingModule,
     IgxCalendarModule,
     FormsModule,

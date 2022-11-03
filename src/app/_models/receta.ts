@@ -6,8 +6,8 @@ export class Recetas{
   diagnostico?: string;
   edad?:number;
   fecha?: Date;
-  Medicamento?: string;
-  Horarios?: number;
-  Tareas?: string;
-  ProximaCita?:Date;
+  medicamento?: string;
+  horarios?: number;
+  tareas?: string;
+  proximaCita?:Date;
 }

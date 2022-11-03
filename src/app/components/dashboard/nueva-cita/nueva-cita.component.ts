@@ -23,14 +23,14 @@ export class NuevaCitaComponent implements OnInit {
     private dialogRef: MatDialogRef<NuevaCitaComponent>,
     @Inject(MAT_DIALOG_DATA) private data:Citas
   ) { }
-  
+
   ngOnInit(): void {
     console.log(this.data)
     this.iniciaFormulario();
   }
 
   aceptar(){
-    
+
   }
 
   iniciaFormulario(){
@@ -41,7 +41,7 @@ export class NuevaCitaComponent implements OnInit {
     Lugar: this.data.Lugar,
     Especialidad: this.data.Especialidad,
     Notas: this.data.Notas,
-    id_Tratamiento :this.data.id_tramiento
+    id_Tratamiento :this.data.tratamiento
     })
   }
 
