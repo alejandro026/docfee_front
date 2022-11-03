@@ -11,6 +11,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { HistoryComponent } from './patients/history/history.component';
 import { PatientsComponent } from './patients/patients.component';
 import { CitasComponent } from './citas/citas.component';
+import { RecetaComponent } from './receta/receta.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,9 @@ const routes: Routes = [
       { path: 'documentos', component: DocumentosComponent},
       { path: 'tratamiento', component: TratamientoComponent},
       { path: 'expediente', component: ExpedienteComponent},
-      { path: 'detalleExpedinete', component: DetalleExpedienteComponent}
+      { path: 'detalleExpedinete', component: DetalleExpedienteComponent},
+      { path: 'receta', component: RecetaComponent}
+
 
 
 

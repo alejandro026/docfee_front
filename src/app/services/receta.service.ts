@@ -1,0 +1,31 @@
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { Recetas } from '../_models/receta';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RecetaService {
+
+ url="http://localhost:8083/receta/";
+
+ constructor(
+   private http: HttpClient
+ ) { }
+
+ consultarTodos():Observable<Recetas[]>{
+
+   return this.http.get<Recetas[]>(this.url+"consultarTodos",
+     {headers: new HttpHeaders().append("Content-Type", "application/json")});
+ }
+ buscarPorId(id:number): Observable<Recetas>{
+  return this.http.get<Recetas>(this.url+"buscarPorId/"+id,
+  {headers: new HttpHeaders().append("Content-Type", "application/json")});
+}
+
+buscarPorIdCita(id:number): Observable<Recetas>{
+  return this.http.get<Recetas>(this.url+"buscarPorIdCita/"+id,
+  {headers: new HttpHeaders().append("Content-Type", "application/json")});
+}
+}

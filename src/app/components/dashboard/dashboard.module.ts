@@ -21,6 +21,7 @@ import { ExpedienteComponent } from './expediente/expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 import { AgregarComponent } from './prueba/agregar/agregar.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { RecetaComponent } from './receta/receta.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ExpedienteComponent,
     DetalleExpedienteComponent,
     AgregarComponent,
+    RecetaComponent,
   ],
   imports: [
     CommonModule,

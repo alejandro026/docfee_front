@@ -59,7 +59,7 @@ export class CitasComponent implements OnInit {
 
 
   verReceta(id:number){
-    this.router.navigate(['/dashboard/receta'], { queryParams: { idReceta: id} });
+    this.router.navigate(['/dashboard/receta'], { queryParams: { id_receta: id} });
   }
 
 }

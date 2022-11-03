@@ -1,3 +1,4 @@
+import { Tratamiento } from './tratamiento';
 export class Citas{
     id_cita?:number;
     id_medico?:number;
@@ -5,5 +6,5 @@ export class Citas{
     Lugar?:string;
     Especialidad?:String;
     Notas?:String;
+    Tratamiento?:Tratamiento;
   }
-  

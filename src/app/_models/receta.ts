@@ -1,7 +1,8 @@
+import { Citas } from './citas';
 export class Recetas{
-  
-  id_receta?: number;
-  id_cita?: number;
+
+  id_receta: number;
+  id_cita: Citas;
   diagnostico?: string;
   edad?:number;
   fecha?: Date;
