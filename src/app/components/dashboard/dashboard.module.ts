@@ -4,7 +4,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PruebaComponent } from './prueba/prueba.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from 'src/app/material/material.module';
+import { MaterialModule} from 'src/app/material/material.module';
 import { IgxCalendarModule } from 'igniteui-angular';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
@@ -21,7 +21,12 @@ import { ExpedienteComponent } from './expediente/expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 import { AgregarComponent } from './prueba/agregar/agregar.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+<<<<<<< HEAD
 import { RecetaComponent } from './receta/receta.component';
+=======
+import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
+
+>>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
 
 @NgModule({
   declarations: [
@@ -38,11 +43,15 @@ import { RecetaComponent } from './receta/receta.component';
     ExpedienteComponent,
     DetalleExpedienteComponent,
     AgregarComponent,
+<<<<<<< HEAD
     RecetaComponent,
+=======
+    NuevaCitaComponent,
+>>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
   ],
   imports: [
     CommonModule,
-    MaterialModule,
+    MaterialModule,           
     DashboardRoutingModule,
     IgxCalendarModule,
     FormsModule,
@@ -50,7 +59,8 @@ import { RecetaComponent } from './receta/receta.component';
     NgxDropzoneModule,
     PdfViewerModule,
     MatFormFieldModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

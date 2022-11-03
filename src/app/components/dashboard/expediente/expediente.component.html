@@ -55,10 +55,13 @@
       </ng-container>
 
       <ng-container matColumnDef="nueva_cita">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Ver Citas </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Citas </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button aria-label="expand row" (click)="verCitas(element.id_tratamiento)">
+          <button mat-icon-button aria-label="expand row" title="Ver Citas" (click)="verCitas(element.id_tratamiento)">
             <mat-icon>description</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="expand row" title="Agregar Cita" (click)="nuevaCita(element.id_tratamiento)" >
+            <mat-icon>add_circle</mat-icon>
           </button>
         </td>
       </ng-container>
