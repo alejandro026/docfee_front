@@ -6,6 +6,14 @@ export class Citas{
     Lugar?:string;
     Especialidad?:String;
     Notas?:String;
+<<<<<<< Updated upstream
     tratamiento?:Tratamiento;
 
+=======
+<<<<<<< HEAD
+    Tratamiento?:Tratamiento;
+=======
+    id_tramiento?:number;
+>>>>>>> 1f7b18453a78d8fae1669dabfd27fcae90ac75df
+>>>>>>> Stashed changes
   }
