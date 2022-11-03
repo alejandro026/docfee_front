@@ -1,0 +1,104 @@
+<div>
+  <mat-toolbar>
+      <span> Agregar usuario </span>
+      <span style="flex: 1 1 auto"></span>
+  </mat-toolbar>
+</div>
+
+<div style="padding: 3em" width="100%">
+
+
+
+  <form autocomplete="off" [formGroup]="formulario">
+
+    <div>
+      <mat-form-field style="width: 50%;" appearance="outline" >
+        <mat-label>Nombre</mat-label>
+        <input [maxLength]="30" matInput placeholder="Nombre" formControlName="nombre">
+      </mat-form-field>
+
+      <mat-form-field style="width: 50%;" appearance="outline" >
+        <mat-label>Apellido paterno</mat-label>
+        <input matInput placeholder="Expediente" formControlName="apPaterno">
+      </mat-form-field>
+  </div>
+
+
+    <div>
+
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Apellido Materno</mat-label>
+          <input matInput placeholder="Apellido Materno" formControlName="apMaterno">
+        </mat-form-field>
+
+
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Numero de seguro</mat-label>
+          <input matInput placeholder="Numero de seguro" formControlName="nss">
+        </mat-form-field>
+      </div>
+
+    <div>
+
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Telefono</mat-label>
+          <input matInput placeholder="Telefono" formControlName="telefono">
+        </mat-form-field>
+
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Usuario de confianza</mat-label>
+          <mat-select formControlName="id_UsuarioConfianza">
+              <mat-option *ngFor="let usuario of usuariosCombo" [value]="usuario.id_usuario">{{usuario.nombre}} {{usuario.apPaterno}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+    </div>
+
+
+    <div class="row">
+
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Sexo</mat-label>
+          <mat-select formControlName="sexo">
+            <mat-option [value]="'H'">Hombre</mat-option>
+            <mat-option [value]="'M'">Mujer</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field style="width: 50%;" appearance="outline" >
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input required matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker color="primary"></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+
+    <div class="row">
+
+        <mat-form-field style="width: 50%;" appearance="outline">
+          <mat-label>Correo</mat-label>
+          <input matInput placeholder="Correo" formControlName="correo">
+        </mat-form-field>
+
+
+        <mat-form-field style="width: 50%;" appearance="outline">
+          <mat-label>Ocupacion</mat-label>
+          <input matInput placeholder="ocupacion" formControlName="ocupacion">
+        </mat-form-field>
+
+    </div>
+
+
+    <div>
+        <button mat-raised-button color="primary" (click)="aceptar()">
+          Aceptar
+        </button>
+
+        <button mat-raised-button color="warn" (click)="cerrar()">
+          Cancelar
+        </button>
+    </div>
+
+  </form>
+</div>

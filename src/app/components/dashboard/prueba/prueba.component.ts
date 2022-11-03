@@ -1,3 +1,4 @@
+import { AgregarComponent } from './agregar/agregar.component';
 
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from './../../../_models/usuario';
@@ -23,7 +24,7 @@ export class PruebaComponent implements OnInit {
   ) { }
 
   searchKey: string;
-  displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono'];
+  displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono', 'actions'];
   dataSource: MatTableDataSource<Usuario>;
 
 
@@ -80,6 +81,21 @@ export class PruebaComponent implements OnInit {
 
     }).catch(error=>{
       console.log(error)
+    })
+  }
+
+  openModal(usuario?: Usuario) {
+    let usuario2= new Usuario();
+    usuario2.id_UsuarioConfianza= new Usuario();
+    let user = usuario != null ? usuario : usuario2;
+    const modalRef = this.dialog.open(AgregarComponent, {
+      width: '1000px',
+      data: user,
+    });
+    modalRef.afterClosed().subscribe(result=>{
+      if (result.estatus) {
+        this.getData();
+      }
     })
   }
 

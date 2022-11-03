@@ -1,3 +1,4 @@
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PruebaComponent } from './prueba/prueba.component';
@@ -18,7 +19,8 @@ import { DocumentosComponent } from './documentos/documentos.component';
 import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { ExpedienteComponent } from './expediente/expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
-
+import { AgregarComponent } from './prueba/agregar/agregar.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expedie
     TratamientoComponent,
     ExpedienteComponent,
     DetalleExpedienteComponent,
+    AgregarComponent,
   ],
   imports: [
     CommonModule,
@@ -43,7 +46,9 @@ import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expedie
     FormsModule,
     ReactiveFormsModule,
     NgxDropzoneModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatFormFieldModule,
+    MatDatepickerModule
   ]
 })
 export class DashboardModule { }

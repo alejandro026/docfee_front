@@ -53,9 +53,18 @@
       <br>
       <a href="{{item}}" target="_blank">Ver el archivo</a>
 
-      <pdf-viewer [src]="doc" [render-text]="true" style="display: block;">
-      </pdf-viewer>
     </div>
+
+
+    <pdf-viewer [src]="doc" [render-text]="true" style="display: block;">
+    </pdf-viewer>
+
+
+    <pdf-viewer [src]="doc"
+    [render-text]="true"
+    [original-size]="false"
+    style="width: 1000px; height: 1200px"
+></pdf-viewer>
   </div>
 </div>
 

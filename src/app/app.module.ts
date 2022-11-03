@@ -23,6 +23,9 @@ import { PatientComponent } from './components/dashboard/patients/patient/patien
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -47,7 +50,11 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     IgxCalendarModule,
     HttpClientModule,
     NgxDropzoneModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

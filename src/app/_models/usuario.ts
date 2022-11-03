@@ -1,5 +1,6 @@
+import { Antecedentes } from './antecedentes';
 export class Usuario {
-  id: number;
+  id_usuario: number;
   nombre: string;
   apPaterno: string;
   apMaterno:string;
@@ -10,4 +11,5 @@ export class Usuario {
   fechaNacimiento:Date;
   correo: string;
   ocupacion: string;
+  antecedentes: Antecedentes;
 }
