@@ -11,5 +11,5 @@ export class Usuario {
   fechaNacimiento:Date;
   correo: string;
   ocupacion: string;
-  antecedentes: Antecedentes;
+  antecedentes: Antecedentes[];
 }

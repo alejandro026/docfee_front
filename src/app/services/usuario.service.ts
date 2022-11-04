@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
+import { Mensaje } from '../_models/menaje';
 
 
 @Injectable({
@@ -33,7 +34,7 @@ export class UsuarioService {
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 
-  mensajeWhatsapp(user:Usuario):Observable<Usuario>{
+  mensajeWhatsapp(user:Mensaje):Observable<Usuario>{
     let url="http://localhost:8083/mensaje/whatsapp";
     return this.http.post<Usuario>(url,user,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});

@@ -20,38 +20,43 @@ export class NuevaCitaComponent implements OnInit {
   constructor(
     private citasService: CitasService,
     private formBuilder: FormBuilder,
-    private dialogRef: MatDialogRef<NuevaCitaComponent>,
-    @Inject(MAT_DIALOG_DATA) private data:Citas
+    // private dialogRef: MatDialogRef<NuevaCitaComponent>,
+    // @Inject(MAT_DIALOG_DATA) private data:Citas
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data)
+    // console.log(this.data)
     this.iniciaFormulario();
   }
 
   aceptar(){
-
+    Swal.fire({
+      icon: 'success',
+      title: "Guardado con exito",
+      showConfirmButton: false,
+      timer: 2500
+    })
   }
 
   iniciaFormulario(){
    this.formularioCitas = this.formBuilder.group({
 
-    id_medico: this.data.id_medico,
-    Fecha: this.data.Fecha,
-    Lugar: this.data.Lugar,
-    Especialidad: this.data.Especialidad,
-    Notas: this.data.Notas,
-    id_Tratamiento :this.data.id_tramiento
+    id_medico: null,
+    Fecha: null,
+    Lugar: null,
+    Especialidad: null,
+    Notas: null,
+    id_Tratamiento :null
     })
   }
 
-  cerrarAceptar(){
-    this.dialogRef.close(true);
-  }
+  // cerrarAceptar(){
+  //   this.dialogRef.close(true);
+  // }
 
-  cerrar(){
-    this.dialogRef.close(false);
-  }
+  // cerrar(){
+  //   this.dialogRef.close(false);
+  // }
 
 
 }

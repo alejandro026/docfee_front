@@ -1,3 +1,6 @@
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { Antecedentes } from './../../../_models/antecedentes';
 import { AgregarComponent } from './agregar/agregar.component';
 
 import { MatTableDataSource } from '@angular/material/table';
@@ -5,7 +8,7 @@ import { Usuario } from './../../../_models/usuario';
 import { NotificationService } from './../../../services/notification.service';
 import { MatDialog } from '@angular/material/dialog';
 import { UsuarioService } from './../../../services/usuario.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angular/fire/storage';
 
@@ -27,6 +30,9 @@ export class PruebaComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono', 'actions'];
   dataSource: MatTableDataSource<Usuario>;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
 
   ngOnInit() {
     this.getData();
@@ -38,9 +44,22 @@ export class PruebaComponent implements OnInit {
   getData() {
     this.usuarioService.consultarTodos().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       console.log(data)
     })
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+
 
 
   //Metodo para subir archivos a firebase
@@ -86,16 +105,20 @@ export class PruebaComponent implements OnInit {
 
   openModal(usuario?: Usuario) {
     let usuario2= new Usuario();
+    let antecedentes:Antecedentes[]=[];
+    antecedentes.push(new Antecedentes());
+
     usuario2.id_UsuarioConfianza= new Usuario();
+    usuario2.antecedentes=antecedentes;
+
+
     let user = usuario != null ? usuario : usuario2;
     const modalRef = this.dialog.open(AgregarComponent, {
       width: '1000px',
       data: user,
     });
     modalRef.afterClosed().subscribe(result=>{
-      if (result.estatus) {
         this.getData();
-      }
     })
   }
 

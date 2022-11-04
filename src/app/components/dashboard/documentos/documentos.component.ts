@@ -1,3 +1,6 @@
+import { DocumentoUpdate } from './../../../_models/DocumentoUpdate';
+import { TratamientoService } from './../../../services/tratamiento.service';
+import Swal from 'sweetalert2';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from './../../../_models/usuario';
 import { NotificationService } from './../../../services/notification.service';
@@ -14,6 +17,7 @@ import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angul
 export class DocumentosComponent implements OnInit {
 
   archivos:String[]=[];
+  usuario:number=4;
 
   doc = "https://firebasestorage.googleapis.com/v0/b/docfee-c3a33.appspot.com/o/archivos%2FUML_JTY.pdf?alt=media&token=9cd4ac1c-a5b0-4dea-88cf-42b5bdf2c029";
 
@@ -21,24 +25,27 @@ export class DocumentosComponent implements OnInit {
     public usuarioService: UsuarioService,
     public dialog: MatDialog,
     public notificationService: NotificationService,
-    private storage: Storage
+    private storage: Storage,
+    private tratamientoService: TratamientoService
   ) { }
 
   searchKey: string;
   displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono'];
-  dataSource: MatTableDataSource<Usuario>;
+  // dataSource: MatTableDataSource<Usuario>;
+  datosCombo:Usuario[];
 
 
   ngOnInit() {
     this.getData();
-    this.dataSource = new MatTableDataSource<Usuario>();
+    // this.dataSource = new MatTableDataSource<Usuario>();
     this.getArchivos();
 
   }
 
   getData() {
     this.usuarioService.consultarTodos().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
+      this.datosCombo= data;
+      // this.dataSource = new MatTableDataSource(data);
       console.log(data)
     })
   }
@@ -47,17 +54,38 @@ export class DocumentosComponent implements OnInit {
   //Metodo para subir archivos a firebase
   subirArchivo($event: any){
 
-    console.log("subirArchivo ~ $event", $event)
+    if(this.usuario==null){
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        title: 'Debes seleccionar un usuario',
+        showConfirmButton: false,
+        timer: 1500
+      })
+      return
+    }
 
-    // const file = $event.target.files[0];
     const file = $event.addedFiles[0];
-
-    console.log("subirArchivo ~ file", file)
-
     const fileRef = ref(this.storage, "archivos/"+file.name);
 
     uploadBytes(fileRef, file).then(resposne=>{
+      let documento:DocumentoUpdate= new DocumentoUpdate();
+      documento.ruta="archivos/"+file.name;
+      documento.id=this.usuario;
+
+      this.tratamientoService.actualizarDocumento(documento).subscribe(data=>{
+        console.log("this.tratamientoService.actualizarDocumento ~ resposne", resposne)
+      })
+
+
       console.log(resposne);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Archivo subido con exito',
+        showConfirmButton: false,
+        timer: 1500
+      })
       this.getArchivos()
 
     }).catch(error=>{
@@ -77,16 +105,25 @@ export class DocumentosComponent implements OnInit {
 
       //Aqui lo que se hace es una busqueda con la refencia que se guarado en la base de datos
       //Nota cambiar la cadena por lo que se guarada en la base de datos.
-      let result = response.items.find(({ fullPath }) => fullPath == "archivos/UML_JTY.pdf");
 
-    //Para obtener la refencia el link con el que se puede acceder hay que utilizar el metodo.
-      // //
-      response.items.forEach(data=>{
-        getDownloadURL(data!).then(url=>{
+      this.tratamientoService.buscarPorUsuario(this.usuario).subscribe(data=>{
+        let result = response.items.find(({ fullPath }) => fullPath == data.documentosEstudios);
+
+        getDownloadURL(result!).then(url=>{
           this.archivos.push(url);
           console.log("getDownloadURL ~ url", url);
         });
       })
+
+
+    //Para obtener la refencia el link con el que se puede acceder hay que utilizar el metodo.
+      // //
+      // response.items.forEach(data=>{
+        // getDownloadURL(result!).then(url=>{
+        //   this.archivos.push(url);
+        //   console.log("getDownloadURL ~ url", url);
+        // });
+      // })
 
 
     }).catch(error=>{

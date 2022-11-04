@@ -1,3 +1,6 @@
+import { Mensaje } from './../../../_models/menaje';
+import { Usuario } from './../../../_models/usuario';
+import { UsuarioService } from './../../../services/usuario.service';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { VistaTratamiento } from './../../../_models/vistaTratatamiento';
@@ -20,10 +23,14 @@ export class RecetaComponent implements OnInit {
   edad:number;
   fecha:Date;
 
+  numero:string;
+  mensaje:string;
+
   constructor(
 
     private route:ActivatedRoute,
     private RecetaService: RecetaService,
+    private usuarioService: UsuarioService,
     private router:Router) {}
 
   ngOnInit(): void {
@@ -50,6 +57,9 @@ export class RecetaComponent implements OnInit {
 
     })
   }
+
+
+
   // calcularEdad(){
   //   let hoy:Date= new Date();
   //   var fechaNacimiento:Date = new Date(this.recetas.id_cita?.Tratamiento?.id_usuario.fechaNacimiento);
@@ -69,5 +79,14 @@ export class RecetaComponent implements OnInit {
 
 
 
+enviar(){
+  let usuario: Mensaje= new Mensaje();
+  let mensajePersonlizado="Hola te recuerdo que debes tomar "+this.mensaje;
+  usuario.mensaje=mensajePersonlizado;
+  usuario.numero=this.numero
+  console.log(usuario)
+  this.usuarioService.mensajeWhatsapp(usuario).subscribe(data=>{
 
+  })
+}
 }

@@ -1,3 +1,4 @@
+import { DocumentoUpdate } from './../_models/DocumentoUpdate';
 import { VistaTratamiento } from './../_models/vistaTratatamiento';
 import { Tratamiento } from './../_models/tratamiento';
 import { Usuario } from './../_models/usuario';
@@ -34,5 +35,18 @@ export class TratamientoService {
   buscarPorId(id:number): Observable<Tratamiento>{
     return this.http.get<Tratamiento>(this.url+"buscarPorId/"+id,
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+  buscarPorUsuario(id:number): Observable<Tratamiento>{
+    return this.http.get<Tratamiento>(this.url+"buscarPorUsuario/"+id,
+    {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+  actualizar(tratamiento: Tratamiento): Observable<Tratamiento>{
+    return this.http.put<Tratamiento>(this.url+"actualizar", tratamiento,
+    {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
+  actualizarDocumento(update:DocumentoUpdate):Observable<boolean>{
+    return this.http.post<boolean>(this.url+"actualizarDocumento", update,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 }

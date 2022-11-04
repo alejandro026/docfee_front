@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 export class AgregarComponent implements OnInit {
 
   formulario:FormGroup;
+  formularioAntecedente:FormGroup;
 
   usuariosCombo:Usuario[];
 
@@ -29,6 +30,7 @@ export class AgregarComponent implements OnInit {
     console.log(this.data)
     this.iniciaFormulario();
     this.cargarComboUsuarios();
+    this.formularioAntecedentes();
   }
 
 
@@ -43,8 +45,13 @@ export class AgregarComponent implements OnInit {
 
     console.log("El usuario es ", usuario)
 
+    // let antecedentes:Antecedentes=this.formularioAntecedente.value;
+    let antecedentes:Antecedentes[]=[];
+    antecedentes.push(this.formularioAntecedente.value)
+    usuario.antecedentes=antecedentes
+
     if(this.data!=null && this.data.id_usuario! >0){
-      usuario.antecedentes= this.data.antecedentes;
+      // usuario.antecedentes= this.data.antecedentes;
       this.usuarioService.actualizarUsuario(usuario).subscribe(data=>{
           console.log(data);
           Swal.fire({
@@ -76,6 +83,15 @@ export class AgregarComponent implements OnInit {
   }
 
   iniciaFormulario(){
+    let usuarioConfinza=null
+    if(this.data.id_UsuarioConfianza!=null){
+      usuarioConfinza =this.data.id_UsuarioConfianza.id_usuario
+
+      console.log("iniciaFormulario ~ usuarioConfinza", usuarioConfinza)
+
+    }
+
+
    this.formulario = this.formBuilder.group({
     id_usuario: this.data.id_usuario,
     nombre: this.data.nombre,
@@ -83,13 +99,44 @@ export class AgregarComponent implements OnInit {
     apMaterno: this.data.apMaterno,
     nss: this.data.nss,
     telefono: this.data.telefono,
-    id_UsuarioConfianza: this.data.id_UsuarioConfianza.id_usuario,
+    id_UsuarioConfianza: usuarioConfinza,
     sexo: this.data.sexo,
     fechaNacimiento: new Date(this.data.fechaNacimiento),
     correo: this.data.correo,
     ocupacion: this.data.ocupacion
     })
   }
+
+  formularioAntecedentes(){
+
+    if(this.data.antecedentes==null|| this.data.antecedentes.length==0){
+      this.formularioAntecedente= this.formBuilder.group({
+        id_antecedente:'',
+        medicamentos: '',
+        alcolismo:false,
+        drogas:false,
+        tabaquismo:false,
+        antecedentesFamiliares:'',
+        otrosDatos:'',
+        id_usuario:''
+      })
+    }else{
+      this.formularioAntecedente= this.formBuilder.group({
+        id_antecedente:this.data.antecedentes[0].id_antecedente,
+        medicamentos: this.data.antecedentes[0].medicamentos,
+        alcolismo:true,
+        drogas:this.data.antecedentes[0].drogas,
+        tabaquismo:this.data.antecedentes[0].tabaquismo,
+        antecedentesFamiliares:this.data.antecedentes[0].antecedentesFamiliares,
+        otrosDatos:this.data.antecedentes[0].otrosDatos,
+        id_usuario:this.data.id_usuario
+      })
+    }
+
+
+  }
+
+
 
   cerrarAceptar(){
     this.dialogRef.close(true);

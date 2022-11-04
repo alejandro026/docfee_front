@@ -88,14 +88,24 @@
   <!-- </section> -->
 </div>
 <div ALIGN="center">
-  <textarea name="textarea" rows="1" cols="50">Número de teléfono</textarea>
+
+  <mat-form-field style="width: 50%; background-color: aliceblue;" appearance="outline">
+    <mat-label>Número de teléfono</mat-label>
+    <input matInput placeholder="Número de teléfono" [(ngModel)]="numero">
+  </mat-form-field>
+
+  <!-- <input name="textarea" rows="1" cols="50" [(ngModel)]="numero" placeholder="Número de teléfono"> -->
 </div>
 <div ALIGN="center">
-  <textarea name="textarea" rows="5" cols="50">Describe las indicaciones</textarea>
+  <mat-form-field style="width: 50%; background-color: aliceblue;" appearance="outline">
+    <mat-label>Describe las indicaciones</mat-label>
+    <input matInput placeholder="Describe las indicaciones" [(ngModel)]="mensaje">
+  </mat-form-field>
+  <!-- <input name="textarea" rows="5" cols="50" [(ngModel)]="mensaje" placeholder="Describe las indicaciones"> -->
 </div>
 
 <div ALIGN="center">
-  <button mat-raised-button color="primary">
+  <button mat-raised-button color="primary" (click)="enviar()">
     Enviar
   </button>
 
