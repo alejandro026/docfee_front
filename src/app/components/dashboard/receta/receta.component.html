@@ -10,49 +10,37 @@
     <!-- Your content goes here  -->
     <div class="row clearfix">
       <div class="col-lg-8 col-md-12">
-
-
-
               <div class="body">
                 <div class="row">
                   <div ALIGN="right">
                     <strong>FECHA</strong>
-
-                    <input
-                      type="date"
-                      id="start"
-                      name="trip-start"
-                      value="2022-10-28"
-                      min="2000-01-01"
-                      max="2030-12-31"
-                    />
+                    <br>
+                    <p class="text-muted">{{recetas.fecha | date}}</p>
                   </div>
 
                   <HR align="CENTER" color="black" noshade />
 
                   <div class="body">
                     <div class="row">
+                      <div class="col-md-3 col-6 b-r">
+                        <h3><strong>NOMBRE COMPLETO: </strong></h3>
 
-                  <div class="col-md-3 col-6 b-r">
-                    <h3><strong>NOMBRE COMPLETO: </strong></h3>
-                    <strong>Felipe 0 Morales Guzman</strong>
+                        <br>
+                        <p class="text-muted">{{recetas.id_cita.tratamiento.id_usuario.nombre}} {{recetas.id_cita.tratamiento.id_usuario.apPaterno}} {{recetas.id_cita.tratamiento.id_usuario.apMaterno}}</p>
+                      </div>
 
-                    <br />
 
-                  </div>
-
-                  <div ALIGN="right" class="col-md-3 col-6">
-                    <strong>EDAD: 22 </strong>
-                    <br />
-                    <p class="text-muted">{{ edad }}</p>
+                  <div ALIGN="right" >
+                    <strong>EDAD:</strong>
+                    <br>
+                        <p class="text-muted">{{edad}}</p>
                   </div>
                   <HR align="CENTER" color="black" noshade />
 
                   <div class="col-md-3 col-6">
                     <h3><strong>DIAGNOSTICO: </strong></h3>
-                    <strong>Tomar paracetamol</strong>
-                    <br />
-                    <p class="text-muted">{{ edad }}</p>
+                    <br>
+                    <p class="text-muted">{{recetas.diagnostico}}</p>
                   </div>
 
                   <HR align="CENTER" color="black" noshade />
@@ -72,8 +60,8 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <th scope="row">Paracetamol</th>
-                        <th scope="row">Tomar cada 8 horas</th>
+                        <th scope="row">{{recetas.medicamento}}</th>
+                        <th scope="row">{{recetas.tareas}} cada {{recetas.horarios}} Horas</th>
                       </tr>
                     </tbody>
                   </table>

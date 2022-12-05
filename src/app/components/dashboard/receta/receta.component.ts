@@ -10,6 +10,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recetas } from '../../../_models/receta';
 import { RecetaService } from 'src/app/services/receta.service';
+import { Tratamiento } from '../../../_models/tratamiento';
+import { Citas } from '../../../_models/citas';
+import { CitasService } from '../../../services/citas.service';
+import { Console } from 'console';
 
 @Component({
   selector: 'app-receta',
@@ -18,24 +22,27 @@ import { RecetaService } from 'src/app/services/receta.service';
 })
 export class RecetaComponent implements OnInit {
 
-  dataSource: MatTableDataSource<Recetas>;
   recetas:Recetas;
   edad:number;
   fecha:Date;
+  tratamiento:Tratamiento;
+  citas:Citas;
 
   numero:string;
   mensaje:string;
-
   constructor(
 
     private route:ActivatedRoute,
     private RecetaService: RecetaService,
     private usuarioService: UsuarioService,
+    private tratamientoService: TratamientoService,
+    private citasService:CitasService,
     private router:Router) {}
 
   ngOnInit(): void {
 
     this.cargarDatos();
+    //this.cargarDatost();
     this.fecha= new Date();
   }
 
@@ -43,38 +50,35 @@ export class RecetaComponent implements OnInit {
     this.route.queryParams.subscribe( params => {
      this.cargarDatos2(params.id_receta);
 
-     console.log(params)
+
    });
   }
 
   cargarDatos2(id:number){
-    this.RecetaService.buscarPorIdCita(id).subscribe(data=>{
+    this.RecetaService.consultarPorID(id).subscribe(data=>{
       this.recetas= data;
 
-      //this.calcularEdad();
+      this.calcularEdad();
 
-      console.log("this.RecetaService.buscarPorIdCita ~ this.receta", this.recetas)
 
     })
   }
 
 
 
-  // calcularEdad(){
-  //   let hoy:Date= new Date();
-  //   var fechaNacimiento:Date = new Date(this.recetas.id_cita?.Tratamiento?.id_usuario.fechaNacimiento);
-  //   var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
-  //   var m = hoy.getMonth() - fechaNacimiento.getMonth();
+  calcularEdad(){
+    let hoy:Date= new Date();
+    var fechaNacimiento:Date = new Date(this.recetas.id_cita.tratamiento.id_usuario.fechaNacimiento);
+    var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+    var m = hoy.getMonth() - fechaNacimiento.getMonth();
 
-  //   if (m < 0 || (m === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
-  //       edad--;
-  //   }
+    if (m < 0 || (m === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+        edad--;
+    }
 
-  //   this.edad= edad;
+    this.edad= edad;
 
-  //   console.log("calcularEdad ~ this.edad", this.edad)
-
-  // }
+  }
 
 
 

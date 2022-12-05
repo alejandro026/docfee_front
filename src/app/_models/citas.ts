@@ -8,4 +8,7 @@ export class Citas{
     Notas?:String;
     id_tramiento?:number;
 
+
+    tratamiento:Tratamiento;
+
   }
