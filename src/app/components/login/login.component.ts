@@ -1,7 +1,10 @@
+import { Solicitud } from './../../_models/solicitud';
+import { CitasService } from './../../services/sesion.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { LoginUsuario } from 'src/app/_models/loginUsuario';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +19,12 @@ export class LoginComponent implements OnInit {
   constructor(
     public fb: FormBuilder,
     public _snackBar: MatSnackBar,
-    public router: Router
+    public router: Router,
+    private citasService:CitasService
     ) {
     this.form = this.fb.group({
-      usuario: ["admin", Validators.required],
-      contraseña: ["admin", Validators.required]
+      usuario: ["", Validators.required],
+      contraseña: ["", Validators.required]
     })
   };
 
@@ -28,15 +32,23 @@ export class LoginComponent implements OnInit {
   };
 
   ingresar() {
-    const usuario = this.form.value.usuario;
-    const contraseña = this.form.value.contraseña;
+    sessionStorage.clear();
+    let usuario = this.form.value.usuario;
+    let contraseña = this.form.value.contraseña;
 
-    if (usuario == "admin" && contraseña == "admin") {
-      this.loading();
-    } else {
-      this.error();
+    let solicitud:Solicitud=new Solicitud();
+    solicitud.usuario=usuario;
+    solicitud.password=contraseña;
+
+    this.citasService.consultarUsuario(solicitud).subscribe(data => {
+      if(data.approved==true){
+        sessionStorage.setItem('sesion', JSON.stringify(data));
+        this.loading(data);
+      }else{
+        this.error();
       this.form.reset();
-    }
+      }
+    });
   };
 
   error() {
@@ -47,8 +59,14 @@ export class LoginComponent implements OnInit {
     })
   };
 
-  loading() {
-    this.router.navigate(["dashboard"]);
+  loading(data:LoginUsuario) {
+    if(data.tipoUsuario=="MEDICO"){
+      this.router.navigate(["dashboard"]);
+    }
+
+    if(data.tipoUsuario=="PACIENTE"){
+      this.router.navigate(["dashboard/expediente"]);
+    }
   };
 
   tsparticles = "tsparticles";

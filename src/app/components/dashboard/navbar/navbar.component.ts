@@ -1,3 +1,5 @@
+import { LoginUsuario } from './../../../_models/loginUsuario';
+import { LoginComponent } from './../../login/login.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -14,6 +16,11 @@ export class NavbarComponent implements OnInit {
   sidenav!: MatSidenav;
 
   options: FormGroup
+
+
+  sesion:LoginUsuario;
+
+
 
   constructor(
     fb: FormBuilder,
@@ -39,6 +46,10 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
+
+
   }
 
 }

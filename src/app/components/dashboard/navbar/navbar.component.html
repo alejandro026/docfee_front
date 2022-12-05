@@ -29,12 +29,12 @@
                 <span class="text">Pacientes</span>
             </mat-list-item> -->
 
-            <mat-list-item [routerLink]="'prueba'">
+            <mat-list-item [routerLink]="'prueba'" *ngIf="sesion.tipoUsuario=='MEDICO'">
                 <mat-icon mat-list-icon class="material-icons-rounded">description</mat-icon>
                 <span class="text">Pacientes</span>
             </mat-list-item>
 
-            <mat-list-item [routerLink]="'documentos'">
+            <mat-list-item [routerLink]="'documentos'" *ngIf="sesion.tipoUsuario=='MEDICO'">
                 <mat-icon mat-list-icon class="material-icons-rounded">folder</mat-icon>
                 <span class="text">Documentos</span>
             </mat-list-item>
