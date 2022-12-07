@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -25,6 +26,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     fb: FormBuilder,
     public observer: BreakpointObserver,
+    private router: Router
   ) {
     this.options = fb.group({
       bottom: 0,
@@ -50,6 +52,11 @@ export class NavbarComponent implements OnInit {
     this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
 
 
+  }
+
+  async cerrarSesion(){
+    sessionStorage.clear();
+    return this.router.navigate(['/login']).then(() => false);
   }
 
 }

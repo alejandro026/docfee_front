@@ -57,7 +57,7 @@
                 <span class="text">Config</span>
             </mat-list-item>
 
-            <mat-list-item [routerLink]="'login'">
+            <mat-list-item (click)="cerrarSesion()">
                 <mat-icon mat-list-icon class="material-icons-rounded">logout</mat-icon>
                 <span class="text">Logout</span>
             </mat-list-item>
