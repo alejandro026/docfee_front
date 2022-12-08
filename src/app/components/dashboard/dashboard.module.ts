@@ -1,3 +1,4 @@
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -57,7 +58,8 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
     PdfViewerModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateTimePickerModule
   ]
 })
 export class DashboardModule { }

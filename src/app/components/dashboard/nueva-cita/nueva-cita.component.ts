@@ -22,6 +22,10 @@ export class NuevaCitaComponent implements OnInit {
 
   idTatamieto:number;
 
+  usuario:LoginUsuario;
+
+  nombreMedico:string;
+
   constructor(
     private citasService: CitasService,
     private formBuilder: FormBuilder,
@@ -44,9 +48,8 @@ export class NuevaCitaComponent implements OnInit {
   }
 
   iniciaFormulario(){
-
-    let usuario:LoginUsuario=JSON.parse(sessionStorage.getItem('sesion')!);
-
+    this.usuario=JSON.parse(sessionStorage.getItem('sesion')!);
+    this.nombreMedico=this.usuario.nombre;
     // id_cita?:number;
     // id_medico?:number;
     // fecha?:Date;
@@ -56,7 +59,7 @@ export class NuevaCitaComponent implements OnInit {
     // tratamiento?:number;
 
    this.formularioCitas = this.formBuilder.group({
-    id_medico: new FormControl(usuario.id),
+    id_medico: new FormControl(this.usuario.id),
     fecha: new FormControl(),
     lugar: new FormControl(),
     especialidad: new FormControl(),
@@ -69,6 +72,16 @@ export class NuevaCitaComponent implements OnInit {
     console.log(this.formularioCitas.value);
 
     let cita:CitaDTO=this.formularioCitas.value;
+
+    if(cita.fecha==null){
+      Swal.fire({
+        icon: 'error',
+        title: "La fecha es obligatoria",
+        showConfirmButton: false,
+        timer: 2500
+      })
+      return;
+    }
 
     this.citasService.guardarCita(cita).subscribe(data=>{
       console.log("this.citasService.guardarCita ~ data", data)
