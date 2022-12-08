@@ -13,12 +13,12 @@
     <div>
       <mat-form-field style="width: 50%;" appearance="outline">
         <mat-label>Tratamiento</mat-label>
-        <input [maxLength]="30" matInput placeholder="Tratamiento" formControlName="Tratamiento">
+        <input [maxLength]="30" matInput placeholder="Tratamiento" formControlName="tratamiento" readonly="true">
       </mat-form-field>
 
       <mat-form-field style="width: 50%;" appearance="outline">
         <mat-label>Lugar</mat-label>
-        <input matInput placeholder="Lugar" formControlName="Lugar">
+        <input matInput placeholder="Lugar" formControlName="lugar">
       </mat-form-field>
     </div>
 
@@ -26,13 +26,13 @@
     <div>
       <mat-form-field style="width: 50%;" appearance="outline">
         <mat-label>Especialidad</mat-label>
-        <input matInput placeholder="Especialidad" formControlName="Especialidad">
+        <input matInput placeholder="Especialidad" formControlName="especialidad">
       </mat-form-field>
 
 
       <mat-form-field style="width: 50%;" appearance="outline">
         <mat-label>Notas</mat-label>
-        <textarea matInput placeholder="Notas" formControlName="Notas"></textarea>
+        <textarea matInput placeholder="Notas" formControlName="notas"></textarea>
         </mat-form-field>
     </div>
 
@@ -45,7 +45,7 @@
     <div>
         <mat-form-field style="width: 50%;" appearance="outline" >
           <mat-label>Fecha</mat-label>
-          <input required matInput [matDatepicker]="picker" formControlName="fechaNacimiento">
+          <input required matInput [matDatepicker]="picker" formControlName="fecha">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker color="primary"></mat-datepicker>

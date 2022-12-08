@@ -1,3 +1,4 @@
+import { CitaDTO } from './../_models/citaDTO';
 import { Citas } from './../_models/citas';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
@@ -28,12 +29,12 @@ export class CitasService {
   }
 
   actualizarCita(cita:Citas):Observable<Citas>{
-    return this.http.put<Citas>(this.url+"/actualizar",cita,
+    return this.http.put<Citas>(this.url+"actualizar",cita,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 
-  guardarUsuario(cita:Citas):Observable<Citas>{
-    return this.http.post<Citas>(this.url+"/guardar",cita,
+  guardarCita(cita:CitaDTO):Observable<Citas>{
+    return this.http.post<Citas>(this.url+"guardar",cita,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 }
