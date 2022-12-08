@@ -1,7 +1,7 @@
 import { Solicitud } from './../../_models/solicitud';
 import { CitasService } from './../../services/sesion.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginUsuario } from 'src/app/_models/loginUsuario';
@@ -13,11 +13,11 @@ import { LoginUsuario } from 'src/app/_models/loginUsuario';
 })
 export class LoginComponent implements OnInit {
 
-  form: FormGroup
+  form: UntypedFormGroup
   hide = true
 
   constructor(
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public _snackBar: MatSnackBar,
     public router: Router,
     private citasService:CitasService

@@ -1,7 +1,7 @@
 import { CitaDTO } from './../../../_models/citaDTO';
 import { LoginUsuario } from './../../../_models/loginUsuario';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { Citas } from './../../../_models/citas';
@@ -17,14 +17,14 @@ import { thru } from 'lodash';
 })
 export class NuevaCitaComponent implements OnInit {
 
-  formularioCitas:FormGroup;
+  formularioCitas:UntypedFormGroup;
   medicosCombo:Citas[];
 
   idTatamieto:number;
 
   constructor(
     private citasService: CitasService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route:ActivatedRoute
   ) { }
 
@@ -56,11 +56,11 @@ export class NuevaCitaComponent implements OnInit {
     // tratamiento?:number;
 
    this.formularioCitas = this.formBuilder.group({
-    id_medico: new FormControl(usuario.id),
-    fecha: new FormControl(),
-    lugar: new FormControl(),
-    especialidad: new FormControl(),
-    notas: new FormControl(),
+    id_medico: new UntypedFormControl(usuario.id),
+    fecha: new UntypedFormControl(),
+    lugar: new UntypedFormControl(),
+    especialidad: new UntypedFormControl(),
+    notas: new UntypedFormControl(),
     tratamiento : this.idTatamieto
     })
   }

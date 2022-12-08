@@ -1,5 +1,5 @@
 import { Antecedentes } from './../../../../_models/antecedentes';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsuarioService } from './../../../../services/usuario.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,14 +14,14 @@ import Swal from 'sweetalert2';
 })
 export class AgregarComponent implements OnInit {
 
-  formulario:FormGroup;
-  formularioAntecedente:FormGroup;
+  formulario:UntypedFormGroup;
+  formularioAntecedente:UntypedFormGroup;
 
   usuariosCombo:Usuario[];
 
   constructor(
     private usuarioService: UsuarioService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private dialogRef: MatDialogRef<AgregarComponent>,
     @Inject(MAT_DIALOG_DATA) private data:Usuario
   ) { }

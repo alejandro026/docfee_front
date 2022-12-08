@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Paciente } from 'src/app/interfaces/paciente';
 import { NotificationService } from 'src/app/services/notification.service';
@@ -13,7 +13,7 @@ import { PacienteService } from 'src/app/services/paciente.service';
 })
 export class PatientComponent implements OnInit {
 
-  form: FormGroup;
+  form: UntypedFormGroup;
   titulo = this.service.titulo;
   id: string | undefined;
 

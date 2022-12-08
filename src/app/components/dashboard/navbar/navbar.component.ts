@@ -1,7 +1,7 @@
 import { LoginUsuario } from './../../../_models/loginUsuario';
 import { LoginComponent } from './../../login/login.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  options: FormGroup
+  options: UntypedFormGroup
 
 
   sesion:LoginUsuario;
@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
 
 
   constructor(
-    fb: FormBuilder,
+    fb: UntypedFormBuilder,
     public observer: BreakpointObserver,
     private router: Router
   ) {

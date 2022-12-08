@@ -30,35 +30,34 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    MaterialModule,
-    NgParticlesModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideStorage(() => getStorage()),
-    LayoutModule,
-    HammerModule,
-    IgxCalendarModule,
-    HttpClientModule,
-    NgxDropzoneModule,
-    PdfViewerModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [PatientComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        MaterialModule,
+        NgParticlesModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideStorage(() => getStorage()),
+        LayoutModule,
+        HammerModule,
+        IgxCalendarModule,
+        HttpClientModule,
+        NgxDropzoneModule,
+        PdfViewerModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
