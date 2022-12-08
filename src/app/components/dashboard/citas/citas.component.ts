@@ -17,7 +17,7 @@ export class CitasComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: MatTableDataSource<Citas>;
-  displayedColumns: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta'];
+  displayedColumns: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta','nuevaReceta'];
 
 
   constructor(
@@ -61,5 +61,7 @@ export class CitasComponent implements OnInit {
   verReceta(id:number){
     this.router.navigate(['/dashboard/receta'], { queryParams: { id_receta: id} });
   }
-
+  nuevaReceta(id:number){
+    this.router.navigate(['/dashboard/nuevaReceta'], { queryParams: { id_cita: id} });
+  }
 }

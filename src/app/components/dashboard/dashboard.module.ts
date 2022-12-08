@@ -25,6 +25,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { RecetaComponent } from './receta/receta.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
+import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,8 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
     AgregarComponent,
 
     RecetaComponent,
-    NuevaCitaComponent
-
+    NuevaCitaComponent,
+    NuevaRecetaComponent
 
   ],
   imports: [

@@ -16,6 +16,7 @@ import { CitasComponent } from './citas/citas.component';
 import { RecetaComponent } from './receta/receta.component';
 
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
+import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,9 @@ const routes: Routes = [
 
 
 
-      { path: 'nuevaCita', component: NuevaCitaComponent}
+      { path: 'nuevaCita', component: NuevaCitaComponent},
+
+      { path: 'nuevaReceta', component: NuevaRecetaComponent},
 
 
 

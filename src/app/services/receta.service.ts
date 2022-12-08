@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { Recetas } from '../_models/receta';
+import { nuevaReceta } from '../_models/nuevaReceta';
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +41,10 @@ consultarPorIDCita(id_cita:number): Observable<Recetas> {
 
   return this.http.get<Recetas>(url);
 }
-// consultarMateriaPorID(idMateria): Observable<Response<Materia>> {
-//   const url = "http://localhost:8081/materia/consultarMateriaPorID/" +  idMateria
 
-//   return this.http.get<Response<Materia>>(url);
-// }
+guardarReceta(receta:nuevaReceta):Observable<Recetas>{
+  return this.http.post<Recetas>(this.url+"guardar",receta,
+  {headers: new HttpHeaders().append("Content-Type", "application/json")});
+}
 
 }
