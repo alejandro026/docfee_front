@@ -39,18 +39,11 @@
     <div>
         <mat-form-field style="width: 50%;" appearance="outline" >
           <mat-label>Médico</mat-label>
-          <input matInput placeholder="id_medico" formControlName="id_medico">
+          <input matInput placeholder="id_medico" formControlName="id_medico" required="true">
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field style="width: 50%;" appearance="outline" >
-          <mat-label>Fecha</mat-label>
-          <input required matInput [matDatepicker]="picker" formControlName="fecha">
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker color="primary"></mat-datepicker>
-        </mat-form-field>
-
+      <ejs-datetimepicker id='datetimepicker' placeholder='Selecciona una fecha'  formControlName="fecha" required="true"></ejs-datetimepicker>
     </div>
 
     <div>

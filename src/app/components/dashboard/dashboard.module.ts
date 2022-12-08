@@ -25,6 +25,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { RecetaComponent } from './receta/receta.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -57,7 +60,8 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
     PdfViewerModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DateTimePickerModule
   ]
 })
 export class DashboardModule { }
