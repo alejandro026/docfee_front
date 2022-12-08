@@ -26,9 +26,15 @@ export class TratamientoService {
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 
-  consultarTodosVista():Observable<VistaTratamiento[]>{
+  consultarTodosVista(id:number):Observable<VistaTratamiento[]>{
 
-    return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVista",
+    return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVista/"+id,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+  
+  consultarTodosVistaDR():Observable<VistaTratamiento[]>{
+
+    return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVistaDR/",
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
   consultarTodosVistaIdUsuario(id:string):Observable<VistaTratamiento[]>{

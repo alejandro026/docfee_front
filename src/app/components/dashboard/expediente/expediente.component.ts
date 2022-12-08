@@ -7,7 +7,7 @@ import { VistaTratamiento } from './../../../_models/vistaTratatamiento';
 import { TratamientoService } from './../../../services/tratamiento.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
-
+import { Session } from 'inspector';
 
 @Component({
   selector: 'app-expediente',
@@ -36,12 +36,14 @@ export class ExpedienteComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<VistaTratamiento>();
 
+    this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
+    var id = parseInt(this.sesion.id);
     if(this.sesion.tipoUsuario=="PACIENTE"){
-      this.consultarTodosVistaId();
-    }else if(this.sesion.tipoUsuario=="MEDICO"){
-      this.consultarTodosVista();
+      this.consultarTodosVista(id);
+    }else{
+      this.consultarTodosVistaDR();
     }
-
+    
 
   }
   ngAfterViewInit(): void {
@@ -49,9 +51,22 @@ export class ExpedienteComponent implements OnInit {
     this.dataSource.sort = this.sort;
 
   }
+  consultarTodosVistaDR(){
+    this.tratamientoService.consultarTodosVistaDR().subscribe(data=>{
+      this.dataSource= new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
 
-  consultarTodosVista(){
-    this.tratamientoService.consultarTodosVista().subscribe(data=>{
+      console.log("this.tratamientoService.consultarTodosVista ~ this.dataSource=", this.dataSource)
+
+
+      console.log("this.tratamientoService.consultarTodos ~ data", data)
+
+    })
+  }
+
+  consultarTodosVista(id:number){
+    this.tratamientoService.consultarTodosVista(id).subscribe(data=>{
       this.dataSource= new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;

@@ -11,9 +11,9 @@ import { Observable} from 'rxjs';
 })
 
 export class CitasService {
-
+  sesion:LoginUsuario;
    url="http://localhost:8083/login";
-
+   urlCerrar="http://localhost:8083/deleteSession";
   constructor(
     private http: HttpClient
   ) { }
@@ -23,3 +23,5 @@ export class CitasService {
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 }
+
+

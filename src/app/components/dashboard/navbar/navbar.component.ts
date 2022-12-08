@@ -1,4 +1,5 @@
 import { LoginUsuario } from './../../../_models/loginUsuario';
+import { cerrarServices } from './../../../services/cerrar-session.service';
 import { LoginComponent } from './../../login/login.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -26,7 +27,8 @@ export class NavbarComponent implements OnInit {
   constructor(
     fb: FormBuilder,
     public observer: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private cerrarServices: cerrarServices
   ) {
     this.options = fb.group({
       bottom: 0,
@@ -54,9 +56,13 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  async cerrarSesion(){
+ async cerrarSesion(){
+    console.log(this.sesion.nombre.toString())
+    this.cerrarServices.cerrarSession(this.sesion.nombre.toString());
+    //this.cerrarSesion();
     sessionStorage.clear();
-    return this.router.navigate(['/login']).then(() => false);
+    await this.router.navigate(['/login']);
+   return false;
   }
 
 }
