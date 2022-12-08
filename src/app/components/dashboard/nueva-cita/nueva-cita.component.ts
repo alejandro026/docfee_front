@@ -1,6 +1,6 @@
 import { CitaDTO } from './../../../_models/citaDTO';
 import { LoginUsuario } from './../../../_models/loginUsuario';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
@@ -29,7 +29,8 @@ export class NuevaCitaComponent implements OnInit {
   constructor(
     private citasService: CitasService,
     private formBuilder: FormBuilder,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private router:Router
   ) { }
 
 
@@ -85,6 +86,8 @@ export class NuevaCitaComponent implements OnInit {
 
     this.citasService.guardarCita(cita).subscribe(data=>{
       console.log("this.citasService.guardarCita ~ data", data)
+
+        this.router.navigate(['/dashboard/citas'], { queryParams: { idTratmiento: this.idTatamieto} });
 
     Swal.fire({
       icon: 'success',
