@@ -31,6 +31,11 @@ export class TratamientoService {
     return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVista",
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
+  consultarTodosVistaIdUsuario(id:string):Observable<VistaTratamiento[]>{
+
+    return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVistaIdUsuario/"+id,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
 
   buscarPorId(id:number): Observable<Tratamiento>{
     return this.http.get<Tratamiento>(this.url+"buscarPorId/"+id,

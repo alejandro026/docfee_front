@@ -1,3 +1,4 @@
+import { LoginUsuario } from 'src/app/_models/loginUsuario';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PatientComponent } from '../patients/patient/patient.component';
@@ -8,7 +9,9 @@ import { PatientComponent } from '../patients/patient/patient.component';
   styleUrls: ['./homepage.component.css', './custom-theme.scss']
 })
 export class HomepageComponent {
-  
+
+  sesion:LoginUsuario=JSON.parse(sessionStorage.getItem('sesion')!);
+
 
   constructor(public dialog: MatDialog,) { }
 

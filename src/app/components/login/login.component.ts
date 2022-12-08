@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     }
 
     if(data.tipoUsuario=="PACIENTE"){
-      this.router.navigate(["dashboard/expediente"]);
+      this.router.navigate(["dashboard/homepage"]);
     }
   };
 

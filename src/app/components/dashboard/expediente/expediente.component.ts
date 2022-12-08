@@ -1,3 +1,4 @@
+import { LoginUsuario } from 'src/app/_models/loginUsuario';
 import { Router } from '@angular/router';
 import { Tratamiento } from './../../../_models/tratamiento';
 import { MatSort } from '@angular/material/sort';
@@ -24,6 +25,9 @@ export class ExpedienteComponent implements OnInit {
   columnsToDisplayWithExpand = [this.displayedColumns, 'expand'];
   expandedElement: Tratamiento | null;
 
+  sesion:LoginUsuario=JSON.parse(sessionStorage.getItem('sesion')!);
+
+
   constructor(
     private tratamientoService: TratamientoService,
     private router:Router
@@ -31,7 +35,13 @@ export class ExpedienteComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<VistaTratamiento>();
-    this.consultarTodosVista();
+
+    if(this.sesion.tipoUsuario=="PACIENTE"){
+      this.consultarTodosVistaId();
+    }else if(this.sesion.tipoUsuario=="MEDICO"){
+      this.consultarTodosVista();
+    }
+
 
   }
   ngAfterViewInit(): void {
@@ -45,12 +55,13 @@ export class ExpedienteComponent implements OnInit {
       this.dataSource= new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-
-      console.log("this.tratamientoService.consultarTodosVista ~ this.dataSource=", this.dataSource)
-
-
-      console.log("this.tratamientoService.consultarTodos ~ data", data)
-
+    })
+  }
+  consultarTodosVistaId(){
+    this.tratamientoService.consultarTodosVistaIdUsuario(this.sesion.id).subscribe(data=>{
+      this.dataSource= new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
   }
 

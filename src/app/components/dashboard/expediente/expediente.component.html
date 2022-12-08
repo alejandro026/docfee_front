@@ -1,6 +1,11 @@
 <div class="container">
   <div class="search-div">
+    <ng-container *ngIf="sesion.tipoUsuario=='PACIENTE'; else elseTemplate">
+      <h2>Mi expediente</h2>
+    </ng-container>
+    <ng-template #elseTemplate>
       <h2>Expedientes</h2>
+    </ng-template>
   </div>
 
   <div class="mat-elevation-z8">
@@ -60,12 +65,12 @@
           <button mat-icon-button aria-label="expand row" title="Ver Citas" (click)="verCitas(element.id_tratamiento)">
             <mat-icon>description</mat-icon>
           </button>
-          <button mat-icon-button aria-label="expand row" title="Agregar Cita" (click)="nuevaCita(element.id_tratamiento)" >
+          <button *ngIf="sesion.tipoUsuario=='MEDICO'" mat-icon-button aria-label="expand row" title="Agregar Cita" (click)="nuevaCita(element.id_tratamiento)" >
             <mat-icon>add_circle</mat-icon>
           </button>
         </td>
       </ng-container>
-      
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -16,15 +16,15 @@
 
                     <h4 class="subtitle">Pacientes</h4>
                     <mat-card>
-                        <button mat-raised-button class="buttons" routerLink="/dashboard/patients">
+                        <button mat-raised-button class="buttons" routerLink="/dashboard/patients" disabled="sesion.tipoUsuario=='PACIENTE'">
                             <img src="./assets/images/folder.png" class="icon">
                             <h2 class="options">Ver lista de pacientes</h2>
                         </button>
-                        <button mat-raised-button class="buttons" routerLink="/dashboard/patients" (click)="onCreate()">
+                        <button mat-raised-button class="buttons" routerLink="/dashboard/patients" (click)="onCreate()" disabled="sesion.tipoUsuario=='PACIENTE'">
                             <img src="./assets/images/list.png" class="icon">
                             <h2 class="options">Añadir historial</h2>
                         </button>
-                        <button mat-raised-button class="buttons">
+                        <button mat-raised-button class="buttons" disabled="sesion.tipoUsuario=='PACIENTE'">
                             <img src="./assets/images/calendar.png" class="icon">
                             <h2 class="options">Añadir cita</h2>
                         </button>
