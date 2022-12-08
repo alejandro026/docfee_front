@@ -57,8 +57,11 @@ export class NavbarComponent implements OnInit {
   }
 
  async cerrarSesion(){
-    console.log(this.sesion.nombre.toString())
-    this.cerrarServices.cerrarSession(this.sesion.nombre.toString());
+    console.log(this.sesion);
+
+    this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
+      console.log(data);
+    });
     //this.cerrarSesion();
     sessionStorage.clear();
     await this.router.navigate(['/login']);

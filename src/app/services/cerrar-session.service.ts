@@ -8,16 +8,20 @@ import { LoginUsuario } from '../_models/loginUsuario';
 })
 export class cerrarServices{
   sesion:LoginUsuario;
-  urlCerrar="http://localhost:8083/deleteSession/";
+  urlCerrar="http://localhost:8083/deleteSession";
   status: string;
   constructor(
     private http: HttpClient
   ) { }
 
-    cerrarSession(name:String): Observable<Object>{
-      console.log("name: "+name)
-      console.log("url: "+this.urlCerrar+name.replace(" ","%20").replace(" ","%20"))
-      return this.http.delete(this.urlCerrar+name,
+    // cerrarSession(name:LoginUsuario): Observable<Object>{
+    //   let nombre=name.nombre;
+    //   return this.http.delete(this.urlCerrar,nombre,
+    //     {headers: new HttpHeaders().append("Content-Type", "application/json")});
+    // }
+
+    cerrarSession(sesion:LoginUsuario):Observable<Object>{
+      return this.http.post<Object>(this.urlCerrar,sesion,
         {headers: new HttpHeaders().append("Content-Type", "application/json")});
     }
 }
