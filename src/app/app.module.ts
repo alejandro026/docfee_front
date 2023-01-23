@@ -28,12 +28,18 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { NavbarloginComponent } from './components/navbarlogin/navbarlogin.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarloginComponent,
+    FooterComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
