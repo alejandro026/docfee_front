@@ -2,27 +2,4 @@
 
 <div class="body">
     <ng-particles id="tsparticles" [options]="particlesOptions"></ng-particles>
-    <div>
-        <mat-card class="login-card">
-            <h1 style="font: 150%;">Docfee</h1>
-            <form [formGroup]="form" (ngSubmit)="ingresar()">
-                <h2>Iniciar Sesión</h2>
-                <mat-form-field class="form-field" appearance="fill">
-                    <mat-label>Usuario o Cédula</mat-label>
-                    <input matInput autocomplete="off" formControlName="usuario">
-                </mat-form-field>
-                <mat-form-field class="form-field" appearance="fill">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="contraseña">
-                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    </button>
-                </mat-form-field>
-                <h5 class="password">¿Olvidaste la contraseña?</h5>
-                <br>
-                <button class="button" type="submit" mat-raised-button color="success" [disabled]="form.invalid">Ingresar</button>
-                <h5 class="registro">Registrate aquí</h5>
-            </form>
-        </mat-card>
-    </div>
 </div>
