@@ -19,28 +19,29 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
 
 
+
 const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
     children: [
-      { path: '', component: HomepageComponent },
-      { path: 'homepage', component: HomepageComponent },
-      { path: 'prueba', component: PruebaComponent},
-      { path: 'patients', component: PatientsComponent},
-      { path: 'citas', component: CitasComponent},
-      { path: 'documentos', component: DocumentosComponent},
-      { path: 'tratamiento', component: TratamientoComponent},
-      { path: 'expediente', component: ExpedienteComponent},
-      { path: 'detalleExpedinete', component: DetalleExpedienteComponent},
+      { path: '', component: HomepageComponent, data:{titulo:''}},
+      { path: 'homepage', component: HomepageComponent, data:{titulo:'homepage'} },
+      { path: 'prueba', component: PruebaComponent, data:{titulo:'prueba'}},
+      { path: 'patients', component: PatientsComponent, data:{titulo:'patients'}},
+      { path: 'citas', component: CitasComponent, data:{titulo:'citas'}},
+      { path: 'documentos', component: DocumentosComponent, data:{titulo:'documentos'}},
+      { path: 'tratamiento', component: TratamientoComponent, data:{titulo:'tratamiento'}},
+      { path: 'expediente', component: ExpedienteComponent, data:{titulo:'expediente'}},
+      { path: 'detalleExpedinete', component: DetalleExpedienteComponent, data:{titulo:'detalleExpediente'}},
 
-      { path: 'receta', component: RecetaComponent},
+      { path: 'receta', component: RecetaComponent, data:{titulo:'receta'}},
 
 
 
-      { path: 'nuevaCita', component: NuevaCitaComponent},
+      { path: 'nuevaCita', component: NuevaCitaComponent, data:{titulo:'nuevaCita'}},
 
-      { path: 'nuevaReceta', component: NuevaRecetaComponent},
+      { path: 'nuevaReceta', component: NuevaRecetaComponent, data:{titulo:'nuevaReceta'}},
 
 
 
@@ -48,6 +49,7 @@ const routes: Routes = [
 
     ]},
   { path: 'login', component: LoginComponent, pathMatch: 'full'  },
+  
 ];
 
 @NgModule({

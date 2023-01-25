@@ -31,6 +31,7 @@ import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NavbarloginComponent } from './components/navbarlogin/navbarlogin.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { Page404Component } from './components/page404/page404.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     LoginComponent,
     NavbarloginComponent,
     FooterComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
@@ -63,7 +65,8 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     MatDatepickerModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    DateTimePickerModule
+    DateTimePickerModule,
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

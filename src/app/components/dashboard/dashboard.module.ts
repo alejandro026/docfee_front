@@ -26,6 +26,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { RecetaComponent } from './receta/receta.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
+import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
 
     RecetaComponent,
     NuevaCitaComponent,
-    NuevaRecetaComponent
+    NuevaRecetaComponent,BreadcrumbComponent
 
   ],
   imports: [
@@ -60,7 +62,8 @@ import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
     MatFormFieldModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    DateTimePickerModule
+    DateTimePickerModule,
+    
   ]
 })
 export class DashboardModule { }

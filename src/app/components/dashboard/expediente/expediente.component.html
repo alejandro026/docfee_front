@@ -1,4 +1,9 @@
-<div class="container">
+<!--<app-breadcrumb  [items]="['Home']" [routerLink]="'homepage'" [active_item]="'Expediente'"></app-breadcrumb>-->
+<div class="container"> 
+  <div class="block-header">
+    <a [routerLink]="'homepage'">Inicio > </a> 
+    <a>Expediente ></a>
+  </div>
   <div class="search-div">
     <ng-container *ngIf="sesion.tipoUsuario=='PACIENTE'; else elseTemplate">
       <h2>Mi expediente</h2>
