@@ -1,5 +1,5 @@
-<mat-toolbar>
-    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+<mat-toolbar style="height:75px;">
+    <button mat-icon-button  (click)="sidenav.toggle()">
         <mat-icon *ngIf="!sidenav.opened">
             menu
         </mat-icon>
@@ -8,9 +8,9 @@
         </mat-icon>
     </button>
     <span class="spacer"></span>
-    <div>
-       DOCFEE
-    </div>
+    <div class="col-8">
+        <img src="./assets/images/Logo.png" width="250" height="75" >
+      </div>
     <span class="spacer"></span>
     <div style="font-weight: lighter;">
        {{sesion.tipoUsuario +' : '+sesion.nombre}}
@@ -57,18 +57,18 @@
 
             <mat-list-item>
                 <mat-icon mat-list-icon class="material-icons-rounded">settings</mat-icon>
-                <span class="text">Config</span>
+                <span class="text">Configuración</span>
             </mat-list-item>
 
             <mat-list-item (click)="cerrarSesion()">
                 <mat-icon mat-list-icon class="material-icons-rounded">logout</mat-icon>
-                <span class="text">Logout</span>
+                <span class="text">Cerrar sesión</span>
             </mat-list-item>
 
         </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content>       
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>

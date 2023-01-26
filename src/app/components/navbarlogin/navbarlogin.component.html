@@ -1,22 +1,29 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 
-<mat-toolbar>
-  <span class="spacer"></span>
-  <div>
-     DOCFEE
+<mat-toolbar style="height:75px;">
+  <div class="col-8">
+    <img src="./assets/images/Logo.png" width="250" height="75" >
   </div>
-  <span class="spacer"></span>
-
-  <div class="col">
-    <a href="">Quines somos</a>
+  
+  <div class="col-1">
+    <a href="" style="color: #FFFFFF">Nosotros</a>
   </div>
-  <div class="col">
-    <a href="">Servicios</a>
+  <div class="col-1">
+    <a href="" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">
+      Servicios
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#hospitalizacion">Área de hospitalización</a></li>
+      <li><a class="dropdown-item" href="#citas">Agendar citas en línea</a></li>
+      <li><a class="dropdown-item" href="#especialidades">Especialidades</a></li>
+    </ul>
   </div>
-
-  <div class="col">
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" (click)="iniciarSesion()">Iniciar Sesión</button>
+  <div class="col-1">
+    <a href="" style="color: #FFFFFF">Contacto</a>
+  </div>
+  <div class="col-1">
+    <button type="button" class="btn btn-outline-info" data-toggle="modal" (click)="iniciarSesion()">Iniciar Sesión</button>
       <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -40,6 +47,6 @@
   </div>
 </mat-toolbar>
 
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
