@@ -11,9 +11,9 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 
-.container {
+.container1 {
   position: relative;
-  height: 93%;
+  height: 100%;
   overflow: hidden;
   background-color: #2c2e43;
   border: 0px;

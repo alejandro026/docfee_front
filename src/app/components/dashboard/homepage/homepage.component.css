@@ -1,4 +1,4 @@
-.container {
+.container1 {
     overflow: hidden;
     height: auto;
     border-radius: 10px;
@@ -76,7 +76,7 @@ mat-card {
     width: 95%;
     background-color: transparent;
     box-shadow: none !important;
-    
+
 }
 
 .title {
