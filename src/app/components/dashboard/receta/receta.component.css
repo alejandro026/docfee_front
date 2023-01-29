@@ -8,7 +8,22 @@
   height: auto;
   border-radius: 10px;
   font-size: 1rem;
-  background-color: transparent ;
+  background-image: url("https://png.pngtree.com/png-clipart/20220124/original/pngtree-simple-and-atmospheric-hand-drawn-heart-shaped-line-hospital-logo-png-image_7187404.png");
+  /* height: 800px; */
+  background-size: cover;
+  background-size: 50rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+
+  background-color: white ;
+  bottom: 0;
+
+}
+
+.container2{
+  padding-left: 3em;
+  padding-right: 3em;
 }
 
 .table-wrapp {
@@ -156,39 +171,6 @@ table {
   background-color: #c4c4c4;
 }
 
-body {
-  height: 800px;
-  background-image: url("https://png.pngtree.com/png-clipart/20220124/original/pngtree-simple-and-atmospheric-hand-drawn-heart-shaped-line-hospital-logo-png-image_7187404.png");
-  background-size: cover;
-  background-size: 50rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;
-
-}
-
-
-
-.example-container {
-  height: auto !important;
-  width: auto !important;
-  max-width: 100%;
-  overflow: auto;
-}
-
-td.mat-column-star {
-  width: 20px;
-  padding-right: 8px;
-}
-
-th.mat-column-position, td.mat-column-position {
-  padding-left: 8px;
-}
-
-.mat-mdc-table-sticky-border-elem-right {
-  border-left: 1px solid #e0e0e0;
-}
-
-.mat-mdc-table-sticky-border-elem-left {
-  border-right: 1px solid #e0e0e0;
+.clase{
+  color: black;
 }

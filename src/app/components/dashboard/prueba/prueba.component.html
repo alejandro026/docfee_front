@@ -1,9 +1,21 @@
 <div class="container1">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../homepage'">Inicio</a></li>
+          <!-- <li class="breadcrumb-item"><a class="clase" [routerLink]="'../expediente'">Pacientes</a></li> -->
+          <li class="breadcrumb-item active" aria-current="page"><a>Pacientes</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
+
   <div class="block-header">
-    <a [routerLink]="'homepage'">Inicio > </a>
-    <a>Pacientes ></a>
   <div class="search-div">
-      <button mat-raised-button class="creat-button" (click)="openModal()"><mat-icon>add</mat-icon> Crear </button>
+      <h2>Pacientes</h2>
+      <button align="right" mat-raised-button class="creat-button" (click)="openModal()"><mat-icon>add</mat-icon> Crear </button>
       <mat-form-field class="search-form-field" floatLabel="never">
           <input matInput type="text" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event)">
           <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" ><mat-icon>clear</mat-icon></button>
