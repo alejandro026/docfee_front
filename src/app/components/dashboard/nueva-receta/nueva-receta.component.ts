@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { nuevaReceta } from 'src/app/_models/nuevaReceta';
@@ -16,12 +16,12 @@ import { LoginUsuario } from '../../../_models/loginUsuario';
   styleUrls: ['./nueva-receta.component.css']
 })
 export class NuevaRecetaComponent implements OnInit {
-formularioReceta:FormGroup;
+formularioReceta:UntypedFormGroup;
 
 
 idCita:number;
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private recetaService: RecetaService,
     private route:ActivatedRoute,
   ) { }
@@ -57,12 +57,12 @@ confirmAdd(){
    this.formularioReceta = this.formBuilder.group({
 
   id_cita: this.idCita,
-  diagnostico: new FormControl(),
+  diagnostico: new UntypedFormControl(),
   //edad:null,
-  fecha: new FormControl(),
-  medicamento: new FormControl(),
-  horarios: new FormControl(),
-  tareas: new FormControl(),
+  fecha: new UntypedFormControl(),
+  medicamento: new UntypedFormControl(),
+  horarios: new UntypedFormControl(),
+  tareas: new UntypedFormControl(),
   //proximaCita:null,
     })
   }
