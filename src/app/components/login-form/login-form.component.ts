@@ -21,7 +21,8 @@ export class LoginFormComponent implements OnInit {
     public fb: UntypedFormBuilder,
     public _snackBar: MatSnackBar,
     public router: Router,
-    private citasService:CitasService
+    private citasService:CitasService,
+    public dialogRef: MatDialogRef<LoginFormComponent>
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
@@ -45,6 +46,9 @@ export class LoginFormComponent implements OnInit {
       if(data.approved==true){
         sessionStorage.setItem('sesion', JSON.stringify(data));
         this.loading(data);
+
+
+
       }else{
         this.error();
       this.form.reset();
@@ -63,10 +67,12 @@ export class LoginFormComponent implements OnInit {
   loading(data:LoginUsuario) {
     if(data.tipoUsuario=="MEDICO"){
       this.router.navigate(["dashboard"]);
+      this.cerrarDialog();
     }
 
     if(data.tipoUsuario=="PACIENTE"){
       this.router.navigate(["dashboard/homepage"]);
+      this.cerrarDialog();
     }
   };
 
@@ -140,5 +146,11 @@ export class LoginFormComponent implements OnInit {
       }
     }
   };
+
+
+  cerrarDialog(){
+    this.dialogRef.close({data:0});
+    // this.hide=true;
+  }
 
 }

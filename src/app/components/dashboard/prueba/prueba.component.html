@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container1">
   <div class="block-header">
-    <a [routerLink]="'homepage'">Inicio > </a> 
+    <a [routerLink]="'homepage'">Inicio > </a>
     <a>Pacientes ></a>
   <div class="search-div">
       <button mat-raised-button class="creat-button" (click)="openModal()"><mat-icon>add</mat-icon> Crear </button>
@@ -10,6 +10,9 @@
       </mat-form-field>
   </div>
   <div class="table-wrapp mat-elevation-z8">
+
+    <section class="example-container mat-elevation-z8" tabindex="0">
+
       <table mat-table matSort [dataSource]="dataSource">
 
           <ng-container matColumnDef="nombre" >
@@ -54,6 +57,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource._filterData}" style="justify-content: center; font-style: italic;"></tr>
       </table>
+    </section>
       <mat-paginator #paginator [pageSizeOptions]="[5, 7, 10]" [pageSize]="7"></mat-paginator>
   </div>
   <div style="text-align: right;">

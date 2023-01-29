@@ -1,7 +1,7 @@
 <!--<app-breadcrumb  [items]="['Home']" [routerLink]="'homepage'" [active_item]="'Expediente'"></app-breadcrumb>-->
-<div class="container"> 
+<div class="container1">
   <div class="block-header">
-    <a [routerLink]="'homepage'">Inicio > </a> 
+    <a [routerLink]="'homepage'">Inicio > </a>
     <a>Expediente ></a>
   </div>
   <div class="search-div">
@@ -14,7 +14,10 @@
   </div>
 
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows>
+
+    <section class="example-container mat-elevation-z8" tabindex="0">
+
+    <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- Position Column -->
       <ng-container matColumnDef="id_tratamiento">
@@ -80,6 +83,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
+  </section>
 
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                    showFirstLastButtons

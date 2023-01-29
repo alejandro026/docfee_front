@@ -19,7 +19,7 @@
 @import "common/_variables";
 @import "common/_mixins";
 @import "common/_customanimate.scss";
-@import "common/_general.scss";
+// @import "common/_general.scss";
 @import "common/_demo.scss";
 @import "common/_helpers.scss";
 @import "common/_media.scss";
@@ -44,7 +44,7 @@
 /*                 [5. Pages ]                   				*/
 // @import "pages/_dashboard.scss";
 // @import "pages/_inbox.scss";
-@import "pages/_pricing.scss";
+// @import "pages/_pricing.scss";
 // @import "pages/_profile.scss";
 // @import "pages/_timeline.scss";
 // @import "pages/_extra_pages.scss";
@@ -56,7 +56,7 @@
 @import "plugins/_formwizard.scss";
 @import "plugins/_imagegallery.scss";
 @import "plugins/_maps.scss";
-@import "plugins/_tables.scss";
+// @import "plugins/_tables.scss";
 
 /*                 [7. UI ]                   */
 @import "ui/_alerts.scss";

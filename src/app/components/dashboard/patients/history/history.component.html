@@ -1,9 +1,12 @@
-<div class="container">
+<div class="container1">
     <div>
         <h2 style="font-weight: bold; text-align: center;">HISTORIAL CLÍNICO</h2>
     <div>
 
     <div *ngFor="let patient of patients">
+
+      <section class="example-container mat-elevation-z8" tabindex="0">
+
         <mat-tab-group mat-align-tabs="center" style="margin: 15px;" >
 
             <mat-tab label="Ficha de Identificación">
@@ -307,6 +310,7 @@
                 <h4 class="subtitle"> Genograma del paciente: </h4>
             </mat-tab>
         </mat-tab-group>
+      </section>
     </div>
 
     <div style="text-align: center;">

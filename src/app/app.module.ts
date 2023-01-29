@@ -33,6 +33,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { Page404Component } from './components/page404/page404.component';
 
+import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 
 @NgModule({
     declarations: [
@@ -67,6 +68,7 @@ import { Page404Component } from './components/page404/page404.component';
         ReactiveFormsModule,
         DateTimePickerModule,
         MaterialModule,
+        MdbCarouselModule
     ],
     providers: [],
     bootstrap: [AppComponent]

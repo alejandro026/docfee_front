@@ -22,7 +22,7 @@ export class NavbarloginComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       // this.consultarTodos2();
-      alert('Iniciar sesion')
+      // alert('Iniciar sesion')
     });
   }
 
