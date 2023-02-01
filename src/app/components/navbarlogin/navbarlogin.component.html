@@ -1,16 +1,24 @@
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 
-<mat-toolbar style="height:75px;">
+<mat-toolbar class="fixed" style="height:75px;">
   <div class="col-8">
     <img src="./assets/images/Logo.png" width="250" height="75" routerLink="/dashboard/homepage">
   </div>
 
   <div class="col-1">
-    <a class="texto" href="" style="color: #FFFFFF">Nosotros</a>
+    <a href="" class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">
+      Nosotros
+    </a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#quienesSomos">¿Quiénes somos?</a></li>
+      <li><a class="dropdown-item" href="#mision">Misión</a></li>
+      <li><a class="dropdown-item" href="#vision">Visión</a></li>
+      <li><a class="dropdown-item" href="#valores">Valores</a></li>
+    </ul>
   </div>
   <div class="col-1">
-    <a href="" class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">
+    <a  class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">
       Servicios
     </a>
     <ul class="dropdown-menu">
@@ -19,11 +27,9 @@
       <li><a class="dropdown-item" href="#especialidades">Especialidades</a></li>
     </ul>
   </div>
-  <div class="col-1">
-    <a class="texto" href="" style="color: #FFFFFF">Contacto</a>
-  </div>
-  <div class="col-1">
-    <button type="button" class="btn btn-outline-info" data-toggle="modal" (click)="iniciarSesion()">Iniciar Sesión</button>
+  
+  <div class="col-1" >
+    <button type="button" class="btn btn-outline-info" data-toggle="modal" (click)="iniciarSesion()" >Iniciar Sesión</button>
       <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -44,6 +50,9 @@
 
     </div>
   </div>
+  </div>
+  <div class="col-1">
+    <button type="button" class="btn btn-info" data-toggle="modal" >Regístrate</button>
   </div>
 </mat-toolbar>
 <!--

@@ -27,6 +27,8 @@ import { RecetaComponent } from './receta/receta.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
+import { NosotrosComponent } from './nosotros/nosotros.component';
+import { ServiciosComponent } from './servicios/servicios.component';
 
 
 @NgModule({
@@ -47,7 +49,7 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 
     RecetaComponent,
     NuevaCitaComponent,
-    NuevaRecetaComponent,BreadcrumbComponent
+    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent
 
   ],
   imports: [

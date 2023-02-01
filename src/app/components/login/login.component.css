@@ -6,3 +6,25 @@
   padding-top: 7em;
   padding-bottom: 5em;
 }
+
+.titulo{
+  font-size: 50px;
+  color:  white;
+  text-align: left;
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+h1{
+  font-size: 50px;
+  color:  #002b5c;
+  font-weight: bold;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h2{
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+}
+

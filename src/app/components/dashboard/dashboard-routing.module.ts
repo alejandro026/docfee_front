@@ -17,6 +17,7 @@ import { RecetaComponent } from './receta/receta.component';
 
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
+import { ServiciosComponent } from './servicios/servicios.component';
 
 
 
@@ -42,6 +43,7 @@ const routes: Routes = [
       { path: 'nuevaCita', component: NuevaCitaComponent, data:{titulo:'nuevaCita'}},
 
       { path: 'nuevaReceta', component: NuevaRecetaComponent, data:{titulo:'nuevaReceta'}},
+      { path: 'servicios', component: ServiciosComponent, data:{titulo:'servicios'}},
 
 
 

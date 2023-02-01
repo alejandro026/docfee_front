@@ -5,6 +5,9 @@ mat-toolbar {
   /* font-weight: 550 ; */
   /* height: 7%; */
   display: flex;
+  position: fixed;
+  z-index: 10;
+
 }
 
 .texto{
