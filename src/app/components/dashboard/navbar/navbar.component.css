@@ -44,3 +44,45 @@ mat-toolbar {
   color: whitesmoke;
   overflow: hidden;
 }
+
+.center-div {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .center-div {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+
+.imagen{
+  /* margin-top: 1em; */
+  /* margin-left: 2em; */
+}
+
+@media (max-width: 1199.98px) {
+  .d-flex {
+    display: flex !important;
+  }
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  .flex-wrap {
+    flex-wrap: wrap !important;
+  }
+}
+
+
+.imagenLogo{
+  /* width: 50px; */
+  text-align: right;
+}
+
+@media only screen and (max-width: 575px) {
+  .imagenLogo {
+    display: block;
+    margin: 0 auto;
+  }
+}
