@@ -5,7 +5,8 @@ import { Solicitud } from './../../_models/solicitud';
 import { LoginUsuario } from './../../_models/loginUsuario';
 import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ReCaptcha2Component } from 'ngx-captcha';
 
 @Component({
   selector: 'app-login-form',
@@ -17,6 +18,23 @@ export class LoginFormComponent implements OnInit {
   form: UntypedFormGroup
   hide = true
 
+  key: string="6Lfznr8kAAAAAJ5mxeuPpjSbuGcGAQ-zt3vBWvf7";
+
+
+  @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
+  @ViewChild('langInput') langInput: ElementRef;
+
+  public captchaIsLoaded = false;
+  public captchaSuccess = false;
+  public captchaIsExpired = false;
+  public captchaResponse?: string;
+
+  public theme: 'light' | 'dark' = 'light';
+  public size: 'compact' | 'normal' = 'normal';
+  public lang = 'es';
+  public type: 'image' | 'audio';
+
+
   constructor(
     public fb: UntypedFormBuilder,
     public _snackBar: MatSnackBar,
@@ -26,7 +44,8 @@ export class LoginFormComponent implements OnInit {
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
-      contraseña: ["", Validators.required]
+      contraseña: ["", Validators.required],
+      recaptcha: ['', Validators.required]
     })
   };
 
@@ -151,6 +170,14 @@ export class LoginFormComponent implements OnInit {
   cerrarDialog(){
     this.dialogRef.close({data:0});
     // this.hide=true;
+  }
+
+  reset(): void {
+    this.captchaElem.resetCaptcha();
+  }
+
+  handleSuccess(data:any) {
+    console.log(data);
   }
 
 }

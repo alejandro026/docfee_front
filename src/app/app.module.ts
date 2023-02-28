@@ -35,6 +35,9 @@ import { Page404Component } from './components/page404/page404.component';
 
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 
+import { NgxCaptchaModule } from 'ngx-captcha';
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -68,7 +71,8 @@ import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
         ReactiveFormsModule,
         DateTimePickerModule,
         MaterialModule,
-        MdbCarouselModule
+        MdbCarouselModule,
+        NgxCaptchaModule
     ],
     providers: [],
     bootstrap: [AppComponent]

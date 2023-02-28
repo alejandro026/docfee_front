@@ -16,6 +16,13 @@
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
+                <div class="row">
+                    <ngx-recaptcha2 #captchaElem siteKey="{{key}}" (success)="handleSuccess($event)" [size]="size"
+                      [hl]="lang" [theme]="theme" [type]="type" formControlName="recaptcha">
+                    </ngx-recaptcha2>
+                </div>
+
+
                 <h5 class="password">¿Olvidaste la contraseña?</h5>
                 <br>
                 <button class="button" type="submit" mat-raised-button color="success" [disabled]="form.invalid">Ingresar</button>
