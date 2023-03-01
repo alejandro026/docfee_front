@@ -150,3 +150,9 @@ th.mat-column-position, td.mat-column-position {
 .clase{
   color: black;
 }
+
+
+.demo-inline-calendar-card {
+  width: 300px;
+  border: 1px solid#002b5c;
+}

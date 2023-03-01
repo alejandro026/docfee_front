@@ -6,12 +6,12 @@ import { PatientComponent } from '../patients/patient/patient.component';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css', './custom-theme.scss']
+  styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
 
   sesion:LoginUsuario=JSON.parse(sessionStorage.getItem('sesion')!);
-
+  selected: Date | null;
 
   constructor(public dialog: MatDialog,) { }
 
