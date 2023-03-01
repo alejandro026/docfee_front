@@ -1,3 +1,5 @@
+import { RegistroComponent } from './components/registro/registro.component';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './material/material.module';
@@ -38,6 +40,11 @@ import { CargarScriptService } from './services/cargar-script.service';
 import { MapaSitioComponent } from './components/mapa-sitio/mapa-sitio.component';
 
 
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,6 +54,8 @@ import { MapaSitioComponent } from './components/mapa-sitio/mapa-sitio.component
         LoginFormComponent,
         Page404Component,
         MapaSitioComponent
+        ResetPasswordComponent,
+        RegistroComponent
     ],
     imports: [
         BrowserModule,
@@ -72,7 +81,9 @@ import { MapaSitioComponent } from './components/mapa-sitio/mapa-sitio.component
         ReactiveFormsModule,
         DateTimePickerModule,
         MaterialModule,
-        MdbCarouselModule
+        MdbCarouselModule,
+        NgxCaptchaModule,
+        MdbCollapseModule
     ],
     providers: [
         CargarScriptService
