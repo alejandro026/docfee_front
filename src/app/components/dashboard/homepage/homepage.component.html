@@ -1,11 +1,7 @@
 <div class="container1">
-    <div class="left">
-        <mat-card class="homepage-card mat-elevation-z8">
+        <mat-card class="homepage-card mat-elevation2">
             <div class="row">
                 <div class="">
-
-
-
                   <nav class="navbar navbar-expand-lg navbar-light bg-light">
                     <div class="container-fluid">
                       <nav aria-label="breadcrumb">
@@ -18,45 +14,20 @@
 
                     <mat-card class="first">
                         <img src="./assets/images/doctor.png" class="doctor">
-                        <h1 class="title">Historias Clínicas Digitales</h1>
+                        <h1 >Historias Clínicas Digitales</h1>
                         <mat-card-content>
                             <p>
                                 Docfee es la mejor herramienta para gestionar las historias clínicas de todos tus pacientes en cualquier momento, desde cualquier dispositivo.
                             </p>
                         </mat-card-content>
-                    </mat-card>
 
-                    <h4 class="subtitle">Pacientes</h4>
-                    <mat-card>
-                        <button mat-raised-button class="buttons" routerLink="/dashboard/patients" disabled="sesion.tipoUsuario=='PACIENTE'">
-                            <img src="./assets/images/folder.png" class="icon">
-                            <h2 class="options">Ver lista de pacientes</h2>
-                        </button>
-                        <button mat-raised-button class="buttons" routerLink="/dashboard/patients" (click)="onCreate()" disabled="sesion.tipoUsuario=='PACIENTE'">
-                            <img src="./assets/images/list.png" class="icon">
-                            <h2 class="options">Añadir historial</h2>
-                        </button>
-                        <button mat-raised-button class="buttons" disabled="sesion.tipoUsuario=='PACIENTE'">
-                            <img src="./assets/images/calendar.png" class="icon">
-                            <h2 class="options">Añadir cita</h2>
-                        </button>
-                    </mat-card>
+                        <div class="calendar-wrapper">
+                            <igx-calendar [weekStart]="1"></igx-calendar>
+                        </div>
 
-                    <h4 class="subtitle">Documentos</h4>
-                    <mat-card style="text-align: left;">
-                        No hay documentos
                     </mat-card>
                 </div>
             </div>
         </mat-card>
-    </div>
-    <div class="right">
-        <div class="calendar-wrapper">
-            <igx-calendar [weekStart]="1"></igx-calendar>
-        </div>
-        <mat-card class="right-side" style="padding: 15px;">
-            <h4 style="font-weight: bold;"> Notificaciones </h4>
-            <h5> No hay notificaciones para mostrar</h5>
-        </mat-card>
-    </div>
+
 </div>

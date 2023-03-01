@@ -35,22 +35,18 @@ const routes: Routes = [
       { path: 'tratamiento', component: TratamientoComponent, data:{titulo:'tratamiento'}},
       { path: 'expediente', component: ExpedienteComponent, data:{titulo:'expediente'}},
       { path: 'detalleExpedinete', component: DetalleExpedienteComponent, data:{titulo:'detalleExpediente'}},
-
       { path: 'receta', component: RecetaComponent, data:{titulo:'receta'}},
-
-
-
       { path: 'nuevaCita', component: NuevaCitaComponent, data:{titulo:'nuevaCita'}},
-
       { path: 'nuevaReceta', component: NuevaRecetaComponent, data:{titulo:'nuevaReceta'}},
       { path: 'servicios', component: ServiciosComponent, data:{titulo:'servicios'}},
 
 
 
 
-
     ]},
   { path: 'login', component: LoginComponent, pathMatch: 'full'  },
+  
+
   
 ];
 

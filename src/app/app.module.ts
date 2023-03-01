@@ -34,6 +34,9 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { Page404Component } from './components/page404/page404.component';
 
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
+import { CargarScriptService } from './services/cargar-script.service';
+import { MapaSitioComponent } from './components/mapa-sitio/mapa-sitio.component';
+
 
 @NgModule({
     declarations: [
@@ -42,7 +45,8 @@ import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
         NavbarloginComponent,
         FooterComponent,
         LoginFormComponent,
-        Page404Component
+        Page404Component,
+        MapaSitioComponent
     ],
     imports: [
         BrowserModule,
@@ -70,7 +74,9 @@ import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
         MaterialModule,
         MdbCarouselModule
     ],
-    providers: [],
+    providers: [
+        CargarScriptService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,10 +1,16 @@
 import { Solicitud } from './../../_models/solicitud';
 import { CitasService } from './../../services/sesion.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LoginUsuario } from 'src/app/_models/loginUsuario';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginFormComponent } from '../login-form/login-form.component';
+import { CargarScriptService } from 'src/app/services/cargar-script.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { Usuario } from 'src/app/_models/usuario';
+
 
 @Component({
   selector: 'app-login',
@@ -17,19 +23,39 @@ export class LoginComponent implements OnInit {
   hide = true
 
   constructor(
+    private cargaScripts:CargarScriptService, 
+    private elRef: ElementRef, 
+    private renderer: Renderer2,
     public fb: UntypedFormBuilder,
     public _snackBar: MatSnackBar,
     public router: Router,
-    private citasService:CitasService
+    private citasService:CitasService,
+
+    private dialog: MatDialog,
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
       contraseña: ["", Validators.required]
     })
+    cargaScripts.Carga(['login/login'])
   };
+  
+  dataSource: MatTableDataSource<Usuario>;
 
   ngOnInit(): void {
+    
   };
+
+  
+  iniciarSesion(){
+    const dialogRef = this.dialog.open(LoginFormComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // this.consultarTodos2();
+      // alert('Iniciar sesion')
+    });
+  }
 
   ingresar() {
     sessionStorage.clear();
@@ -69,6 +95,11 @@ export class LoginComponent implements OnInit {
     }
   };
 
+  //Manipulación del DOM
+  deslizar(){
+    
+  }
+  
   
   tsparticles = "tsparticles";
 

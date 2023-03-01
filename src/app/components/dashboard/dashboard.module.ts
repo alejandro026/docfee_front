@@ -21,7 +21,7 @@ import { TratamientoComponent } from './tratamiento/tratamiento.component';
 import { ExpedienteComponent } from './expediente/expediente.component';
 import { DetalleExpedienteComponent } from './detalle-expediente/detalle-expediente.component';
 import { AgregarComponent } from './prueba/agregar/agregar.component';
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 import { RecetaComponent } from './receta/receta.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
