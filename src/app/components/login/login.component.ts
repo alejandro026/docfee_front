@@ -33,6 +33,8 @@ export class LoginComponent implements OnInit {
     private citasService:CitasService,
 
     private dialog: MatDialog,
+    private navigationService: NavigationService,
+    private  elementRef: ElementRef
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
