@@ -1,9 +1,8 @@
 <div class="body">
-    <!--<ng-particles id="tsparticles" [options]="particlesOptions"></ng-particles>-->
     <div>
         <mat-card class="login-card">
             <h1 style="font: 150%;">Docfee</h1>
-            <form [formGroup]="form" (ngSubmit)="ingresar()">
+            <form [formGroup]="form">
                 <h2>Iniciar Sesión</h2>
                 <mat-form-field class="form-field" appearance="fill">
                     <mat-label>Usuario o Cédula</mat-label>
@@ -23,11 +22,20 @@
                 </div>
 
 
-                <h5 class="password">¿Olvidaste la contraseña?</h5>
-                <br>
-                <button class="button" type="submit" mat-raised-button color="success" [disabled]="form.invalid">Ingresar</button>
-                <h5 class="registro">Registrate aquí</h5>
+                <label class="label">
+                  <a (click)="reinicarPassword()" class="label-text-alt link link-hover">Olvidaste tu contraseña?</a>
+              </label>
+
+              <br>
+                <button class="button" (click)="login()"  type="submit" mat-raised-button color="success" [disabled]="form.invalid">Ingresar</button>
+                <!-- <h5 class="registro">Registrate aquí</h5> -->
             </form>
+
+            <div *ngIf="failedLogin" class="alert alert-error alerta">
+              <div>
+                  <span>{{failedLoginMessage}}</span>
+              </div>
+          </div>
         </mat-card>
     </div>
 </div>

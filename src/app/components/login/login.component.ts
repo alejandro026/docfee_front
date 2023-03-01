@@ -1,6 +1,7 @@
+import { NavigationService } from './../../services/navigation.Service';
 import { Solicitud } from './../../_models/solicitud';
 import { CitasService } from './../../services/sesion.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -20,7 +21,9 @@ export class LoginComponent implements OnInit {
     public fb: UntypedFormBuilder,
     public _snackBar: MatSnackBar,
     public router: Router,
-    private citasService:CitasService
+    private citasService:CitasService,
+    private navigationService: NavigationService,
+    private elementRef: ElementRef
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.animacionHref();
   };
 
   ingresar() {
@@ -69,7 +73,7 @@ export class LoginComponent implements OnInit {
     }
   };
 
-  
+
   tsparticles = "tsparticles";
 
   particlesOptions = {
@@ -140,4 +144,14 @@ export class LoginComponent implements OnInit {
       }
     }
   };
+
+
+  animacionHref(){
+    this.navigationService.navigateToSection$.subscribe(sectionId => {
+      const sectionElement = this.elementRef.nativeElement.querySelector(`#${sectionId}`);
+      sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.body.style.scrollPaddingTop = '10%';
+    });
+  }
+
 }

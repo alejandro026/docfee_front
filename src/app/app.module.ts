@@ -1,3 +1,5 @@
+import { RegistroComponent } from './components/registro/registro.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './material/material.module';
@@ -36,6 +38,7 @@ import { Page404Component } from './components/page404/page404.component';
 import { MdbCarouselModule } from 'mdb-angular-ui-kit/carousel';
 
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 
 
 @NgModule({
@@ -45,7 +48,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
         NavbarloginComponent,
         FooterComponent,
         LoginFormComponent,
-        Page404Component
+        Page404Component,
+        ResetPasswordComponent,
+        RegistroComponent
     ],
     imports: [
         BrowserModule,
@@ -72,7 +77,8 @@ import { NgxCaptchaModule } from 'ngx-captcha';
         DateTimePickerModule,
         MaterialModule,
         MdbCarouselModule,
-        NgxCaptchaModule
+        NgxCaptchaModule,
+        MdbCollapseModule
     ],
     providers: [],
     bootstrap: [AppComponent]
