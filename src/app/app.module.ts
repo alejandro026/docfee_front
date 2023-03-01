@@ -53,7 +53,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
         FooterComponent,
         LoginFormComponent,
         Page404Component,
-        MapaSitioComponent
+        MapaSitioComponent,
         ResetPasswordComponent,
         RegistroComponent
     ],
