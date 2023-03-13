@@ -22,7 +22,7 @@
   text-align: center;
   border-radius: 10px;
   z-index: 10;
-  background-color: #F7F7F7
+  background-color: #ffffff
 }
 
 .button {
@@ -50,4 +50,10 @@
 
 .alerta{
   color: red !important;
+}
+
+
+.rl{
+  padding-left: 21px;
+  padding-top: 20px;
 }

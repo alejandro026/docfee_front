@@ -3,7 +3,7 @@ import { RegistroComponent } from './../registro/registro.component';
 import { LoginFormComponent } from './../login-form/login-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 @Component({
   selector: 'app-navbarlogin',
   templateUrl: './navbarlogin.component.html',
@@ -11,36 +11,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarloginComponent implements OnInit {
 
+  ref: DynamicDialogRef;
+
   constructor(
     private dialog: MatDialog,
-    private navigationService: NavigationService
+    private navigationService: NavigationService,
+    public dialogService: DialogService
   ) { }
 
   ngOnInit(): void {
   }
 
+  ngOnDestroy() {
+    if (this.ref) {
+      this.ref.close();
+    }
+  }
+
   iniciarSesion(){
-    const dialogRef = this.dialog.open(LoginFormComponent, {
-      width: "22%",
-      // height: "55%",
-      // disableClose: true
+    this.ref = this.dialogService.open(LoginFormComponent, {
+      header: "Iniciar Sesión",
+      contentStyle: {"max-height": "500px", "overflow": "auto"},
+      baseZIndex: 10000
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // this.consultarTodos2();
-      // alert('Iniciar sesion')
-    });
   }
 
   registrarUsuario(){
-    const dialogRef = this.dialog.open(RegistroComponent, {
-      width: "22%",
-      // height: "55%",
-      // disableClose: true
+    this.ref = this.dialogService.open(RegistroComponent, {
+      header: "Registro",
+      contentStyle: {"max-height": "500px", "overflow": "auto"},
+      baseZIndex: 10000
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    // });
   }
 
   navigateToSection(sectionId: string) {

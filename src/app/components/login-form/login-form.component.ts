@@ -11,6 +11,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import Swal from 'sweetalert2'
 import { Util } from 'src/app/utils/util';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-login-form',
@@ -40,7 +41,7 @@ export class LoginFormComponent implements OnInit {
   public captchaResponse?: string;
 
   public theme: 'light' | 'dark' = 'light';
-  public size: 'compact' | 'normal' = 'normal';
+  // public size: 'compact' | 'normal' = 'normal';
   public lang = 'es';
   public type: 'image' | 'audio';
 
@@ -50,9 +51,10 @@ export class LoginFormComponent implements OnInit {
     public _snackBar: MatSnackBar,
     public router: Router,
     private citasService:CitasService,
-    public dialogRef: MatDialogRef<LoginFormComponent>,
+    // public dialogRef: MatDialogRef<LoginFormComponent>,
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    public ref: DynamicDialogRef, public config: DynamicDialogConfig
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
@@ -180,7 +182,7 @@ export class LoginFormComponent implements OnInit {
 
 
   cerrarDialog(){
-    this.dialogRef.close({data:0});
+    this.ref.close({data:0});
     // this.hide=true;
   }
 
