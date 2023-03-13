@@ -1,9 +1,7 @@
-import { Util } from './../../../utils/util';
 import  Swal  from 'sweetalert2';
 import { AuthService } from './../../../services/AuthService.service';
 import { LoginUsuario } from './../../../_models/loginUsuario';
 import { cerrarServices } from './../../../services/cerrar-session.service';
-import { LoginComponent } from './../../login/login.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -58,8 +56,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
 
     this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
-
-    this.authService.getTokenExpiration().subscribe((data) => {
+    let tiempo:Date= new Date();
+    this.authService.getTokenExpiration(tiempo).subscribe((data) => {
       console.log(data);
       this.cerrarSesion2();
     });
@@ -81,23 +79,26 @@ export class NavbarComponent implements OnInit {
   async cerrarSesion2(){
     console.log(this.sesion);
 
-    this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
-      console.log(data);
-    });
-    //this.cerrarSesion();
-    sessionStorage.clear();
-
     await Swal.fire({
-      icon: 'error',
-      title: 'Tu sesion a caducado',
-      showDenyButton: false,
+      title: 'Tu sesion ha caducado.',
+      text: '¿Deseas renovar?',
+      icon: 'warning',
+      showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: 'OK',
-      denyButtonText: ``,
-      allowOutsideClick: false
-    }).then((result:any) => {
+      confirmButtonText: 'Si',
+      denyButtonText: `No`,
+      allowOutsideClick: true,
+    }).then((result) => {
       if (result.isConfirmed) {
-         this.router.navigate(['/login']);
+        this.authService.getTokenExpiration(new Date()).subscribe((data) => {
+          this.cerrarSesion2();
+        });
+      } else if (result.isDenied) {
+          this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
+            console.log(data);
+          });
+          sessionStorage.clear();
+          this.router.navigate(['/login']);
       }
     })
   }

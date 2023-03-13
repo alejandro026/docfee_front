@@ -71,7 +71,7 @@ export class AuthService {
         return this.auth.user;
     }
 
-    getTokenExpiration(): Observable<void> {
+    getTokenExpiration(fecha:Date): Observable<void> {
       return new Observable(observer => {
         this.auth.onIdTokenChanged(user => {
           if (user!=null) {
@@ -79,12 +79,12 @@ export class AuthService {
               const expirationTime =token.expirationTime;
               let tiempo= new Date(expirationTime).getTime();
 
-              //Datos de prueba
-              let dateN= new Date();
-              dateN.setMinutes(dateN.getMinutes() + 1);
+              // //Datos de prueba
+              // let dateN= new Date();
+              fecha.setMinutes(fecha.getMinutes() + 1);
 
               const now = new Date().getTime();
-              const expiresIn = dateN.getTime() - now;
+              const expiresIn = fecha.getTime() - now;
               setTimeout(() => {
                 observer.next();
               }, expiresIn);
@@ -92,6 +92,10 @@ export class AuthService {
           }
         });
       });
+    }
+
+    renovarSesion(){
+
     }
 
 }
