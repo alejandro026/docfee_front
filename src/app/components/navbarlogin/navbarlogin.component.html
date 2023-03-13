@@ -1,53 +1,58 @@
+  <mat-toolbar class="fixed-top" style="height:75px;">
+    <div class="col d-none d-xl-block imagen">
+      <img src="./assets/images/Logo.png" width="250" height="75" routerLink="/dashboard/homepage">
+    </div>
+    <div class="col"></div>
+    <div class="col"></div>
+    <div class="col"></div>
+    
+    
+    <div class="col-auto">
+      <a href="" class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+        style="color: #FFFFFF">
+        Nosotros
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="navigateToSection('quienesSomos')">¿Quiénes somos?</a></li>
+        <li><a class="dropdown-item" (click)="navigateToSection('mision')">Misión</a></li>
+        <li><a class="dropdown-item" (click)="navigateToSection('vision')">Visión</a></li>
+        <li><a class="dropdown-item" (click)="navigateToSection('valores')">Valores</a></li>
+      </ul>
+    </div>
+    <div class="col-auto">
+      <a class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+        style="color: #FFFFFF">
+        Servicios
+      </a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="navigateToSection('hospitalizacion')">Área de hospitalización</a></li>
+        <li><a class="dropdown-item" (click)="navigateToSection('citas')">Agendar citas en línea</a></li>
+        <li><a class="dropdown-item" (click)="navigateToSection('especialidades')">Especialidades</a></li>
+      </ul>
+    </div>
 
-<mat-toolbar class="fixed" style="height:75px;">
-  <div class="col-8">
-    <img src="./assets/images/Logo.png" width="250" height="75" routerLink="/dashboard/homepage">
-  </div>
+    <div class="col-auto padding">
+      <button type="button" class="btn boton1" data-toggle="modal" (click)="iniciarSesion()" *ngIf="sesion==null">Iniciar Sesión</button>
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
 
-  <div class="col-1">
-    <a href="" class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">
-      Nosotros
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" (click)="navigateToSection('quienesSomos')">¿Quiénes somos?</a></li>
-      <li><a class="dropdown-item" (click)="navigateToSection('mision')">Misión</a></li>
-      <li><a class="dropdown-item" (click)="navigateToSection('vision')">Visión</a></li>
-      <li><a class="dropdown-item" (click)="navigateToSection('valores')">Valores</a></li>
-    </ul>
-  </div>
-  <div class="col-1">
-    <a  class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FFFFFF">
-      Servicios
-    </a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item">Área de hospitalización</a></li>
-      <li><a class="dropdown-item" (click)="navigateToSection('citas')">Agendar citas en línea</a></li>
-      <li><a class="dropdown-item" (click)="navigateToSection('especialidades')">Especialidades</a></li>
-    </ul>
-  </div>
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
 
-  <div class="col-1" >
-    <button type="button" class="btn btn-outline-info" data-toggle="modal" (click)="iniciarSesion()" >Iniciar Sesión</button>
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-
     </div>
-  </div>
-  </div>
-  <div class="col-1">
-    <button type="button" class="btn btn-info" data-toggle="modal" (click)="registrarUsuario()">Regístrate</button>
-  </div>
-</mat-toolbar>
+    <div class="col-auto padding">
+      <button type="button" class="btn boton1" data-toggle="modal" (click)="registrarUsuario()" *ngIf="sesion==null">Regístrate</button>
+    </div>
+  </mat-toolbar>

@@ -1,7 +1,9 @@
 .example-card {
   max-width: 400px;
 }
-
+.body{
+  padding-top: 2px;
+}
 .renglon{
   padding-top: 7em;
   padding-bottom: 5em;

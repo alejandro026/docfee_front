@@ -3,6 +3,7 @@ import { RegistroComponent } from './../registro/registro.component';
 import { LoginFormComponent } from './../login-form/login-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
+import { LoginUsuario } from 'src/app/_models/loginUsuario';
 
 @Component({
   selector: 'app-navbarlogin',
@@ -16,7 +17,11 @@ export class NavbarloginComponent implements OnInit {
     private navigationService: NavigationService
   ) { }
 
+  sesion:LoginUsuario;
+  
   ngOnInit(): void {
+    this.sesion= JSON.parse(sessionStorage.getItem('sesion')!);
+    console.log(this.sesion)
   }
 
   iniciarSesion(){

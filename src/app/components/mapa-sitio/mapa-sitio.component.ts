@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationService } from 'src/app/services/navigation.Service';
 
 @Component({
   selector: 'app-mapa-sitio',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapaSitioComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private navigationService: NavigationService
+  ) { }
 
   ngOnInit(): void {
   }
 
+  navigateToSection(sectionId: string) {
+    this.navigationService.navigateToSection(sectionId);
+  }
 }

@@ -2,7 +2,6 @@ mat-toolbar {
   background: #002b5c;
   color: white;
   display: flex;
-  position: fixed;
   z-index: 10;
 
 }
@@ -11,4 +10,16 @@ mat-toolbar {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.boton1 {
+  background: #38B6FF;
+  color: #002b5c;
+}
+
+.padding{
+  padding-right: 1%;
+  padding-left: 1%;
+}
+.padding2{
+  padding-right: 25%;
+}
 
