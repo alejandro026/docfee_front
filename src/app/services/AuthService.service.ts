@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { LoginUsuario } from './../_models/loginUsuario';
 import { Injectable } from '@angular/core';
@@ -68,6 +69,29 @@ export class AuthService {
 
     get currentUser() {
         return this.auth.user;
+    }
+
+    getTokenExpiration(): Observable<void> {
+      return new Observable(observer => {
+        this.auth.onIdTokenChanged(user => {
+          if (user!=null) {
+            user.getIdTokenResult().then(token => {
+              const expirationTime =token.expirationTime;
+              let tiempo= new Date(expirationTime).getTime();
+
+              //Datos de prueba
+              let dateN= new Date();
+              dateN.setMinutes(dateN.getMinutes() + 1);
+
+              const now = new Date().getTime();
+              const expiresIn = dateN.getTime() - now;
+              setTimeout(() => {
+                observer.next();
+              }, expiresIn);
+            });
+          }
+        });
+      });
     }
 
 }

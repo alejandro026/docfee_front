@@ -20,8 +20,8 @@ export class HomepageComponent {
 
   onCreate() {
     const dialogRef = this.dialog.open(PatientComponent, {
-      width: "100%",
-      height: "90%",
+      // width: "100%",
+      // height: "90%",
       disableClose: true,
     });
 

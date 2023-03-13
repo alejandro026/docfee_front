@@ -57,7 +57,7 @@ export class LoginFormComponent implements OnInit {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
       contraseña: ["", Validators.required],
-      recaptcha: ['', Validators.required]
+      recaptcha: ''
     })
   };
 
@@ -66,12 +66,12 @@ export class LoginFormComponent implements OnInit {
 
   ingresar() {
     sessionStorage.clear();
-    let usuario = this.form.value.usuario;
-    let contraseña = this.form.value.contraseña;
+    let usuario =this.form.get('usuario')?.value;
+    // let contraseña = this.form.value.contraseña;
 
     let solicitud:Solicitud=new Solicitud();
     solicitud.usuario=usuario;
-    solicitud.password=contraseña;
+    solicitud.password="";
 
     this.citasService.consultarUsuario(solicitud).subscribe(data => {
       if(data.approved==true){
@@ -81,8 +81,8 @@ export class LoginFormComponent implements OnInit {
 
 
       }else{
-        this.error();
-      this.form.reset();
+        // this.error();
+      // this.form.reset();
       }
     });
   };
@@ -231,20 +231,22 @@ export class LoginFormComponent implements OnInit {
         }
 
         if(valicacion){
-          sessionStorage.clear();
-          let data:LoginUsuario={
-            id:"",
-            approved:true,
-            mensaje: "",
-            nombre: "33434345",
-            tipoUsuario: "MEDICO",
-            token: ""
+          this.ingresar();
 
-          }
-          sessionStorage.setItem('sesion', JSON.stringify(data));
+          // sessionStorage.clear();
+          // let data:LoginUsuario={
+          //   id:"",
+          //   approved:true,
+          //   mensaje: "",
+          //   nombre: "33434345",
+          //   tipoUsuario: "MEDICO",
+          //   token: ""
 
-          this.router.navigate(["dashboard"]);
-          this.cerrarDialog();
+          // }
+          // sessionStorage.setItem('sesion', JSON.stringify(data));
+
+          // this.router.navigate(["dashboard"]);
+          // this.cerrarDialog();
         }
 
 

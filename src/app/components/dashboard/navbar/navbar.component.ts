@@ -1,3 +1,6 @@
+import { Util } from './../../../utils/util';
+import  Swal  from 'sweetalert2';
+import { AuthService } from './../../../services/AuthService.service';
 import { LoginUsuario } from './../../../_models/loginUsuario';
 import { cerrarServices } from './../../../services/cerrar-session.service';
 import { LoginComponent } from './../../login/login.component';
@@ -28,7 +31,10 @@ export class NavbarComponent implements OnInit {
     fb: UntypedFormBuilder,
     public observer: BreakpointObserver,
     private router: Router,
-    private cerrarServices: cerrarServices
+    private cerrarServices: cerrarServices,
+
+    //Token
+    private authService: AuthService
   ) {
     this.options = fb.group({
       bottom: 0,
@@ -53,6 +59,10 @@ export class NavbarComponent implements OnInit {
 
     this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
 
+    this.authService.getTokenExpiration().subscribe((data) => {
+      console.log(data);
+      this.cerrarSesion2();
+    });
 
   }
 
@@ -66,6 +76,30 @@ export class NavbarComponent implements OnInit {
     sessionStorage.clear();
     await this.router.navigate(['/login']);
    return false;
+  }
+
+  async cerrarSesion2(){
+    console.log(this.sesion);
+
+    this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
+      console.log(data);
+    });
+    //this.cerrarSesion();
+    sessionStorage.clear();
+
+    await Swal.fire({
+      icon: 'error',
+      title: 'Tu sesion a caducado',
+      showDenyButton: false,
+      showCancelButton: false,
+      confirmButtonText: 'OK',
+      denyButtonText: ``,
+      allowOutsideClick: false
+    }).then((result:any) => {
+      if (result.isConfirmed) {
+         this.router.navigate(['/login']);
+      }
+    })
   }
 
 }
