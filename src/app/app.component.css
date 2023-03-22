@@ -1,0 +1,9 @@
+@import "~primeicons/primeicons.css";
+
+.ui-dialog .ui-dialog-titlebar-icon {
+  display: none;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+  justify-content: center;
+}

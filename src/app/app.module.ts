@@ -43,6 +43,15 @@ import { MapaSitioComponent } from './components/mapa-sitio/mapa-sitio.component
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { MdbCollapseModule } from 'mdb-angular-ui-kit/collapse';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ButtonModule } from 'primeng/button';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { TableModule } from 'primeng/table';
+import { DialogService } from 'primeng/dynamicdialog';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {MenuItem} from 'primeng/api';
+              //api
 
 
 @NgModule({
@@ -83,10 +92,21 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
         MaterialModule,
         MdbCarouselModule,
         NgxCaptchaModule,
-        MdbCollapseModule
+        MdbCollapseModule,
+        ButtonModule,
+        DynamicDialogModule,
+        DialogModule,
+        ToastModule,
+        TableModule,
+        AccordionModule,
+        DialogModule
+
     ],
     providers: [
-        CargarScriptService
+        CargarScriptService,
+        DialogService,
+        DialogModule
+
     ],
     bootstrap: [AppComponent]
 })

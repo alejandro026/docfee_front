@@ -1,6 +1,6 @@
 mat-toolbar {
   background: #002b5c;
-  color: white;
+  color: rgb(255, 255, 255);
   display: flex;
   z-index: 10;
 

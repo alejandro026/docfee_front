@@ -11,7 +11,7 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 import { CargarScriptService } from 'src/app/services/cargar-script.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/_models/usuario';
-
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-login',
@@ -22,10 +22,11 @@ export class LoginComponent implements OnInit {
 
   form: UntypedFormGroup
   hide = true
+  ref: DynamicDialogRef;
 
   constructor(
-    private cargaScripts:CargarScriptService, 
-    private elRef: ElementRef, 
+    private cargaScripts:CargarScriptService,
+    private elRef: ElementRef,
     private renderer: Renderer2,
     public fb: UntypedFormBuilder,
     public _snackBar: MatSnackBar,
@@ -34,7 +35,8 @@ export class LoginComponent implements OnInit {
 
     private dialog: MatDialog,
     private navigationService: NavigationService,
-    private  elementRef: ElementRef
+    private  elementRef: ElementRef,
+    public dialogService: DialogService
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
@@ -42,22 +44,25 @@ export class LoginComponent implements OnInit {
     })
     cargaScripts.Carga(['login/login'])
   };
-  
+
   dataSource: MatTableDataSource<Usuario>;
 
   ngOnInit(): void {
     this.animacionHref();
   };
 
-  
+
   iniciarSesion(){
-    const dialogRef = this.dialog.open(LoginFormComponent, {
+    this.ref = this.dialogService.open(LoginFormComponent, {
+      width: '700%',
+            contentStyle: {"max-height": "500px", "overflow": "auto"},
+            baseZIndex: 10000
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      // this.consultarTodos2();
-      // alert('Iniciar sesion')
-    });
+    // this.ref.afterClosed().subscribe((result) => {
+    //   // this.consultarTodos2();
+    //   // alert('Iniciar sesion')
+    // });
   }
 
   ingresar() {
@@ -98,9 +103,9 @@ export class LoginComponent implements OnInit {
     }
   };
 
-  
-  
-  
+
+
+
   tsparticles = "tsparticles";
 
   particlesOptions = {

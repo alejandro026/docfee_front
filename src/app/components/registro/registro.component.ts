@@ -1,3 +1,4 @@
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Util } from 'src/app/utils/util';
 import { ReCaptcha2Component } from 'ngx-captcha';
@@ -47,7 +48,9 @@ export class RegistroComponent {
 
   constructor(
       private authService: AuthService,
-      public dialogRef: MatDialogRef<RegistroComponent>,
+      // public dialogRef: MatDialogRef<RegistroComponent>,
+      public ref: DynamicDialogRef, public config: DynamicDialogConfig
+
   ) {
       this.emailControl = new FormControl('', [Validators.required, Validators.pattern(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)]);
       this.passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
@@ -98,7 +101,7 @@ export class RegistroComponent {
   }
 
   cerrarDialog(){
-    this.dialogRef.close({data:0});
+    this.ref.close({data:0});
     // this.hide=true;
   }
 

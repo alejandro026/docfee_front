@@ -4,10 +4,12 @@ import { Page404Component } from './page404/page404.component';
 import { MapaSitioComponent } from './mapa-sitio/mapa-sitio.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RegistroComponent } from './registro/registro.component';
+import { DialogModule } from 'primeng/dialog';
+
 
 @NgModule({
   declarations: [BreadcrumbComponent, Page404Component, MapaSitioComponent],
-  imports: [],
+  imports: [DialogModule],
   exports: [ BreadcrumbComponent],
 })
 export class ComponentsModule {}
