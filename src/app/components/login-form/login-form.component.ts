@@ -141,10 +141,10 @@ export class LoginFormComponent implements OnInit {
 
 
 
-  // cerrarDialog(){
-  //   this.ref.close({data:0});
-  //   this.hide=true;
-  // }
+  cerrarDialog(){
+    this.ref.close({data:0});
+    // this.hide=true;
+  }
 
   reset(): void {
     this.captchaElem.resetCaptcha();
@@ -248,8 +248,9 @@ controlValidationClasses(constrolName: string) {
 
 
 reinicarPassword(){
+  this.cerrarDialog();
   const dialogRef = this.dialog.open(ResetPasswordComponent, {
-      width: "25%",
+      // width: "30%",
       // height: "55%",
       // disableClose: true
   });
