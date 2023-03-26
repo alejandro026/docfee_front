@@ -52,6 +52,8 @@ import { DialogService } from 'primeng/dynamicdialog';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';
               //api
+import { UserIdleModule } from 'angular-user-idle';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -99,7 +101,9 @@ import {MenuItem} from 'primeng/api';
         ToastModule,
         TableModule,
         AccordionModule,
-        DialogModule
+        DialogModule,
+        MatProgressBarModule,
+        UserIdleModule.forRoot({ timeout: 10, idle: 15 })
 
     ],
     providers: [

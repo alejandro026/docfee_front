@@ -1,3 +1,5 @@
+import { Usuario } from './../../_models/usuario';
+import { UsuarioService } from './../../services/usuario.service';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Util } from 'src/app/utils/util';
@@ -14,6 +16,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 })
 export class RegistroComponent {
 
+  // nombre:FormControl;
+  // apPaterno:FormControl;
+  // apMaterno:FormControl;
   emailControl: FormControl;
   passwordControl: FormControl;
   recaptcha: FormControl;
@@ -49,13 +54,15 @@ export class RegistroComponent {
   constructor(
       private authService: AuthService,
       // public dialogRef: MatDialogRef<RegistroComponent>,
-      public ref: DynamicDialogRef, public config: DynamicDialogConfig
+      public ref: DynamicDialogRef, public config: DynamicDialogConfig,
+      private usuarioService: UsuarioService
 
   ) {
       this.emailControl = new FormControl('', [Validators.required, Validators.pattern(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)]);
       this.passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
       this.recaptcha = new FormControl('',  [ Validators.required]);
       this.registerForm = new FormGroup({
+          // nombre: this.nombre,
           email: this.emailControl,
           password: this.passwordControl,
           recaptcha: this.recaptcha
@@ -89,6 +96,14 @@ export class RegistroComponent {
           // this.router.navigate(['app/tasks']);
           Util.succesaMessage('Se ha enviado un correo de confirmación.');
           this.cerrarDialog();
+
+          let usuarioBack:Usuario=new Usuario();
+
+
+          // this.usuarioService.guardarUsuario(usuarioBack).subscribe(data=> {
+          //   console.log(data);
+          // })
+
           // this.authService.sendVerificationMail();
       } catch (error: any) {
           this.failedRegister = true;

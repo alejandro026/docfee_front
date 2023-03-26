@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   mensajeWhatsapp(user:Mensaje):Observable<Usuario>{
-    let url="http://localhost:8083/mensaje/whatsapp";
+    let url="http://localhost:8083/mensaje/autorizacion";
     return this.http.post<Usuario>(url,user,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }

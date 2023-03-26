@@ -71,7 +71,7 @@ export class AuthService {
         return this.auth.user;
     }
 
-    getTokenExpiration(fecha:Date): Observable<void> {
+    getTokenExpiration(fecha:Date, detener:boolean): Observable<void> {
       return new Observable(observer => {
         this.auth.onIdTokenChanged(user => {
           if (user!=null) {
@@ -87,6 +87,9 @@ export class AuthService {
               const expiresIn = fecha.getTime() - now;
               setTimeout(() => {
                 observer.next();
+                if(detener){
+                  return;
+                }
               }, expiresIn);
             });
           }

@@ -1,3 +1,5 @@
+import { UsuarioService } from './../../services/usuario.service';
+import { Mensaje } from './../../_models/menaje';
 import { ResetPasswordComponent } from './../reset-password/reset-password.component';
 import { AuthService } from './../../services/AuthService.service';
 import { CitasService } from './../../services/sesion.service';
@@ -25,6 +27,8 @@ export class LoginFormComponent implements OnInit {
 
   key: string="6Lfznr8kAAAAAJ5mxeuPpjSbuGcGAQ-zt3vBWvf7";
 
+  cargandoLogin:boolean=false;
+
 
   @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
   @ViewChild('langInput') langInput: ElementRef;
@@ -46,6 +50,8 @@ export class LoginFormComponent implements OnInit {
   public type: 'image' | 'audio';
 
 
+
+
   constructor(
     public fb: UntypedFormBuilder,
     public _snackBar: MatSnackBar,
@@ -54,7 +60,8 @@ export class LoginFormComponent implements OnInit {
     // public dialogRef: MatDialogRef<LoginFormComponent>,
     private authService: AuthService,
     private dialog: MatDialog,
-    public ref: DynamicDialogRef, public config: DynamicDialogConfig
+    public ref: DynamicDialogRef, public config: DynamicDialogConfig,
+    private usuarioService:UsuarioService
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
@@ -77,8 +84,48 @@ export class LoginFormComponent implements OnInit {
 
     this.citasService.consultarUsuario(solicitud).subscribe(data => {
       if(data.approved==true){
-        sessionStorage.setItem('sesion', JSON.stringify(data));
-        this.loading(data);
+
+
+        let usuario: Mensaje= new Mensaje();
+        const randomNumber = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+
+        usuario.mensaje=randomNumber;
+        usuario.idUsuario=parseInt(data.id);
+        usuario.correo=this.form.get('usuario')?.value;
+        usuario.nombreUsuario=data.nombre;
+
+        this.usuarioService.mensajeWhatsapp(usuario).subscribe(mensaje=>{
+          this.cargandoLogin=false;
+            Swal.fire({
+              title: 'Ingresa el codigo de confirmacion que se envio a tu numero',
+              input: 'text',
+              inputAttributes: {
+                autocapitalize: 'off'
+              },
+              showCancelButton: true,
+              confirmButtonText: 'Look up',
+              showLoaderOnConfirm: true,
+            }).then((result) => {
+              console.log(result);
+              if (result.isConfirmed) {
+                let resultado=result.value;
+                console.log(resultado);
+                console.log(randomNumber)
+                if(resultado==randomNumber){
+                  Util.succesaMessage("Pasale");
+                    sessionStorage.setItem('sesion', JSON.stringify(data));
+                    this.loading(data);
+                }else{
+                  Util.errorMessage("No pasas")
+                }
+              }
+            })
+        })
+
+
+
+        // sessionStorage.setItem('sesion', JSON.stringify(data));
+        // this.loading(data);
 
 
 
@@ -197,6 +244,7 @@ export class LoginFormComponent implements OnInit {
   async login() {
     if (this.form.valid) {
       let valicacion:boolean=false;
+      this.cargandoLogin=true;
 
         this.failedLogin = false;
         this.form.controls['usuario'].disable();
@@ -217,6 +265,7 @@ export class LoginFormComponent implements OnInit {
             })
 
           } catch (error: any) {
+            this.cargandoLogin=false;
             valicacion=false;
             console.log(error.code);
 
@@ -233,22 +282,8 @@ export class LoginFormComponent implements OnInit {
         }
 
         if(valicacion){
+
           this.ingresar();
-
-          // sessionStorage.clear();
-          // let data:LoginUsuario={
-          //   id:"",
-          //   approved:true,
-          //   mensaje: "",
-          //   nombre: "33434345",
-          //   tipoUsuario: "MEDICO",
-          //   token: ""
-
-          // }
-          // sessionStorage.setItem('sesion', JSON.stringify(data));
-
-          // this.router.navigate(["dashboard"]);
-          // this.cerrarDialog();
         }
 
 

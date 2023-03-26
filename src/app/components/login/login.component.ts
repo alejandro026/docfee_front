@@ -186,4 +186,43 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
+  searchTerm: string = 'DOCFEE';
+  content: string;
+  search(): void {
+
+    this.content= document.querySelector(".todo")?.innerHTML!;
+    console.log(this.content)
+    const regex = new RegExp(this.searchTerm, 'gi');
+    const matches = this.content.match(regex);
+
+    console.log(matches)
+
+    if (matches !== null) {
+      const contentEl = document.querySelector('.todo')!;
+      contentEl.innerHTML = this.content;
+      matches.forEach(match => {
+        console.error(contentEl)
+        // const matchEls = contentEl.querySelectorAll(`:not(.highlight):[data-text*="${match}"]`);
+        const matchEls = document.querySelectorAll(':not(.highlight)[data-text*="DOCFEE"]');
+        // const matchEls = contentEl.querySelectorAll(`:not(.highlight):contains("${match}")`);
+        console.log(matchEls)
+
+        matchEls.forEach(matchEl => {
+          matchEl.classList.add('highlight');
+        });
+      });
+      const numMatches = matches.length;
+      alert(`${numMatches} matches found.`);
+    } else {
+      const contentEl = document.querySelector('.todo')!;
+      contentEl.innerHTML = this.content;
+      const matchEls = contentEl.querySelectorAll('.highlight');
+      matchEls.forEach(matchEl => {
+        matchEl.classList.remove('highlight');
+      });
+      alert('No matches found.');
+    }
+  }
+
 }
