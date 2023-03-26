@@ -14,7 +14,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import Swal from 'sweetalert2'
 import { Util } from 'src/app/utils/util';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-login-form',
@@ -25,6 +25,7 @@ export class LoginFormComponent implements OnInit {
 
   form: UntypedFormGroup
   hide = true
+  refPassword: DynamicDialogRef;
 
   key: string="6Lfznr8kAAAAAJ5mxeuPpjSbuGcGAQ-zt3vBWvf7";
 
@@ -72,7 +73,7 @@ export class LoginFormComponent implements OnInit {
     private citasService:CitasService,
     // public dialogRef: MatDialogRef<LoginFormComponent>,
     private authService: AuthService,
-    private dialog: MatDialog,
+    private dialog: DialogService,
     public ref: DynamicDialogRef, public config: DynamicDialogConfig,
     private usuarioService:UsuarioService
     ) {
@@ -167,9 +168,12 @@ export class LoginFormComponent implements OnInit {
             const email = this.form.get('usuario')?.value;
             const password = this.form.get('contraseña')?.value;
             await this.authService.signIn(email, password).then((result) => {
-              if (result.user?.emailVerified !== true) {
-                this.authService.sendVerificationMail();
 
+              console.log(result.user?.emailVerified)
+
+              if (result.user?.emailVerified != true) {
+                this.authService.sendVerificationMail();
+                this.cargandoLogin=false;
                 Util.errorMessage('Por favor, valide su dirección de correo electrónico.');
 
               } else {
@@ -249,16 +253,17 @@ controlValidationClasses(constrolName: string) {
 
 reinicarPassword(){
   this.cerrarDialog();
-  const dialogRef = this.dialog.open(ResetPasswordComponent, {
-      // width: "30%",
-      // height: "55%",
-      // disableClose: true
+  this.refPassword = this.dialog.open(ResetPasswordComponent, {
+      header: "Recuperar contraseña    ",
+      contentStyle: {"max-height": "500px", "overflow": "auto"},
+      baseZIndex: 10000,
+      width: "30%"
   });
 
-  dialogRef.afterClosed().subscribe((result) => {
-    // this.consultarTodos2();
-    // alert('Iniciar sesion')
-  });
+  // dialogRef.afterClosed().subscribe((result) => {
+  //   // this.consultarTodos2();
+  //   // alert('Iniciar sesion')
+  // });
 }
 
 

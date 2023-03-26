@@ -12,7 +12,6 @@ export class Usuario {
   correo: string;
   ocupacion: string;
   antecedentes: Antecedentes[];
+  usuario:string;
 
-
- 
 }

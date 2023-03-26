@@ -54,6 +54,7 @@ import {MenuItem} from 'primeng/api';
               //api
 import { UserIdleModule } from 'angular-user-idle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { NumericDirective } from './numeric.directive';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
         Page404Component,
         MapaSitioComponent,
         ResetPasswordComponent,
-        RegistroComponent
+        RegistroComponent,
+        NumericDirective
     ],
     imports: [
         BrowserModule,

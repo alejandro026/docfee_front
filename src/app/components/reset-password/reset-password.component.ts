@@ -1,3 +1,4 @@
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Util } from 'src/app/utils/util';
 import { AuthService } from './../../services/AuthService.service';
@@ -19,7 +20,9 @@ export class ResetPasswordComponent {
     @ViewChild('emailInput') emailInput?: ElementRef;
 
     constructor(private authService: AuthService,
-      public dialogRef: MatDialogRef<ResetPasswordComponent>) {
+      // public dialogRef: MatDialogRef<ResetPasswordComponent>
+      public ref: DynamicDialogRef, public config: DynamicDialogConfig,
+      ) {
         this.emailFormControl = new FormControl('', [
             Validators.required,
             Validators.pattern(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)
@@ -74,7 +77,7 @@ export class ResetPasswordComponent {
     }
 
     cerrarDialog(){
-      this.dialogRef.close({data:0});
+      this.ref.close({data:0});
       // this.hide=true;
     }
 
