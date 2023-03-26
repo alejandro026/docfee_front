@@ -1,3 +1,4 @@
+import { MatStepper } from '@angular/material/stepper';
 import { UsuarioService } from './../../services/usuario.service';
 import { Mensaje } from './../../_models/menaje';
 import { ResetPasswordComponent } from './../reset-password/reset-password.component';
@@ -38,6 +39,8 @@ export class LoginFormComponent implements OnInit {
   disableLoginButton: boolean;
   @ViewChild('emailInput') emailInput?: ElementRef;
   @ViewChild('passwordInput') passwordInput?: ElementRef;
+  @ViewChild(MatStepper) stepper: MatStepper;
+
 
   public captchaIsLoaded = false;
   public captchaSuccess = false;
@@ -49,7 +52,17 @@ export class LoginFormComponent implements OnInit {
   public lang = 'es';
   public type: 'image' | 'audio';
 
+  //Datos de prueba
+  autenticacionDosPasos = this.fb.group({
+    codigo: ['', Validators.required],
+  });
+  isEditable = false;
 
+  _codigoAutenticacion:string;
+
+  _sesion:LoginUsuario;
+
+  _codigoIncorrecto:boolean=false;
 
 
   constructor(
@@ -73,7 +86,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   };
 
-  ingresar() {
+  async ingresar() {
     sessionStorage.clear();
     let usuario =this.form.get('usuario')?.value;
     // let contraseña = this.form.value.contraseña;
@@ -82,59 +95,27 @@ export class LoginFormComponent implements OnInit {
     solicitud.usuario=usuario;
     solicitud.password="";
 
-    this.citasService.consultarUsuario(solicitud).subscribe(data => {
-      if(data.approved==true){
-
-
+    const data= await this.citasService.consultarUsuario(solicitud).toPromise();
+    this._sesion=data;
+    this.stepper.next();
+    if(data.approved==true){
         let usuario: Mensaje= new Mensaje();
         const randomNumber = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
-
+        this._codigoAutenticacion=randomNumber;
         usuario.mensaje=randomNumber;
         usuario.idUsuario=parseInt(data.id);
         usuario.correo=this.form.get('usuario')?.value;
         usuario.nombreUsuario=data.nombre;
 
-        this.usuarioService.mensajeWhatsapp(usuario).subscribe(mensaje=>{
-          this.cargandoLogin=false;
-            Swal.fire({
-              title: 'Ingresa el codigo de confirmacion que se envio a tu numero',
-              input: 'text',
-              inputAttributes: {
-                autocapitalize: 'off'
-              },
-              showCancelButton: true,
-              confirmButtonText: 'Look up',
-              showLoaderOnConfirm: true,
-            }).then((result) => {
-              console.log(result);
-              if (result.isConfirmed) {
-                let resultado=result.value;
-                console.log(resultado);
-                console.log(randomNumber)
-                if(resultado==randomNumber){
-                  Util.succesaMessage("Pasale");
-                    sessionStorage.setItem('sesion', JSON.stringify(data));
-                    this.loading(data);
-                }else{
-                  Util.errorMessage("No pasas")
-                }
-              }
-            })
-        })
-
-
-
-        // sessionStorage.setItem('sesion', JSON.stringify(data));
-        // this.loading(data);
-
-
+        await this.usuarioService.mensajeWhatsapp(usuario).toPromise();
+        this.cargandoLogin=false;
 
       }else{
         // this.error();
-      // this.form.reset();
       }
-    });
   };
+
+
 
   error() {
     this._snackBar.open("Usuario o contraseña incorrecto", "Error", {
@@ -145,93 +126,25 @@ export class LoginFormComponent implements OnInit {
   };
 
   loading(data:LoginUsuario) {
+    console.log(data)
     if(data.tipoUsuario=="MEDICO"){
-      this.router.navigate(["dashboard"]);
-      this.cerrarDialog();
+      this.router.navigate(["dashboard/homepage"]);
+      // this.cerrarDialog();
     }
 
     if(data.tipoUsuario=="PACIENTE"){
       this.router.navigate(["dashboard/homepage"]);
-      this.cerrarDialog();
-    }
-  };
-
-  tsparticles = "tsparticles";
-
-  particlesOptions = {
-    particles: {
-      number: {
-        value: 6,
-        density: {
-          enable: true,
-          value_area: 800
-        }
-      },
-      color: {
-        value: [ '#1b1e34' ]
-      },
-      shape: {
-        type: "polygon",
-        stroke: {
-          width: 0,
-          color: "#000"
-        },
-        polygon: {
-          nb_sides: 6
-        },
-        image: {
-          sr: "img/github.svg",
-          width: 100,
-          height: 100
-        }
-      },
-      opacity: {
-        value: 0.3,
-        random: true,
-        anim: {
-          enable: false,
-          speed: 1,
-          opacity_min: 0.1,
-          sync: false
-        }
-      },
-      size: {
-        value: 100,
-        random: false,
-        anim: {
-          enable: true,
-          speed: 10,
-          size_min: 40,
-          sync: false
-        }
-      },
-      lineLinked: {
-        enable: false,
-        distance: 200,
-        color: "#ffffff",
-        opacity: 1,
-        widht: 2
-      },
-      move: {
-        enable: true,
-        speed: 8,
-        random: false,
-        straight: false,
-        bounce: false,
-        attract: {
-          enable: false,
-          rotateX: 600,
-          rotateY: 1200
-        }
-      }
+      // this.cerrarDialog();
     }
   };
 
 
-  cerrarDialog(){
-    this.ref.close({data:0});
-    // this.hide=true;
-  }
+
+
+  // cerrarDialog(){
+  //   this.ref.close({data:0});
+  //   this.hide=true;
+  // }
 
   reset(): void {
     this.captchaElem.resetCaptcha();
@@ -282,7 +195,6 @@ export class LoginFormComponent implements OnInit {
         }
 
         if(valicacion){
-
           this.ingresar();
         }
 
@@ -346,6 +258,22 @@ reinicarPassword(){
     // this.consultarTodos2();
     // alert('Iniciar sesion')
   });
+}
+
+
+verificaCodigo(){
+  console.log("--------");
+  console.log(this._codigoAutenticacion);
+  console.log(this._sesion)
+  let resultado=this.autenticacionDosPasos.get('codigo')?.value
+  if(resultado==this._codigoAutenticacion){
+    Util.succesaMessage("Pasale");
+      sessionStorage.setItem('sesion', JSON.stringify(this._sesion));
+      this.loading(this._sesion);
+  }else{
+    this._codigoIncorrecto=true;
+    Util.errorMessage("No pasas")
+  }
 }
 
 }

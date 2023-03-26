@@ -12,6 +12,7 @@ import { CargarScriptService } from 'src/app/services/cargar-script.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/_models/usuario';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-login',
@@ -48,15 +49,15 @@ export class LoginComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario>;
 
   ngOnInit(): void {
-    this.animacionHref();
+
   };
 
 
   iniciarSesion(){
     this.ref = this.dialogService.open(LoginFormComponent, {
-      width: '700%',
-            contentStyle: {"max-height": "500px", "overflow": "auto"},
-            baseZIndex: 10000
+      // width: '700%',
+            // contentStyle: {"max-height": "500px", "overflow": "auto"},
+            // baseZIndex: 10000
     });
 
     // this.ref.afterClosed().subscribe((result) => {
@@ -178,13 +179,6 @@ export class LoginComponent implements OnInit {
   };
 
 
-  animacionHref(){
-    this.navigationService.navigateToSection$.subscribe(sectionId => {
-      const sectionElement = this.elementRef.nativeElement.querySelector(`#${sectionId}`);
-      sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      document.body.style.scrollPaddingTop = '10%';
-    });
-  }
 
 
   searchTerm: string = 'DOCFEE';

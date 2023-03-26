@@ -10,14 +10,14 @@ export class FooterComponent implements OnInit {
   showFooter = true;
 
   constructor(private router: Router) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        const data = this.router.routerState.root.snapshot.firstChild?.data;
-        if (data) {
-          this.showFooter = data.showFooter !== false;
-        }
-      }
-    });
+    // this.router.events.subscribe((event) => {
+    //   if (event instanceof NavigationEnd) {
+    //     const data = this.router.routerState.root.snapshot.firstChild?.data;
+    //     if (data) {
+    //       this.showFooter = data.showFooter !== false;
+    //     }
+    //   }
+    // });
   }
 
   ngOnInit(): void {
