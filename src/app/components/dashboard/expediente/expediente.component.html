@@ -22,7 +22,7 @@
       <h2>Mi expediente</h2>
     </ng-container>
     <ng-template #elseTemplate>
-      <h2>Expedientes</h2>
+      <h1>Expedientes</h1>
     </ng-template>
   </div>
 
@@ -52,7 +52,7 @@
 
       <!-- Symbol Column -->
       <ng-container matColumnDef="descipcion">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripción </th>
         <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
       </ng-container>
       <!-- Symbol Column -->
@@ -62,7 +62,7 @@
       </ng-container>
       <!-- Symbol Column -->
       <ng-container matColumnDef="diagnostico_presuntivo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header> Diagnostico presuntivo </th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Diagnóstico presuntivo </th>
         <td mat-cell *matCellDef="let element"> {{element.diagnostico_presuntivo}} </td>
       </ng-container>
 

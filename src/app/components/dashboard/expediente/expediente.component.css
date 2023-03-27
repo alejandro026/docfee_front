@@ -12,6 +12,19 @@
   bottom: 0;
 }
 
+h1{
+  text-align: center;
+  font-weight: bold;
+  color:#002b5c; 
+}
+
+th{
+
+  color: #002b5c;
+  text-align: center;
+  font-size: medium;
+}
+
 .table-wrapp {
   margin-top: 20px;
   margin-right: auto;

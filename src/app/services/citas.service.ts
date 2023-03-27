@@ -28,6 +28,11 @@ export class CitasService {
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 
+  buscarPorIdMedico(id:string): Observable<Citas[]>{
+    return this.http.get<Citas[]>(this.url+"buscarPorIdMedico/"+id,
+    {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
   actualizarCita(cita:Citas):Observable<Citas>{
     return this.http.put<Citas>(this.url+"actualizar",cita,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});

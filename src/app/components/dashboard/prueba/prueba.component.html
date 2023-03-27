@@ -14,7 +14,7 @@
 
   <div class="block-header">
   <div class="search-div">
-      <h2>Pacientes</h2>
+      <h1>Pacientes</h1>
       <button align="right" mat-raised-button class="info-button" (click)="openModal()"><mat-icon>add</mat-icon> Crear </button>
       <mat-form-field class="search-form-field" floatLabel="never">
           <input matInput type="text" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event)">
@@ -43,7 +43,7 @@
           </ng-container>
 
           <ng-container matColumnDef="nss" >
-            <th mat-header-cell *matHeaderCellDef class="short"> Numero de seguro </th>
+            <th mat-header-cell *matHeaderCellDef class="short"> Número de seguro </th>
             <td mat-cell *matCellDef="let element"> {{element.nss}} </td>
           </ng-container>
 
