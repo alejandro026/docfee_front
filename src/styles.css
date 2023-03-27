@@ -15,3 +15,8 @@ body {
 .ui-dialog .ui-dialog-titlebar {
   justify-content: center !important;
 }
+
+
+.swal2-container {
+  z-index: 100000 !important;
+}

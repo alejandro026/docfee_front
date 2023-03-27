@@ -12,6 +12,7 @@ import { CargarScriptService } from 'src/app/services/cargar-script.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Usuario } from 'src/app/_models/usuario';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-login',
@@ -48,15 +49,15 @@ export class LoginComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario>;
 
   ngOnInit(): void {
-    this.animacionHref();
+
   };
 
 
   iniciarSesion(){
     this.ref = this.dialogService.open(LoginFormComponent, {
-      width: '700%',
-            contentStyle: {"max-height": "500px", "overflow": "auto"},
-            baseZIndex: 10000
+      // width: '700%',
+            // contentStyle: {"max-height": "500px", "overflow": "auto"},
+            // baseZIndex: 10000
     });
 
     // this.ref.afterClosed().subscribe((result) => {
@@ -178,12 +179,44 @@ export class LoginComponent implements OnInit {
   };
 
 
-  animacionHref(){
-    this.navigationService.navigateToSection$.subscribe(sectionId => {
-      const sectionElement = this.elementRef.nativeElement.querySelector(`#${sectionId}`);
-      sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      document.body.style.scrollPaddingTop = '10%';
-    });
+
+
+  searchTerm: string = 'DOCFEE';
+  content: string;
+  search(): void {
+
+    this.content= document.querySelector(".todo")?.innerHTML!;
+    console.log(this.content)
+    const regex = new RegExp(this.searchTerm, 'gi');
+    const matches = this.content.match(regex);
+
+    console.log(matches)
+
+    if (matches !== null) {
+      const contentEl = document.querySelector('.todo')!;
+      contentEl.innerHTML = this.content;
+      matches.forEach(match => {
+        console.error(contentEl)
+        // const matchEls = contentEl.querySelectorAll(`:not(.highlight):[data-text*="${match}"]`);
+        const matchEls = document.querySelectorAll(':not(.highlight)[data-text*="DOCFEE"]');
+        // const matchEls = contentEl.querySelectorAll(`:not(.highlight):contains("${match}")`);
+        console.log(matchEls)
+
+        matchEls.forEach(matchEl => {
+          matchEl.classList.add('highlight');
+        });
+      });
+      const numMatches = matches.length;
+      alert(`${numMatches} matches found.`);
+    } else {
+      const contentEl = document.querySelector('.todo')!;
+      contentEl.innerHTML = this.content;
+      const matchEls = contentEl.querySelectorAll('.highlight');
+      matchEls.forEach(matchEl => {
+        matchEl.classList.remove('highlight');
+      });
+      alert('No matches found.');
+    }
   }
 
 }

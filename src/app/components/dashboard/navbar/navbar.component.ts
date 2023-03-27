@@ -7,6 +7,7 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Router } from '@angular/router';
+import { UserIdleService } from 'angular-user-idle';
 
 @Component({
   selector: 'app-navbar',
@@ -30,9 +31,9 @@ export class NavbarComponent implements OnInit {
     public observer: BreakpointObserver,
     private router: Router,
     private cerrarServices: cerrarServices,
-
-    //Token
-    private authService: AuthService
+    private userIdle: UserIdleService,
+        //Token
+    private authService: AuthService,
   ) {
     this.options = fb.group({
       bottom: 0,
@@ -57,7 +58,7 @@ export class NavbarComponent implements OnInit {
 
     this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
     let tiempo:Date= new Date();
-    this.authService.getTokenExpiration(tiempo).subscribe((data) => {
+    this.authService.getTokenExpiration(tiempo, false).subscribe((data) => {
       console.log(data);
       this.cerrarSesion2();
     });
@@ -76,29 +77,47 @@ export class NavbarComponent implements OnInit {
    return false;
   }
 
-  async cerrarSesion2(){
+  cerrarSesion2(){
     console.log(this.sesion);
+    let timerInterval:any;
+    const swalWithTimeout = Swal.mixin({
+      didOpen: () => {
+        timerInterval = setInterval(() => {
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    })
 
-    await Swal.fire({
+    swalWithTimeout.fire({
       title: 'Tu sesion ha caducado.',
       text: '¿Deseas renovar?',
+      timer: 10000,
       icon: 'warning',
       showDenyButton: true,
       showCancelButton: false,
       confirmButtonText: 'Si',
       denyButtonText: `No`,
-      allowOutsideClick: true,
+      allowOutsideClick: false,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.authService.getTokenExpiration(new Date()).subscribe((data) => {
+        this.authService.getTokenExpiration(new Date(), false).subscribe((data) => {
           this.cerrarSesion2();
         });
       } else if (result.isDenied) {
-          this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
-            console.log(data);
-          });
-          sessionStorage.clear();
-          this.router.navigate(['/login']);
+        this.authService.getTokenExpiration(new Date(), true).subscribe((data) => {
+          // this.cerrarSesion2();
+        });
+        this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
+          console.log(data);
+        });
+        sessionStorage.clear();
+        this.router.navigate(['/login']);
+      } else if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+        sessionStorage.clear();
+        this.router.navigate(['/login']);
       }
     })
   }

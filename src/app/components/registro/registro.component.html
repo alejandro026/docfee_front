@@ -3,6 +3,35 @@
     <mat-card class="login-card">
       <!-- <h1 style="font: 150%;">Registro</h1> -->
       <form [formGroup]="registerForm">
+
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput #emailInput formControlName="nombre"  type="text">
+          <!-- <label *ngIf="emailControl.invalid && emailControl.dirty" class="label">
+              <span class="label-text-alt invalid" *ngIf="emailControl.errors?.['required'] || emailControl.errors?.['empty']">El correo es requerido</span>
+              <span class="label-text-alt invalid" *ngIf="emailControl.errors?.['pattern'] && !emailControl.errors?.['required'] && !emailControl.errors?.['empty']">Debe ser un correo valido</span>
+          </label> -->
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Apellido paterno</mat-label>
+        <input matInput formControlName="apPaterno" type="text">
+        <!-- <label *ngIf="emailControl.invalid && emailControl.dirty" class="label">
+            <span class="label-text-alt invalid" *ngIf="emailControl.errors?.['required'] || emailControl.errors?.['empty']">El correo es requerido</span>
+            <span class="label-text-alt invalid" *ngIf="emailControl.errors?.['pattern'] && !emailControl.errors?.['required'] && !emailControl.errors?.['empty']">Debe ser un correo valido</span>
+        </label> -->
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Apellido materno</mat-label>
+      <input matInput  formControlName="apMaterno"  type="text">
+  </mat-form-field>
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Numero de telefono</mat-label>
+      <input matInput  formControlName="numTelefono"   appNumeric maxlength="10" minlength="10">
+  </mat-form-field>
+
+
         <mat-form-field class="form-field" appearance="fill">
             <mat-label>Correo</mat-label>
             <input matInput #emailInput formControlName="email" [ngClass]="{ 'invalid': emailControl.invalid && emailControl.dirty }" type="text">

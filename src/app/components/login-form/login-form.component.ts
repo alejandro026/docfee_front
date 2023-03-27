@@ -1,3 +1,6 @@
+import { MatStepper } from '@angular/material/stepper';
+import { UsuarioService } from './../../services/usuario.service';
+import { Mensaje } from './../../_models/menaje';
 import { ResetPasswordComponent } from './../reset-password/reset-password.component';
 import { AuthService } from './../../services/AuthService.service';
 import { CitasService } from './../../services/sesion.service';
@@ -11,7 +14,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ReCaptcha2Component } from 'ngx-captcha';
 import Swal from 'sweetalert2'
 import { Util } from 'src/app/utils/util';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-login-form',
@@ -22,8 +25,11 @@ export class LoginFormComponent implements OnInit {
 
   form: UntypedFormGroup
   hide = true
+  refPassword: DynamicDialogRef;
 
   key: string="6Lfznr8kAAAAAJ5mxeuPpjSbuGcGAQ-zt3vBWvf7";
+
+  cargandoLogin:boolean=false;
 
 
   @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
@@ -34,6 +40,8 @@ export class LoginFormComponent implements OnInit {
   disableLoginButton: boolean;
   @ViewChild('emailInput') emailInput?: ElementRef;
   @ViewChild('passwordInput') passwordInput?: ElementRef;
+  @ViewChild(MatStepper) stepper: MatStepper;
+
 
   public captchaIsLoaded = false;
   public captchaSuccess = false;
@@ -45,6 +53,18 @@ export class LoginFormComponent implements OnInit {
   public lang = 'es';
   public type: 'image' | 'audio';
 
+  //Datos de prueba
+  autenticacionDosPasos = this.fb.group({
+    codigo: ['', Validators.required],
+  });
+  isEditable = false;
+
+  _codigoAutenticacion:string;
+
+  _sesion:LoginUsuario;
+
+  _codigoIncorrecto:boolean=false;
+
 
   constructor(
     public fb: UntypedFormBuilder,
@@ -53,8 +73,9 @@ export class LoginFormComponent implements OnInit {
     private citasService:CitasService,
     // public dialogRef: MatDialogRef<LoginFormComponent>,
     private authService: AuthService,
-    private dialog: MatDialog,
-    public ref: DynamicDialogRef, public config: DynamicDialogConfig
+    private dialog: DialogService,
+    public ref: DynamicDialogRef, public config: DynamicDialogConfig,
+    private usuarioService:UsuarioService
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
@@ -66,7 +87,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   };
 
-  ingresar() {
+  async ingresar() {
     sessionStorage.clear();
     let usuario =this.form.get('usuario')?.value;
     // let contraseña = this.form.value.contraseña;
@@ -75,19 +96,27 @@ export class LoginFormComponent implements OnInit {
     solicitud.usuario=usuario;
     solicitud.password="";
 
-    this.citasService.consultarUsuario(solicitud).subscribe(data => {
-      if(data.approved==true){
-        sessionStorage.setItem('sesion', JSON.stringify(data));
-        this.loading(data);
+    const data= await this.citasService.consultarUsuario(solicitud).toPromise();
+    this._sesion=data;
+    this.stepper.next();
+    if(data.approved==true){
+        let usuario: Mensaje= new Mensaje();
+        const randomNumber = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+        this._codigoAutenticacion=randomNumber;
+        usuario.mensaje=randomNumber;
+        usuario.idUsuario=parseInt(data.id);
+        usuario.correo=this.form.get('usuario')?.value;
+        usuario.nombreUsuario=data.nombre;
 
-
+        await this.usuarioService.mensajeWhatsapp(usuario).toPromise();
+        this.cargandoLogin=false;
 
       }else{
         // this.error();
-      // this.form.reset();
       }
-    });
   };
+
+
 
   error() {
     this._snackBar.open("Usuario o contraseña incorrecto", "Error", {
@@ -98,87 +127,19 @@ export class LoginFormComponent implements OnInit {
   };
 
   loading(data:LoginUsuario) {
+    console.log(data)
     if(data.tipoUsuario=="MEDICO"){
-      this.router.navigate(["dashboard"]);
-      this.cerrarDialog();
+      this.router.navigate(["dashboard/homepage"]);
+      // this.cerrarDialog();
     }
 
     if(data.tipoUsuario=="PACIENTE"){
       this.router.navigate(["dashboard/homepage"]);
-      this.cerrarDialog();
+      // this.cerrarDialog();
     }
   };
 
-  tsparticles = "tsparticles";
 
-  particlesOptions = {
-    particles: {
-      number: {
-        value: 6,
-        density: {
-          enable: true,
-          value_area: 800
-        }
-      },
-      color: {
-        value: [ '#1b1e34' ]
-      },
-      shape: {
-        type: "polygon",
-        stroke: {
-          width: 0,
-          color: "#000"
-        },
-        polygon: {
-          nb_sides: 6
-        },
-        image: {
-          sr: "img/github.svg",
-          width: 100,
-          height: 100
-        }
-      },
-      opacity: {
-        value: 0.3,
-        random: true,
-        anim: {
-          enable: false,
-          speed: 1,
-          opacity_min: 0.1,
-          sync: false
-        }
-      },
-      size: {
-        value: 100,
-        random: false,
-        anim: {
-          enable: true,
-          speed: 10,
-          size_min: 40,
-          sync: false
-        }
-      },
-      lineLinked: {
-        enable: false,
-        distance: 200,
-        color: "#ffffff",
-        opacity: 1,
-        widht: 2
-      },
-      move: {
-        enable: true,
-        speed: 8,
-        random: false,
-        straight: false,
-        bounce: false,
-        attract: {
-          enable: false,
-          rotateX: 600,
-          rotateY: 1200
-        }
-      }
-    }
-  };
 
 
   cerrarDialog(){
@@ -197,6 +158,7 @@ export class LoginFormComponent implements OnInit {
   async login() {
     if (this.form.valid) {
       let valicacion:boolean=false;
+      this.cargandoLogin=true;
 
         this.failedLogin = false;
         this.form.controls['usuario'].disable();
@@ -206,9 +168,12 @@ export class LoginFormComponent implements OnInit {
             const email = this.form.get('usuario')?.value;
             const password = this.form.get('contraseña')?.value;
             await this.authService.signIn(email, password).then((result) => {
-              if (result.user?.emailVerified !== true) {
-                this.authService.sendVerificationMail();
 
+              console.log(result.user?.emailVerified)
+
+              if (result.user?.emailVerified != true) {
+                this.authService.sendVerificationMail();
+                this.cargandoLogin=false;
                 Util.errorMessage('Por favor, valide su dirección de correo electrónico.');
 
               } else {
@@ -217,6 +182,7 @@ export class LoginFormComponent implements OnInit {
             })
 
           } catch (error: any) {
+            this.cargandoLogin=false;
             valicacion=false;
             console.log(error.code);
 
@@ -234,21 +200,6 @@ export class LoginFormComponent implements OnInit {
 
         if(valicacion){
           this.ingresar();
-
-          // sessionStorage.clear();
-          // let data:LoginUsuario={
-          //   id:"",
-          //   approved:true,
-          //   mensaje: "",
-          //   nombre: "33434345",
-          //   tipoUsuario: "MEDICO",
-          //   token: ""
-
-          // }
-          // sessionStorage.setItem('sesion', JSON.stringify(data));
-
-          // this.router.navigate(["dashboard"]);
-          // this.cerrarDialog();
         }
 
 
@@ -301,16 +252,34 @@ controlValidationClasses(constrolName: string) {
 
 
 reinicarPassword(){
-  const dialogRef = this.dialog.open(ResetPasswordComponent, {
-      width: "25%",
-      // height: "55%",
-      // disableClose: true
+  this.cerrarDialog();
+  this.refPassword = this.dialog.open(ResetPasswordComponent, {
+      header: "Recuperar contraseña    ",
+      contentStyle: {"max-height": "500px", "overflow": "auto"},
+      baseZIndex: 10000,
+      width: "30%"
   });
 
-  dialogRef.afterClosed().subscribe((result) => {
-    // this.consultarTodos2();
-    // alert('Iniciar sesion')
-  });
+  // dialogRef.afterClosed().subscribe((result) => {
+  //   // this.consultarTodos2();
+  //   // alert('Iniciar sesion')
+  // });
+}
+
+
+verificaCodigo(){
+  console.log("--------");
+  console.log(this._codigoAutenticacion);
+  console.log(this._sesion)
+  let resultado=this.autenticacionDosPasos.get('codigo')?.value
+  if(resultado==this._codigoAutenticacion){
+    Util.succesaMessage("Pasale");
+      sessionStorage.setItem('sesion', JSON.stringify(this._sesion));
+      this.loading(this._sesion);
+  }else{
+    this._codigoIncorrecto=true;
+    Util.errorMessage("No pasas")
+  }
 }
 
 }
