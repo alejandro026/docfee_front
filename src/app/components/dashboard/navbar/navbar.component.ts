@@ -79,10 +79,21 @@ export class NavbarComponent implements OnInit {
 
   cerrarSesion2(){
     console.log(this.sesion);
+    let timerInterval:any;
+    const swalWithTimeout = Swal.mixin({
+      didOpen: () => {
+        timerInterval = setInterval(() => {
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    })
 
-     Swal.fire({
+    swalWithTimeout.fire({
       title: 'Tu sesion ha caducado.',
       text: '¿Deseas renovar?',
+      timer: 10000,
       icon: 'warning',
       showDenyButton: true,
       showCancelButton: false,
@@ -95,14 +106,18 @@ export class NavbarComponent implements OnInit {
           this.cerrarSesion2();
         });
       } else if (result.isDenied) {
-          this.authService.getTokenExpiration(new Date(), true).subscribe((data) => {
-            // this.cerrarSesion2();
-          });
-          this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
-            console.log(data);
-          });
-          sessionStorage.clear();
-          this.router.navigate(['/login']);
+        this.authService.getTokenExpiration(new Date(), true).subscribe((data) => {
+          // this.cerrarSesion2();
+        });
+        this.cerrarServices.cerrarSession(this.sesion).subscribe(data=>{
+          console.log(data);
+        });
+        sessionStorage.clear();
+        this.router.navigate(['/login']);
+      } else if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+        sessionStorage.clear();
+        this.router.navigate(['/login']);
       }
     })
   }
