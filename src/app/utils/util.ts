@@ -28,6 +28,7 @@ export class Util{
       timer: 3000,
       timerProgressBar: true,
       didOpen: (toast:any) => {
+
         toast.addEventListener('mouseenter', Swal.stopTimer)
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
