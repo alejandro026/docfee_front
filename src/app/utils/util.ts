@@ -27,7 +27,7 @@ export class Util{
       showConfirmButton: false,
       timer: 3000,
       timerProgressBar: true,
-      didOpen: (toast) => {
+      didOpen: (toast:any) => {
         toast.addEventListener('mouseenter', Swal.stopTimer)
         toast.addEventListener('mouseleave', Swal.resumeTimer)
       }
@@ -38,5 +38,4 @@ export class Util{
       title: texto
     })
   }
-
 }
