@@ -273,12 +273,12 @@ verificaCodigo(){
   console.log(this._sesion)
   let resultado=this.autenticacionDosPasos.get('codigo')?.value
   if(resultado==this._codigoAutenticacion){
-    Util.succesaMessage("Pasale");
+    // Util.succesaMessage("Pasale");
       sessionStorage.setItem('sesion', JSON.stringify(this._sesion));
       this.loading(this._sesion);
   }else{
     this._codigoIncorrecto=true;
-    Util.errorMessage("No pasas")
+    Util.errorMessage("Lo siento, el código que ingreso no es válido. Por favor verifica e intenta de nuevo")
   }
 }
 
