@@ -14,7 +14,7 @@ import { Observable} from 'rxjs';
 
 export class TratamientoService {
 
-   url="http://localhost:8083/tratamiento/";
+   url="http://https://docfeeback-production.up.railway.app//tratamiento/";
 
   constructor(
     private http: HttpClient
@@ -31,7 +31,7 @@ export class TratamientoService {
     return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVista/"+id,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
-  
+
   consultarTodosVistaDR():Observable<VistaTratamiento[]>{
 
     return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVistaDR/",

@@ -9,7 +9,7 @@ import { nuevaReceta } from '../_models/nuevaReceta';
 })
 export class RecetaService {
 
- url="http://localhost:8083/receta/";
+ url="http://https://docfeeback-production.up.railway.app//receta/";
 
 Recetas= new Recetas();
  constructor(
@@ -32,12 +32,12 @@ buscarPorIdCita(id:number): Observable<Recetas>{
 }
 
 consultarPorID(id_receta:number): Observable<Recetas> {
-  const url = "http://localhost:8083/receta/buscarPorId/" +  id_receta
+  const url = "http://https://docfeeback-production.up.railway.app//receta/buscarPorId/" +  id_receta
 
   return this.http.get<Recetas>(url);
 }
 consultarPorIDCita(id_cita:number): Observable<Recetas> {
-  const url = "http://localhost:8083/receta/buscarPorIdCita/" +  id_cita
+  const url = "http://https://docfeeback-production.up.railway.app//receta/buscarPorIdCita/" +  id_cita
 
   return this.http.get<Recetas>(url);
 }
