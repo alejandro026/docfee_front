@@ -11,7 +11,7 @@ import { Observable} from 'rxjs';
 
 export class CitasService {
 
-   url="http://https://docfeeback-production.up.railway.app//citas/";
+   url="https://docfeeback-production.up.railway.app/citas/";
 
   constructor(
     private http: HttpClient

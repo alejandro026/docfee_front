@@ -14,7 +14,7 @@ import { Observable} from 'rxjs';
 
 export class TratamientoService {
 
-   url="http://https://docfeeback-production.up.railway.app//tratamiento/";
+   url="https://docfeeback-production.up.railway.app/tratamiento/";
 
   constructor(
     private http: HttpClient

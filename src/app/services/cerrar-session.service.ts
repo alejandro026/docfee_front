@@ -8,7 +8,7 @@ import { LoginUsuario } from '../_models/loginUsuario';
 })
 export class cerrarServices{
   sesion:LoginUsuario;
-  urlCerrar="http://https://docfeeback-production.up.railway.app//deleteSession";
+  urlCerrar="https://docfeeback-production.up.railway.app/deleteSession";
   status: string;
   constructor(
     private http: HttpClient
