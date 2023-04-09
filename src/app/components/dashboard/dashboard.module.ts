@@ -29,6 +29,7 @@ import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
 import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ServiciosComponent } from './servicios/servicios.component';
+import { SessionExpiredDialogComponentComponent } from './session-expired-dialog-component/session-expired-dialog-component.component';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import { ServiciosComponent } from './servicios/servicios.component';
 
     RecetaComponent,
     NuevaCitaComponent,
-    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent
+    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent, SessionExpiredDialogComponentComponent
 
   ],
   imports: [

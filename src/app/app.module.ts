@@ -52,7 +52,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
 import {MenuItem} from 'primeng/api';
               //api
-import { UserIdleModule } from 'angular-user-idle';
+// import { UserIdleModule } from 'angular-user-idle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NumericDirective } from './numeric.directive';
 
@@ -105,7 +105,7 @@ import { NumericDirective } from './numeric.directive';
         AccordionModule,
         DialogModule,
         MatProgressBarModule,
-        UserIdleModule.forRoot({ timeout: 10, idle: 15 })
+        // UserIdleModule.forRoot({ timeout: 10, idle: 15 })
 
     ],
     providers: [
