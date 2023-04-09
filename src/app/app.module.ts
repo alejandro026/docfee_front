@@ -3,7 +3,6 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './material/material.module';
-import { NgParticlesModule } from 'ng-particles';
 import { LayoutModule } from '@angular/cdk/layout';
 import { HammerModule } from "@angular/platform-browser";
 import { IgxCalendarModule } from 'igniteui-angular';
@@ -73,7 +72,6 @@ import { NumericDirective } from './numeric.directive';
     imports: [
         BrowserModule,
         MaterialModule,
-        NgParticlesModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         ReactiveFormsModule,
