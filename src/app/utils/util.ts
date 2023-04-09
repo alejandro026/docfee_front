@@ -40,4 +40,15 @@ export class Util{
       title: texto
     })
   }
+
+  public static errorMessajeNormal(texto:string){
+    Swal.fire({
+      position: 'center',
+      icon: 'error',
+      title: texto,
+      showConfirmButton: true,
+      // timer: 2500
+    })
+  }
+
 }

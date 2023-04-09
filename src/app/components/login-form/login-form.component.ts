@@ -15,6 +15,7 @@ import { ReCaptcha2Component } from 'ngx-captcha';
 import Swal from 'sweetalert2'
 import { Util } from 'src/app/utils/util';
 import { DynamicDialogConfig, DynamicDialogRef, DialogService } from 'primeng/dynamicdialog';
+import { InactivityService } from 'src/app/services/inactivity.service';
 
 @Component({
   selector: 'app-login-form',
@@ -75,7 +76,8 @@ export class LoginFormComponent implements OnInit {
     private authService: AuthService,
     private dialog: DialogService,
     public ref: DynamicDialogRef, public config: DynamicDialogConfig,
-    private usuarioService:UsuarioService
+    private usuarioService:UsuarioService,
+    private inactivityService: InactivityService
     ) {
     this.form = this.fb.group({
       usuario: ["", Validators.required],
@@ -275,6 +277,7 @@ verificaCodigo(){
   if(resultado==this._codigoAutenticacion){
     // Util.succesaMessage("Pasale");
       sessionStorage.setItem('sesion', JSON.stringify(this._sesion));
+      this.inactivityService.startTimer();
       this.loading(this._sesion);
   }else{
     this._codigoIncorrecto=true;

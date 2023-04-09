@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { InactivityService } from './services/inactivity.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DOCFEE';
+
+  constructor(private inactivityService: InactivityService) {}
+
+  @HostListener('document:click', ['$event'])
+  @HostListener('document:mousemove', ['$event'])
+  onActivity(event: MouseEvent) {
+    this.inactivityService.activityDetected();
+  }
 }
