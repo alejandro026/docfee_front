@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Citas } from './../../../_models/citas';
 import { CitasService } from './../../../services/citas.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { LoginUsuario } from 'src/app/_models/loginUsuario';
 
 @Component({
   selector: 'app-citas',
@@ -16,8 +17,12 @@ export class CitasComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  sesion:LoginUsuario;
+
   dataSource: MatTableDataSource<Citas>;
-  displayedColumns: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta','nuevaReceta'];
+  displayedColumns: string[];
+  displayedColumns2: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta','nuevaReceta'];
+  displayedColumns3: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta',];
 
 
   constructor(
@@ -27,6 +32,7 @@ export class CitasComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
     this.dataSource = new MatTableDataSource<Citas>();
     this.route.queryParams.subscribe( params => {
       this.buscarPorIdTratamiento(params.idTratmiento);
@@ -35,7 +41,11 @@ export class CitasComponent implements OnInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
+    if(this.sesion.tipoUsuario=="MEDICO"){
+      this.displayedColumns=this.displayedColumns2;
+    }else{
+      this.displayedColumns=this.displayedColumns3;
+    }
   }
 
   // consultarTodos(){
