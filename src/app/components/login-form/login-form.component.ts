@@ -28,7 +28,7 @@ export class LoginFormComponent implements OnInit {
   hide = true
   refPassword: DynamicDialogRef;
 
-  key: string="6Lfznr8kAAAAAJ5mxeuPpjSbuGcGAQ-zt3vBWvf7";
+  key: string="6LcQ1nUlAAAAAMOyONx_5FwwHz64AEJxo2ZBodb9";
 
   cargandoLogin:boolean=false;
 
