@@ -31,7 +31,7 @@ export class RegistroComponent {
   @ViewChild('emailInput') emailInput?: ElementRef;
   @ViewChild('passwordInput') passwordInput?: ElementRef;
 
-  key: string="6LcQ1nUlAAAAAMOyONx_5FwwHz64AEJxo2ZBodb9";
+  key: string="6LcQ1nUlAAAAAJUtvvqI6GKFLJ3OzC17k9ddGCx1";
 
 
   @ViewChild('captchaElem') captchaElem: ReCaptcha2Component;
