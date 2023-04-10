@@ -106,7 +106,7 @@ export class RegistroComponent {
 
           await this.authService.createUser(this.emailControl.value, this.passwordControl.value);
           // this.router.navigate(['app/tasks']);
-          Util.succesaMessage('Se ha enviado un correo de confirmación.');
+          Util.succesMessajeNormal('Se ha enviado un correo de confirmación.');
 
 
           let usuarioBack:Usuario=new Usuario();;
