@@ -18,6 +18,8 @@ import { RecetaComponent } from './receta/receta.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 import { NuevaRecetaComponent } from './nueva-receta/nueva-receta.component';
 import { ServiciosComponent } from './servicios/servicios.component';
+import { GuardGuard } from 'src/app/guard.guard';
+import { UsuarioGuard } from 'src/app/usuario.guard';
 
 
 
@@ -28,17 +30,17 @@ const routes: Routes = [
     children: [
       { path: '', component: HomepageComponent, data:{titulo:''}},
       { path: 'homepage', component: HomepageComponent, data:{titulo:'homepage'} },
-      { path: 'prueba', component: PruebaComponent, data:{titulo:'prueba'}},
-      { path: 'patients', component: PatientsComponent, data:{titulo:'patients'}},
-      { path: 'citas', component: CitasComponent, data:{titulo:'citas'}},
-      { path: 'documentos', component: DocumentosComponent, data:{titulo:'documentos'}},
-      { path: 'tratamiento', component: TratamientoComponent, data:{titulo:'tratamiento'}},
-      { path: 'expediente', component: ExpedienteComponent, data:{titulo:'expediente'}},
-      { path: 'detalleExpedinete', component: DetalleExpedienteComponent, data:{titulo:'detalleExpediente'}},
-      { path: 'receta', component: RecetaComponent, data:{titulo:'receta'}},
-      { path: 'nuevaCita', component: NuevaCitaComponent, data:{titulo:'nuevaCita'}},
-      { path: 'nuevaReceta', component: NuevaRecetaComponent, data:{titulo:'nuevaReceta'}},
-      { path: 'servicios', component: ServiciosComponent, data:{titulo:'servicios'}},
+      { path: 'prueba', canActivate:[UsuarioGuard], component: PruebaComponent, data:{titulo:'prueba'}},
+      { path: 'patients', canActivate:[UsuarioGuard], component: PatientsComponent, data:{titulo:'patients'}},
+      { path: 'citas', canActivate:[UsuarioGuard], component: CitasComponent, data:{titulo:'citas'}},
+      { path: 'documentos', canActivate:[UsuarioGuard], component: DocumentosComponent, data:{titulo:'documentos'}},
+      { path: 'tratamiento', canActivate:[UsuarioGuard], component: TratamientoComponent, data:{titulo:'tratamiento'}},
+      { path: 'expediente',  component: ExpedienteComponent, data:{titulo:'expediente'}},
+      { path: 'detalleExpedinete', canActivate:[UsuarioGuard], component: DetalleExpedienteComponent, data:{titulo:'detalleExpediente'}},
+      { path: 'receta', canActivate:[UsuarioGuard], component: RecetaComponent, data:{titulo:'receta'}},
+      { path: 'nuevaCita', canActivate:[UsuarioGuard], component: NuevaCitaComponent, data:{titulo:'nuevaCita'}},
+      { path: 'nuevaReceta', canActivate:[UsuarioGuard], component: NuevaRecetaComponent, data:{titulo:'nuevaReceta'}},
+      { path: 'servicios', canActivate:[UsuarioGuard], component: ServiciosComponent, data:{titulo:'servicios'}},
 
 
 

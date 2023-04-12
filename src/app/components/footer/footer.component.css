@@ -4,6 +4,16 @@ footer {
     padding: 0;
 }
 
+
+
+p{
+    font-size: 2vh 
+}
+
+a{
+    font-size: 2vh  
+}
+
 .centrado{
     display: flex;
     justify-content: center;

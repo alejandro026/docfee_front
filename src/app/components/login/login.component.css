@@ -9,6 +9,15 @@
   padding-bottom: 5em;
 }
 
+
+li{
+  font-size: 2vh
+}
+
+h2{
+  font-size: 2vh 
+}
+
 .titulo{
   font-size: 50px;
   color:  white;
