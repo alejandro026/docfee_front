@@ -259,7 +259,7 @@ reinicarPassword(){
       header: "Recuperar contraseña    ",
       contentStyle: {"max-height": "500px", "overflow": "auto"},
       baseZIndex: 10000,
-      width: "30%"
+      // width: "30%"
   });
 
   // dialogRef.afterClosed().subscribe((result) => {
