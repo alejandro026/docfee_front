@@ -50,5 +50,14 @@ export class Util{
       // timer: 2500
     })
   }
+  public static succesMessajeNormal(texto:string){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: texto,
+      showConfirmButton: true,
+      // timer: 2500
+    })
+  }
 
 }
