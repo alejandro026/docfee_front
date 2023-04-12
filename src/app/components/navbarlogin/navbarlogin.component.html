@@ -1,53 +1,44 @@
 <nav class="navbar fixed-top navbar-expand-lg color navbar-dark bg-dark justify-content-between">
   <img class="navbar-brand" src="./assets/images/Logo.png" width="250" height="75" routerLink="/dashboard/homepage">
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown navbar-text">
+        <a href="" class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+          id="nosotros" style="color: #FFFFFF">
+          Nosotros
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nosotros">
+          <a class="dropdown-item" (click)="navigateToSection('quienesSomos')">¿Quiénes somos?</a>
+          <a class="dropdown-item" (click)="navigateToSection('mision')">Misión</a>
+          <a class="dropdown-item" (click)="navigateToSection('vision')">Visión</a>
+          <a class="dropdown-item" (click)="navigateToSection('valores')">Valores</a>
+        </div>
+      </li>
 
-        <li class="nav-item dropdown navbar-text">
-          <a href="" class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-            id="nosotros" style="color: #FFFFFF">
-            Nosotros
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nosotros">
-            <a class="dropdown-item" (click)="navigateToSection('quienesSomos')">¿Quiénes somos?</a>
-            <a class="dropdown-item" (click)="navigateToSection('mision')">Misión</a>
-            <a class="dropdown-item" (click)="navigateToSection('vision')">Visión</a>
-            <a class="dropdown-item" (click)="navigateToSection('valores')">Valores</a>
-          </div>
-        </li>
-
-        <li class="nav-item dropdown navbar-text">
-          <a class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false"
-            id="servicios" style="color: #FFFFFF">
-            Servicios
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="servicios">
-            <a class="dropdown-item" (click)="navigateToSection('hospitalizacion')">Área de hospitalización</a>
-            <a class="dropdown-item" (click)="navigateToSection('citas')">Agendar citas en línea</a>
-            <a class="dropdown-item" (click)="navigateToSection('especialidades')">Especialidades</a>
-          </div>
-        </li>
-
-        <li class="nav-item navbar-text">
-          <div class="col-auto padding btnInicio">
-            <button type="button" class="btn boton1" data-toggle="modal" (click)="iniciarSesion()"
-              *ngIf="sesion==null">Iniciar Sesión</button>
-          </div>
-        </li>
-        <li class="nav-item navbar-text">
-          <div class="col-auto padding">
-            <button type="button" class="btn boton1" data-toggle="modal" (click)="registrarUsuario()"
-              *ngIf="sesion==null">Regístrate</button>
-          </div>
-        </li>
-
-      </ul>
-
+      <li class="nav-item dropdown navbar-text">
+        <a class="nav-link dropdown-toggle texto" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+          id="servicios" style="color: #FFFFFF">
+          Servicios
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="servicios">
+          <a class="dropdown-item" (click)="navigateToSection('hospitalizacion')">Área de hospitalización</a>
+          <a class="dropdown-item" (click)="navigateToSection('citas')">Agendar citas en línea</a>
+          <a class="dropdown-item" (click)="navigateToSection('especialidades')">Especialidades</a>
+        </div>
+      </li>
+    </ul>
+    <form >
+        <button type="button" class="btn boton1" data-toggle="modal" (click)="iniciarSesion()"
+                      *ngIf="sesion==null">Iniciar Sesión</button>
+                      <br class="salto">
+                      <br class="salto">
+        <button type="button" class="btn boton1" data-toggle="modal" (click)="registrarUsuario()"
+                      *ngIf="sesion==null">Regístrate</button>
+    </form>
   </div>
 </nav>

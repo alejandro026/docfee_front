@@ -13,6 +13,7 @@
   background: #38B6FF;
   color: #002b5c;
   min-width: 125px;
+  margin-left: 15px;
 }
 
 .padding{
@@ -24,19 +25,24 @@
   .dropdown-item{
     color: black !important;
   }
+
+  .nav-link{
+    font-size: large;
+  }
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   .navbar .dropdown-menu {
     margin-left: 0;
   }
+
 }
 
-@media (min-width: 768px) {
- .navbar-collapse {
+@media (min-width: 992px) {
+ .salto {
   // background-color: black !important;
-    float: right !important;
-  }
+  display: none;
+}
 }
 
