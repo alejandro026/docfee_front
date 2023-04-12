@@ -9,7 +9,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 @Component({
   selector: 'app-navbarlogin',
   templateUrl: './navbarlogin.component.html',
-  styleUrls: ['./navbarlogin.component.css']
+  styleUrls: ['./navbarlogin.component.scss']
 })
 export class NavbarloginComponent implements OnInit {
 
@@ -22,7 +22,7 @@ export class NavbarloginComponent implements OnInit {
   ) { }
 
   sesion:LoginUsuario;
-  
+
   ngOnInit(): void {
     this.sesion= JSON.parse(sessionStorage.getItem('sesion')!);
     console.log(this.sesion)
