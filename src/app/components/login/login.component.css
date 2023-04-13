@@ -15,7 +15,7 @@ li{
 }
 
 h2{
-  font-size: 2vh 
+  font-size: 2vh
 }
 
 .titulo{
@@ -23,7 +23,7 @@ h2{
   color:  white;
   text-align: left;
   font-family: Arial, Helvetica, sans-serif;
-  
+
 }
 
 h1{
@@ -58,3 +58,6 @@ mat-toolbar {
 /* .spacer {
   flex: 1 1 auto;
 } */
+.espacio {
+  padding-bottom: 70px;
+}
