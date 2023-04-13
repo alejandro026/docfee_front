@@ -10,7 +10,7 @@
             <form [formGroup]="form">
 
                 <mat-form-field class="form-field" appearance="fill">
-                  <mat-label>Usuario o Cédula</mat-label>
+                  <mat-label>Correo electrónico</mat-label>
                   <input matInput autocomplete="off" formControlName="usuario">
                 </mat-form-field>
 
@@ -30,7 +30,7 @@
                 </ngx-recaptcha2>
               </div>
               <label class="label etiqueta">
-                <a (click)="reinicarPassword()" class="label-text-alt link link-hover">Olvidaste tu contraseña?</a>
+                <a (click)="reinicarPassword()" class="label-text-alt link link-hover">¿Olvidaste tu contraseña?</a>
               </label>
               <br>
               <button class="button" (click)="login()" type="submit" mat-raised-button color="success"
@@ -51,11 +51,11 @@
         <mat-step [stepControl]="autenticacionDosPasos">
 
           <mat-card class="login-card">
-            <p>Ingresa el codigo enviado a tu correo.</p>
+            <p>Ingresa el código enviado a tu correo.</p>
             <form [formGroup]="autenticacionDosPasos">
 
                 <mat-form-field class="form-field" appearance="fill">
-                  <mat-label>Codigo</mat-label>
+                  <mat-label>Código</mat-label>
                   <input matInput autocomplete="off" formControlName="codigo" required>
                 </mat-form-field>
 
@@ -65,7 +65,7 @@
 
             <div *ngIf="_codigoIncorrecto" class="alert alert-error alerta">
               <div>
-                <span>El codigo ingresado es incorrecto</span>
+                <span>El código ingresado es incorrecto</span>
               </div>
             </div>
 

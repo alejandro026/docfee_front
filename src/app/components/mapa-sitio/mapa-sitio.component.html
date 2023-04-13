@@ -12,130 +12,106 @@
             </nav>
         </div>
 
-        <h1 style="font-size: 3vw;">Mapa del sitio</h1>
-        <div class="row">
-            <div class="col-2">
-                <div class="card text-white card1" style="size: 1vh;" >
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" [routerLink]="'../dashboard'">Inicio</a>
+        <h1>Mapa del sitio</h1>
+
+        <div style="">
+                <div class="col-auto"> 
+                    <div class="card text-white card1" style="max-width: 18rem;" >
+                        <div class="card-body">
+                            <a class="card-text" [routerLink]="'../dashboard'">Inicio</a>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card1" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" href="#nosotros">Nosotros</a>
+
+                    <div class="col-auto">
+                        <div class="card text-white card1" style="max-width: 18rem;" >
+                            <div class="card-body">
+                                <a class="card-text" href="#nosotros">Nosotros</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card1" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" href="#servicios">Servicios</a>
+
+                    <div class="col-auto">
+                        <div class="card text-white card2" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <a class="card-text" href="#quienesSomos">¿Quiénes somos?</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card1" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" [routerLink]="'../dashboard/prueba'">Pacientes</a>
+
+                    <div class="col-auto">
+                        <div class="card text-white card2" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <a class="card-text" href="#mision">Misión</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card1" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <p class="card-text" style="font-size: 1vw" [routerLink]="'../dashboard/documentos'">Documentos</p>
+
+                    <div class="col-auto">
+                        <div class="card text-white card2" style="max-width: 18rem;" >
+                            <div class="card-body">
+                                <a class="card-text" href="#vision">Visión</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card1" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <p class="card-text" style="font-size: 1vw" [routerLink]="'../dashboard/expediente'">Expedientes</p>
+
+                    <div class="col-auto">
+                        <div class="card text-white card2" style="max-width: 18rem;" >
+                            <div class="card-body">
+                                <a class="card-text" href="#valores">Valores</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="col-auto">
+                        <div class="card text-white card1" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <a class="card-text" href="#servicios">Servicios</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card text-white card2" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <a class="card-text" href="#hospitalizacion">Área de hospitalización</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card text-white card2" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <a class="card-text" href="#citas">Agendar citas en línea</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card text-white card2" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <a class="card-text" href="#especialidades">Especialidades</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card text-white card1" style="max-width: 18rem;" [routerLink]="'../dashboard/prueba'">
+                            <div class="card-body">
+                                <a class="card-text">Pacientes</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card text-white card1" style="max-width: 18rem;" [routerLink]="'../dashboard/documentos'">
+                            <div class="card-body">
+                                <p class="card-text">Documentos</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <div class="card text-white card1" style="max-width: 18rem;" [routerLink]="'../dashboard/expediente'">
+                            <div class="card-body">
+                                <p class="card-text">Expedientes</p>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-2">
-                <div class="card text-white card2" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" href="#quienesSomos">¿Quiénes somos?</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card2" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw"  href="#hospitalizacion">Área de hospitalización</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-2">
-                <div class="card text-white card2" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" href="#mision">Misión</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card2" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" href="#citas">Agendar citas en línea</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6">
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-2">
-                <div class="card text-white card2" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" href="#vision">Visión</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card text-white card2" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw" href="#especialidades">Especialidades</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-8">
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-2">
-            </div>
-            <div class="col-2" style="size: 1vw">
-                <div class="card text-white card2" style="max-width: 18rem;">
-                    <div class="card-body">
-                        <a class="card-text" style="font-size: 1vw"href="#valores">Valores</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-8"></div>
-
-        </div>
-
     </div>

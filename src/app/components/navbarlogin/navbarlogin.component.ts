@@ -56,6 +56,7 @@ export class NavbarloginComponent implements OnInit {
 
   navigateToSection(sectionId: string) {
     this.navigationService.navigateToSection(sectionId);
+    console.log("m")
   }
 
 }
