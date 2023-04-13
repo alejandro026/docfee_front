@@ -21,7 +21,7 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
 import { LoginComponent } from './components/login/login.component';
 import { environment } from 'src/environments/environment';
 import { PatientComponent } from './components/dashboard/patients/patient/patient.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -54,7 +54,12 @@ import {MenuItem} from 'primeng/api';
 // import { UserIdleModule } from 'angular-user-idle';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NumericDirective } from './numeric.directive';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { LoaderInterceptor } from './interceptor/LoaderInterceptor';
 
+interface NgxSpinnerConfig {
+  type?: string;
+}
 
 @NgModule({
     declarations: [
@@ -103,13 +108,19 @@ import { NumericDirective } from './numeric.directive';
         AccordionModule,
         DialogModule,
         MatProgressBarModule,
+        NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
         // UserIdleModule.forRoot({ timeout: 10, idle: 15 })
 
     ],
     providers: [
         CargarScriptService,
         DialogService,
-        DialogModule
+        DialogModule,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: LoaderInterceptor,
+          multi: true
+        }
 
     ],
     bootstrap: [AppComponent]
