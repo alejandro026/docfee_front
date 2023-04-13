@@ -2,7 +2,7 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Util } from 'src/app/utils/util';
 import { AuthService } from './../../services/AuthService.service';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
@@ -12,7 +12,19 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 })
 export class ResetPasswordComponent {
 
+  form: UntypedFormGroup
+  hide = true
+  refPassword: DynamicDialogRef;
+
+  key: string="6LcQ1nUlAAAAAJUtvvqI6GKFLJ3OzC17k9ddGCx1";
+
+  public theme: 'light' | 'dark' = 'light';
+  // public size: 'compact' | 'normal' = 'normal';
+  public lang = 'es';
+  public type: 'image' | 'audio';
+
   emailFormControl: FormControl;
+  recaptcha: FormControl;
     failedResetPassword: boolean;
     failedResetPasswordMessage: string;
     passwordResetEmailSended: boolean;
@@ -27,6 +39,8 @@ export class ResetPasswordComponent {
             Validators.required,
             Validators.pattern(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)
         ]);
+        this.recaptcha= new FormControl('', [Validators.required]);
+
         this.failedResetPassword = false;
         this.failedResetPasswordMessage = '';
         this.disableSendButton = false;
@@ -37,6 +51,12 @@ export class ResetPasswordComponent {
         if (this.emailFormControl.invalid) {
             this.emailFormControl.markAsDirty();
             this.emailInput?.nativeElement.focus();
+
+            if(this.recaptcha.invalid){
+              Util.errorMessajeNormal("Debes completar todos los campos")
+            }
+
+
             return;
         }
         this.passwordResetEmailSended = false;
