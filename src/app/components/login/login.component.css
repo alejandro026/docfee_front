@@ -61,3 +61,23 @@ mat-toolbar {
 .espacio {
   padding-bottom: 70px;
 }
+
+.card{
+  min-width: 26em;
+}
+
+.cardTemas{
+  min-height: 25em;
+}
+
+/* .valor {
+  margin-bottom: 30px;
+} */
+
+.valor h2 {
+  font-size: 20px;
+}
+
+.valor p {
+  font-size: 1.2
+}
