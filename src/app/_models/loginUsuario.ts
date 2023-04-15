@@ -5,4 +5,5 @@ export class LoginUsuario{
   token: string;
   approved: boolean;
   mensaje:string;
+  correo?:string;
 }

@@ -38,11 +38,6 @@
         <mat-icon mat-list-icon class="material-icons-rounded">home</mat-icon>
         <span class="text">Inicio</span>
       </mat-list-item>
-      <!--
-            <mat-list-item [routerLink]="'patients'">
-                <mat-icon mat-list-icon class="material-icons-rounded">people</mat-icon>
-                <span class="text">Pacientes</span>
-            </mat-list-item> -->
 
       <mat-list-item [routerLink]="'prueba'" *ngIf="sesion.tipoUsuario=='MEDICO'">
         <mat-icon mat-list-icon class="material-icons-rounded">description</mat-icon>
@@ -59,15 +54,15 @@
         <span class="text">Expediente</span>
       </mat-list-item>
 
+      <!-- <mat-list-item></mat-list-item>
       <mat-list-item></mat-list-item>
-      <mat-list-item></mat-list-item>
-      <mat-list-item></mat-list-item>
+      <mat-list-item></mat-list-item> -->
 
       <mat-divider></mat-divider>
 
-      <br>
+      <div class="espacioOpeciones"></div>
 
-      <mat-list-item>
+      <mat-list-item [routerLink]="'configuracion'">
         <mat-icon mat-list-icon class="material-icons-rounded">settings</mat-icon>
         <span class="text">Configuración</span>
       </mat-list-item>
