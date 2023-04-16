@@ -1,7 +1,7 @@
-import { Usuario } from './usuario';
-export class Tratamiento{
+export class TratamientoDTO{
+
   id_tratamiento:string;
-    id_usuario:Usuario;
+    id_usuario:number;
 
     id_medico:number;
 

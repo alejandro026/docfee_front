@@ -33,6 +33,7 @@ import { SessionExpiredDialogComponentComponent } from './session-expired-dialog
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { GenerarExpedienteComponent } from './expediente/generar-expediente/generar-expediente.component';
 
 
 @NgModule({
@@ -53,7 +54,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
     RecetaComponent,
     NuevaCitaComponent,
-    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent, SessionExpiredDialogComponentComponent, ConfiguracionComponent
+    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent, SessionExpiredDialogComponentComponent, ConfiguracionComponent, GenerarExpedienteComponent
 
   ],
   imports: [

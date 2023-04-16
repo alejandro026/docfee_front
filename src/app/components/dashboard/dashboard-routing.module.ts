@@ -21,6 +21,7 @@ import { ServiciosComponent } from './servicios/servicios.component';
 import { GuardGuard } from 'src/app/guard.guard';
 import { UsuarioGuard } from 'src/app/usuario.guard';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { GenerarExpedienteComponent } from './expediente/generar-expediente/generar-expediente.component';
 
 
 
@@ -43,6 +44,7 @@ const routes: Routes = [
       { path: 'nuevaReceta', canActivate:[UsuarioGuard], component: NuevaRecetaComponent, data:{titulo:'nuevaReceta'}},
       // { path: 'servicios', canActivate:[UsuarioGuard], component: ServiciosComponent, data:{titulo:'servicios'}},
       { path: 'configuracion', component: ConfiguracionComponent, data:{titulo:'Configuracion'}},
+      { path: 'generar-expediente',canActivate:[UsuarioGuard], component: GenerarExpedienteComponent, data:{titulo:'Generar expediente'}},
 
 
 
