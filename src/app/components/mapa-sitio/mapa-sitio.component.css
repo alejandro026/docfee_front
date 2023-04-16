@@ -16,8 +16,8 @@
     overflow: hidden;
 }
 
-.padding {
-    
+.boton{
+   background-color: #002b5c;
 }
 
 h1{
@@ -28,15 +28,10 @@ h1{
 
 .card1 {
     background-color: #002b5c !important;
-    width: auto; 
-    margin: auto;
-
 }
 
 .card2 {
     background-color: #2C2E43 !important;
-    width: auto; 
-    margin: auto
 }
 
 .card-text{
@@ -50,3 +45,5 @@ a {
     color: white;
     text-decoration: none;
 }
+
+

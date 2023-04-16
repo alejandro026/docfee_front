@@ -3,115 +3,49 @@
 
 <app-navbarlogin></app-navbarlogin>
     <div class="container1">
-        <div class="container-fluid">
+       <div class="container-fluid">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="clase" [routerLink]="'../dashboard'">Inicio</a></li>
                     <li class="breadcrumb-item active" aria-current="page"><a>Mapa del sitio</a></li>
                 </ol>
             </nav>
-        </div>
+        </div> 
 
         <h1>Mapa del sitio</h1>
-
-        <div style="">
-                <div class="col-auto"> 
-                    <div class="card text-white card1" style="max-width: 18rem;" >
-                        <div class="card-body">
-                            <a class="card-text" [routerLink]="'../dashboard'">Inicio</a>
-                        </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="card text-white card1" style="max-width: 18rem;" >
-                            <div class="card-body">
-                                <a class="card-text" href="#nosotros">Nosotros</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="card text-white card2" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <a class="card-text" href="#quienesSomos">¿Quiénes somos?</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="card text-white card2" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <a class="card-text" href="#mision">Misión</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="card text-white card2" style="max-width: 18rem;" >
-                            <div class="card-body">
-                                <a class="card-text" href="#vision">Visión</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="card text-white card2" style="max-width: 18rem;" >
-                            <div class="card-body">
-                                <a class="card-text" href="#valores">Valores</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="card text-white card1" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <a class="card-text" href="#servicios">Servicios</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card text-white card2" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <a class="card-text" href="#hospitalizacion">Área de hospitalización</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card text-white card2" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <a class="card-text" href="#citas">Agendar citas en línea</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card text-white card2" style="max-width: 18rem;">
-                            <div class="card-body">
-                                <a class="card-text" href="#especialidades">Especialidades</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card text-white card1" style="max-width: 18rem;" [routerLink]="'../dashboard/prueba'">
-                            <div class="card-body">
-                                <a class="card-text">Pacientes</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto">
-                        <div class="card text-white card1" style="max-width: 18rem;" [routerLink]="'../dashboard/documentos'">
-                            <div class="card-body">
-                                <p class="card-text">Documentos</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-auto">
-                        <div class="card text-white card1" style="max-width: 18rem;" [routerLink]="'../dashboard/expediente'">
-                            <div class="card-body">
-                                <p class="card-text">Expedientes</p>
-                            </div>
-                        </div>
-                    </div>
+        
+        <div class="row">
+            <div class="col-auto">
+                <a class="btn btn-light boton" role="button"  aria-expanded="false"
+                id="nosotros" style="color: #FFFFFF">Inicio</a>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-primary dropdown-toggle boton" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="nosotros" style="color: #FFFFFF">Nosotros</a>
+                <div class="dropdown-menu dropdown-menu" aria-labelledby="nosotros">
+                <a class="dropdown-item" (click)="navigateToSection('quienesSomos')">¿Quiénes somos?</a>
+                <a class="dropdown-item" (click)="navigateToSection('mision')">Misión</a>
+                <a class="dropdown-item" (click)="navigateToSection('vision')">Visión</a>
+                <a class="dropdown-item" (click)="navigateToSection('valores')">Valores</a>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div mdbDropdown class="dropdown">
+                    <a
+                      class="btn btn-primary dropdown-toggle"
+                      role="button"
+                      id="dropdownMenuLink"
+                      mdbDropdownToggle
+                      aria-expanded="false">
+                      Nosotros
+                    </a>
+                    <ul mdbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <li><a class="dropdown-item" href="#">¿Quíenes somos?</a></li>
+                      <li><a class="dropdown-item" href="#">Misión</a></li>
+                      <li><a class="dropdown-item" href="#">Visión</a></li>
+                      <li><a class="dropdown-item" href="#">Valores</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
