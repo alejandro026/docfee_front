@@ -3,6 +3,9 @@
 <div class="body">
   <app-navbarlogin></app-navbarlogin>
 
+  <div class="espacio">
+  </div>
+
   <!--Carrusel-->
     <mdb-carousel [controls]="true" [indicators]="true" [animation]="'fade'">
       <mdb-carousel-item>
@@ -39,53 +42,74 @@
         <br>
       </div>
     </section>
+    <br>
+    <br>
     <section class="">
       <div class="container pb-40" >
-        <br>
-        <h1 id="quienesSomos" style="font-size: 4vh">¿Quiénes somos?</h1>
-        <br>
-        <h2>En DOCFEE somos una institución hospitalaria que brinda una solución de salud integral a todas las necesidades de
-          nuestros pacientes, aportando nuestra experiencia médica y el uso de tecnologías de punta, para el diagnóstico certero,
-          tratamiento especializado y seguimiento personalizado y humano.</h2>
 
-        <br>
+        <div class="card">
+          <div class="card-body">
+
+            <h1 class="card-title" id="quienesSomos" style="font-size: 4vh">¿Quiénes somos?</h1>
+            <br>
+              <h2>En DOCFEE somos una institución hospitalaria que brinda una solución de salud integral a todas las necesidades de
+                nuestros pacientes, aportando nuestra experiencia médica y el uso de tecnologías de punta, para el diagnóstico certero,
+                tratamiento especializado y seguimiento personalizado y humano.</h2>
+            <br>
+          </div>
+        </div>
+
         <div class="row ">
           <div class="col">
-            <h1 id="mision" style="font-size: 4vh">Misión</h1>
-            <br>
-            <h2>Somos una institución que busca brindar a nuestros pacientes atención médica segura, eficiente y con calidez, apoyados
-               con alta tecnología y basados en trabajo en equipo, esforzándonos en superar las expectativas de nuestros pacientes y usuarios.</h2>
-          </div>
-          <div class="col">
-            <h1 id="vision" style="font-size: 4vh">Visión</h1>
-            <br>
-            <h2> Alcanzar el liderazgo en la prestación de servicios médico-hospitalarios en el país, a través de servicios de alta tecnología
-               y gran calidad que permitan cubrir las demandas existentes en materia de salud en la sociedad, utilizando la mejora continua sistemática en todos los procesos de atención.
-            </h2>
-          </div>
-          <div class="col">
-            <div class="row">
-              <h1 id="valores" style="font-size: 4vh">Valores</h1>
 
-              <div class="col">
-                <br>
-                <ul>
-                  <h2><li>Dignidad</li>
-                  <li>Seguridad</li>
-                  <li>Honestidad</li>
-                  <li>Trabajo en equipo</li></h2>
-                </ul>
-              </div>
-              <div class="col">
-                <br>
-                <ul>
-                  <h2><li>Lealtad</li>
-                  <li>Empatía</li>
-                  <li>Excelencia</li></h2>
-                </ul>
+            <div class="card cardTemas">
+              <div class="card-body">
+                <h1 class="card-title" id="mision" style="font-size: 4vh">Misión</h1>
+                <h2>Somos una institución que busca brindar a nuestros pacientes atención médica segura, eficiente y con calidez, apoyados
+                  con alta tecnología y basados en trabajo en equipo, esforzándonos en superar las expectativas de nuestros pacientes y usuarios.</h2>
               </div>
             </div>
           </div>
+          <div class="col">
+            <div class="card cardTemas">
+              <div class="card-body">
+                <h1 class="card-title" id="vision" style="font-size: 4vh">Visión</h1>
+                <h2> Alcanzar el liderazgo en la prestación de servicios médico-hospitalarios en el país, a través de servicios de alta tecnología
+                  y gran calidad que permitan cubrir las demandas existentes en materia de salud en la sociedad, utilizando la mejora continua sistemática en todos los procesos de atención.
+               </h2>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col">
+            <div class="card cardTemas">
+              <div class="card-body">
+                <div class="row">
+                  <h1 class="card-title" id="valores" style="font-size: 4vh">Valores</h1>
+                  <div class="col">
+                    <br>
+                    <ul>
+                      <li><h4>Dignidad</h4></li>
+                      <li><h4>Seguridad</h4></li>
+                      <li><h4>Honestidad</h4></li>
+                      <li><h4>Trabajo en equipo</h4></li>
+                    </ul>
+                  </div>
+                  <div class="col">
+                    <br>
+                    <ul>
+                      <li><h4>Lealtad</h4></li>
+                      <li><h4>Empatía</h4></li>
+                      <li><h4>Excelencia</h4></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </section>
@@ -101,92 +125,113 @@
     <section class="">
       <div class="container pb-40" >
         <br>
-        <h1 id="hospitalizacion" style="font-size: 4vh">Área de hospitalización </h1>
         <br>
-        <h2>Hospital DOCFEE cuenta en su área de hospitalización con:
-        <li>28 habitaciones individuales</li>
-        <li>46 suites con sala de espera privada</li>
-        <li>6 masters suites con habitación para el acompañante para mayor comodidad de los familiares y del paciente</li>
-        <p>Ofreciendo un total de 80 confortables habitaciones con todos los servicios.
-          Todos nuestros pacientes están bajo los cuidados de un amplio grupo médico de experiencia y prestigio en todas las especialidades y sub-especialidades médicas, asimismo nuestro destacado equipo de enfermería cuida de nuestros pacientes con calidez y profesionalismo.
-        </p>
-        </h2>
-        <div class="col">
-          <div class="row">
-            <div class="col-4">
-              <img src="./assets/images/area1.png" style="width: 100%;">
-            </div>
-            <div class="col-4">
-              <img src="./assets/images/area2.jpg" style="width: 100%;">
-            </div>
-            <div class="col-4">
-              <img src="./assets/images/area3.png" style="width: 100%;">
+        <div class="card">
+          <div class="card-body">
+            <br>
+            <h1 class="card-title" id="hospitalizacion" style="font-size: 4vh">Área de hospitalización </h1>
+            <br>
+            <h2>Hospital DOCFEE cuenta en su área de hospitalización con:
+            <li>28 habitaciones individuales</li>
+            <li>46 suites con sala de espera privada</li>
+            <li>6 masters suites con habitación para el acompañante para mayor comodidad de los familiares y del paciente</li>
+            <p>Ofreciendo un total de 80 confortables habitaciones con todos los servicios.
+              Todos nuestros pacientes están bajo los cuidados de un amplio grupo médico de experiencia y prestigio en todas las especialidades y sub-especialidades médicas, asimismo nuestro destacado equipo de enfermería cuida de nuestros pacientes con calidez y profesionalismo.
+            </p>
+            </h2>
+            <div class="col">
+              <div class="row">
+                <div class="col-4">
+                  <img src="./assets/images/area1.png" style="width: 100%;">
+                </div>
+                <div class="col-4">
+                  <img src="./assets/images/area2.jpg" style="width: 100%;">
+                </div>
+                <div class="col-4">
+                  <img src="./assets/images/area3.png" style="width: 100%;">
 
+                </div>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title" id="citas" style="font-size: 4vh">Agenda una cita en línea </h1>
+            <br>
+            <h2>Agenda una cita desde la comodidad de tu casa, en DOCFEE nos preocupamos por hacer el proceso de citas lo más
+              rápido y fácil posible, es por ello que ponemos a tu alcance nuestro nuevo servicio de citas en línea, inicia sesión
+              y si no tienes cuenta, ¡regístrate!.
+            </h2>
+            <h2>Una vez que has iniciado sesión, sólo secciona la opción expediente, después, da click en el icóno agregar.
+            </h2>
+          </div>
+        </div>
+
+        <br>
+
+        <div class="card">
+          <div class="card-body">
+            <h1 class="card-title" id="especialidades" style="font-size: 4vh">Especialidades </h1>
+            <br>
+            <h2>Hospital DOCFEE cuenta con más de 30 especialidades y personal profesionalmente capacitado para brindarte el mejor servicio y atención.</h2>
+            <br>
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                <ul>
+                  <li>Anestesiología</li>
+                  <li>Angiología</li>
+                  <li>Banco de sangre</li>
+                  <li>Bariatría</li>
+                  <li>Cardiología</li>
+                  <li>Cardiología intervencionista</li>
+                  <li>Cardiología pediátrica</li>
+                  <li>Cirugía cardiovascular</li>
+                  <li>Cirugía general</li>
+                </ul>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <ul>
+                  <li>Dermatología</li>
+                  <li>Endocrinología</li>
+                  <li>Endoscopía</li>
+                  <li>Gastroenterología</li>
+                  <li>Ginecología y fertilidad</li>
+                  <li>Ginecología y obstetricia</li>
+                  <li>Neumología</li>
+                  <li>Neurocirugía</li>
+                </ul>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <ul>
+                  <li>Nutrición</li>
+                  <li>Oftalmología</li>
+                  <li>Oncología médica</li>
+                  <li>Oncología pediátrica</li>
+                  <li>Pediatría</li>
+                  <li>Proctología</li>
+                  <li>Psiquiatría</li>
+                  <li>Radiología</li>
+                </ul>
+              </div>
+              <div class="col-md-3 col-sm-6">
+                <ul>
+                  <li>Radioterapia</li>
+                  <li>Reumatología</li>
+                  <li>Terapia intensiva</li>
+                  <li>Trasplantes</li>
+                  <li>Traumatología y ortopedia</li>
+                  <li>Unidad de Cuidados Intensivos</li>
+                  <li>Urgencias</li>
+                  <li>Urología</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <br>
 
-        <h1 id="citas" style="font-size: 4vh">Agenda una cita en línea </h1>
-        <br>
-        <h2>Agenda una cita desde la comodidad de tu casa, en DOCFEE nos preocupamos por hacer el proceso de citas lo más
-          rápido y fácil posible, es por ello que ponemos a tu alcance nuestro nuevo servicio de citas en línea, inicia sesión
-          y si no tienes cuenta, ¡regístrate!.
-        </h2>
-        <h2>Una vez que has iniciado sesión, sólo secciona la opción expediente, después, da click en el icóno agregar.
-        </h2>
-
-        <br>
-        <h1 id="especialidades" style="font-size: 4vh">Especialidades </h1>
-        <br>
-        <h2>Hospital DOCFEE cuenta con más de 30 especialidades y personal profesionalmente capacitado para brindarte el mejor servicio y atención.</h2>
-        <h2>
-        <div class="row">
-          <br>
-          <div class="col">
-            <li>Anestesiología</li>
-            <li>Angiología</li>
-            <li>Banco de sangre</li>
-            <li>Bariatría</li>
-            <li>Cardiología</li>
-            <li>Cardiología intervencionista</li>
-            <li>Cardiología pediátrica</li>
-            <li>Cirugía cardiovascular</li>
-            <li>Cirugía general</li>
-          </div>
-          <div class="col">
-            <li>Dermatología</li>
-            <li>Endocrinología</li>
-            <li>Endoscopía</li>
-            <li>Gastroenterología</li>
-            <li>Ginecología y fertilidad</li>
-            <li>Ginecología y obstetricia</li>
-            <li>Neumología</li>
-            <li>Neurocirugía</li>
-          </div>
-          <div class="col">
-            <li>Nutrición</li>
-            <li>Oftalmología</li>
-            <li>Oncología médica</li>
-            <li>Oncología pediátrica</li>
-            <li>Pediatría</li>
-            <li>Proctología</li>
-            <li>Psiquiatría</li>
-            <li>Radiología</li>
-          </div>
-          <div class="col">
-            <li>Radioterapia</li>
-            <li>Reumatología</li>
-            <li>Terapia intensiva</li>
-            <li>Trasplantes</li>
-            <li>Traumatología y ortopedia</li>
-            <li>Unidad de Cuidados Intensivos</li>
-            <li>Urgencias</li>
-            <li>Urología</li>
-          </div>
-        </div>
-        </h2>
-        <br>
 
       </div>
     </section>

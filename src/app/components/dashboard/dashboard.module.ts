@@ -30,6 +30,10 @@ import { BreadcrumbComponent } from '../breadcrumb/breadcrumb.component';
 import { NosotrosComponent } from './nosotros/nosotros.component';
 import { ServiciosComponent } from './servicios/servicios.component';
 import { SessionExpiredDialogComponentComponent } from './session-expired-dialog-component/session-expired-dialog-component.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { GenerarExpedienteComponent } from './expediente/generar-expediente/generar-expediente.component';
 
 
 @NgModule({
@@ -50,7 +54,7 @@ import { SessionExpiredDialogComponentComponent } from './session-expired-dialog
 
     RecetaComponent,
     NuevaCitaComponent,
-    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent, SessionExpiredDialogComponentComponent
+    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent, SessionExpiredDialogComponentComponent, ConfiguracionComponent, GenerarExpedienteComponent
 
   ],
   imports: [
@@ -66,7 +70,8 @@ import { SessionExpiredDialogComponentComponent } from './session-expired-dialog
     MatDatepickerModule,
     ReactiveFormsModule,
     DateTimePickerModule,
-    
+    MatCardModule,
+    MatExpansionModule
   ]
 })
 export class DashboardModule { }

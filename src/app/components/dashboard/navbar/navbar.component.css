@@ -13,10 +13,11 @@ mat-toolbar {
 
 .container1 {
   position: relative;
-  height: 100%;
+  height: auto;
   overflow: hidden;
   background-color: #2c2e43;
   border: 0px;
+  min-height: 80%;
 }
 
 .sidenav {
@@ -25,7 +26,7 @@ mat-toolbar {
   text-align: center;
   border-right: none;
   margin: 15px;
-  width: 200px;
+  width: 264px;
   height: auto;
   border: 0px;
   border-radius: 10px;
@@ -85,4 +86,17 @@ mat-toolbar {
     display: block;
     margin: 0 auto;
   }
+}
+
+.espacioOpeciones{
+  padding-top: 10em;
+}
+
+mat-expansion-panel{
+  background: #002b5c;
+  color: white;
+}
+
+.mat-drawer.mat-sidenav.mat-sidenav-left {
+  margin-left: 0 !important;
 }

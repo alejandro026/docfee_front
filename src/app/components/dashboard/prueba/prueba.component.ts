@@ -109,7 +109,7 @@ export class PruebaComponent implements OnInit {
     antecedentes.push(new Antecedentes());
 
     usuario2.id_UsuarioConfianza= new Usuario();
-    usuario2.antecedentes=antecedentes;
+    // usuario2.antecedentes=antecedentes;
 
 
     let user = usuario != null ? usuario : usuario2;

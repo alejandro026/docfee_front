@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario>;
 
   ngOnInit(): void {
-
+    this.animacionHref();
   };
 
 
@@ -103,7 +103,7 @@ export class LoginComponent implements OnInit {
       this.router.navigate(["dashboard/homepage"]);
     }
   };
-  
+
   searchTerm: string = 'DOCFEE';
   content: string;
   search(): void {
@@ -140,6 +140,14 @@ export class LoginComponent implements OnInit {
       });
       alert('No matches found.');
     }
+  }
+
+  animacionHref(){
+    this.navigationService.navigateToSection$.subscribe(sectionId => {
+      const sectionElement = this.elementRef.nativeElement.querySelector(`#${sectionId}`);
+      sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.body.style.scrollPaddingTop = '10%';
+    });
   }
 
 }

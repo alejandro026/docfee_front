@@ -52,7 +52,7 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':listData!==undefined}" style="justify-content: center; font-style: italic;"></tr>
         </table>
-        <mat-paginator #paginator [pageSizeOptions]="[5, 7, 10]" [pageSize]="7"></mat-paginator>
+        <mat-paginator #paginator [pageSizeOptions]="[5, 7, 10]" [pageSize]="10"></mat-paginator>
     </div>
     <div style="text-align: right;">
       <button mat-raised-button color="accent" style="margin-right: 90px; margin-top: 10px;" class="creat-button" routerLink="/dashboard/homepage"> Volver a Inicio </button>

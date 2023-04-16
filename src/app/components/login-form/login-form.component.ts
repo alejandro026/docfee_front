@@ -272,7 +272,8 @@ reinicarPassword(){
 verificaCodigo(){
   console.log("--------");
   console.log(this._codigoAutenticacion);
-  console.log(this._sesion)
+  console.log(this._sesion);
+  this._sesion.correo=this.form.get('usuario')?.value;
   let resultado=this.autenticacionDosPasos.get('codigo')?.value
   if(resultado==this._codigoAutenticacion){
     // Util.succesaMessage("Pasale");

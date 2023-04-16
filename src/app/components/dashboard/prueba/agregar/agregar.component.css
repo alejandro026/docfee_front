@@ -42,3 +42,29 @@ th.mat-column-position, td.mat-column-position {
 .mat-mdc-table-sticky-border-elem-left {
   border-right: 1px solid #e0e0e0;
 }
+
+
+.error-message {
+    color: red;
+    font-size: 10px;
+    position: unset;
+}
+
+
+.element-btn {
+  margin-top: 1%;
+}
+
+.cerrar{
+  margin-left: 5%;
+}
+
+@media (max-width: 992px){.cerrar{
+  margin-left: 0%;
+}
+}
+
+.dialog-content {
+  height: 500px; /* Altura fija del contenedor */
+  overflow-y: auto; /* Habilitar la barra de desplazamiento vertical */
+}
