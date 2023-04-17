@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './../../services/AuthService.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -73,6 +74,7 @@ export class RegistroComponent {
           numTelefono: this.numTelefono,
           email: this.emailControl,
           password: this.passwordControl,
+          confirmPassword: new FormControl('', [Validators.required]),
           recaptcha: this.recaptcha
       });
       this.disableRegisterButton = false;
@@ -95,6 +97,14 @@ export class RegistroComponent {
       };
 
       try {
+
+        if (this.registerForm.valid) {
+          if (this.registerForm.controls.password.value !== this.registerForm.controls.confirmPassword.value) {
+              Util.errorMessajeNormal("Las contraseñas no coinciden favor de verificar");
+          } else {
+              // enviar el formulario
+
+
           this.failedRegister = false;
           this.emailControl.disable();
           this.passwordControl.disable();
@@ -123,6 +133,8 @@ export class RegistroComponent {
             this.cerrarDialog();
           })
 
+        }
+      }
           // this.authService.sendVerificationMail();
       } catch (error: any) {
 
