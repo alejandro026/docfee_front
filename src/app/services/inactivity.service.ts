@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class InactivityService {
 
-  private inactivityTime = 300; // Tiempo de inactividad en segundos. Esta establecido por defecto en 2 minutos
+  private inactivityTime = 180; // Tiempo de inactividad en segundos. Esta establecido por defecto en 2 minutos
   private timeoutId: any;
 
   constructor(

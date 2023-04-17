@@ -16,7 +16,7 @@ export class AuthService {
   sesion:LoginUsuario;
 
   private sessionTimer: any;
-  public sessionDuration = 600; //3 minutos por defecto
+  public sessionDuration = 300; //3 minutos por defecto
   public sessionExpired: Subject<boolean> = new Subject<boolean>();
 
   constructor(
