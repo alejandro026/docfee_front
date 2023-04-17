@@ -11,6 +11,7 @@ import { UsuarioService } from './../../../services/usuario.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angular/fire/storage';
+import { GenerarAntecedenteComponent } from './generar-antecedente/generar-antecedente.component';
 
 @Component({
   selector: 'app-prueba',
@@ -27,7 +28,7 @@ export class PruebaComponent implements OnInit {
   ) { }
 
   searchKey: string;
-  displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono', 'actions'];
+  displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono', 'antecedente', 'actions'];
   dataSource: MatTableDataSource<Usuario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -116,6 +117,18 @@ export class PruebaComponent implements OnInit {
     const modalRef = this.dialog.open(AgregarComponent, {
       width: '1000px',
       data: user,
+    });
+    modalRef.afterClosed().subscribe(result=>{
+        this.getData();
+    })
+  }
+
+
+  openModal2(idUsuario: number) {
+    const modalRef = this.dialog.open(GenerarAntecedenteComponent, {
+      width: "45%",
+      minWidth: "250px",
+      data: idUsuario,
     });
     modalRef.afterClosed().subscribe(result=>{
         this.getData();

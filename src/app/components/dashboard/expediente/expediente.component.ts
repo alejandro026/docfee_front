@@ -43,7 +43,7 @@ export class ExpedienteComponent implements OnInit {
     }else{
       this.consultarTodosVistaDR();
     }
-    
+
 
   }
   ngAfterViewInit(): void {
@@ -89,5 +89,8 @@ export class ExpedienteComponent implements OnInit {
   }
   nuevaCita(id:number){
     this.router.navigate(['/dashboard/nuevaCita'], { queryParams: { idTratmiento: id} });
+  }
+  nuevaCitaUsuario(id:number){
+    this.router.navigate(['/dashboard/nuevaCitaUsuario'], { queryParams: { idTratmiento: id} });
   }
 }

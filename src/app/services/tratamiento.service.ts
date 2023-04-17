@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
+import { Antecedentes } from '../_models/antecedentes';
 
 
 @Injectable({
@@ -15,6 +16,7 @@ import { Observable} from 'rxjs';
 export class TratamientoService {
 
    url="https://docfeeback-production.up.railway.app/tratamiento/";
+   url2="https://docfeeback-production.up.railway.app/";
 
   constructor(
     private http: HttpClient
@@ -58,6 +60,12 @@ export class TratamientoService {
 
   actualizarDocumento(update:DocumentoUpdate):Observable<boolean>{
     return this.http.post<boolean>(this.url+"actualizarDocumento", update,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
+
+  guardarAntecedentes(antecedentes:Antecedentes):Observable<Antecedentes>{
+    return this.http.post<Antecedentes>(this.url2+"antecedentes/guardar", antecedentes,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 }

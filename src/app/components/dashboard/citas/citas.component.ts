@@ -21,8 +21,8 @@ export class CitasComponent implements OnInit {
 
   dataSource: MatTableDataSource<Citas>;
   displayedColumns: string[];
-  displayedColumns2: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta','nuevaReceta'];
-  displayedColumns3: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Receta',];
+  displayedColumns2: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Estatus', 'Receta','nuevaReceta'];
+  displayedColumns3: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Estatus', 'Receta',];
 
 
   constructor(
@@ -73,5 +73,13 @@ export class CitasComponent implements OnInit {
   }
   nuevaReceta(id:number){
     this.router.navigate(['/dashboard/nuevaReceta'], { queryParams: { id_cita: id} });
+  }
+
+  veficaConfirmacion(estatus:boolean){
+    if(estatus){
+      return "Confirmada";
+    }else{
+      return "Sin confirmar"
+    }
   }
 }

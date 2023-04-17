@@ -89,6 +89,9 @@
           <button *ngIf="sesion.tipoUsuario=='MEDICO'" mat-icon-button aria-label="expand row" title="Agregar Cita" (click)="nuevaCita(element.id_tratamiento)" >
             <mat-icon>add_circle</mat-icon>
           </button>
+          <button *ngIf="sesion.tipoUsuario!='MEDICO'" mat-icon-button aria-label="expand row" title="Agendar Cita" (click)="nuevaCitaUsuario(element.id_tratamiento)" >
+            <mat-icon>add_circle</mat-icon>
+          </button>
         </td>
       </ng-container>
 

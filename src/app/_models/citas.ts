@@ -10,5 +10,6 @@ export class Citas{
 
 
     tratamiento:Tratamiento;
+    confirmada:boolean;
 
   }

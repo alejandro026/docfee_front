@@ -65,7 +65,7 @@ export class RegistroComponent {
       this.numTelefono= new FormControl('', [ Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^[0-9]\d*$/)]);
       this.emailControl = new FormControl('', [Validators.required, Validators.pattern(/^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/)]);
       this.passwordControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
-      this.recaptcha = new FormControl('',  [ Validators.required]);
+      this.recaptcha = new FormControl('');
       this.registerForm = new FormGroup({
           nombre: this.nombre,
           apPaterno: this.apPaterno,

@@ -34,6 +34,8 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { GenerarExpedienteComponent } from './expediente/generar-expediente/generar-expediente.component';
+import { GenerarAntecedenteComponent } from './prueba/generar-antecedente/generar-antecedente.component';
+import { NuevaCitaUsuarioComponent } from './nueva-cita-usuario/nueva-cita-usuario.component';
 
 
 @NgModule({
@@ -54,7 +56,7 @@ import { GenerarExpedienteComponent } from './expediente/generar-expediente/gene
 
     RecetaComponent,
     NuevaCitaComponent,
-    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent, SessionExpiredDialogComponentComponent, ConfiguracionComponent, GenerarExpedienteComponent
+    NuevaRecetaComponent,BreadcrumbComponent, NosotrosComponent, ServiciosComponent, SessionExpiredDialogComponentComponent, ConfiguracionComponent, GenerarExpedienteComponent, GenerarAntecedenteComponent, NuevaCitaUsuarioComponent
 
   ],
   imports: [

@@ -1,0 +1,75 @@
+<div>
+  <mat-toolbar>
+    <span> Agregar antecedente </span>
+    <span style="flex: 1 1 auto"></span>
+  </mat-toolbar>
+</div>
+
+<div class="dialog-content">
+      <form autocomplete="off" [formGroup]="antecedentesForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <ng-template matStepLabel> Antecedentes </ng-template>
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Medicamento</mat-label>
+            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="medicamentos">
+          </mat-form-field>
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Alcolismo</mat-label>
+            <mat-select formControlName="alcolismo">
+              <mat-option [value]="true">Si</mat-option>
+              <mat-option [value]="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <div class="row">
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Drogas</mat-label>
+            <mat-select formControlName="drogas">
+              <mat-option [value]="true">Si</mat-option>
+              <mat-option [value]="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Tabaquismo</mat-label>
+            <mat-select formControlName="tabaquismo">
+              <mat-option [value]="true">Si</mat-option>
+              <mat-option [value]="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Antecedentes familiares</mat-label>
+            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="antecedentesFamiliares">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field style="width: 48%; min-width: 200px; " appearance="outline">
+            <mat-label>Otros datos</mat-label>
+            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="otrosDatos">
+          </mat-form-field>
+        </div>
+
+        <div class="button-container">
+          <button mat-raised-button color="primary" type="submit">
+            Aceptar
+          </button>
+
+          <button mat-raised-button color="warn" class="cerrar" mat-dialog-close>
+            Cancelar
+          </button>
+        </div>
+
+      </form>
+  </div>

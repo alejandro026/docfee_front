@@ -12,7 +12,7 @@ import { Observable} from 'rxjs';
 export class CitasService {
 
    url="https://docfeeback-production.up.railway.app/citas/";
-
+   url2="https://docfeeback-production.up.railway.app/"
   constructor(
     private http: HttpClient
   ) { }
@@ -32,6 +32,10 @@ export class CitasService {
     return this.http.get<Citas[]>(this.url+"buscarPorIdMedico/"+id,
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
+  buscarPorUsuario(id:string): Observable<Citas[]>{
+    return this.http.get<Citas[]>(this.url+"buscarPorIdUsuario/"+id,
+    {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
 
   actualizarCita(cita:Citas):Observable<Citas>{
     return this.http.put<Citas>(this.url+"actualizar",cita,
@@ -41,5 +45,10 @@ export class CitasService {
   guardarCita(cita:CitaDTO):Observable<Citas>{
     return this.http.post<Citas>(this.url+"guardar",cita,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
+  consultarTodosMedicos():Observable<any>{
+    return this.http.get<any>(this.url2+"medicos/consultarTodos",
+    {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 }

@@ -42,46 +42,6 @@ th{
   height: 15px;
 }
 
-table {
-  width: 100%;
-  height: auto;
-  }
-  .mat-header-cell {
-      word-wrap: initial;
-      display: table-cell;
-      padding: 0px 10px;
-      line-break: unset;
-      white-space: nowrap;
-      overflow: hidden;
-      vertical-align: middle;
-  }
-  .mat-table {
-      overflow-x: scroll;
-  }
-  .mat-header-row {
-      display: table-row;
-  }
-
-.search-div {
-  margin: auto;
-  height: auto;
-  padding: 0px;
-  text-align: center;
-  }
-  .creat-button {
-      margin-right: 15px;
-      margin-left: 30px;
-      margin-top: 10px;
-  }
-  .search-form-field {
-      width: 70%;
-      height: 36px;
-      margin-left: 15px;
-      padding: 0px 20px;
-      background-color: whitesmoke;
-      border-radius: 5px;
-      margin: 10px;
-  }
   ::ng-deep .mat-form-field-underline {
       display: none;
   }
@@ -99,8 +59,6 @@ table {
 .hide {
   display: none;
 }
-
-
 
 .example-container {
   height: auto !important;

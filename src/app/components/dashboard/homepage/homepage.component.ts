@@ -26,7 +26,7 @@ export class HomepageComponent {
 
   ngOnInit(): void {
     this.mostrarCitas(this.sesion.id);
-    
+
   }
 
   onCreate() {
@@ -42,11 +42,20 @@ export class HomepageComponent {
   }
 
   mostrarCitas(id:string){
-    this.citasService.buscarPorIdMedico(id).subscribe(data =>{
-      this.citas = data
-      console.log(this.citas)
-      this.dataSource = new MatTableDataSource(data);
-    })
+
+    if(this.sesion.tipoUsuario=="MEDICO"){
+      this.citasService.buscarPorIdMedico(id).subscribe(data =>{
+        this.citas = data
+        console.log(this.citas)
+        this.dataSource = new MatTableDataSource(data);
+      })
+    }else{
+      this.citasService.buscarPorUsuario(id).subscribe(data =>{
+        this.citas = data
+        console.log(this.citas)
+        this.dataSource = new MatTableDataSource(data);
+      })
+    }
   }
 
 }
