@@ -13,8 +13,12 @@
   </nav>
 
   <div class="container2">
+    <div ALIGN="center">
+      <img src=".\assets\images\LogoBlanco.png">
+    </div>
     <div class="header" ALIGN="center">
-      <h1><strong>RECETA MEDICA</strong></h1>
+      <h1><strong>RECETA MÉDICA</strong></h1>
+      
     </div>
 
     <!-- <section class="content"> -->
@@ -62,20 +66,19 @@
 
                   <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css" />
 
-                  <table class="default">
-                    <thead>
-                      <tr>
-                        <th scope="col">MEDICAMENTO</th>
-                        <th scope="col">TAREAS/HORARIOS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">{{recetas.medicamento}}</th>
-                        <th scope="row">Tomar cada {{recetas.horarios}} Horas y la tarea es {{recetas.tareas}} </th>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="col-md-3 col-6">
+                    <h3><strong>MEDICAMENTO: </strong></h3>
+                    <br>
+                    <p class="text-muted">{{recetas.medicamento}}</p>
+                  </div>
+
+                  <HR align="CENTER" color="black" noshade />
+
+                  <div class="col-md-3 col-6">
+                    <h3><strong>INDICACIONES: </strong></h3>
+                    <br>
+                    <p class="text-muted">Tomar cada {{recetas.horarios}} horas y la tarea es {{recetas.tareas}}</p>
+                  </div>
                 </div>
               </div>
             </div>

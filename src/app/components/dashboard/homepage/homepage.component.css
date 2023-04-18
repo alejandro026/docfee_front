@@ -22,8 +22,13 @@ th{
   color: #002b5c;
   text-align: center;
   font-size: medium;
+
 }
 
+ng-container{
+  padding-left: 2px;
+  padding-right: 2px;
+}
 
 @media (max-width: 991px)
 {.calendario{
@@ -35,12 +40,6 @@ th{
 {.calendario2{
   display: none;
   margin: auto;
-}
-}
-
-@media (max-width: 991px)
-{.tabla{
-  display: none
 }
 }
 
@@ -177,7 +176,25 @@ mat-card {
     margin-bottom: 8px;
 }
 
-
+table {
+  width: 100%;
+  height: auto;
+  }
+  .mat-header-cell {
+      word-wrap: initial;
+      display: table-cell;
+      padding: 0px 10px;
+      line-break: unset;
+      white-space: nowrap;
+      overflow: hidden;
+      vertical-align: middle;
+  }
+  .mat-table {
+      overflow-x: scroll;
+  }
+  .mat-header-row {
+      display: table-row;
+  }
 
 .example-container {
   height: auto !important;
@@ -196,11 +213,11 @@ th.mat-column-position, td.mat-column-position {
 }
 
 .mat-mdc-table-sticky-border-elem-right {
-  border-left: 1px solid #e0e0e0;
+  border-left: 2px solid #e0e0e0;
 }
 
 .mat-mdc-table-sticky-border-elem-left {
-  border-right: 1px solid #e0e0e0;
+  border-right: 2px solid #e0e0e0;
 }
 
 .clase{

@@ -6,14 +6,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { Citas } from './../../../_models/citas';
 import { CitasService } from './../../../services/citas.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { DateTimePicker, DateTimePickerModel } from '@syncfusion/ej2-calendars';
 import Swal from 'sweetalert2';
 import { thru } from 'lodash';
 
 @Component({
   selector: 'app-nueva-cita',
   templateUrl: './nueva-cita.component.html',
-  styleUrls: ['./nueva-cita.component.css']
+  styleUrls: ['./nueva-cita.component.css'],
+  
 })
 export class NuevaCitaComponent implements OnInit {
 
@@ -45,7 +47,6 @@ export class NuevaCitaComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerIdTratamiento();
     this.iniciaFormulario();
-
   }
 
   iniciaFormulario(){

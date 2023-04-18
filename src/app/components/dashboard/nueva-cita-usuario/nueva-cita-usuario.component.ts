@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DateTimePicker, DateTimePickerModel } from '@syncfusion/ej2-calendars';
 import { CitaDTO } from 'src/app/_models/citaDTO';
 import { Citas } from 'src/app/_models/citas';
 import { LoginUsuario } from 'src/app/_models/loginUsuario';
@@ -11,7 +12,9 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-nueva-cita-usuario',
   templateUrl: './nueva-cita-usuario.component.html',
-  styleUrls: ['./nueva-cita-usuario.component.css']
+  styleUrls: ['./nueva-cita-usuario.component.css'],
+  
+
 })
 export class NuevaCitaUsuarioComponent implements OnInit {
 
@@ -43,6 +46,7 @@ export class NuevaCitaUsuarioComponent implements OnInit {
     this.obtenerIdTratamiento();
     this.iniciaFormulario();
     this.cargaMedicos();
+
   }
 
   cargaMedicos(){

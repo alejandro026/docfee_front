@@ -5,6 +5,7 @@ import { PatientComponent } from '../patients/patient/patient.component';
 import { CitasService } from 'src/app/services/citas.service';
 import { Citas } from 'src/app/_models/citas';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-homepage',
@@ -17,7 +18,9 @@ export class HomepageComponent {
   selected: Date | null;
   citas: Citas[];
   dataSource: MatTableDataSource<Citas>
-  displayedColumns: string[] = ['fecha','hora','especialidad','lugar'];
+  displayedColumns: string[];
+  displayedColumns2: string[] = ['fecha','hora','especialidad','lugar',];
+  displayedColumns3: string[] = ['fecha','hora','especialidad','lugar','medico']
 
 
   constructor(public dialog: MatDialog,
@@ -26,6 +29,11 @@ export class HomepageComponent {
 
   ngOnInit(): void {
     this.mostrarCitas(this.sesion.id);
+    if(this.sesion.tipoUsuario=="MEDICO"){
+      this.displayedColumns=this.displayedColumns2;
+    }else{
+      this.displayedColumns=this.displayedColumns3;
+    }
 
   }
 
@@ -56,6 +64,10 @@ export class HomepageComponent {
         this.dataSource = new MatTableDataSource(data);
       })
     }
+  }
+
+  onDateSelected() {
+    
   }
 
 }

@@ -62,7 +62,7 @@ mat-toolbar {
   padding-bottom: 70px;
 }
 
-.card{
+/*.card{
   min-width: 26em;
 }
 
@@ -70,7 +70,7 @@ mat-toolbar {
   min-height: 25em;
 }
 
-/* .valor {
+.valor {
   margin-bottom: 30px;
 } */
 

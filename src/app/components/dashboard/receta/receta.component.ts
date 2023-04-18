@@ -27,6 +27,8 @@ export class RecetaComponent implements OnInit {
   fecha:Date;
   tratamiento:Tratamiento;
   citas:Citas;
+  dataSource: MatTableDataSource<Recetas>
+  displayedColumns: string[] = ['medicamento','tarea'];
 
   numero:string;
   mensaje:string;

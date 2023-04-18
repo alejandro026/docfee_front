@@ -8,8 +8,6 @@
   height: auto;
   border-radius: 10px;
   font-size: 1rem;
-  background-image: url("https://png.pngtree.com/png-clipart/20220124/original/pngtree-simple-and-atmospheric-hand-drawn-heart-shaped-line-hospital-logo-png-image_7187404.png");
-  /* height: 800px; */
   background-size: cover;
   background-size: 50rem;
   background-repeat: no-repeat;
@@ -19,6 +17,18 @@
   background-color: white ;
   bottom: 0;
 
+}
+
+img{
+  width: 70%;
+}
+
+thead{
+  width: auto;
+}
+
+h3{
+  font-size: 2vh;
 }
 
 .container2{
