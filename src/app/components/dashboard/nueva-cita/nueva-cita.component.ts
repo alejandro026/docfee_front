@@ -10,17 +10,18 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { DateTimePicker, DateTimePickerModel } from '@syncfusion/ej2-calendars';
 import Swal from 'sweetalert2';
 import { thru } from 'lodash';
+import { Medico } from 'src/app/_models/medico';
 
 @Component({
   selector: 'app-nueva-cita',
   templateUrl: './nueva-cita.component.html',
   styleUrls: ['./nueva-cita.component.css'],
-  
+
 })
 export class NuevaCitaComponent implements OnInit {
 
   formularioCitas:UntypedFormGroup;
-  medicosCombo:Citas[];
+  medicosCombo:Medico[]=[];
 
   idTatamieto:number;
 
@@ -70,11 +71,15 @@ export class NuevaCitaComponent implements OnInit {
     })
   }
 
+  ngAfterViewInit(): void {
+    this.cargaMedicos();
+  }
+
   aceptar(){
     console.log(this.formularioCitas.value);
 
     let cita:CitaDTO=this.formularioCitas.value;
-    cita.confirmada=true;
+    cita.confirmada=1;
     if(cita.fecha==null){
       Swal.fire({
         icon: 'error',
@@ -98,6 +103,17 @@ export class NuevaCitaComponent implements OnInit {
     })
     })
 
+  }
+
+  cargaMedicos(){
+    this.citasService.consultarTodosMedicos().subscribe(data=>{
+      this.medicosCombo=data;
+      let id=(parseInt(this.usuario.id)-1);
+      let medico=this.medicosCombo[id];
+      this.formularioCitas.get('lugar')?.setValue(medico.consultorio);
+
+      console.log(data);
+    })
   }
 
 }

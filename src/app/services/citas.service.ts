@@ -51,4 +51,10 @@ export class CitasService {
     return this.http.get<any>(this.url2+"medicos/consultarTodos",
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
+
+  actualizaEstatus(id:number, estatus:number): Observable<any>{
+    return this.http.get<any>(this.url+"actualizaEstatus/"+id+"/"+estatus,
+    {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
 }

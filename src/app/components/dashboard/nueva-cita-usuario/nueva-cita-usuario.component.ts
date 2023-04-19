@@ -82,7 +82,7 @@ this.datetimepicker.max = new Date(new Date().setHours(18, 0, 0));
     console.log(this.formularioCitas.value);
 
     let cita:CitaDTO=this.formularioCitas.value;
-    cita.confirmada=false;
+    cita.confirmada=0;
 
     if(cita.fecha==null){
       Swal.fire({
@@ -119,6 +119,13 @@ this.datetimepicker.max = new Date(new Date().setHours(18, 0, 0));
     if (fechaSeleccionada < horaMinima || fechaSeleccionada > horaMaxima) {
       this.datetimepicker.value = null!;
     }
+  }
+
+  onMedicoSelected(event:any){
+    console.log(event);
+    let posicion=(event.value-1);
+    let medico=this.medicosCombo[posicion];
+    this.formularioCitas.get("lugar")?.setValue(medico.consultorio);
   }
 
 }

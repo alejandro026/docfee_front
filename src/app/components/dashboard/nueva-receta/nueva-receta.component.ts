@@ -7,8 +7,9 @@ import Swal from 'sweetalert2';
 import { RecetaService } from '../../../services/receta.service';
 import { Recetas } from '../../../_models/receta';
 import { Citas } from '../../../_models/citas';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginUsuario } from '../../../_models/loginUsuario';
+import { CitasService } from 'src/app/services/citas.service';
 
 @Component({
   selector: 'app-nueva-receta',
@@ -24,6 +25,8 @@ idCita:number;
     private formBuilder: UntypedFormBuilder,
     private recetaService: RecetaService,
     private route:ActivatedRoute,
+    private router: Router,
+    private citaService:CitasService
   ) { }
 
   ngOnInit(): void {
@@ -42,13 +45,20 @@ idCita:number;
 confirmAdd(){
   let recetas:nuevaReceta=this.formularioReceta.value;
     this.recetaService.guardarReceta(recetas).subscribe(data=>{
-      console.log("this.recetaService.guardarReceta ~ data", data)
-      Swal.fire({
-        icon: 'success',
-        title: "Guardado con exito",
-        showConfirmButton: false,
-        timer: 2500
-      })
+      this.citaService.actualizaEstatus(this.idCita, 2).subscribe(data=>{
+
+        console.log(this.idCita)
+        console.log("this.recetaService.guardarReceta ~ data", data)
+          Swal.fire({
+            icon: 'success',
+            title: "Guardado con exito",
+            showConfirmButton: false,
+            timer: 2500
+          })
+      window.history.back()
+      });
+
+      // this.router.navigate(['/dashboard/expediente']);
 })
   }
 

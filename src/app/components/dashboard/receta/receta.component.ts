@@ -30,6 +30,14 @@ export class RecetaComponent implements OnInit {
   dataSource: MatTableDataSource<Recetas>
   displayedColumns: string[] = ['medicamento','tarea'];
 
+  _fecha:Date = new Date();
+  _nombreCompleto:string="";
+  _edad:string="";
+  _diagnostico:string="";
+  _medicamemnto:string="";
+  _indicaciones:string="Tomar cada {{recetas.horarios}} horas y la tarea es {{recetas.tareas}}";
+
+
   numero:string;
   mensaje:string;
   constructor(
@@ -42,7 +50,6 @@ export class RecetaComponent implements OnInit {
     private router:Router) {}
 
   ngOnInit(): void {
-
     this.cargarDatos();
     //this.cargarDatost();
     this.fecha= new Date();
@@ -50,6 +57,7 @@ export class RecetaComponent implements OnInit {
 
   cargarDatos(){
     this.route.queryParams.subscribe( params => {
+      console.log(params);
      this.cargarDatos2(params.id_receta);
 
 
@@ -57,15 +65,26 @@ export class RecetaComponent implements OnInit {
   }
 
   cargarDatos2(id:number){
-    this.RecetaService.consultarPorID(id).subscribe(data=>{
-      this.recetas= data;
+    this.RecetaService.consultarPorIDCita(id).subscribe(data=>{
+      console.log("la receta",data);
+      this.recetas= data[0];
 
       this.calcularEdad();
+
+        this.iniciarValores();
 
 
     })
   }
 
+  iniciarValores(){
+    this._fecha = new Date();
+    this._nombreCompleto=this.recetas.id_cita.tratamiento.id_usuario.nombre + " " + this.recetas.id_cita.tratamiento.id_usuario.apPaterno+" "+this.recetas.id_cita.tratamiento.id_usuario.apMaterno;
+    this._edad;
+    this._diagnostico=this.recetas.diagnostico!;
+    this._medicamemnto=this.recetas.medicamento!;
+    this._indicaciones=`Tomar cada ${this.recetas.horarios} horas y la tarea es ${this.recetas.tareas}`;
+  }
 
 
   calcularEdad(){

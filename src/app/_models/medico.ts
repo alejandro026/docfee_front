@@ -5,4 +5,5 @@ export class Medico{
   id_medico:number
   nombre:string
   telefono:number
+  consultorio:string
 }

@@ -36,7 +36,7 @@ consultarPorID(id_receta:number): Observable<Recetas> {
 
   return this.http.get<Recetas>(url);
 }
-consultarPorIDCita(id_cita:number): Observable<Recetas> {
+consultarPorIDCita(id_cita:number): Observable<any> {
   const url = "https://docfeeback-production.up.railway.app/receta/buscarPorIdCita/" +  id_cita
 
   return this.http.get<Recetas>(url);
@@ -46,5 +46,4 @@ guardarReceta(receta:nuevaReceta):Observable<Recetas>{
   return this.http.post<Recetas>(this.url+"guardar",receta,
   {headers: new HttpHeaders().append("Content-Type", "application/json")});
 }
-
 }

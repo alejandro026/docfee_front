@@ -18,7 +18,7 @@
     </div>
     <div class="header" ALIGN="center">
       <h1><strong>RECETA MÉDICA</strong></h1>
-      
+
     </div>
 
     <!-- <section class="content"> -->
@@ -32,7 +32,7 @@
               <div ALIGN="right">
                 <strong>FECHA</strong>
                 <br>
-                <p class="text-muted">{{recetas.fecha | date}}</p>
+                <p class="text-muted">{{_fecha | date}}</p>
               </div>
 
               <HR align="CENTER" color="black" noshade />
@@ -43,9 +43,7 @@
                     <h3><strong>NOMBRE COMPLETO: </strong></h3>
 
                     <br>
-                    <p class="text-muted">{{recetas.id_cita.tratamiento.id_usuario.nombre}}
-                      {{recetas.id_cita.tratamiento.id_usuario.apPaterno}}
-                      {{recetas.id_cita.tratamiento.id_usuario.apMaterno}}</p>
+                    <p class="text-muted">{{_nombreCompleto}}</p>
                   </div>
 
 
@@ -59,7 +57,7 @@
                   <div class="col-md-3 col-6">
                     <h3><strong>DIAGNOSTICO: </strong></h3>
                     <br>
-                    <p class="text-muted">{{recetas.diagnostico}}</p>
+                    <p class="text-muted">{{_diagnostico}}</p>
                   </div>
 
                   <HR align="CENTER" color="black" noshade />
@@ -69,7 +67,7 @@
                   <div class="col-md-3 col-6">
                     <h3><strong>MEDICAMENTO: </strong></h3>
                     <br>
-                    <p class="text-muted">{{recetas.medicamento}}</p>
+                    <p class="text-muted">{{_medicamemnto}}</p>
                   </div>
 
                   <HR align="CENTER" color="black" noshade />
@@ -77,7 +75,7 @@
                   <div class="col-md-3 col-6">
                     <h3><strong>INDICACIONES: </strong></h3>
                     <br>
-                    <p class="text-muted">Tomar cada {{recetas.horarios}} horas y la tarea es {{recetas.tareas}}</p>
+                    <p class="text-muted">{{_indicaciones}}</p>
                   </div>
                 </div>
               </div>

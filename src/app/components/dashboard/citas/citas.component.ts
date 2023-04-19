@@ -23,10 +23,12 @@ export class CitasComponent implements OnInit {
 
   dataSource: MatTableDataSource<Citas>;
   displayedColumns: string[];
-  displayedColumns2: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Estatus', 'Receta','nuevaReceta'];
+  displayedColumns2: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Estatus', 'Receta','nuevaReceta', 'Acciones'];
   displayedColumns3: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Estatus', 'Receta',];
 
   _idAntecedente:number;
+
+  _id:number;
 
   constructor(
     private CitasService: CitasService,
@@ -52,6 +54,7 @@ export class CitasComponent implements OnInit {
     this.route.queryParams.subscribe( params => {
       if(Object.keys(params).length !== 0){
         this.buscarPorIdTratamiento(params.idTratmiento);
+        this._id=parseInt(params.idTratmiento);
       }else{
         var id = parseInt(this.sesion.id);
         this.consultarTodosVista(id);
@@ -81,6 +84,7 @@ export class CitasComponent implements OnInit {
       this.dataSource= new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      console.log(data);
     })
   }
 
@@ -94,24 +98,84 @@ export class CitasComponent implements OnInit {
   }
 
 
-  verReceta(id:number){
+  verReceta(id:number, estatus:number){
+    if(estatus==1||estatus==0){
+      Util.errorMessajeNormal("La cita aun no ha sido atendida");
+      return;
+    }
+    if(estatus==3){
+      Util.errorMessajeNormal("La cita fue cancelada");
+      return;
+    }
     this.router.navigate(['/dashboard/receta'], { queryParams: { id_receta: id} });
   }
-  nuevaReceta(id:number){
+  nuevaReceta(id:number, idMedico:string, estatus:number){
+    console.log(estatus);
+
+    if(this.sesion.id!=idMedico){
+      Util.errorMessajeNormal("No puedes atender esta cita")
+      return;
+    }
+    if(estatus==2){
+      Util.errorMessajeNormal("La cita ya fue atendida");
+      return;
+    }
+
+    if(estatus==3){
+      Util.errorMessajeNormal("La cita fue cancelada");
+      return;
+    }
+
     this.router.navigate(['/dashboard/nuevaReceta'], { queryParams: { id_cita: id} });
   }
 
-  veficaConfirmacion(estatus:boolean){
-    if(estatus){
+  veficaConfirmacion(estatus:number){
+    if(estatus==1){
       return "Confirmada";
-    }else{
+    }
+    if(estatus==0){
       return "Sin confirmar"
+    }
+    if(estatus==2){
+      return "Atendida";
+    }else{
+      return "Cancelada";
     }
   }
 
 
   nuevaCitaUsuario(id:number){
     this.router.navigate(['/dashboard/nuevaCitaUsuario'], { queryParams: { idTratmiento: id} });
+  }
+
+  cambiarEstatus(idCita:number, idMedico:string, estatus:number, ){
+    if(this.sesion.id!=idMedico){
+      Util.errorMessajeNormal("No puedes atender esta cita")
+      return;
+    }
+
+    if(estatus==1){
+      //ONFIRMAR
+      this.CitasService.actualizaEstatus(idCita, 1).subscribe(data=>{
+        console.log(data);
+        Util.succesMessajeNormal("Cita confirmada con éxito");
+        setTimeout(()=>{
+          location.reload()
+        }, 300)
+        // this.consultarTodosVista(this._id);
+      });
+    }else{
+      this.CitasService.actualizaEstatus(idCita, 3).subscribe(data=>{
+        console.log(data);
+        Util.succesMessajeNormal("Cita cancelada con éxito");
+        setTimeout(()=>{
+          location.reload()
+        }, 300)
+        // this.consultarTodosVista(this._id);
+
+      });
+      //Cancelar
+    }
   }
 
 

@@ -6,5 +6,5 @@ export class CitaDTO{
   especialidad?:String;
   notas?:String;
   tratamiento?:number;
-  confirmada?:boolean;
+  confirmada?:number;
 }

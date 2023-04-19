@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Antecedentes } from 'src/app/_models/antecedentes';
 import { TratamientoService } from 'src/app/services/tratamiento.service';
+import { Util } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-generar-antecedente',
@@ -16,7 +17,8 @@ export class GenerarAntecedenteComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) private idUsuario:number,
-    private tratamientoService:TratamientoService) { }
+    private tratamientoService:TratamientoService,
+    private dialogRef: MatDialogRef<GenerarAntecedenteComponent>,) { }
 
   ngOnInit() {
     this.antecedentesForm = this.fb.group({
@@ -35,8 +37,13 @@ export class GenerarAntecedenteComponent implements OnInit {
     antecedentes.id_usuario= this.idUsuario;
     console.log(antecedentes);
     this.tratamientoService.guardarAntecedentes(antecedentes).subscribe(data=>{
-      console.log(data);
+      Util.succesMessajeNormal("Antecedente guardado con éxito");
+      this.cerrar();
     })
+  }
+
+  cerrar(){
+    this.dialogRef.close(false);
   }
 
 }

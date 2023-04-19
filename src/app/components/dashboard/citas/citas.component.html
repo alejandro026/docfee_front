@@ -69,7 +69,7 @@
       <ng-container matColumnDef="Receta">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Receta </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button aria-label="expand row" (click)="verReceta(element.id_cita)">
+          <button mat-icon-button aria-label="expand row" (click)="verReceta(element.id_cita, element.confirmada)">
             <mat-icon>assignment</mat-icon>
           </button>
         </td>
@@ -77,8 +77,20 @@
       <ng-container matColumnDef="nuevaReceta" *ngIf="sesion.tipoUsuario=='MEDICO'">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Nueva Receta </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button aria-label="expand row" (click)="nuevaReceta(element.id_cita)">
+          <button mat-icon-button aria-label="expand row" (click)="nuevaReceta(element.id_cita, element.id_medico.id_medico, element.confirmada)">
             <mat-icon>assignment_turned_in</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Acciones" *ngIf="sesion.tipoUsuario=='MEDICO'">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button aria-label="expand row" [disabled]="element.confirmada==3 ||element.confirmada==1 ||element.confirmada==2" (click)="cambiarEstatus(element.id_cita, element.id_medico.id_medico, element.confirmada)">
+            <mat-icon>check_circle</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="expand row" [disabled]="element.confirmada==3 ||element.confirmada==1 ||element.confirmada==2" (click)="cambiarEstatus(element.id_cita, element.id_medico.id_medico, element.confirmada)">
+            <mat-icon>cancel</mat-icon>
           </button>
         </td>
       </ng-container>
