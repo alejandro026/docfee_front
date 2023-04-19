@@ -6,6 +6,8 @@ import { Citas } from './../../../_models/citas';
 import { CitasService } from './../../../services/citas.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { LoginUsuario } from 'src/app/_models/loginUsuario';
+import { TratamientoService } from 'src/app/services/tratamiento.service';
+import { Util } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-citas',
@@ -24,21 +26,21 @@ export class CitasComponent implements OnInit {
   displayedColumns2: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Estatus', 'Receta','nuevaReceta'];
   displayedColumns3: string[] = ['Cita', 'Medico', 'Fecha', 'Lugar', 'Especialidad', 'Notas', 'Estatus', 'Receta',];
 
+  _idAntecedente:number;
 
   constructor(
     private CitasService: CitasService,
     private route:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private tratamientoService: TratamientoService
   ) { }
 
   ngOnInit(): void {
     this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
     this.dataSource = new MatTableDataSource<Citas>();
-    this.route.queryParams.subscribe( params => {
-      this.buscarPorIdTratamiento(params.idTratmiento);
-    });
   }
   ngAfterViewInit(): void {
+    this.cambiarPaginacion()
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     if(this.sesion.tipoUsuario=="MEDICO"){
@@ -46,6 +48,21 @@ export class CitasComponent implements OnInit {
     }else{
       this.displayedColumns=this.displayedColumns3;
     }
+
+    this.route.queryParams.subscribe( params => {
+      if(Object.keys(params).length !== 0){
+        this.buscarPorIdTratamiento(params.idTratmiento);
+      }else{
+        var id = parseInt(this.sesion.id);
+        this.consultarTodosVista(id);
+      }
+    });
+
+
+  }
+
+  cambiarPaginacion(){
+    Util.cambiarIdiomaPaginacion(this.paginator);
   }
 
   // consultarTodos(){
@@ -67,6 +84,15 @@ export class CitasComponent implements OnInit {
     })
   }
 
+  consultarTodosVista(id:number){
+    this.tratamientoService.consultarTodosVista(id).subscribe(data=>{
+      let idTratmiento=data[0].id_tratamiento!;
+      this._idAntecedente=idTratmiento;
+      this.buscarPorIdTratamiento(idTratmiento)
+      console.log(data);
+    })
+  }
+
 
   verReceta(id:number){
     this.router.navigate(['/dashboard/receta'], { queryParams: { id_receta: id} });
@@ -82,4 +108,11 @@ export class CitasComponent implements OnInit {
       return "Sin confirmar"
     }
   }
+
+
+  nuevaCitaUsuario(id:number){
+    this.router.navigate(['/dashboard/nuevaCitaUsuario'], { queryParams: { idTratmiento: id} });
+  }
+
+
 }

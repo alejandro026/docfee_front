@@ -123,3 +123,14 @@ th.mat-column-position, td.mat-column-position {
 .clase{
   color: black;
 }
+
+.search-div2 {
+  margin: auto;
+  height: auto;
+  padding: 0px;
+  }
+  .creat-button {
+    display: flex;
+    margin-left: 0px;
+    margin-bottom: 15px;
+  }

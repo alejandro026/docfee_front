@@ -18,8 +18,12 @@
       <h2>Citas</h2>
   </div>
 
-  <div class="mat-elevation-z8">
+  <div class="search-div2"  *ngIf="sesion.tipoUsuario!='MEDICO'">
+    <button align="right" mat-raised-button class="info-button creat-button"  (click)="nuevaCitaUsuario(_idAntecedente)"><mat-icon>add</mat-icon> Agendar nueva cita  </button>
+  </div>
 
+
+  <div class="mat-elevation-z8">
     <section class="example-container mat-elevation-z8" tabindex="0">
 
     <table mat-table [dataSource]="dataSource" matSort>

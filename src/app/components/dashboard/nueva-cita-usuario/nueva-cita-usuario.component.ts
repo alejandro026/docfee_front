@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DateTimePickerComponent } from '@syncfusion/ej2-angular-calendars';
 import { DateTimePicker, DateTimePickerModel } from '@syncfusion/ej2-calendars';
 import { CitaDTO } from 'src/app/_models/citaDTO';
 import { Citas } from 'src/app/_models/citas';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2';
   selector: 'app-nueva-cita-usuario',
   templateUrl: './nueva-cita-usuario.component.html',
   styleUrls: ['./nueva-cita-usuario.component.css'],
-  
+
 
 })
 export class NuevaCitaUsuarioComponent implements OnInit {
@@ -26,6 +27,12 @@ export class NuevaCitaUsuarioComponent implements OnInit {
   usuario:LoginUsuario;
 
   nombreMedico:string;
+
+  fechaIncio:Date;
+  fechaFin:Date;
+
+  @ViewChild('datetimepicker')
+  private datetimepicker: DateTimePickerComponent;
 
   constructor(
     private citasService: CitasService,
@@ -46,7 +53,10 @@ export class NuevaCitaUsuarioComponent implements OnInit {
     this.obtenerIdTratamiento();
     this.iniciaFormulario();
     this.cargaMedicos();
+    this.iniciaFecha();
 
+    this.datetimepicker.min = new Date(new Date().setHours(9, 0, 0));
+this.datetimepicker.max = new Date(new Date().setHours(18, 0, 0));
   }
 
   cargaMedicos(){
@@ -95,6 +105,20 @@ export class NuevaCitaUsuarioComponent implements OnInit {
     })
     })
 
+  }
+
+  iniciaFecha(){
+    this.fechaIncio=new Date(new Date().setHours(9,0,0))
+    this.fechaFin=new Date(new Date().setHours(17,0,0))
+  }
+
+  onDateTimeChange(args: any): void {
+    const fechaSeleccionada = args.value;
+    const horaMinima = new Date(fechaSeleccionada.getFullYear(), fechaSeleccionada.getMonth(), fechaSeleccionada.getDate(), 9, 0, 0);
+    const horaMaxima = new Date(fechaSeleccionada.getFullYear(), fechaSeleccionada.getMonth(), fechaSeleccionada.getDate(), 17, 0, 0);
+    if (fechaSeleccionada < horaMinima || fechaSeleccionada > horaMaxima) {
+      this.datetimepicker.value = null!;
+    }
   }
 
 }

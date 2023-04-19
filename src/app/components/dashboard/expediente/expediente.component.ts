@@ -8,6 +8,7 @@ import { TratamientoService } from './../../../services/tratamiento.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Session } from 'inspector';
+import { Util } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-expediente',
@@ -49,7 +50,11 @@ export class ExpedienteComponent implements OnInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.cambiarPaginacion();
+  }
 
+  cambiarPaginacion(){
+    Util.cambiarIdiomaPaginacion(this.paginator);
   }
   consultarTodosVistaDR(){
     this.tratamientoService.consultarTodosVistaDR().subscribe(data=>{

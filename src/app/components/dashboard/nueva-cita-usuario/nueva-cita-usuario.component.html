@@ -25,8 +25,8 @@
       <mat-card class="tarjeta">
         <form autocomplete="off" [formGroup]="formularioCitas">
 
-          <div>
-            <mat-form-field style="width: 50%; min-width: 200px;" appearance="outline">
+          <div class="row">
+            <mat-form-field style="width: 50%; min-width: 200px;" appearance="outline" class="ocultar">
               <mat-label>Tratamiento</mat-label>
               <input [maxLength]="30" matInput placeholder="Tratamiento" formControlName="tratamiento" readonly="true">
             </mat-form-field>
@@ -37,11 +37,6 @@
                 <mat-option *ngFor="let item of medicosCombo" [value]="item.id_medico">{{item.nombre+' '+ item.apPaterno+ ' '+item.apMaterno}}</mat-option>
               </mat-select>
             </mat-form-field>
-
-          </div>
-
-
-          <div>
 
             <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
               <mat-label>Especialidad</mat-label>
@@ -58,9 +53,22 @@
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field style="width: 48%; padding-left: 10px; min-width: 200px;" appearance="outline">
+          </div>
+
+
+          <div class="row">
+
+
+
+            <mat-form-field style="width: 50%; padding-left: 10px; min-width: 200px;" appearance="outline">
               <mat-label>Lugar</mat-label>
-              <input matInput placeholder="Lugar" formControlName="lugar">
+              <input matInput placeholder="Lugar" formControlName="lugar" style="height: 42px">
+            </mat-form-field>
+
+
+            <mat-form-field style="width: 49%; min-width: 200px;" appearance="outline">
+              <mat-label>Notas</mat-label>
+              <textarea matInput placeholder="Notas" formControlName="notas"></textarea>
             </mat-form-field>
 
 
@@ -68,16 +76,14 @@
 
           <div>
 
-
-            <mat-form-field style="width: 50%; min-width: 200px;" appearance="outline">
-              <mat-label>Notas</mat-label>
-              <textarea matInput placeholder="Notas" formControlName="notas"></textarea>
-            </mat-form-field>
-
             <div style="width: 50%; min-width: 200px;" appearance="outline">
+              <br><br>
               <ejs-datetimepicker imepickerstyle="width: 50%; min-width: 200px;" appearance="outline" id='datetimepicker'
-                placeholder='Selecciona una fecha' formControlName="fecha" required></ejs-datetimepicker>
+                placeholder='Selecciona una fecha' formControlName="fecha" required
+                ></ejs-datetimepicker>
             </div>
+
+            <br>
 
 
           </div>

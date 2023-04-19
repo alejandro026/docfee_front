@@ -54,6 +54,11 @@
         <span class="text">Expediente</span>
       </mat-list-item>
 
+      <mat-list-item [routerLink]="'citas'" *ngIf="sesion.tipoUsuario!='MEDICO'">
+        <mat-icon mat-list-icon class="material-icons-rounded">storage</mat-icon>
+        <span class="text">Citas</span>
+      </mat-list-item>
+
       <mat-expansion-panel *ngIf="sesion.tipoUsuario=='MEDICO'">
         <mat-expansion-panel-header>
           <mat-icon mat-list-icon class="material-icons-rounded">storage</mat-icon>

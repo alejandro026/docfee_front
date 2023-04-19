@@ -12,6 +12,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angular/fire/storage';
 import { GenerarAntecedenteComponent } from './generar-antecedente/generar-antecedente.component';
+import { Util } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-prueba',
@@ -39,7 +40,10 @@ export class PruebaComponent implements OnInit {
     this.getData();
     this.dataSource = new MatTableDataSource<Usuario>();
     this.getArchivos();
+  }
 
+  ngAfterViewChecked(): void {
+    this.cambiarPaginacion();
   }
 
   getData() {
@@ -133,6 +137,10 @@ export class PruebaComponent implements OnInit {
     modalRef.afterClosed().subscribe(result=>{
         this.getData();
     })
+  }
+
+  cambiarPaginacion(){
+    Util.cambiarIdiomaPaginacion(this.paginator);
   }
 
 }
