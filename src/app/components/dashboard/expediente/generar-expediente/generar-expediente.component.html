@@ -28,13 +28,13 @@
         <div class="row">
 
             <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>ID tratamiento:</mat-label>
-              <input type="text" matInput formControlName="id_tratamiento">
+              <mat-label>Presión alterial</mat-label>
+              <input type="text" matInput formControlName="presionArterial">
             </mat-form-field>
 
             <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>ID usuario:</mat-label>
-              <input type="number" matInput formControlName="id_usuario">
+              <mat-label>Frecuenacia cardiaca</mat-label>
+              <input type="number" matInput formControlName="frec_Cardiaca">
             </mat-form-field>
 
         </div>
@@ -42,13 +42,13 @@
         <div class="row">
 
             <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>ID médico:</mat-label>
-              <input type="number" matInput formControlName="id_medico">
+              <mat-label>Frecuancia respiratoria</mat-label>
+              <input type="number" matInput formControlName="frec_Respiratoria">
             </mat-form-field>
 
             <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>Descripción:</mat-label>
-              <textarea matInput formControlName="descripcion"></textarea>
+              <mat-label>Temperatura</mat-label>
+              <textarea matInput formControlName="temperaatura"></textarea>
             </mat-form-field>
 
         </div>
@@ -56,49 +56,19 @@
         <div class="row">
 
             <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>IPAS - Sistema tegumentario:</mat-label>
-              <textarea matInput formControlName="ipas_SisTegumentario"></textarea>
+              <mat-label>Altura</mat-label>
+              <textarea matInput formControlName="altura"></textarea>
             </mat-form-field>
 
             <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>IPAS - Sistema muscular:</mat-label>
-              <textarea matInput formControlName="ipas_SisMuscular"></textarea>
-            </mat-form-field>
-
-        </div>
-        <div class="row">
-
-            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>IPAS - Sistema óseo:</mat-label>
-              <textarea matInput formControlName="ipas_SisOseo"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>IPAS - Sistema nervioso:</mat-label>
-              <textarea matInput formControlName="ipas_SisNervioso"></textarea>
-            </mat-form-field>
-
-        </div>
-        <div class="row">
-
-            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>IPAS - Sistema endocrino:</mat-label>
-              <textarea matInput formControlName="ipas_SisEndocrino"></textarea>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>IPAS - Sistema inmunológico:</mat-label>
-              <textarea matInput formControlName="ipas_SisInmunologico"></textarea>
+              <mat-label>IMC</mat-label>
+              <textarea matInput formControlName="imc"></textarea>
             </mat-form-field>
 
         </div>
 
-          <div>
-            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
-              <mat-label>IPAS - Sistema circulatorio:</mat-label>
-              <textarea matInput formControlName="ipas_SirCirculatorio"></textarea>
-            </mat-form-field>
-          </div>
+        <button>Generar</button>
+
       </form>
 
 

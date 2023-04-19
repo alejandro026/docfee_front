@@ -1,7 +1,9 @@
+import { TratamientoDTO } from './../../../../_models/tratamientoDTO';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Antecedentes } from 'src/app/_models/antecedentes';
+import { LoginUsuario } from 'src/app/_models/loginUsuario';
 import { TratamientoService } from 'src/app/services/tratamiento.service';
 import { Util } from 'src/app/utils/util';
 
@@ -28,17 +30,50 @@ export class GenerarAntecedenteComponent implements OnInit {
       tabaquismo: [false, [Validators.required]],
       antecedentesFamiliares: ['', [Validators.required, Validators.maxLength(30)]],
       otrosDatos: ['', [Validators.required, Validators.maxLength(30)]],
+      presionArterial: ['', [Validators.required]],
+      frec_Cardiaca: ['', [Validators.required]],
+      frec_Respiratoria: ['', [Validators.required]],
+      temperaatura: ['', [Validators.required]],
+      altura: ['', [Validators.required]],
+      imc: ['', [Validators.required]],
     });
 
   }
 
   onSubmit() {
-    const antecedentes: Antecedentes = this.antecedentesForm.value;
+    if(this.antecedentesForm.invalid){
+      Util.errorMessajeNormal("Debes completar todos los campos");
+      return;
+    }
+    let usuario:LoginUsuario=JSON.parse(sessionStorage.getItem('sesion')!);
+
+
+    const antecedentes: Antecedentes =new Antecedentes();
+
+    antecedentes.alcolismo=this.antecedentesForm.get('alcolismo')?.getRawValue();
+    antecedentes.antecedentesFamiliares=this.antecedentesForm.get('antecedentesFamiliares')?.getRawValue();
+    antecedentes.drogas=this.antecedentesForm.get('drogas')?.getRawValue();
+    antecedentes.medicamentos=this.antecedentesForm.get('medicamentos')?.getRawValue();
+    antecedentes.otrosDatos=this.antecedentesForm.get('otrosDatos')?.getRawValue();
+    antecedentes.tabaquismo=this.antecedentesForm.get('tabaquismo')?.getRawValue();
     antecedentes.id_usuario= this.idUsuario;
+
+    let tratamiento:TratamientoDTO= new TratamientoDTO();
+    tratamiento.id_usuario= this.idUsuario;
+    tratamiento.presionArterial=this.antecedentesForm.get('presionArterial')?.getRawValue();
+    tratamiento.frec_Cardiaca=this.antecedentesForm.get('frec_Cardiaca')?.getRawValue();
+    tratamiento.frec_Respiratoria=this.antecedentesForm.get('frec_Respiratoria')?.getRawValue();
+    tratamiento.temperaatura=this.antecedentesForm.get('temperaatura')?.getRawValue();
+    tratamiento.altura=this.antecedentesForm.get('altura')?.getRawValue();
+    tratamiento.imc=this.antecedentesForm.get('imc')?.getRawValue();
+
+    tratamiento.id_medico=parseInt(usuario.id);
     console.log(antecedentes);
     this.tratamientoService.guardarAntecedentes(antecedentes).subscribe(data=>{
-      Util.succesMessajeNormal("Antecedente guardado con éxito");
-      this.cerrar();
+      this.tratamientoService.guardaExpediente(tratamiento).subscribe(response=>{
+        Util.succesMessajeNormal("Antecedente guardado con éxito");
+        this.cerrar();
+      });
     })
   }
 

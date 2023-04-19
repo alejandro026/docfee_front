@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { Antecedentes } from '../_models/antecedentes';
+import { TratamientoDTO } from '../_models/tratamientoDTO';
 
 
 @Injectable({
@@ -66,6 +67,11 @@ export class TratamientoService {
 
   guardarAntecedentes(antecedentes:Antecedentes):Observable<Antecedentes>{
     return this.http.post<Antecedentes>(this.url2+"antecedentes/guardar", antecedentes,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
+  guardaExpediente(expedinete:TratamientoDTO){
+    return this.http.post<Tratamiento>(this.url+"guardar", expedinete,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 }

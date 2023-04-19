@@ -13,7 +13,7 @@
 
           <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
             <mat-label>Medicamento</mat-label>
-            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="medicamentos">
+            <input [maxLength]="30" matInput placeholder="medicamentos" formControlName="medicamentos" required>
           </mat-form-field>
 
           <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
@@ -50,16 +50,56 @@
         <div class="row">
           <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
             <mat-label>Antecedentes familiares</mat-label>
-            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="antecedentesFamiliares">
+            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="antecedentesFamiliares" required>
           </mat-form-field>
-        </div>
 
-        <div>
           <mat-form-field style="width: 48%; min-width: 200px; " appearance="outline">
             <mat-label>Tipo de sangre</mat-label>
-            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="otrosDatos">
+            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="otrosDatos" required>
           </mat-form-field>
+
         </div>
+
+        <div class="row">
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Presión alterial</mat-label>
+            <input type="text" matInput formControlName="presionArterial" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Frecuenacia cardiaca</mat-label>
+            <input type="number" matInput formControlName="frec_Cardiaca" required>
+          </mat-form-field>
+
+        </div>
+        <div class="row">
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Frecuancia respiratoria</mat-label>
+            <input type="number" matInput formControlName="frec_Respiratoria" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Temperatura</mat-label>
+            <input matInput formControlName="temperaatura" required>
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Altura</mat-label>
+            <input matInput formControlName="altura" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>IMC</mat-label>
+            <input matInput formControlName="imc" required>
+          </mat-form-field>
+
+      </div>
 
         <div class="button-container">
           <button mat-raised-button color="primary" type="submit">

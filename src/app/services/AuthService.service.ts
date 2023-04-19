@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { error } from 'console';
 import { Router } from '@angular/router';
+import { url } from 'inspector';
 
 
 @Injectable({
@@ -60,7 +61,8 @@ export class AuthService {
     sendVerificationMail() {
       return this.auth.currentUser
         .then((user) => {
-          return user?.sendEmailVerification();
+          return user?.sendEmailVerification({
+            url: 'https://fluffy-kheer-59ac04.netlify.app/'});
         })
         .then(() => {
           // this.router.navigate(['verify-email-address']);
@@ -69,7 +71,7 @@ export class AuthService {
 
     sendResetPasswordEmail(email: string) {
         return this.auth.sendPasswordResetEmail(email, {
-            url: 'http://localhost:5000/'
+            url: 'https://fluffy-kheer-59ac04.netlify.app/'
         });
     }
 

@@ -87,3 +87,7 @@ th.mat-column-position, td.mat-column-position {
 .clase{
   color: black;
 }
+
+.ocultar{
+  display: none;
+}
