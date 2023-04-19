@@ -145,6 +145,11 @@ export class CitasComponent implements OnInit {
 
 
   nuevaCitaUsuario(id:number){
+    console.log(this.dataSource.data.length=0);
+    // if(this.dataSource.data.length==0){
+    //   Util.errorMessajeNormal("Solicita la creación de tu expediente para agendar citas.")
+    //   return;
+    // }
     this.router.navigate(['/dashboard/nuevaCitaUsuario'], { queryParams: { idTratmiento: id} });
   }
 
