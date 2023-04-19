@@ -234,7 +234,7 @@ get emailMessageError() {
   let message = 'El correo es requerido';
   const control = this.form.get('email');
   if (this.checkControlInvalid('email') && control?.errors?.['pattern']) {
-      message = 'Debes ingresar un correo valido';
+      message = 'Debes ingresar un correo válido';
   }
 
   return message;
@@ -282,7 +282,7 @@ verificaCodigo(){
       this.loading(this._sesion);
   }else{
     this._codigoIncorrecto=true;
-    Util.errorMessage("Lo siento, el código que ingreso no es válido. Por favor verifica e intenta de nuevo")
+    Util.errorMessage("Lo sentimos, el código que ingresó no es válido. Por favor verifique e intente de nuevo")
   }
 }
 

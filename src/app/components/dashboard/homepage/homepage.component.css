@@ -11,6 +11,10 @@
     background-color: white ;
 }
 
+img{
+  width: 50%;
+}
+
 h1{
   text-align: center;
   font-weight: bold;
