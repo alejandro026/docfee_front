@@ -13,8 +13,18 @@
       routerLink="/dashboard/homepage">
     <!-- <span class="spacer"></span> -->
   </div>
+  <!-- <form class="d-flex">
 
-  <div class="center-div d-none d-sm-block">
+    <input *ngIf="showSearchInput" #searchInput class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" [@fadeInOut]>
+    <button mat-mini-fab color="primary" (click)="toggleSearchInput()">
+      <mat-icon>search</mat-icon>
+    </button>
+  </form> -->
+
+
+
+
+  <div class="center-div d-none d-sm-block usuario">
     {{sesion.tipoUsuario +' : '+sesion.nombre}}
   </div>
 

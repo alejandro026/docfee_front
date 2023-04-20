@@ -100,3 +100,11 @@ mat-expansion-panel{
 .mat-drawer.mat-sidenav.mat-sidenav-left {
   margin-left: 0 !important;
 }
+.usuario{
+    font-size: 18px;
+    padding-left: 2%;
+}
+
+.botonBuscar{
+  /* padding-left: 2%; */
+}
