@@ -55,7 +55,10 @@
 
           <mat-form-field style="width: 48%; min-width: 200px; " appearance="outline">
             <mat-label>Tipo de sangre</mat-label>
-            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="otrosDatos" required>
+            <mat-select formControlName="otrosDatos"  placeholder="">
+                <mat-option *ngFor="let sangre of tiposDeSangre" [value]="sangre">{{sangre}}</mat-option>
+            </mat-select>
+            <!-- <input [maxLength]="30" matInput placeholder="Nombre" formControlName="otrosDatos" required> -->
           </mat-form-field>
 
         </div>

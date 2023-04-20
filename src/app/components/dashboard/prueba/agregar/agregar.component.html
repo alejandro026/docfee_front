@@ -47,7 +47,7 @@
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Numero de seguro</mat-label>
-              <input matInput placeholder="Numero de seguro" formControlName="nss" required appNumeric>
+              <input maxlength="11" minlength="11" matInput placeholder="Numero de seguro" formControlName="nss" required appNumeric>
               <span class="error-message" *ngIf="formulario.controls['nss'].errors && formulario.controls['nss'].touched">
                 Este campo es requerido.
               </span>
@@ -58,23 +58,21 @@
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Telefono</mat-label>
-              <input matInput placeholder="Telefono" formControlName="telefono" required appNumeric>
+              <input maxlength="11" minlength="11" matInput placeholder="Telefono" formControlName="telefono" required appNumeric>
               <span class="error-message" *ngIf="formulario.controls['telefono'].errors && formulario.controls['telefono'].touched">
                 Este campo es requerido.
               </span>
             </mat-form-field>
 
-            <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline" class="d-none">
               <mat-label>Usuario de confianza</mat-label>
               <mat-select formControlName="id_UsuarioConfianza">
                 <mat-option *ngFor="let usuario of usuariosCombo" [value]="usuario.id_usuario">{{usuario.nombre}}
                   {{usuario.apPaterno}}</mat-option>
               </mat-select>
             </mat-form-field>
-          </div>
 
 
-          <div class="row">
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Sexo</mat-label>
@@ -86,6 +84,14 @@
                 Este campo es requerido.
               </span>
             </mat-form-field>
+
+
+
+          </div>
+
+
+          <div class="row">
+
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Fecha de nacimiento</mat-label>
@@ -99,16 +105,17 @@
               </span>
             </mat-form-field>
 
-          </div>
-
-          <div class="row">
-
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Correo</mat-label>
               <input matInput placeholder="Correo" formControlName="correo" required>
                 <span class="error-message" *ngIf="formulario.controls['correo'].errors?.['required'] || formulario.controls['correo'].errors?.['empty']">El correo es requerido</span>
                 <span class="error-message" *ngIf="!formulario.controls['correo'].errors?.['required'] && formulario.controls['correo'].errors?.['email']">Debe ser un correo valido</span>
             </mat-form-field>
+
+          </div>
+
+          <div class="row">
+
 
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
@@ -119,6 +126,8 @@
                 Este campo es requerido.
               </span>
             </mat-form-field>
+
+
 
           </div>
 

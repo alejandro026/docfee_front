@@ -15,6 +15,8 @@ import { Util } from 'src/app/utils/util';
 export class GenerarAntecedenteComponent implements OnInit {
 
   antecedentesForm: FormGroup;
+  tiposDeSangre: string[] = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
+
 
 
   constructor(private fb: FormBuilder,

@@ -50,8 +50,8 @@ export class TratamientoService {
     return this.http.get<Tratamiento>(this.url+"buscarPorId/"+id,
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
-  buscarPorUsuario(id:number): Observable<Tratamiento>{
-    return this.http.get<Tratamiento>(this.url+"buscarPorUsuario/"+id,
+  buscarPorUsuario(id:number): Observable<any>{
+    return this.http.get<any>(this.url+"buscarPorUsuario/"+id,
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
   actualizar(tratamiento: Tratamiento): Observable<Tratamiento>{

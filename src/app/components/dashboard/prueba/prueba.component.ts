@@ -13,6 +13,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angular/fire/storage';
 import { GenerarAntecedenteComponent } from './generar-antecedente/generar-antecedente.component';
 import { Util } from 'src/app/utils/util';
+import { TratamientoService } from 'src/app/services/tratamiento.service';
 
 @Component({
   selector: 'app-prueba',
@@ -25,7 +26,8 @@ export class PruebaComponent implements OnInit {
     public usuarioService: UsuarioService,
     public dialog: MatDialog,
     public notificationService: NotificationService,
-    private storage: Storage
+    private storage: Storage,
+    private tratamientoSerice:TratamientoService
   ) { }
 
   searchKey: string;
@@ -129,13 +131,24 @@ export class PruebaComponent implements OnInit {
 
 
   openModal2(idUsuario: number) {
-    const modalRef = this.dialog.open(GenerarAntecedenteComponent, {
-      width: "45%",
-      minWidth: "250px",
-      data: idUsuario,
-    });
-    modalRef.afterClosed().subscribe(result=>{
-        this.getData();
+
+    this.tratamientoSerice.buscarPorUsuario(idUsuario).subscribe(data=>{
+      // console.log(data);
+      let tratameinto:[]=data;
+      console.log(tratameinto);
+      if(tratameinto.length == 0){
+        const modalRef = this.dialog.open(GenerarAntecedenteComponent, {
+          width: "45%",
+          minWidth: "250px",
+          data: idUsuario,
+        });
+        modalRef.afterClosed().subscribe(result=>{
+            this.getData();
+        })
+      }else{
+        Util.errorMessajeNormal("Este paciente ya tiene un expediente");
+      }
+      return;
     })
   }
 
