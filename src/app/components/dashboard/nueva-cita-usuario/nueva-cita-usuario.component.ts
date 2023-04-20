@@ -86,6 +86,7 @@ this.datetimepicker.max = new Date(new Date().setHours(18, 0, 0));
 
     if(cita.fecha==null){
       Swal.fire({
+        heightAuto: false,
         icon: 'error',
         title: "La fecha es obligatoria",
         showConfirmButton: false,
@@ -98,6 +99,7 @@ this.datetimepicker.max = new Date(new Date().setHours(18, 0, 0));
       console.log("this.citasService.guardarCita ~ data", data)
         this.router.navigate(['/dashboard/citas'], { queryParams: { idTratmiento: this.idTatamieto} });
     Swal.fire({
+      heightAuto: false,
       icon: 'success',
       title: "Tu cita se ha generado con exito. Espera la confirmación del médico",
       showConfirmButton: false,

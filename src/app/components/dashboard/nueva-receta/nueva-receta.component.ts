@@ -50,6 +50,7 @@ confirmAdd(){
         console.log(this.idCita)
         console.log("this.recetaService.guardarReceta ~ data", data)
           Swal.fire({
+            heightAuto: false,
             icon: 'success',
             title: "Guardado con exito",
             showConfirmButton: false,

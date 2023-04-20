@@ -64,6 +64,7 @@ export class AgregarComponent implements OnInit {
       this.usuarioService.actualizarUsuario(usuario).subscribe(data=>{
           console.log(data);
           Swal.fire({
+            heightAuto: false,
             icon: 'success',
             title: "Actualizado con exito",
             showConfirmButton: false,
@@ -75,6 +76,7 @@ export class AgregarComponent implements OnInit {
       this.usuarioService.guardarUsuario(usuario).subscribe(data=> {
         console.log(data);
           Swal.fire({
+            heightAuto: false,
             icon: 'success',
             title: "Guardado con exito",
             showConfirmButton: false,

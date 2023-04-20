@@ -44,6 +44,7 @@ export class Util{
 
   public static errorMessajeNormal(texto:string){
     Swal.fire({
+      heightAuto: false,
       position: 'center',
       icon: 'error',
       title: texto,
@@ -53,6 +54,7 @@ export class Util{
   }
   public static succesMessajeNormal(texto:string){
     Swal.fire({
+      heightAuto: false,
       position: 'center',
       icon: 'success',
       title: texto,

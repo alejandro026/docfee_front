@@ -82,6 +82,7 @@ export class NuevaCitaComponent implements OnInit {
     cita.confirmada=1;
     if(cita.fecha==null){
       Swal.fire({
+        heightAuto: false,
         icon: 'error',
         title: "La fecha es obligatoria",
         showConfirmButton: false,
@@ -96,6 +97,7 @@ export class NuevaCitaComponent implements OnInit {
         this.router.navigate(['/dashboard/citas'], { queryParams: { idTratmiento: this.idTatamieto} });
 
     Swal.fire({
+      heightAuto: false,
       icon: 'success',
       title: "Guardado con exito",
       showConfirmButton: false,
