@@ -36,6 +36,9 @@ export class GenerarAntecedenteComponent implements OnInit {
       temperaatura: ['', [Validators.required]],
       altura: ['', [Validators.required]],
       imc: ['', [Validators.required]],
+      descripcion:['', [Validators.required]],
+      aspectos_Generales:['', [Validators.required]],
+      diagnosticoPresuntivo:['', [Validators.required]]
     });
 
   }
@@ -66,6 +69,9 @@ export class GenerarAntecedenteComponent implements OnInit {
     tratamiento.temperaatura=this.antecedentesForm.get('temperaatura')?.getRawValue();
     tratamiento.altura=this.antecedentesForm.get('altura')?.getRawValue();
     tratamiento.imc=this.antecedentesForm.get('imc')?.getRawValue();
+    tratamiento.descripcion=this.antecedentesForm.get('descripcion')?.getRawValue();
+    tratamiento.aspectos_Generales=this.antecedentesForm.get('aspectos_Generales')?.getRawValue();
+    tratamiento.diagnosticoPresuntivo=this.antecedentesForm.get('diagnosticoPresuntivo')?.getRawValue();
 
     tratamiento.id_medico=parseInt(usuario.id);
     console.log(antecedentes);
