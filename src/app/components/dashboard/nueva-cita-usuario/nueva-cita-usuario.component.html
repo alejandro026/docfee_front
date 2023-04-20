@@ -78,9 +78,20 @@
 
             <div style="width: 50%; min-width: 200px;" appearance="outline">
               <br><br>
-              <ejs-datetimepicker imepickerstyle="width: 50%; min-width: 200px;" appearance="outline" id='datetimepicker'
+              <!-- <ejs-datetimepicker imepickerstyle="width: 50%; min-width: 200px;" appearance="outline" id='datetimepicker'
                 placeholder='Selecciona una fecha' formControlName="fecha" required
                 ></ejs-datetimepicker>
+                 -->
+                <ejs-datetimepicker
+                [step]="60"
+                [min]="fechaIncio"
+                imepickerstyle="width: 50%; min-width: 200px;"
+                appearance="outline"
+                id='datetimepicker'
+                placeholder='Selecciona una fecha'
+                formControlName="fecha"
+                required>
+              </ejs-datetimepicker>
             </div>
 
             <br>
