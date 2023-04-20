@@ -145,8 +145,8 @@ export class CitasComponent implements OnInit {
 
 
   nuevaCitaUsuario(id:number){
-    console.log(this.dataSource.data.length=0);
-    console.log(this._idAntecedente)
+    // console.log(this.dataSource.data.length=0);
+    console.log("iddddddddddddd",this._idAntecedente)
     if(this._idAntecedente==undefined||this._idAntecedente==null){
       Util.errorMessajeNormal("Solicita la creación de tu expediente para agendar citas.")
       return;
@@ -160,7 +160,7 @@ export class CitasComponent implements OnInit {
       return;
     }
 
-    if(estatus==1){
+    if(estatus==0){
       //ONFIRMAR
       this.CitasService.actualizaEstatus(idCita, 1).subscribe(data=>{
         console.log(data);
