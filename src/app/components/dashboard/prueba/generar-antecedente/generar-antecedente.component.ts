@@ -1,9 +1,9 @@
-import { TratamientoDTO } from './../../../../_models/tratamientoDTO';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Antecedentes } from 'src/app/_models/antecedentes';
 import { LoginUsuario } from 'src/app/_models/loginUsuario';
+import { TratamientoDTO } from 'src/app/_models/tratamientoDTO';
 import { TratamientoService } from 'src/app/services/tratamiento.service';
 import { Util } from 'src/app/utils/util';
 

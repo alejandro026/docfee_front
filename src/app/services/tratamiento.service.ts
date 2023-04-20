@@ -1,3 +1,4 @@
+import { TratamientoDTO } from './../_models/tratamientoDTO';
 import { DocumentoUpdate } from './../_models/DocumentoUpdate';
 import { VistaTratamiento } from './../_models/vistaTratatamiento';
 import { Tratamiento } from './../_models/tratamiento';
@@ -7,7 +8,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { Antecedentes } from '../_models/antecedentes';
-import { TratamientoDTO } from '../_models/tratamientoDTO';
 
 
 @Injectable({
