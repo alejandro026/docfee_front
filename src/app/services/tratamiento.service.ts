@@ -1,4 +1,3 @@
-import { TratamientoDTO } from './../_models/tratamientoDTO';
 import { DocumentoUpdate } from './../_models/DocumentoUpdate';
 import { VistaTratamiento } from './../_models/vistaTratatamiento';
 import { Tratamiento } from './../_models/tratamiento';
@@ -8,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { Antecedentes } from '../_models/antecedentes';
+import { TratamientoDto2 } from '../_models/tratamientodto2';
 
 
 @Injectable({
@@ -70,7 +70,7 @@ export class TratamientoService {
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 
-  guardaExpediente(expedinete:TratamientoDTO){
+  guardaExpediente(expedinete:TratamientoDto2){
     return this.http.post<Tratamiento>(this.url+"guardar", expedinete,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
