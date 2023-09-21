@@ -1,4 +1,4 @@
-.container {
+.container1 {
   margin: 15px;
   margin-right: 15px;
   margin-left: 35px;
@@ -9,6 +9,20 @@
   border-radius: 10px;
   font-size: 1rem;
   background-color: white ;
+  bottom: 0;
+}
+
+h1{
+  text-align: center;
+  font-weight: bold;
+  color:#002b5c;
+}
+
+th{
+
+  color: #002b5c;
+  text-align: center;
+  font-size: medium;
 }
 
 .table-wrapp {
@@ -84,5 +98,39 @@ table {
   }
 
 .hide {
+  display: none;
+}
+
+
+.example-container {
+  height: auto !important;
+  width: auto !important;
+  max-width: 100%;
+  overflow: auto;
+}
+
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
+}
+
+.clase{
+  color: black;
+}
+
+
+.ocultar{
   display: none;
 }

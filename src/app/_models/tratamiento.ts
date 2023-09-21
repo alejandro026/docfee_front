@@ -49,6 +49,3 @@ export class Tratamiento{
 
     tratamientoEmpleadoIntegral:string;
 }
-
-    console.log("", )
-

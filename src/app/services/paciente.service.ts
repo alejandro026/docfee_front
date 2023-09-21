@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { Paciente } from '../interfaces/paciente';
 import * as _ from 'lodash';
@@ -11,11 +11,11 @@ import * as _ from 'lodash';
 })
 export class PacienteService {
 
-  formOne: FormGroup;
-  formTwo: FormGroup;
-  formThree: FormGroup;
-  formFour: FormGroup;
-  formFive: FormGroup;
+  formOne: UntypedFormGroup;
+  formTwo: UntypedFormGroup;
+  formThree: UntypedFormGroup;
+  formFour: UntypedFormGroup;
+  formFive: UntypedFormGroup;
 
   titulo = "Nuevo Historial Clínico";
   id: string | undefined;
@@ -23,7 +23,7 @@ export class PacienteService {
   public paciente$ = new Subject<any>();
 
   constructor(
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public firebase: AngularFirestore,
     // private http: HttpClient
   ) {

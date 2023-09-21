@@ -1,0 +1,141 @@
+<div>
+  <mat-toolbar>
+    <span> Agregar antecedente </span>
+    <span style="flex: 1 1 auto"></span>
+  </mat-toolbar>
+</div>
+
+<div class="dialog-content">
+      <form autocomplete="off" [formGroup]="antecedentesForm" (ngSubmit)="onSubmit()">
+
+        <div class="row">
+          <ng-template matStepLabel> Antecedentes </ng-template>
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Medicamento</mat-label>
+            <input [maxLength]="30" matInput placeholder="medicamentos" formControlName="medicamentos" required>
+          </mat-form-field>
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Alcoholismo</mat-label>
+            <mat-select formControlName="alcolismo">
+              <mat-option [value]="true">Si</mat-option>
+              <mat-option [value]="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+
+        <div class="row">
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Drogas</mat-label>
+            <mat-select formControlName="drogas">
+              <mat-option [value]="true">Si</mat-option>
+              <mat-option [value]="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Tabaquismo</mat-label>
+            <mat-select formControlName="tabaquismo">
+              <mat-option [value]="true">Si</mat-option>
+              <mat-option [value]="false">No</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+          <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
+            <mat-label>Antecedentes familiares</mat-label>
+            <input [maxLength]="30" matInput placeholder="Nombre" formControlName="antecedentesFamiliares" required>
+          </mat-form-field>
+
+          <mat-form-field style="width: 48%; min-width: 200px; " appearance="outline">
+            <mat-label>Tipo de sangre</mat-label>
+            <mat-select formControlName="otrosDatos"  placeholder="">
+                <mat-option *ngFor="let sangre of tiposDeSangre" [value]="sangre">{{sangre}}</mat-option>
+            </mat-select>
+            <!-- <input [maxLength]="30" matInput placeholder="Nombre" formControlName="otrosDatos" required> -->
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Presión alterial</mat-label>
+            <input type="number" matInput formControlName="presionArterial" required appNumeric>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Frecuenacia cardiaca</mat-label>
+            <input type="number" matInput formControlName="frec_Cardiaca" required>
+          </mat-form-field>
+
+        </div>
+        <div class="row">
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Frecuancia respiratoria</mat-label>
+            <input type="number" matInput formControlName="frec_Respiratoria" required appNumeric>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Temperatura</mat-label>
+            <input type="number" matInput formControlName="temperaatura" required appNumeric>
+          </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>Altura</mat-label>
+            <input type="number" matInput formControlName="altura" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+            <mat-label>IMC</mat-label>
+            <input type="number" matInput formControlName="imc" required>
+          </mat-form-field>
+
+      </div>
+
+      <div class="row">
+
+        <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+          <mat-label>Descripción</mat-label>
+          <input type="text" matInput formControlName="descripcion" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+          <mat-label>Aspectos generales</mat-label>
+          <input type="text" matInput formControlName="aspectos_Generales" required>
+        </mat-form-field>
+
+    </div>
+      <div class="row">
+
+        <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+          <mat-label>Diagnóstico presuntivo</mat-label>
+          <input type="text" matInput formControlName="diagnosticoPresuntivo" required>
+        </mat-form-field>
+
+
+    </div>
+
+        <div class="button-container">
+          <button mat-raised-button color="primary" type="submit">
+            Aceptar
+          </button>
+
+          <button mat-raised-button color="warn" class="cerrar" mat-dialog-close>
+            Cancelar
+          </button>
+        </div>
+
+      </form>
+  </div>

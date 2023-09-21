@@ -1,11 +1,21 @@
-<div class="container">
-  <div>
-    <mat-toolbar>
-      <span> Adminitracion de archivos </span>
-      <span style="flex: 1 1 auto"></span>
-    </mat-toolbar>
-    <br><br>
-  </div>
+<div class="container1">
+
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../homepage'">Inicio</a></li>
+          <!-- <li class="breadcrumb-item"><a class="clase" [routerLink]="'../expediente'"></a></li> -->
+          <li class="breadcrumb-item active" aria-current="page"><a>Adminitración de archivos</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
+
+  <div class="search-div">
+    <h1>Adminitracion de archivos</h1>
+</div>
+
 
   <div class="row">
     <mat-form-field appearance="outline">
@@ -52,10 +62,6 @@
 
     </mat-card-content>
 
-  </div>
-  <div style="text-align: right;">
-    <button mat-raised-button color="accent" style="margin-right: 90px; margin-top: 10px;" class="creat-button"
-      routerLink="/dashboard/homepage"> Volver a Inicio </button>
   </div>
 
   <div class="row">

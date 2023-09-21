@@ -1,83 +1,111 @@
-<div class="container">
-<div>
-  <mat-toolbar>
-    <span> Agregar cita </span>
-    <span style="flex: 1 1 auto"></span>
-  </mat-toolbar>
-</div>
+<div class="container1">
 
-<div style="padding: 3em" width="100%">
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../homepage'">Inicio</a></li>
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../expediente'">Expediente</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>Agregar cita</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
 
-  <form autocomplete="off" [formGroup]="formularioCitas">
 
-    <div>
-      <mat-form-field style="width: 50%;" appearance="outline">
-        <mat-label>Tratamiento</mat-label>
-        <input [maxLength]="30" matInput placeholder="Tratamiento" formControlName="tratamiento" readonly="true">
-      </mat-form-field>
+  <div class="search-div">
 
-      <mat-form-field style="width: 48%; padding-left: 10px;" appearance="outline" >
-        <mat-label>Médico</mat-label>
-        <input matInput placeholder="id_medico" value="{{nombreMedico}}" readonly="true">
-      </mat-form-field>
+    <h2>Agregar cita</h2>
+  </div>
+
+
+  <div width="100%">
+
+    <div class="col formulaio">
+      <mat-card class="tarjeta">
+        <form autocomplete="off" [formGroup]="formularioCitas">
+
+          <div class="row">
+            <mat-form-field style="width: 50%; min-width: 200px;" appearance="outline" class="ocultar">
+              <mat-label>Tratamiento</mat-label>
+              <input [maxLength]="30" matInput placeholder="Tratamiento" formControlName="tratamiento" readonly="true">
+            </mat-form-field>
+
+            <mat-form-field style="width: 48%; padding-left: 10px; min-width: 200px;" appearance="outline">
+              <mat-label>Médico</mat-label>
+              <input matInput placeholder="id_medico" value="{{nombreMedico}}" readonly="true">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+              <mat-label>Especialidad</mat-label>
+              <mat-select formControlName="especialidad" placeholder="Especialidad">
+                <mat-option value="Medicina Familiar">Medicina Familiar</mat-option>
+                <mat-option value="Pediatría">Pediatría</mat-option>
+                <mat-option value="Cirugía">Cirugía</mat-option>
+                <mat-option value="Psiquiatría">Psiquiatría</mat-option>
+                <mat-option value="Cardiología">Cardiología</mat-option>
+                <mat-option value="Dermatología">Dermatología</mat-option>
+                <mat-option value="Oftalmología">Oftalmología</mat-option>
+                <mat-option value="Neurología">Neurología</mat-option>
+                <mat-option value="Urología">Urología</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+          </div>
+
+
+          <div class="row">
+
+            <mat-form-field style="width: 47.8%; padding-left: 10px; min-width: 200px;" appearance="outline">
+              <mat-label>Lugar</mat-label>
+              <input matInput placeholder="Lugar" style="height: 42px" formControlName="lugar" readonly="true">
+            </mat-form-field>
+
+
+            <mat-form-field style="width: 50%; min-width: 200px;" appearance="outline">
+              <mat-label>Notas</mat-label>
+              <textarea matInput placeholder="Notas" formControlName="notas"></textarea>
+            </mat-form-field>
+
+          </div>
+
+          <div class="row">
+
+            <div style="width: 50%; min-width: 200px;" appearance="outline" id='datetimepicker'>
+              <br>
+              <br>
+
+              <ejs-datetimepicker
+                timeFormat="HH:mm"
+                min="09:00"
+                max="18:00"
+                imepickerstyle="width: 50%; min-width: 200px;"
+                appearance="outline"
+                id='datetimepicker'
+                placeholder='Selecciona una fecha'
+                formControlName="fecha"
+                required>
+              </ejs-datetimepicker>
+
+            </div>
+
+            <br>
+          </div>
+
+          <div>
+            <button mat-raised-button color="primary" (click)="aceptar()">
+              Aceptar
+            </button>
+
+            <!-- <button mat-raised-button color="warn" (click)="cerrar()">
+            Cancelar
+          </button> -->
+          </div>
+        </form>
+
+      </mat-card>
 
     </div>
 
-
-    <div>
-
-      <mat-form-field appearance="outline" style="width: 50%;">
-        <mat-label>Especialidad</mat-label>
-        <mat-select formControlName="especialidad" placeholder="Especialidad">
-          <mat-option value="Medicina Familiar">Medicina Familiar</mat-option>
-          <mat-option value="Pediatría">Pediatría</mat-option>
-          <mat-option value="Cirugía">Cirugía</mat-option>
-          <mat-option value="Psiquiatría">Psiquiatría</mat-option>
-          <mat-option value="Cardiología">Cardiología</mat-option>
-          <mat-option value="Dermatología">Dermatología</mat-option>
-          <mat-option value="Oftalmología">Oftalmología</mat-option>
-          <mat-option value="Neurología">Neurología</mat-option>
-          <mat-option value="Urología">Urología</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field style="width: 48%; padding-left: 10px;" appearance="outline">
-        <mat-label>Lugar</mat-label>
-        <input matInput placeholder="Lugar" formControlName="lugar">
-      </mat-form-field>
-
-
-    </div>
-
-    <div>
-
-
-      <mat-form-field style="width: 50%;" appearance="outline">
-        <mat-label>Notas</mat-label>
-        <textarea matInput placeholder="Notas" formControlName="notas"></textarea>
-        </mat-form-field>
-
-    </div>
-    <div>
-      <br>
-      <br>
-      <div style="width: 50%;" appearance="outline">
-        <ejs-datetimepicker imepickerstyle="width: 50%;" appearance="outline" id='datetimepicker' placeholder='Selecciona una fecha'  formControlName="fecha" required></ejs-datetimepicker>
-      </div>
-
-      <br>
-    </div>
-
-    <div>
-        <button mat-raised-button color="primary" (click)="aceptar()" >
-          Aceptar
-        </button>
-
-        <!-- <button mat-raised-button color="warn" (click)="cerrar()">
-          Cancelar
-        </button> -->
-    </div>
-  </form>
-</div>
-<div class="container">
-
+  </div>
+  <div class="container1">

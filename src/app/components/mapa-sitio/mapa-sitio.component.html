@@ -1,0 +1,51 @@
+<app-navbarlogin></app-navbarlogin>
+<div class="container1">
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="clase" [routerLink]="'../dashboard'">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a>Mapa del sitio</a></li>
+            </ol>
+        </nav>
+    </div>
+
+    <h1>Mapa del sitio</h1>
+
+    <div class="row">
+        <div class="col-auto">
+            <a class="btn btn-light boton" role="button" aria-expanded="false" id="nosotros" style="color: #FFFFFF"
+            [routerLink]="'../dashboard'">Inicio</a>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-primary dropdown-toggle boton" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" id="nosotros" style="color: #FFFFFF">Nosotros</a>
+            <div class="dropdown-menu dropdown-menu" aria-labelledby="nosotros">
+                <a class="dropdown-item" href="#quienesSomos">¿Quiénes somos?</a>
+                <a class="dropdown-item" href="#mision">Misión</a>
+                <a class="dropdown-item" href="#vision">Visión</a>
+                <a class="dropdown-item" href="#valores">Valores</a>
+            </div>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-primary dropdown-toggle boton" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" id="nosotros" style="color: #FFFFFF">Servicios</a>
+            <div class="dropdown-menu dropdown-menu" aria-labelledby="nosotros">
+                <a class="dropdown-item" href="#hospitalizacion">Área de hospitalización</a>
+                <a class="dropdown-item" href="#citas">Agendar citas en línea</a>
+                <a class="dropdown-item" href="#especialidades">Especialidades</a>
+            </div>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-light boton" role="button" aria-expanded="false" id="nosotros" style="color: #FFFFFF"
+            [routerLink]="'../dashboard/prueba'">Pacientes</a>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-light boton" role="button" aria-expanded="false" id="nosotros" style="color: #FFFFFF"
+            [routerLink]="'../dashboard/documentos'">Documentos</a>
+        </div>
+        <div class="col-auto">
+            <a class="btn btn-light boton" role="button" aria-expanded="false" id="nosotros" style="color: #FFFFFF"
+            [routerLink]="'../dashboard/expediente'">Expedientes</a>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,5 @@
 import { Antecedentes } from './../../../../_models/antecedentes';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UsuarioService } from './../../../../services/usuario.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,14 +14,14 @@ import Swal from 'sweetalert2';
 })
 export class AgregarComponent implements OnInit {
 
-  formulario:FormGroup;
-  formularioAntecedente:FormGroup;
+  formulario:UntypedFormGroup;
+  // formularioAntecedente:UntypedFormGroup;
 
   usuariosCombo:Usuario[];
 
   constructor(
     private usuarioService: UsuarioService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private dialogRef: MatDialogRef<AgregarComponent>,
     @Inject(MAT_DIALOG_DATA) private data:Usuario
   ) { }
@@ -30,31 +30,41 @@ export class AgregarComponent implements OnInit {
     console.log(this.data)
     this.iniciaFormulario();
     this.cargarComboUsuarios();
-    this.formularioAntecedentes();
+    // this.formularioAntecedentes();
   }
 
 
   aceptar(){
+    console.log(this.formulario.controls['correo'])
+    if(this.formulario.invalid){
+      return;
+    }
+
     let usuarioConfianza= new Usuario();
-    usuarioConfianza.id_usuario=this.formulario.value.id_UsuarioConfianza;
-
     let usuario:Usuario=this.formulario.value;
-    usuario.id_UsuarioConfianza=usuarioConfianza;
 
+
+    if(this.formulario.value.id_UsuarioConfianza!=null){
+      usuarioConfianza.id_usuario=this.formulario.value.id_UsuarioConfianza;
+      usuario.id_UsuarioConfianza=usuarioConfianza;
+    }
     usuario.id_usuario=this.data.id_usuario;
+    usuario.usuario=this.data.usuario;
+    // let antecedentes:Antecedentes=this.formularioAntecedente.value;
+    // let antecedentes:Antecedentes[]=[];
+    // antecedentes.push(this.formularioAntecedente.value);
+    // antecedentes[0].id_usuario=this.data.id_usuario.toString();
+    // usuario.antecedentes=antecedentes
 
     console.log("El usuario es ", usuario)
 
-    // let antecedentes:Antecedentes=this.formularioAntecedente.value;
-    let antecedentes:Antecedentes[]=[];
-    antecedentes.push(this.formularioAntecedente.value)
-    usuario.antecedentes=antecedentes
 
     if(this.data!=null && this.data.id_usuario! >0){
       // usuario.antecedentes= this.data.antecedentes;
       this.usuarioService.actualizarUsuario(usuario).subscribe(data=>{
           console.log(data);
           Swal.fire({
+            heightAuto: false,
             icon: 'success',
             title: "Actualizado con exito",
             showConfirmButton: false,
@@ -66,6 +76,7 @@ export class AgregarComponent implements OnInit {
       this.usuarioService.guardarUsuario(usuario).subscribe(data=> {
         console.log(data);
           Swal.fire({
+            heightAuto: false,
             icon: 'success',
             title: "Guardado con exito",
             showConfirmButton: false,
@@ -93,48 +104,48 @@ export class AgregarComponent implements OnInit {
 
 
    this.formulario = this.formBuilder.group({
-    id_usuario: this.data.id_usuario,
-    nombre: this.data.nombre,
-    apPaterno: this.data.apPaterno,
-    apMaterno: this.data.apMaterno,
-    nss: this.data.nss,
-    telefono: this.data.telefono,
+    id_usuario: [this.data.id_usuario, Validators.required],
+    nombre: [this.data.nombre, Validators.required],
+    apPaterno: [this.data.apPaterno, Validators.required],
+    apMaterno: [this.data.apMaterno, Validators.required],
+    nss: [this.data.nss, Validators.required],
+    telefono: [this.data.telefono, Validators.required],
     id_UsuarioConfianza: usuarioConfinza,
-    sexo: this.data.sexo,
+    sexo: [this.data.sexo, Validators.required],
     fechaNacimiento: new Date(this.data.fechaNacimiento),
-    correo: this.data.correo,
-    ocupacion: this.data.ocupacion
+    correo: [this.data.correo, [Validators.required, Validators.email]],
+    ocupacion: [this.data.ocupacion, Validators.required]
     })
   }
 
-  formularioAntecedentes(){
+  // formularioAntecedentes(){
 
-    if(this.data.antecedentes==null|| this.data.antecedentes.length==0){
-      this.formularioAntecedente= this.formBuilder.group({
-        id_antecedente:'',
-        medicamentos: '',
-        alcolismo:false,
-        drogas:false,
-        tabaquismo:false,
-        antecedentesFamiliares:'',
-        otrosDatos:'',
-        id_usuario:''
-      })
-    }else{
-      this.formularioAntecedente= this.formBuilder.group({
-        id_antecedente:this.data.antecedentes[0].id_antecedente,
-        medicamentos: this.data.antecedentes[0].medicamentos,
-        alcolismo:true,
-        drogas:this.data.antecedentes[0].drogas,
-        tabaquismo:this.data.antecedentes[0].tabaquismo,
-        antecedentesFamiliares:this.data.antecedentes[0].antecedentesFamiliares,
-        otrosDatos:this.data.antecedentes[0].otrosDatos,
-        id_usuario:this.data.id_usuario
-      })
-    }
+  //   if(this.data.antecedentes==null|| this.data.antecedentes.length==0){
+  //     this.formularioAntecedente= this.formBuilder.group({
+  //       id_antecedente:'',
+  //       medicamentos: '',
+  //       alcolismo:false,
+  //       drogas:false,
+  //       tabaquismo:false,
+  //       antecedentesFamiliares:'',
+  //       otrosDatos:'',
+  //       id_usuario:''
+  //     })
+  //   }else{
+  //     this.formularioAntecedente= this.formBuilder.group({
+  //       id_antecedente:this.data.antecedentes[0].id_antecedente,
+  //       medicamentos: this.data.antecedentes[0].medicamentos,
+  //       alcolismo:true,
+  //       drogas:this.data.antecedentes[0].drogas,
+  //       tabaquismo:this.data.antecedentes[0].tabaquismo,
+  //       antecedentesFamiliares:this.data.antecedentes[0].antecedentesFamiliares,
+  //       otrosDatos:this.data.antecedentes[0].otrosDatos,
+  //       id_usuario:this.data.id_usuario
+  //     })
+  //   }
 
 
-  }
+  // }
 
 
 

@@ -6,5 +6,5 @@ export class Antecedentes{
   tabaquismo:boolean;
   antecedentesFamiliares:string;
   otrosDatos:boolean;
-  id_usuario:string
+  id_usuario:number
 }

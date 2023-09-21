@@ -1,0 +1,73 @@
+<div class="body">
+  <div>
+    <mat-card class="login-card">
+      <!-- <h1 style="font: 150%;">Registro</h1> -->
+      <form [formGroup]="registerForm">
+
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <input matInput #emailInput formControlName="nombre"  type="text">
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Apellido paterno</mat-label>
+        <input matInput formControlName="apPaterno" type="text">
+
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Apellido materno</mat-label>
+      <input matInput  formControlName="apMaterno"  type="text">
+  </mat-form-field>
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Numero de telefono</mat-label>
+      <input matInput  formControlName="numTelefono"   appNumeric maxlength="10" minlength="10">
+  </mat-form-field>
+
+
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Correo</mat-label>
+            <input matInput #emailInput formControlName="email" [ngClass]="{ 'invalid': emailControl.invalid && emailControl.dirty }" type="text">
+            <label *ngIf="emailControl.invalid && emailControl.dirty" class="label">
+                <span class="label-text-alt invalid" *ngIf="emailControl.errors?.['required'] || emailControl.errors?.['empty']">El correo es requerido</span>
+                <span class="label-text-alt invalid" *ngIf="emailControl.errors?.['pattern'] && !emailControl.errors?.['required'] && !emailControl.errors?.['empty']">Debe ser un correo valido</span>
+            </label>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Contraseña</mat-label>
+
+            <input matInput #passwordInput formControlName="password" [ngClass]="{ 'invalid': passwordControl.invalid && passwordControl.dirty }"
+                          type="password">
+            <label *ngIf="passwordControl.invalid && passwordControl.dirty" class="label">
+                <span class="label-text-alt invalid" *ngIf="passwordControl.errors?.['required']">La contraseña es requerida</span>
+                <span class="label-text-alt invalid" *ngIf="passwordControl.errors?.['minlength']">La contraseña debe tener al menos 6 caracteres</span>
+            </label>
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Confirmar Contraseña</mat-label>
+          <input matInput #passwordConfirmInput formControlName="confirmPassword" type="password">
+      </mat-form-field>
+
+
+        <div class="row rl">
+          <ngx-recaptcha2 #captchaElem siteKey="{{key}}" (success)="handleSuccess($event)" [size]="size"
+            [hl]="lang" [theme]="theme" [type]="type" formControlName="recaptcha">
+          </ngx-recaptcha2>
+      </div>
+      <br><br>
+
+        <button (click)="register()" [disabled]="disableRegisterButton" type="submit"
+        class="button" mat-raised-button color="success">Registrar</button>
+
+      </form>
+      <div *ngIf="failedRegister" class="alert alert-error">
+        <div>
+            <span>{{failedRegisterMessage}}</span>
+        </div>
+    </div>
+    </mat-card>
+  </div>
+</div>
+

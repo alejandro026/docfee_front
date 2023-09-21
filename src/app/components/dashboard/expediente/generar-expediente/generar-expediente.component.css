@@ -1,0 +1,93 @@
+.container1 {
+  margin: 15px;
+  margin-right: 15px;
+  margin-left: 35px;
+  padding: 15px;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: white ;
+}
+
+h1{
+  text-align: center;
+  font-weight: bold;
+  color:#002b5c;
+}
+
+th{
+
+  color: #002b5c;
+  text-align: center;
+  font-size: medium;
+}
+
+.table-wrapp {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15px;
+  width: 90%;
+}
+
+.large {
+  width: 27.5%;
+  height: 15px;
+}
+
+.short {
+  width: 15%;
+  height: 15px;
+}
+
+  ::ng-deep .mat-form-field-underline {
+      display: none;
+  }
+  ::ng-deep .mat-form-field-infix {
+      border-top: 0px;
+  }
+  ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 0px;
+  }
+  ::ng-deep .mat-form-field-suffix button {
+      height: 32px;
+      width: 32px;
+  }
+
+.hide {
+  display: none;
+}
+
+.example-container {
+  height: auto !important;
+  width: auto !important;
+  max-width: 100%;
+  overflow: auto;
+}
+
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
+}
+
+.clase{
+  color: black;
+}
+
+.ocultar{
+  display: none;
+}

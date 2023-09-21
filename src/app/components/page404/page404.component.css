@@ -1,0 +1,35 @@
+.container1 {
+    padding: 15px;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    font-size: 1rem;
+    background-color: white ;
+    padding-top: 87px;
+    position: relative;
+    height: 100%;
+    border: 0px;
+    overflow: hidden;
+    background-color: #2C2E43; 
+    text-align: center; 
+    height: 100%;
+}
+
+.centrado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton1 {
+    background: #38B6FF;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    width: auto;
+    
+  }
+
+  .imagen {
+    width: 90%;
+  }

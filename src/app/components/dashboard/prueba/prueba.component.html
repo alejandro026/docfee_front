@@ -1,12 +1,30 @@
-<div class="container">
+<div class="container1">
+
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../homepage'">Inicio</a></li>
+          <!-- <li class="breadcrumb-item"><a class="clase" [routerLink]="'../expediente'">Pacientes</a></li> -->
+          <li class="breadcrumb-item active" aria-current="page"><a>Pacientes</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
+
+  <div class="block-header">
   <div class="search-div">
-      <button mat-raised-button class="creat-button" (click)="openModal()"><mat-icon>add</mat-icon> Crear </button>
+      <h1>Pacientes</h1>
+      <button align="right" mat-raised-button class="info-button" (click)="openModal()"><mat-icon>add</mat-icon> Crear </button>
       <mat-form-field class="search-form-field" floatLabel="never">
           <input matInput type="text" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event)">
           <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" ><mat-icon>clear</mat-icon></button>
       </mat-form-field>
   </div>
   <div class="table-wrapp mat-elevation-z8">
+
+    <section class="example-container mat-elevation-z8" tabindex="0">
+
       <table mat-table matSort [dataSource]="dataSource">
 
           <ng-container matColumnDef="nombre" >
@@ -25,7 +43,7 @@
           </ng-container>
 
           <ng-container matColumnDef="nss" >
-            <th mat-header-cell *matHeaderCellDef class="short"> Numero de seguro </th>
+            <th mat-header-cell *matHeaderCellDef class="short"> Número de seguro </th>
             <td mat-cell *matCellDef="let element"> {{element.nss}} </td>
           </ng-container>
 
@@ -34,12 +52,21 @@
             <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
           </ng-container>
 
+
+          <ng-container matColumnDef="antecedente" >
+            <th mat-header-cell *matHeaderCellDef class="short"> Antecedente </th>
+            <td mat-cell *matCellDef="let element" style="text-align: right;">
+              <button mat-icon-button type="text"  (click)="openModal2(element.id_usuario)"><mat-icon>add_circle_outline</mat-icon></button>
+            </td>
+          </ng-container>
+
           <ng-container matColumnDef="actions" >
-            <th mat-header-cell *matHeaderCellDef class="short">  </th>
+            <th mat-header-cell *matHeaderCellDef class="short">Editar  </th>
             <td mat-cell *matCellDef="let element" style="text-align: right;">
               <button mat-icon-button type="text"  (click)="openModal(element)"><mat-icon>edit</mat-icon></button>
             </td>
           </ng-container>
+
 
           <ng-container matColumnDef="loading">
             <mat-footer-cell *matFooterCellDef style="justify-content: center; font-style: italic;">
@@ -51,9 +78,7 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource._filterData}" style="justify-content: center; font-style: italic;"></tr>
       </table>
-      <mat-paginator #paginator [pageSizeOptions]="[5, 7, 10]" [pageSize]="7"></mat-paginator>
-  </div>
-  <div style="text-align: right;">
-    <button mat-raised-button color="accent" style="margin-right: 90px; margin-top: 10px;" class="creat-button" routerLink="/dashboard/homepage"> Volver a Inicio </button>
+    </section>
+      <mat-paginator #paginator [pageSizeOptions]="[5, 7, 10]" [pageSize]="8"></mat-paginator>
   </div>
 </div>

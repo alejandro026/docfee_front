@@ -1,0 +1,53 @@
+.container1 {
+    margin: 15px;
+    margin-right: 35px;
+    margin-left: 35px;
+    padding: 15px;
+    padding-bottom: 50px;
+    overflow: hidden;
+    width: auto;
+    height: 100%;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: white ;
+    padding-top: 87px;
+    position: center;
+    border: 0px;
+    overflow: hidden;
+
+}
+
+.boton{
+   background-color: #002b5c;
+}
+
+.dropdown-menu{
+   background-color: #2C2E43;
+}
+
+.col-auto{
+   width: auto; 
+   margin: auto;
+}
+
+h1{
+    font-size: 3vw; 
+    font-weight: bold; 
+    color:#002b5c 
+}
+
+
+
+.card-text{
+    font-size: 1vw
+}
+
+.clase{
+    color: black;
+  }
+a {
+    color: white;
+    text-decoration: none;
+}
+
+

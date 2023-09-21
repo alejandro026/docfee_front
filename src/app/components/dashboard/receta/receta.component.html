@@ -1,104 +1,92 @@
-<body>
-<div class="container">
-  <div class="header" ALIGN="center" >
-    <h1><strong>RECETA MEDICA</strong></h1>
-  </div>
+<div class="container1">
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../homepage'">Inicio</a></li>
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../expediente'">Expediente</a></li>
+          <li class="breadcrumb-item"><a class="clase" onclick="window.history.back()">Citas</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>Receta medica</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
 
-  <!-- <section class="content"> -->
-  <div class="content-block">
+  <div class="container2">
+    <div ALIGN="center">
+      <img src=".\assets\images\LogoBlanco.png">
+    </div>
+    <div class="header" ALIGN="center">
+      <h1><strong>RECETA MÉDICA</strong></h1>
 
-    <!-- Your content goes here  -->
-    <div class="row clearfix">
-      <div class="col-lg-8 col-md-12">
+    </div>
+
+    <!-- <section class="content"> -->
+    <div class="content-block">
+
+      <!-- Your content goes here  -->
+      <div class="row clearfix">
+        <div class="col-md-12">
+          <div class="body">
+            <div class="row">
+              <div ALIGN="right">
+                <strong>FECHA</strong>
+                <br>
+                <p class="text-muted">{{_fecha | date}}</p>
+              </div>
+
+              <HR align="CENTER" color="black" noshade />
+
               <div class="body">
                 <div class="row">
-                  <div ALIGN="right">
-                    <strong>FECHA</strong>
+                  <div class="col-md-3 col-6 b-r">
+                    <h3><strong>NOMBRE COMPLETO: </strong></h3>
+
                     <br>
-                    <p class="text-muted">{{recetas.fecha | date}}</p>
+                    <p class="text-muted">{{_nombreCompleto}}</p>
                   </div>
 
-                  <HR align="CENTER" color="black" noshade />
 
-                  <div class="body">
-                    <div class="row">
-                      <div class="col-md-3 col-6 b-r">
-                        <h3><strong>NOMBRE COMPLETO: </strong></h3>
-
-                        <br>
-                        <p class="text-muted">{{recetas.id_cita.tratamiento.id_usuario.nombre}} {{recetas.id_cita.tratamiento.id_usuario.apPaterno}} {{recetas.id_cita.tratamiento.id_usuario.apMaterno}}</p>
-                      </div>
-
-
-                  <div ALIGN="right" >
+                  <div ALIGN="right">
                     <strong>EDAD:</strong>
                     <br>
-                        <p class="text-muted">{{edad}}</p>
+                    <p class="text-muted">{{edad}}</p>
                   </div>
                   <HR align="CENTER" color="black" noshade />
 
                   <div class="col-md-3 col-6">
                     <h3><strong>DIAGNOSTICO: </strong></h3>
                     <br>
-                    <p class="text-muted">{{recetas.diagnostico}}</p>
+                    <p class="text-muted">{{_diagnostico}}</p>
                   </div>
 
                   <HR align="CENTER" color="black" noshade />
 
-                  <link
-                    href="https://fonts.googleapis.com/css?family=Rock+Salt"
-                    rel="stylesheet"
-                    type="text/css"
-                  />
+                  <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css" />
 
-                  <table class="default">
-                    <thead>
-                      <tr>
-                        <th scope="col">MEDICAMENTO</th>
-                        <th scope="col">TAREAS/HORARIOS</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">{{recetas.medicamento}}</th>
-                        <th scope="row">Tomar cada {{recetas.horarios}} Horas y la tarea es {{recetas.tareas}} </th>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="col-md-3 col-6">
+                    <h3><strong>MEDICAMENTO: </strong></h3>
+                    <br>
+                    <p class="text-muted">{{_medicamemnto}}</p>
+                  </div>
+
+                  <HR align="CENTER" color="black" noshade />
+
+                  <div class="col-md-3 col-6">
+                    <h3><strong>INDICACIONES: </strong></h3>
+                    <br>
+                    <p class="text-muted">{{_indicaciones}}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
+        </div>
       </div>
     </div>
+    <!-- </section> -->
+
+
   </div>
-  <!-- </section> -->
 </div>
-<div ALIGN="center">
-
-  <mat-form-field style="width: 50%; background-color: aliceblue;" appearance="outline">
-    <mat-label>Número de teléfono</mat-label>
-    <input matInput placeholder="Número de teléfono" [(ngModel)]="numero">
-  </mat-form-field>
-
-  <!-- <input name="textarea" rows="1" cols="50" [(ngModel)]="numero" placeholder="Número de teléfono"> -->
-</div>
-<div ALIGN="center">
-  <mat-form-field style="width: 50%; background-color: aliceblue;" appearance="outline">
-    <mat-label>Describe las indicaciones</mat-label>
-    <input matInput placeholder="Describe las indicaciones" [(ngModel)]="mensaje">
-  </mat-form-field>
-  <!-- <input name="textarea" rows="5" cols="50" [(ngModel)]="mensaje" placeholder="Describe las indicaciones"> -->
-</div>
-
-<div ALIGN="center">
-  <button mat-raised-button color="primary" (click)="enviar()">
-    Enviar
-  </button>
-
-</div>
-
-
-
-</body>

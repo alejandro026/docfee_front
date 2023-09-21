@@ -11,6 +11,9 @@ import { UsuarioService } from './../../../services/usuario.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angular/fire/storage';
+import { GenerarAntecedenteComponent } from './generar-antecedente/generar-antecedente.component';
+import { Util } from 'src/app/utils/util';
+import { TratamientoService } from 'src/app/services/tratamiento.service';
 
 @Component({
   selector: 'app-prueba',
@@ -23,11 +26,12 @@ export class PruebaComponent implements OnInit {
     public usuarioService: UsuarioService,
     public dialog: MatDialog,
     public notificationService: NotificationService,
-    private storage: Storage
+    private storage: Storage,
+    private tratamientoSerice:TratamientoService
   ) { }
 
   searchKey: string;
-  displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono', 'actions'];
+  displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono', 'antecedente', 'actions'];
   dataSource: MatTableDataSource<Usuario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -38,7 +42,10 @@ export class PruebaComponent implements OnInit {
     this.getData();
     this.dataSource = new MatTableDataSource<Usuario>();
     this.getArchivos();
+  }
 
+  ngAfterViewChecked(): void {
+    this.cambiarPaginacion();
   }
 
   getData() {
@@ -109,7 +116,7 @@ export class PruebaComponent implements OnInit {
     antecedentes.push(new Antecedentes());
 
     usuario2.id_UsuarioConfianza= new Usuario();
-    usuario2.antecedentes=antecedentes;
+    // usuario2.antecedentes=antecedentes;
 
 
     let user = usuario != null ? usuario : usuario2;
@@ -120,6 +127,33 @@ export class PruebaComponent implements OnInit {
     modalRef.afterClosed().subscribe(result=>{
         this.getData();
     })
+  }
+
+
+  openModal2(idUsuario: number) {
+
+    this.tratamientoSerice.buscarPorUsuario(idUsuario).subscribe(data=>{
+      // console.log(data);
+      let tratameinto:[]=data;
+      console.log(tratameinto);
+      if(tratameinto.length == 0){
+        const modalRef = this.dialog.open(GenerarAntecedenteComponent, {
+          width: "45%",
+          minWidth: "250px",
+          data: idUsuario,
+        });
+        modalRef.afterClosed().subscribe(result=>{
+            this.getData();
+        })
+      }else{
+        Util.errorMessajeNormal("Este paciente ya tiene un expediente");
+      }
+      return;
+    })
+  }
+
+  cambiarPaginacion(){
+    Util.cambiarIdiomaPaginacion(this.paginator);
   }
 
 }

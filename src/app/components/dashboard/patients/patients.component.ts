@@ -47,7 +47,7 @@ export class PatientsComponent implements OnInit {
           ...element.payload.doc.data()
         });
       })
-      
+
     })
   }
 
@@ -88,8 +88,8 @@ export class PatientsComponent implements OnInit {
 
   onView(paciente: Paciente) {
     const dialogRef = this.dialog.open(HistoryComponent, {
-      width: "100%",
-      height: "90%",
+      // width: "100%",
+      // height: "90%",
       disableClose: false,
       autoFocus: true,
     });
@@ -98,8 +98,8 @@ export class PatientsComponent implements OnInit {
 
   onEdit(paciente: Paciente) {
     const dialogRef = this.dialog.open(PatientComponent, {
-      width: "100%",
-      height: "90%",
+      // width: "100%",
+      // height: "90%",
       disableClose: false,
       autoFocus: true,
     });

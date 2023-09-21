@@ -1,0 +1,77 @@
+<div class="body">
+    <div>
+
+      <mat-stepper linear #stepper>
+
+        <mat-step [stepControl]="form" class="card">
+          <mat-card class="login-card">
+            <ng-template matStepLabel>Docfee</ng-template>
+            <h1 style="font: 150%;">Docfee</h1>
+            <form [formGroup]="form">
+
+                <mat-form-field class="form-field" appearance="fill">
+                  <mat-label>Correo electrónico</mat-label>
+                  <input matInput autocomplete="off" formControlName="usuario">
+                </mat-form-field>
+
+
+                <mat-form-field class="form-field" appearance="fill">
+                  <mat-label>Contraseña</mat-label>
+                  <input matInput autocomplete="off" [type]="hide ? 'password' : 'text'" formControlName="contraseña">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                </mat-form-field>
+
+              <div class="row rl">
+                <ngx-recaptcha2 #captchaElem siteKey="{{key}}" (success)="handleSuccess($event)" [hl]="lang" [theme]="theme"
+                  [type]="type" formControlName="recaptcha">
+                </ngx-recaptcha2>
+              </div>
+              <label class="label etiqueta">
+                <a (click)="reinicarPassword()" class="label-text-alt link link-hover">¿Olvidaste tu contraseña?</a>
+              </label>
+              <br>
+              <button class="button" (click)="login()" type="submit" mat-raised-button color="success"
+                [disabled]="form.invalid">Ingresar</button>
+            </form>
+
+            <div *ngIf="failedLogin" class="alert alert-error alerta">
+              <div>
+                <span>{{failedLoginMessage}}</span>
+              </div>
+            </div>
+            <mat-card-footer>
+              <mat-progress-bar *ngIf="cargandoLogin" mode="indeterminate"></mat-progress-bar>
+            </mat-card-footer>
+          </mat-card>
+        </mat-step>
+
+        <mat-step [stepControl]="autenticacionDosPasos">
+
+          <mat-card class="login-card">
+            <p>Ingresa el código enviado a tu correo.</p>
+            <form [formGroup]="autenticacionDosPasos">
+
+                <mat-form-field class="form-field" appearance="fill">
+                  <mat-label>Código</mat-label>
+                  <input matInput autocomplete="off" formControlName="codigo" required>
+                </mat-form-field>
+
+              <button class="button" (click)="verificaCodigo()" type="submit" mat-raised-button color="success"
+                [disabled]="form.invalid">Confirmar</button>
+            </form>
+
+            <div *ngIf="_codigoIncorrecto" class="alert alert-error alerta">
+              <div>
+                <span>El código ingresado es incorrecto</span>
+              </div>
+            </div>
+
+          </mat-card>
+        </mat-step>
+      </mat-stepper>
+
+    </div>
+</div>

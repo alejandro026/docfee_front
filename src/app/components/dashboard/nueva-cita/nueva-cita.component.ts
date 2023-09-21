@@ -1,24 +1,27 @@
 import { CitaDTO } from './../../../_models/citaDTO';
 import { LoginUsuario } from './../../../_models/loginUsuario';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { Citas } from './../../../_models/citas';
 import { CitasService } from './../../../services/citas.service';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { DateTimePicker, DateTimePickerModel } from '@syncfusion/ej2-calendars';
 import Swal from 'sweetalert2';
 import { thru } from 'lodash';
+import { Medico } from 'src/app/_models/medico';
 
 @Component({
   selector: 'app-nueva-cita',
   templateUrl: './nueva-cita.component.html',
-  styleUrls: ['./nueva-cita.component.css']
+  styleUrls: ['./nueva-cita.component.css'],
+
 })
 export class NuevaCitaComponent implements OnInit {
 
-  formularioCitas:FormGroup;
-  medicosCombo:Citas[];
+  formularioCitas:UntypedFormGroup;
+  medicosCombo:Medico[]=[];
 
   idTatamieto:number;
 
@@ -28,7 +31,7 @@ export class NuevaCitaComponent implements OnInit {
 
   constructor(
     private citasService: CitasService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private route:ActivatedRoute,
     private router:Router
   ) { }
@@ -45,7 +48,6 @@ export class NuevaCitaComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerIdTratamiento();
     this.iniciaFormulario();
-
   }
 
   iniciaFormulario(){
@@ -60,22 +62,27 @@ export class NuevaCitaComponent implements OnInit {
     // tratamiento?:number;
 
    this.formularioCitas = this.formBuilder.group({
-    id_medico: new FormControl(this.usuario.id),
-    fecha: new FormControl(),
-    lugar: new FormControl(),
-    especialidad: new FormControl(),
-    notas: new FormControl(),
+    id_medico: new UntypedFormControl(this.usuario.id),
+    fecha: new UntypedFormControl(),
+    lugar: new UntypedFormControl(),
+    especialidad: new UntypedFormControl(),
+    notas: new UntypedFormControl(),
     tratamiento : this.idTatamieto
     })
+  }
+
+  ngAfterViewInit(): void {
+    this.cargaMedicos();
   }
 
   aceptar(){
     console.log(this.formularioCitas.value);
 
     let cita:CitaDTO=this.formularioCitas.value;
-
+    cita.confirmada=1;
     if(cita.fecha==null){
       Swal.fire({
+        heightAuto: false,
         icon: 'error',
         title: "La fecha es obligatoria",
         showConfirmButton: false,
@@ -90,6 +97,7 @@ export class NuevaCitaComponent implements OnInit {
         this.router.navigate(['/dashboard/citas'], { queryParams: { idTratmiento: this.idTatamieto} });
 
     Swal.fire({
+      heightAuto: false,
       icon: 'success',
       title: "Guardado con exito",
       showConfirmButton: false,
@@ -97,6 +105,17 @@ export class NuevaCitaComponent implements OnInit {
     })
     })
 
+  }
+
+  cargaMedicos(){
+    this.citasService.consultarTodosMedicos().subscribe(data=>{
+      this.medicosCombo=data;
+      let id=(parseInt(this.usuario.id)-1);
+      let medico=this.medicosCombo[id];
+      this.formularioCitas.get('lugar')?.setValue(medico.consultorio);
+
+      console.log(data);
+    })
   }
 
 }

@@ -1,74 +1,110 @@
-<mat-toolbar>
-    <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-        <mat-icon *ngIf="!sidenav.opened">
-            menu
-        </mat-icon>
-        <mat-icon *ngIf="sidenav.opened">
-            close
-        </mat-icon>
+<mat-toolbar style="height:75px;">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+      menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+      close
+    </mat-icon>
+  </button>
+  <div class="col d-none d-xl-block imagen">
+    <!-- <span class="spacer"></span> -->
+    <img src="./assets/images/Logo.png" width="250" height="75"
+      routerLink="/dashboard/homepage">
+    <!-- <span class="spacer"></span> -->
+  </div>
+  <!-- <form class="d-flex">
+
+    <input *ngIf="showSearchInput" #searchInput class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" [@fadeInOut]>
+    <button mat-mini-fab color="primary" (click)="toggleSearchInput()">
+      <mat-icon>search</mat-icon>
     </button>
-    <span class="spacer"></span>
-    <div>
-       DOCFEE
-    </div>
-    <span class="spacer"></span>
-    <div style="font-weight: lighter;">
-       {{sesion.tipoUsuario +' : '+sesion.nombre}}
-    </div>
+  </form> -->
+
+
+
+
+  <div class="center-div d-none d-sm-block usuario">
+    {{sesion.tipoUsuario +' : '+sesion.nombre}}
+  </div>
+
+  <div class="col d-block d-sm-none imagenLogo">
+    <!-- <span class="spacer"></span> -->
+    <img src="./assets/images/LogoP1.png" style="width: 50px;"
+      routerLink="/dashboard/homepage">
+    <!-- <span class="spacer"></span> -->
+  </div>
+
 </mat-toolbar>
 
-<mat-sidenav-container class="container">
-    <mat-sidenav #sidenav="matSidenav" class="sidenav mat-elevation-z8">
-        <mat-nav-list>
-            <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+<mat-sidenav-container class="container1">
+  <mat-sidenav #sidenav="matSidenav" class="sidenav mat-elevation-z8">
+    <mat-nav-list>
+      <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
 
-            <mat-list-item [routerLink]="'homepage'">
-                <mat-icon mat-list-icon class="material-icons-rounded">home</mat-icon>
-                <span class="text">Inicio</span>
-            </mat-list-item>
-<!--
-            <mat-list-item [routerLink]="'patients'">
-                <mat-icon mat-list-icon class="material-icons-rounded">people</mat-icon>
-                <span class="text">Pacientes</span>
-            </mat-list-item> -->
+      <mat-list-item [routerLink]="'homepage'">
+        <mat-icon mat-list-icon class="material-icons-rounded">home</mat-icon>
+        <span class="text">Inicio</span>
+      </mat-list-item>
 
-            <mat-list-item [routerLink]="'prueba'" *ngIf="sesion.tipoUsuario=='MEDICO'">
-                <mat-icon mat-list-icon class="material-icons-rounded">description</mat-icon>
-                <span class="text">Pacientes</span>
-            </mat-list-item>
+      <mat-list-item [routerLink]="'prueba'" *ngIf="sesion.tipoUsuario=='MEDICO'">
+        <mat-icon mat-list-icon class="material-icons-rounded">description</mat-icon>
+        <span class="text">Pacientes</span>
+      </mat-list-item>
 
-            <mat-list-item [routerLink]="'documentos'" *ngIf="sesion.tipoUsuario=='MEDICO'">
-                <mat-icon mat-list-icon class="material-icons-rounded">folder</mat-icon>
-                <span class="text">Documentos</span>
-            </mat-list-item>
+      <mat-list-item [routerLink]="'documentos'" *ngIf="sesion.tipoUsuario=='MEDICO'">
+        <mat-icon mat-list-icon class="material-icons-rounded">folder</mat-icon>
+        <span class="text">Documentos</span>
+      </mat-list-item>
 
-            <mat-list-item [routerLink]="'expediente'">
-              <mat-icon mat-list-icon class="material-icons-rounded">storage</mat-icon>
-              <span class="text">Expediente</span>
-            </mat-list-item>
+      <mat-list-item [routerLink]="'expediente'" *ngIf="sesion.tipoUsuario!='MEDICO'">
+        <mat-icon mat-list-icon class="material-icons-rounded">storage</mat-icon>
+        <span class="text">Expediente</span>
+      </mat-list-item>
 
-            <mat-list-item></mat-list-item>
-            <mat-list-item></mat-list-item>
-            <mat-list-item></mat-list-item>
+      <mat-list-item [routerLink]="'citas'" *ngIf="sesion.tipoUsuario!='MEDICO'">
+        <mat-icon mat-list-icon class="material-icons-rounded">storage</mat-icon>
+        <span class="text">Citas</span>
+      </mat-list-item>
 
-            <mat-divider></mat-divider>
+      <mat-expansion-panel *ngIf="sesion.tipoUsuario=='MEDICO'">
+        <mat-expansion-panel-header>
+          <mat-icon mat-list-icon class="material-icons-rounded">storage</mat-icon>
+          <span class="text">Expediente</span>
+        </mat-expansion-panel-header>
 
-            <br>
-
-            <mat-list-item>
-                <mat-icon mat-list-icon class="material-icons-rounded">settings</mat-icon>
-                <span class="text">Config</span>
-            </mat-list-item>
-
-            <mat-list-item (click)="cerrarSesion()">
-                <mat-icon mat-list-icon class="material-icons-rounded">logout</mat-icon>
-                <span class="text">Logout</span>
-            </mat-list-item>
-
+        <mat-nav-list style="margin-left: -15px;">
+          <mat-list-item [routerLink]="'expediente'">
+            <mat-icon mat-list-icon class="material-icons-rounded">list</mat-icon>
+            <span class="text">Lista de expedientes</span>
+          </mat-list-item>
+          <!-- <mat-list-item [routerLink]="'generar-expediente'">
+            <mat-icon mat-list-icon class="material-icons-rounded">create</mat-icon>
+            <span class="text">Generar expedientes</span>
+          </mat-list-item> -->
         </mat-nav-list>
-    </mat-sidenav>
+      </mat-expansion-panel>
 
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+      <mat-divider></mat-divider>
+
+      <div class="espacioOpeciones"></div>
+
+      <mat-list-item [routerLink]="'configuracion'">
+        <mat-icon mat-list-icon class="material-icons-rounded">settings</mat-icon>
+        <span class="text">Configuración</span>
+      </mat-list-item>
+
+      <mat-list-item (click)="cerrarSesion()">
+        <mat-icon mat-list-icon class="material-icons-rounded">logout</mat-icon>
+        <span class="text">Cerrar sesión</span>
+      </mat-list-item>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

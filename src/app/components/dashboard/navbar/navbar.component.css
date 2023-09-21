@@ -11,12 +11,13 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 
-.container {
+.container1 {
   position: relative;
-  height: 93%;
+  height: auto;
   overflow: hidden;
   background-color: #2c2e43;
   border: 0px;
+  min-height: 80%;
 }
 
 .sidenav {
@@ -25,7 +26,7 @@ mat-toolbar {
   text-align: center;
   border-right: none;
   margin: 15px;
-  width: 180px;
+  width: 264px;
   height: auto;
   border: 0px;
   border-radius: 10px;
@@ -43,4 +44,67 @@ mat-toolbar {
 .text {
   color: whitesmoke;
   overflow: hidden;
+}
+
+.center-div {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .center-div {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+
+.imagen{
+  /* margin-top: 1em; */
+  /* margin-left: 2em; */
+}
+
+@media (max-width: 1199.98px) {
+  .d-flex {
+    display: flex !important;
+  }
+  .justify-content-center {
+    justify-content: center !important;
+  }
+  .flex-wrap {
+    flex-wrap: wrap !important;
+  }
+}
+
+
+.imagenLogo{
+  /* width: 50px; */
+  text-align: right;
+}
+
+@media only screen and (max-width: 575px) {
+  .imagenLogo {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.espacioOpeciones{
+  padding-top: 10em;
+}
+
+mat-expansion-panel{
+  background: #002b5c;
+  color: white;
+}
+
+.mat-drawer.mat-sidenav.mat-sidenav-left {
+  margin-left: 0 !important;
+}
+.usuario{
+    font-size: 18px;
+    padding-left: 2%;
+}
+
+.botonBuscar{
+  /* padding-left: 2%; */
 }

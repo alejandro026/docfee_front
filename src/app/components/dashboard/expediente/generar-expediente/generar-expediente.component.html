@@ -1,0 +1,78 @@
+<div class="container1">
+
+  <nav class="navbar navbar-expand-lg navbar-light ">
+    <div class="container-fluid">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../homepage'">Inicio</a></li>
+          <li class="breadcrumb-item"><a class="clase" [routerLink]="'../expediente'">Expediente</a></li>
+          <li class="breadcrumb-item active" aria-current="page"><a>Agregar cita</a></li>
+        </ol>
+      </nav>
+    </div>
+  </nav>
+
+  <div>
+    <mat-toolbar>
+      <span> Agregar usuario </span>
+      <span style="flex: 1 1 auto"></span>
+    </mat-toolbar>
+  </div>
+
+  <div width="100%">
+    <div class="col">
+
+
+      <form [formGroup]="tratamientoForm">
+
+        <div class="row">
+
+            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+              <mat-label>Presión alterial</mat-label>
+              <input type="text" matInput formControlName="presionArterial">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+              <mat-label>Frecuenacia cardiaca</mat-label>
+              <input type="number" matInput formControlName="frec_Cardiaca">
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+              <mat-label>Frecuancia respiratoria</mat-label>
+              <input type="number" matInput formControlName="frec_Respiratoria">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+              <mat-label>Temperatura</mat-label>
+              <textarea matInput formControlName="temperaatura"></textarea>
+            </mat-form-field>
+
+        </div>
+
+        <div class="row">
+
+            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+              <mat-label>Altura</mat-label>
+              <textarea matInput formControlName="altura"></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" style="width: 50%; min-width: 200px;">
+              <mat-label>IMC</mat-label>
+              <textarea matInput formControlName="imc"></textarea>
+            </mat-form-field>
+
+        </div>
+
+        <button>Generar</button>
+
+      </form>
+
+
+
+    </div>
+  </div>
+</div>

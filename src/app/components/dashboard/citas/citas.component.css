@@ -1,4 +1,4 @@
-.container {
+.container1 {
     margin: 15px;
     margin-right: 15px;
     margin-left: 35px;
@@ -10,7 +10,14 @@
     font-size: 1rem;
     background-color: white ;
   }
-  
+
+  th{
+
+    color: #002b5c;
+    text-align: center;
+    font-size: medium;
+  }
+
   .table-wrapp {
     margin-top: 20px;
     margin-right: auto;
@@ -18,17 +25,17 @@
     margin-bottom: 15px;
     width: 90%;
   }
-  
+
   .large {
     width: 27.5%;
     height: 15px;
   }
-  
+
   .short {
     width: 15%;
     height: 15px;
   }
-  
+
   table {
     width: 100%;
     height: auto;
@@ -48,7 +55,7 @@
     .mat-header-row {
         display: table-row;
     }
-  
+
   .search-div {
     margin: auto;
     height: auto;
@@ -65,7 +72,7 @@
         height: 36px;
         margin-left: 15px;
         padding: 0px 20px;
-        background-color: whitesmoke;
+        background-color: white;
         border-radius: 5px;
         margin: 10px;
     }
@@ -82,8 +89,48 @@
         height: 32px;
         width: 32px;
     }
-  
+
   .hide {
     display: none;
   }
-  
+
+
+
+.example-container {
+  height: auto !important;
+  width: auto !important;
+  max-width: 100%;
+  overflow: auto;
+}
+
+td.mat-column-star {
+  width: 20px;
+  padding-right: 8px;
+}
+
+th.mat-column-position, td.mat-column-position {
+  padding-left: 8px;
+}
+
+.mat-mdc-table-sticky-border-elem-right {
+  border-left: 1px solid #e0e0e0;
+}
+
+.mat-mdc-table-sticky-border-elem-left {
+  border-right: 1px solid #e0e0e0;
+}
+
+.clase{
+  color: black;
+}
+
+.search-div2 {
+  margin: auto;
+  height: auto;
+  padding: 0px;
+  }
+  .creat-button {
+    display: flex;
+    margin-left: 0px;
+    margin-bottom: 15px;
+  }

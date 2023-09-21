@@ -1,0 +1,21 @@
+footer {
+    background: #002b5c;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+p{
+    font-size: 2vh
+}
+
+a{
+    font-size: 2vh
+}
+
+.centrado{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

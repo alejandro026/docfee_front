@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable} from 'rxjs';
+import { Antecedentes } from '../_models/antecedentes';
+import { TratamientoDto2 } from '../_models/tratamientodto2';
 
 
 @Injectable({
@@ -14,7 +16,8 @@ import { Observable} from 'rxjs';
 
 export class TratamientoService {
 
-   url="http://localhost:8083/tratamiento/";
+   url="https://docfeeback-production.up.railway.app/tratamiento/";
+   url2="https://docfeeback-production.up.railway.app/";
 
   constructor(
     private http: HttpClient
@@ -31,7 +34,7 @@ export class TratamientoService {
     return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVista/"+id,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
-  
+
   consultarTodosVistaDR():Observable<VistaTratamiento[]>{
 
     return this.http.get<VistaTratamiento[]>(this.url+"consultarTodosVistaDR/",
@@ -47,8 +50,8 @@ export class TratamientoService {
     return this.http.get<Tratamiento>(this.url+"buscarPorId/"+id,
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
-  buscarPorUsuario(id:number): Observable<Tratamiento>{
-    return this.http.get<Tratamiento>(this.url+"buscarPorUsuario/"+id,
+  buscarPorUsuario(id:number): Observable<any>{
+    return this.http.get<any>(this.url+"buscarPorUsuario/"+id,
     {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
   actualizar(tratamiento: Tratamiento): Observable<Tratamiento>{
@@ -58,6 +61,17 @@ export class TratamientoService {
 
   actualizarDocumento(update:DocumentoUpdate):Observable<boolean>{
     return this.http.post<boolean>(this.url+"actualizarDocumento", update,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
+
+  guardarAntecedentes(antecedentes:Antecedentes):Observable<Antecedentes>{
+    return this.http.post<Antecedentes>(this.url2+"antecedentes/guardar", antecedentes,
+      {headers: new HttpHeaders().append("Content-Type", "application/json")});
+  }
+
+  guardaExpediente(expedinete:TratamientoDto2){
+    return this.http.post<Tratamiento>(this.url+"guardar", expedinete,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }
 }
