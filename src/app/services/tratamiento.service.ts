@@ -16,8 +16,8 @@ import { TratamientoDto2 } from '../_models/tratamientodto2';
 
 export class TratamientoService {
 
-   url="https://docfeeback-production.up.railway.app/tratamiento/";
-   url2="https://docfeeback-production.up.railway.app/";
+   url="https://urgently-talented-ocelot.ngrok-free.app/tratamiento/";
+   url2="https://urgently-talented-ocelot.ngrok-free.app/";
 
   constructor(
     private http: HttpClient
