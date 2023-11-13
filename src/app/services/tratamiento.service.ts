@@ -16,8 +16,8 @@ import { TratamientoDto2 } from '../_models/tratamientodto2';
 
 export class TratamientoService {
 
-   url="https://urgently-talented-ocelot.ngrok-free.app/tratamiento/";
-   url2="https://urgently-talented-ocelot.ngrok-free.app/";
+   url="http://localhost:8083/tratamiento/";
+   url2="http://localhost:8083/";
 
   constructor(
     private http: HttpClient

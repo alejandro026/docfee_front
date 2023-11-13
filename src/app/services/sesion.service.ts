@@ -12,8 +12,8 @@ import { Observable} from 'rxjs';
 
 export class CitasService {
   sesion:LoginUsuario;
-   url="https://urgently-talented-ocelot.ngrok-free.app/login";
-   urlCerrar="https://urgently-talented-ocelot.ngrok-free.app/deleteSession";
+   url="http://localhost:8083/login";
+   urlCerrar="http://localhost:8083/deleteSession";
   constructor(
     private http: HttpClient
   ) { }

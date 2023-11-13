@@ -12,7 +12,7 @@ import { Mensaje } from '../_models/menaje';
 
 export class UsuarioService {
 
-   url="https://urgently-talented-ocelot.ngrok-free.app/usuarios";
+   url="http://localhost:8083/usuarios";
 
   constructor(
     private http: HttpClient
@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   mensajeWhatsapp(user:Mensaje):Observable<Usuario>{
-    let url="https://urgently-talented-ocelot.ngrok-free.app/mensaje/autorizacion";
+    let url="http://localhost:8083/mensaje/autorizacion";
     return this.http.post<Usuario>(url,user,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }

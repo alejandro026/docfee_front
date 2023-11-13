@@ -11,8 +11,8 @@ import { Observable} from 'rxjs';
 
 export class CitasService {
 
-   url="https://urgently-talented-ocelot.ngrok-free.app/citas/";
-   url2="https://urgently-talented-ocelot.ngrok-free.app/"
+   url="http://localhost:8083/citas/";
+   url2="http://localhost:8083/"
   constructor(
     private http: HttpClient
   ) { }

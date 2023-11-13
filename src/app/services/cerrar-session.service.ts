@@ -8,7 +8,7 @@ import { LoginUsuario } from '../_models/loginUsuario';
 })
 export class cerrarServices{
   sesion:LoginUsuario;
-  urlCerrar="https://urgently-talented-ocelot.ngrok-free.app/deleteSession";
+  urlCerrar="http://localhost:8083/deleteSession";
   status: string;
   constructor(
     private http: HttpClient
