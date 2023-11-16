@@ -36,9 +36,9 @@ export class AgregarComponent implements OnInit {
 
   aceptar(){
     console.log(this.formulario.controls['correo'])
-    if(this.formulario.invalid){
-      return;
-    }
+    // if(this.formulario.invalid){
+    //   return;
+    // }
 
     let usuarioConfianza= new Usuario();
     let usuario:Usuario=this.formulario.value;
@@ -50,6 +50,7 @@ export class AgregarComponent implements OnInit {
     }
     usuario.id_usuario=this.data.id_usuario;
     usuario.usuario=this.data.usuario;
+    console.log(this.data)
     // let antecedentes:Antecedentes=this.formularioAntecedente.value;
     // let antecedentes:Antecedentes[]=[];
     // antecedentes.push(this.formularioAntecedente.value);

@@ -58,7 +58,7 @@
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Telefono</mat-label>
-              <input maxlength="11" minlength="11" matInput placeholder="Telefono" formControlName="telefono" required appNumeric>
+              <input maxlength="10" minlength="10" matInput placeholder="Telefono" formControlName="telefono" required appNumeric>
               <span class="error-message" *ngIf="formulario.controls['telefono'].errors && formulario.controls['telefono'].touched">
                 Este campo es requerido.
               </span>
