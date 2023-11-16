@@ -16,8 +16,8 @@ import { TratamientoDto2 } from '../_models/tratamientodto2';
 
 export class TratamientoService {
 
-   url="https://docfeeback-production.up.railway.app/tratamiento/";
-   url2="https://docfeeback-production.up.railway.app/";
+   url="https://docfeeback.hop.sh/tratamiento/";
+   url2="https://docfeeback.hop.sh/";
 
   constructor(
     private http: HttpClient

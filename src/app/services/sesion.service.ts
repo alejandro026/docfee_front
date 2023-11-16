@@ -12,8 +12,8 @@ import { Observable} from 'rxjs';
 
 export class CitasService {
   sesion:LoginUsuario;
-   url="https://docfeeback-production.up.railway.app/login";
-   urlCerrar="https://docfeeback-production.up.railway.app/deleteSession";
+   url="https://docfeeback.hop.sh/login";
+   urlCerrar="https://docfeeback.hop.sh/deleteSession";
   constructor(
     private http: HttpClient
   ) { }
