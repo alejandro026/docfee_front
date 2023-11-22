@@ -36,9 +36,9 @@ export class AgregarComponent implements OnInit {
 
   aceptar(){
     console.log(this.formulario.controls['correo'])
-    // if(this.formulario.invalid){
-    //   return;
-    // }
+    if(this.formulario.invalid){
+       return;
+    }
 
     let usuarioConfianza= new Usuario();
     let usuario:Usuario=this.formulario.value;
@@ -109,12 +109,12 @@ export class AgregarComponent implements OnInit {
     nombre: [this.data.nombre, Validators.required],
     apPaterno: [this.data.apPaterno, Validators.required],
     apMaterno: [this.data.apMaterno, Validators.required],
-    nss: [this.data.nss, Validators.required],
+    nss: [this.data.nss],
     telefono: [this.data.telefono, Validators.required],
     id_UsuarioConfianza: usuarioConfinza,
     sexo: [this.data.sexo, Validators.required],
     fechaNacimiento: new Date(this.data.fechaNacimiento),
-    correo: [this.data.correo, [Validators.required, Validators.email]],
+    correo: [this.data.correo, [Validators.email]],
     ocupacion: [this.data.ocupacion, Validators.required]
     })
   }

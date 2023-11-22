@@ -47,10 +47,10 @@
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Numero de seguro</mat-label>
-              <input maxlength="11" minlength="11" matInput placeholder="Numero de seguro" formControlName="nss" required appNumeric>
-              <span class="error-message" *ngIf="formulario.controls['nss'].errors && formulario.controls['nss'].touched">
+              <input maxlength="11" minlength="11" matInput placeholder="Numero de seguro" formControlName="nss" appNumeric>
+              <!-- <span class="error-message" *ngIf="formulario.controls['nss'].errors && formulario.controls['nss'].touched">
                 Este campo es requerido.
-              </span>
+              </span> -->
             </mat-form-field>
           </div>
 
@@ -107,16 +107,14 @@
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Correo</mat-label>
-              <input matInput placeholder="Correo" formControlName="correo" required>
-                <span class="error-message" *ngIf="formulario.controls['correo'].errors?.['required'] || formulario.controls['correo'].errors?.['empty']">El correo es requerido</span>
-                <span class="error-message" *ngIf="!formulario.controls['correo'].errors?.['required'] && formulario.controls['correo'].errors?.['email']">Debe ser un correo valido</span>
+              <input matInput placeholder="Correo" formControlName="correo">
+                <!-- <span class="error-message" *ngIf="formulario.controls['correo'].errors?.['required'] || formulario.controls['correo'].errors?.['empty']">El correo es requerido</span> -->
+                <span class="error-message" *ngIf="formulario.controls['correo'].errors?.['email']">Debe ser un correo valido</span>
             </mat-form-field>
 
           </div>
 
           <div class="row">
-
-
 
             <mat-form-field style="width: 50%; min-width: 200px; " appearance="outline">
               <mat-label>Ocupacion</mat-label>
