@@ -23,7 +23,15 @@
     </ng-container>
     <ng-template #elseTemplate>
       <h1>Expedientes</h1>
+
+      <mat-form-field class="search-form-field" floatLabel="never">
+        <input matInput type="text" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event)">
+    </mat-form-field>
+
     </ng-template>
+
+
+
   </div>
 
   <div class="mat-elevation-z8">
@@ -33,16 +41,16 @@
     <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- Position Column -->
-      <ng-container matColumnDef="id_tratamiento">
+      <!-- <ng-container matColumnDef="id_tratamiento">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id tratamiento </th>
         <td mat-cell *matCellDef="let element"> {{element.id_tratamiento}} </td>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Name Column -->
-      <ng-container matColumnDef="id_usuario">
+      <!-- <ng-container matColumnDef="id_usuario">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id usuario </th>
         <td mat-cell *matCellDef="let element"> {{element.id_usuario}} </td>
-      </ng-container>
+      </ng-container> -->
 
       <!-- Weight Column -->
       <ng-container matColumnDef="nombre_paciente">

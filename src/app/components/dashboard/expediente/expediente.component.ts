@@ -21,7 +21,7 @@ export class ExpedienteComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: MatTableDataSource<VistaTratamiento>;
-  displayedColumns: string[] = ['id_tratamiento', 'id_usuario', 'nombre_paciente', 'descipcion', 'aspectos_generales', 'diagnostico_presuntivo', 'acciones','nueva_cita'];
+  displayedColumns: string[] = [ 'nombre_paciente', 'descipcion', 'aspectos_generales', 'diagnostico_presuntivo', 'acciones','nueva_cita'];
 
   columnsToDisplayWithExpand = [this.displayedColumns, 'expand'];
   expandedElement: Tratamiento | null;
@@ -98,4 +98,10 @@ export class ExpedienteComponent implements OnInit {
   nuevaCitaUsuario(id:number){
     this.router.navigate(['/dashboard/nuevaCitaUsuario'], { queryParams: { idTratmiento: id} });
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }
