@@ -8,7 +8,7 @@ import { LoginUsuario } from '../_models/loginUsuario';
 })
 export class cerrarServices{
   sesion:LoginUsuario;
-  urlCerrar="http://localhost:8081/deleteSession";
+  urlCerrar="https://docfeeback.hop.sh/deleteSession";
   status: string;
   constructor(
     private http: HttpClient

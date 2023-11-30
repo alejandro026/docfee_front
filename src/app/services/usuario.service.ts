@@ -12,7 +12,7 @@ import { Mensaje } from '../_models/menaje';
 
 export class UsuarioService {
 
-   url="http://localhost:8081/usuarios";
+   url="https://docfeeback.hop.sh/usuarios";
 
   constructor(
     private http: HttpClient
@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   mensajeWhatsapp(user:Mensaje):Observable<Usuario>{
-    let url="http://localhost:8081/mensaje/autorizacion";
+    let url="https://docfeeback.hop.sh/mensaje/autorizacion";
     return this.http.post<Usuario>(url,user,
       {headers: new HttpHeaders().append("Content-Type", "application/json")});
   }

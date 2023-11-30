@@ -9,7 +9,7 @@ import { nuevaReceta } from '../_models/nuevaReceta';
 })
 export class RecetaService {
 
- url="http://localhost:8081/receta/";
+ url="https://docfeeback.hop.sh/receta/";
 
 Recetas= new Recetas();
  constructor(
@@ -32,12 +32,12 @@ buscarPorIdCita(id:number): Observable<Recetas>{
 }
 
 consultarPorID(id_receta:number): Observable<Recetas> {
-  const url = "http://localhost:8081/receta/buscarPorId/" +  id_receta
+  const url = "https://docfeeback.hop.sh/receta/buscarPorId/" +  id_receta
 
   return this.http.get<Recetas>(url);
 }
 consultarPorIDCita(id_cita:number): Observable<any> {
-  const url = "http://localhost:8081/receta/buscarPorIdCita/" +  id_cita
+  const url = "https://docfeeback.hop.sh/receta/buscarPorIdCita/" +  id_cita
 
   return this.http.get<Recetas>(url);
 }
