@@ -14,6 +14,7 @@ import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angul
 import { GenerarAntecedenteComponent } from './generar-antecedente/generar-antecedente.component';
 import { Util } from 'src/app/utils/util';
 import { TratamientoService } from 'src/app/services/tratamiento.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-prueba',
@@ -27,7 +28,8 @@ export class PruebaComponent implements OnInit {
     public dialog: MatDialog,
     public notificationService: NotificationService,
     private storage: Storage,
-    private tratamientoSerice:TratamientoService
+    private tratamientoSerice:TratamientoService,
+    private router:Router
   ) { }
 
   searchKey: string;
@@ -50,6 +52,7 @@ export class PruebaComponent implements OnInit {
 
   getData() {
     this.usuarioService.consultarTodos().subscribe(data => {
+      console.log(data)
       this.dataSource = new MatTableDataSource(data);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -68,6 +71,14 @@ export class PruebaComponent implements OnInit {
 
 
 
+  verDetalles(id:number){
+    console.log(id)
+    this.tratamientoSerice.buscarPorUsuario(id).subscribe(data =>{
+      console.log(data)
+      //Esto no jala
+      this.router.navigate(['/dashboard/detalleExpedinete'], { queryParams: { idTratmiento: data[0].id_tratamiento} });
+    })
+  }
 
   //Metodo para subir archivos a firebase
   subirArchivo($event: any){

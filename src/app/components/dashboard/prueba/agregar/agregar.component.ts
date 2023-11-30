@@ -36,9 +36,9 @@ export class AgregarComponent implements OnInit {
 
   aceptar(){
     console.log(this.formulario.controls['correo'])
-    if(this.formulario.invalid){
-       return;
-    }
+    // if(this.formulario.invalid){
+    //    return;
+    // }
 
     let usuarioConfianza= new Usuario();
     let usuario:Usuario=this.formulario.value;

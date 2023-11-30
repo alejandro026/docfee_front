@@ -20,18 +20,22 @@ export class DetalleExpedienteComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    //Aqui empieza xD
     this.cargarDatos();
     this.fecha= new Date();
   }
 
   cargarDatos(){
     this.route.queryParams.subscribe( params => {
+      console.log(params.idTratmiento)
      this.cargarDatos2(params.idTratmiento);
    });
   }
 
   cargarDatos2(id:number){
+    console.log(id)
     this.tratamientoService.buscarPorId(id).subscribe(data=>{
+      console.log(data)
       this.tratamiento= data;
 
       this.calcularEdad();
@@ -42,6 +46,7 @@ export class DetalleExpedienteComponent implements OnInit {
   }
 
   calcularEdad(){
+    console.log(this.tratamiento)
     let hoy:Date= new Date();
     var fechaNacimiento:Date = new Date(this.tratamiento.id_usuario.fechaNacimiento);
     var edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
