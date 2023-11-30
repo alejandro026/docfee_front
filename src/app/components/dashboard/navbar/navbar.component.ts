@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { UserIdleService } from 'angular-user-idle';
 import { MatDialog } from '@angular/material/dialog';
 import { SessionExpiredDialogComponentComponent } from '../session-expired-dialog-component/session-expired-dialog-component.component';
+import { TratamientoService } from 'src/app/services/tratamiento.service';
 
 @Component({
   selector: 'app-navbar',
@@ -36,7 +37,8 @@ export class NavbarComponent implements OnInit {
     private userIdle: UserIdleService,
         //Token
     private authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private tratamientoService: TratamientoService,
   ) {
     this.options = fb.group({
       bottom: 0,
@@ -143,5 +145,18 @@ export class NavbarComponent implements OnInit {
   //     }
   //   })
   // }
+
+
+  navegarAExpediente() {
+    if (this.sesion.tipoUsuario != 'MEDICO') {
+      this.sesion=JSON.parse(sessionStorage.getItem('sesion')!);
+      var id = parseInt(this.sesion.id);
+      this.tratamientoService.consultarTodosVista(id).subscribe(data=>{
+        this.router.navigate(['/dashboard/detalleExpedinete'], { queryParams: { idTratmiento: data[0].id_tratamiento} });
+
+      })
+
+    }
+  }
 
 }
