@@ -1,6 +1,6 @@
 import { RegistroComponent } from './components/registro/registro.component';
 
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MaterialModule } from './material/material.module';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -56,6 +56,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { NumericDirective } from './numeric.directive';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderInterceptor } from './interceptor/LoaderInterceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 interface NgxSpinnerConfig {
   type?: string;
@@ -108,7 +109,13 @@ interface NgxSpinnerConfig {
         AccordionModule,
         DialogModule,
         MatProgressBarModule,
-        NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' })
+        NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+        ServiceWorkerModule.register('ngsw-worker.js', {
+          enabled: !isDevMode(),
+          // Register the ServiceWorker as soon as the application is stable
+          // or after 30 seconds (whichever comes first).
+          registrationStrategy: 'registerWhenStable:30000'
+        })
         // UserIdleModule.forRoot({ timeout: 10, idle: 15 })
 
     ],
