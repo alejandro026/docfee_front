@@ -12,6 +12,10 @@
           "/manifest.webmanifest",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "http://127.0.0.1:8080/login",
+          "127.0.0.1:8080/login"
         ]
       }
     },
@@ -24,6 +28,25 @@
           "/assets/**",
           "/*.(svg|cur|jpg|jpeg|png|apng|webp|avif|gif|otf|ttf|woff|woff2)"
         ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "data-api",
+      "urls": [
+        "https://docfeeback.hop.sh/usuarios/consultarTodos",
+        "https://docfeeback.hop.sh/tratamiento/consultarTodos",
+        "https://docfeeback.hop.sh/tratamiento/consultarTodosVistaDR/",
+        "https://docfeeback.hop.sh/receta/consultarTodos/",
+        "https://docfeeback.hop.sh/citas/consultarTodos/",
+        "https://docfeeback.hop.sh/medicos/consultarTodos/"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 5,
+        "maxAge": "50m",
+        "timeout": "5s"
       }
     }
   ]
