@@ -17,7 +17,7 @@ import { Storage, ref, uploadBytes, listAll, getDownloadURL, list } from '@angul
 export class DocumentosComponent implements OnInit {
 
   archivos:String[]=[];
-  usuario:number=4;
+  usuario:number;
 
   doc = "https://firebasestorage.googleapis.com/v0/b/docfee-c3a33.appspot.com/o/archivos%2FUML_JTY.pdf?alt=media&token=9cd4ac1c-a5b0-4dea-88cf-42b5bdf2c029";
 
@@ -66,11 +66,11 @@ export class DocumentosComponent implements OnInit {
     }
 
     const file = $event.addedFiles[0];
-    const fileRef = ref(this.storage, "archivos/"+file.name);
+    const fileRef = ref(this.storage, "archivos/"+this.usuario+"/"+file.name);
 
     uploadBytes(fileRef, file).then(resposne=>{
       let documento:DocumentoUpdate= new DocumentoUpdate();
-      documento.ruta="archivos/"+file.name;
+      documento.ruta="archivos/"+this.usuario+"/";
       documento.id=this.usuario;
 
       this.tratamientoService.actualizarDocumento(documento).subscribe(data=>{
@@ -96,7 +96,7 @@ export class DocumentosComponent implements OnInit {
 
   getArchivos(){
     //Se crea una referncia hacia el stroge de firebase
-    const fileRef = ref(this.storage, "archivos/")
+    const fileRef = ref(this.storage, "archivos/"+this.usuario)
 
     //Para obtener los archivos que hay en firebase se hace lo sgiente
     //Obtiene un array en que se guarada los archivos que hay.
@@ -107,12 +107,17 @@ export class DocumentosComponent implements OnInit {
       //Nota cambiar la cadena por lo que se guarada en la base de datos.
 
       this.tratamientoService.buscarPorUsuario(this.usuario).subscribe(data=>{
-        let result = response.items.find(({ fullPath }) => fullPath == data.documentosEstudios);
-
-        getDownloadURL(result!).then(url=>{
-          this.archivos.push(url);
-          console.log("getDownloadURL ~ url", url);
+        // let result = response.items.find(({ fullPath }) => fullPath == data.documentosEstudios);
+        // let result = response.items.find(({ fullPath }) => fullPath == data[0].documentosEstudios);
+        // console.log(result)
+        console.log(data);
+        response.items.forEach(data=>{
+          getDownloadURL(data).then(url=>{
+            this.archivos.push(url);
+            console.log("getDownloadURL ~ url", url);
+          });
         });
+
       })
 
 

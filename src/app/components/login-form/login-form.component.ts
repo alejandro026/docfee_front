@@ -186,7 +186,7 @@ export class LoginFormComponent implements OnInit {
           } catch (error: any) {
             this.cargandoLogin=false;
             valicacion=false;
-            console.log(error.code);
+            console.log(error);
 
             this.failedLogin = true;
             this.failedLoginMessage = 'Ocurrio un problema, intenta nuevamente';
