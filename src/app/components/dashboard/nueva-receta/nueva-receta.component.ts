@@ -70,7 +70,7 @@ confirmAdd(){
   id_cita: this.idCita,
   diagnostico: new UntypedFormControl(),
   //edad:null,
-  fecha: new UntypedFormControl(),
+  fecha: new UntypedFormControl(new Date()),
   medicamento: new UntypedFormControl(),
   horarios: new UntypedFormControl(),
   tareas: new UntypedFormControl(),

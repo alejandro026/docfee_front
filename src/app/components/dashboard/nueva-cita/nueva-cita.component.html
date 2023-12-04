@@ -56,10 +56,17 @@
 
           <div class="row">
 
-            <mat-form-field style="width: 47.8%; padding-left: 10px; min-width: 200px;" appearance="outline">
+            <mat-form-field appearance="outline" style="width: 47.8%; padding-left: 10px; min-width: 200px;">
               <mat-label>Lugar</mat-label>
-              <input matInput placeholder="Lugar" style="height: 42px" formControlName="lugar" readonly="true">
+              <mat-select formControlName="lugar" placeholder="Lugar">
+                <mat-option value="clinica">Clinica</mat-option>
+              </mat-select>
             </mat-form-field>
+
+            <!-- <mat-form-field style="width: 47.8%; padding-left: 10px; min-width: 200px;" appearance="outline">
+              <mat-label>Lugar</mat-label>
+              <input matInput placeholder="Lugar" style="height: 42px" formControlName="lugar" >
+            </mat-form-field> -->
 
 
             <mat-form-field style="width: 50%; min-width: 200px;" appearance="outline">

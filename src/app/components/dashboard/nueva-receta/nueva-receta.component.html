@@ -52,12 +52,12 @@
 
           <div>
             <mat-form-field style="width: 50%;" appearance="outline">
-              <mat-label>Tareas</mat-label>
-              <textarea matInput placeholder="Tareas" formControlName="tareas"></textarea>
+              <mat-label>Recomendaciones</mat-label>
+              <textarea matInput placeholder="Tareas" formControlName="recomendaciones"></textarea>
             </mat-form-field>
           </div>
           <div>
-            <mat-form-field style="width: 25%;" appearance="outline">
+            <mat-form-field style="width: 25%;" appearance="outline" *ngIf="false">
               <mat-label>Horario de medicamento</mat-label>
               <input matInput placeholder="Horario" formControlName="horarios" type="number">
             </mat-form-field>
