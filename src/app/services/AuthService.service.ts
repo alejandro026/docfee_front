@@ -1,11 +1,11 @@
 import { Observable, Subject } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { LoginUsuario } from './../_models/loginUsuario';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { error } from 'console';
 import { Router } from '@angular/router';
 import { url } from 'inspector';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 @Injectable({

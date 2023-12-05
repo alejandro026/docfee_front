@@ -29,7 +29,7 @@
     "@ng-idle/keepalive": "^11.0.3",
     "@syncfusion/ej2-angular-calendars": "^19.4.56",
     "angular-user-idle": "^3.0.1",
-    "firebase": "^9.3.0",
+    "firebase": "^10.7.0",
     "igniteui-angular": "^12.2.3",
     "mdb-angular-ui-kit": "^4.0.0",
     "moment": "^2.29.1",
