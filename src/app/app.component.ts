@@ -2,6 +2,8 @@ import { Component, HostListener } from '@angular/core';
 import { InactivityService } from './services/inactivity.service';
 import { SwPush } from '@angular/service-worker';
 import { NotificationService } from './services/notification.service';
+import { ConnectionServiceModule } from 'ng-connection-service';
+import { DbPwaService } from './services/db-pwa.service';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,8 @@ export class AppComponent {
   constructor(
     private inactivityService: InactivityService,
     private swPush: SwPush,
-    private notificacionService: NotificationService
+    private notificacionService: NotificationService,
+    private dbPwaService: DbPwaService
     ) {
       this.suscribeToNotifications();
     }
@@ -44,3 +47,4 @@ export class AppComponent {
     this.inactivityService.activityDetected();
   }
 }
+

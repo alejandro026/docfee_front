@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Usuario } from './../../../../_models/usuario';
 import { Component, Inject, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { DbPwaService } from 'src/app/services/db-pwa.service';
 
 @Component({
   selector: 'app-agregar',
@@ -18,11 +19,13 @@ export class AgregarComponent implements OnInit {
   // formularioAntecedente:UntypedFormGroup;
 
   usuariosCombo:Usuario[];
+  lista: any;
 
   constructor(
     private usuarioService: UsuarioService,
     private formBuilder: UntypedFormBuilder,
     private dialogRef: MatDialogRef<AgregarComponent>,
+    private dbPwaService: DbPwaService,
     @Inject(MAT_DIALOG_DATA) private data:Usuario
   ) { }
 
@@ -33,8 +36,11 @@ export class AgregarComponent implements OnInit {
     // this.formularioAntecedentes();
   }
 
-
+  sincronizar(){
+    this.dbPwaService.syncAndClear();
+  }
   aceptar(){
+
     console.log(this.formulario.controls['correo'])
     // if(this.formulario.invalid){
     //    return;
@@ -51,6 +57,7 @@ export class AgregarComponent implements OnInit {
     usuario.id_usuario=this.data.id_usuario;
     usuario.usuario=this.data.usuario;
     console.log(this.data)
+    this.lista = this.data;
     // let antecedentes:Antecedentes=this.formularioAntecedente.value;
     // let antecedentes:Antecedentes[]=[];
     // antecedentes.push(this.formularioAntecedente.value);
@@ -72,9 +79,15 @@ export class AgregarComponent implements OnInit {
             timer: 2500
           })
           this.dialogRef.close();
+      },
+      ()=>{
+        console.log("No hay internet :(!");
+        this.dbPwaService.updateTask(usuario);
+        this.dialogRef.close();
       })
     }else{
       this.usuarioService.guardarUsuario(usuario).subscribe(data=> {
+        console.log("Conexión a internet OK!");
         console.log(data);
           Swal.fire({
             heightAuto: false,
@@ -84,7 +97,13 @@ export class AgregarComponent implements OnInit {
             timer: 2500
           });
           this.dialogRef.close();
-      })
+      },
+      ()=>{
+        console.log("No hay internet :(!");
+        this.dbPwaService.updateTask(usuario);
+        this.dialogRef.close();
+      }
+      )
     }
   }
 

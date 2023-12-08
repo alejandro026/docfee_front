@@ -16,6 +16,10 @@
   <div class="search-div">
       <h1>Pacientes</h1>
       <button align="right" mat-raised-button class="info-button" (click)="openModal()"><mat-icon>add</mat-icon> Crear </button>
+      <button align="left" [disabled]="!btnActivo" mat-raised-button color="primary" (click)="sincronizar()" type="submit">
+        <mat-icon>cached</mat-icon>
+        Sincronizar
+      </button>
       <mat-form-field class="search-form-field" floatLabel="never">
           <input matInput type="text" placeholder="Buscar" autocomplete="off" (keyup)="applyFilter($event)">
           <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchKey" ><mat-icon>clear</mat-icon></button>

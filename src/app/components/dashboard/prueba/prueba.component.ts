@@ -15,22 +15,28 @@ import { GenerarAntecedenteComponent } from './generar-antecedente/generar-antec
 import { Util } from 'src/app/utils/util';
 import { TratamientoService } from 'src/app/services/tratamiento.service';
 import { Router } from '@angular/router';
-
+import { DbPwaService } from 'src/app/services/db-pwa.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-prueba',
   templateUrl: './prueba.component.html',
   styleUrls: ['./prueba.component.css']
 })
 export class PruebaComponent implements OnInit {
-
+  btnActivo = true;
   constructor(
     public usuarioService: UsuarioService,
     public dialog: MatDialog,
     public notificationService: NotificationService,
     private storage: Storage,
     private tratamientoSerice:TratamientoService,
-    private router:Router
-  ) { }
+    private router:Router,
+    private dbPwaService: DbPwaService
+  ) {
+
+    window.addEventListener('online', this.actualizarEstado.bind(this));
+    window.addEventListener('offline', this.actualizarEstado.bind(this));
+   }
 
   searchKey: string;
   displayedColumns: string[] = ['nombre', 'apPaterno', 'apMaterno', 'nss', 'telefono', 'antecedente', 'actions'];
@@ -69,7 +75,13 @@ export class PruebaComponent implements OnInit {
     }
   }
 
-
+  actualizarEstado() {
+    if (navigator.onLine) {
+      this.btnActivo = true;
+    } else {
+      this.btnActivo = false;
+    }
+  }
 
   verDetalles(id:number){
     console.log(id)
@@ -119,6 +131,9 @@ export class PruebaComponent implements OnInit {
     }).catch(error=>{
       console.log(error)
     })
+  }
+  sincronizar(){
+    this.dbPwaService.syncAndClear()
   }
 
   openModal(usuario?: Usuario) {
